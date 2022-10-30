@@ -1,0 +1,43 @@
+# The URL the site will be built for
+base_url = "https://ffangli.github.io"
+
+# The site title and description; used in feeds by default.
+title = "Fang Li"
+description = "Fang Li's Blog"
+
+# The default language; used in feeds.
+default_language = "zh"
+
+# The site theme to use.
+theme = "even"
+
+# Whether to automatically compile all Sass files in the sass directory.
+compile_sass = false
+
+# When set to "true", a feed is automatically generated.
+generate_feed = false
+
+taxonomies = [
+    # You can enable/disable RSS
+    { name = "categories", feed = true },
+    { name = "tags", feed = true },
+]
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+author = "Fang Li"
+even_menu = [
+    { url = "$BASE_URL", name = "主页" },
+    { url = "$BASE_URL/categories", name = "分类" },
+    { url = "$BASE_URL/tags", name = "标签" },
+    { url = "https://github.com/ffangli2000", name = "GitHub" },
+]
+even_title = "Fang Li"
