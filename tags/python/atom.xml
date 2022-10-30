@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Python</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-02-05T15:16:18+00:00</updated>
+	<id>https://ffangli.github.io/tags/python/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Graphviz使用记录</title>
+		<published>2022-02-05T15:16:18+00:00</published>
+		<updated>2022-02-05T15:16:18+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
+		<id>https://ffangli.github.io/202202051516/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
+&lt;p&gt;官网&lt;a href=&quot;http:&#x2F;&#x2F;www.graphviz.org&#x2F;&quot;&gt;Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;下载&lt;a href=&quot;https:&#x2F;&#x2F;graphviz.org&#x2F;download&#x2F;&quot;&gt;Download | Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Graphviz是一个用 dot 语言编写的绘图脚本，在Windows中直接用pip安装会出现下面的报错&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;graphviz.backend.execute.ExecutableNotFound: failed to execute &amp;#39;dot&amp;#39;, make sure the Graphviz executables are on your systems&amp;#39; PATH
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;需要将graphviz中的bin路径添加到环境变量path中&lt;&#x2F;p&gt;
+&lt;p&gt;控制台输入命令：&lt;code&gt;dot -version&lt;&#x2F;code&gt;检验是否配置成功&lt;&#x2F;p&gt;
+&lt;p&gt;在Python中使用，需要&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install graphviz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;python-diao-yong-graphviz-gong-ju&quot;&gt;Python 调用 Graphviz 工具&lt;&#x2F;h3&gt;
+&lt;p&gt;控制台输入&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;echo process1 = subprocess.Popen(command1,stdout=subprocess.PIPE,shell=True)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 安装路径下，找到文件 &lt;strong&gt;subprocess.py&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;如果是Anaconda，文件所在的地址是C:\Users\xxx\Anaconda3\Lib&lt;&#x2F;p&gt;
+&lt;p&gt;找到 &lt;strong&gt;Popen(object)&lt;&#x2F;strong&gt; 类&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;找到这个类的 &lt;strong&gt;init()&lt;strong&gt;方法，把 640行的&lt;&#x2F;strong&gt;shell=False&lt;&#x2F;strong&gt; 修改为 &lt;strong&gt;shell=True&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;记得重启IDE！&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ce-shi-dai-ma&quot;&gt;测试代码&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;graphviz &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;Digraph
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 需要一个对象来作为生成 DOT 脚本的载体，通过这个语句实例化一个图形对象。
+&lt;&#x2F;span&gt;&lt;span&gt;dot = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Digraph&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# node() 方法可以在对象中生成一个结点
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# edge() 方法可以添加一条边
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edge&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 对象.view(filename=&amp;quot;文件名&amp;quot;, directory=&amp;quot;输出路径&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;view&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(dot)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;运行生成test.gv.pdf文件，效果如下图：&lt;&#x2F;p&gt;
+&lt;img src=&quot;.\img\res.png&quot; style=&quot;zoom:100%;&quot; &#x2F;&gt;
+&lt;p&gt;print(dot)在控制台打印出&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;digraph test {
+&lt;&#x2F;span&gt;&lt;span&gt;	1 [label=&amp;quot;start&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;	2 [label=&amp;quot;end&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;	1 -&amp;gt; 2
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;上面的代码可以直接放到 Graphviz 工具(GVEdit)里运行&lt;&#x2F;p&gt;
+&lt;p&gt;详细参数介绍&lt;a href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Zzbj&#x2F;p&#x2F;11431015.html&quot;&gt;Graphviz参数&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;hui-zhi-pythonlei-tu&quot;&gt;绘制Python类图&lt;&#x2F;h2&gt;
+&lt;p&gt;安装Pyreverse（在pylint模块）&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install pylint
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;命令行检查&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pyreverse -h
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;li-zi&quot;&gt;例子&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;__init__&lt;&#x2F;code&gt;.py文件，（默认设置只能画这个文件名，暂时还没试出来不改文件名画图的方法&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;():
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pass
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_b = &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello B&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;C&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_c = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;123
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;D&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_d = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;123&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;目录结构：&#x2F;code&#x2F;example&#x2F;_&lt;em&gt;init&lt;&#x2F;em&gt;_.py&lt;&#x2F;p&gt;
+&lt;p&gt;在code目录命令行&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pyreverse example&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;dot -Tpdf classes.dot -o classes.pdf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;产生文件classes.dot和classes.pdf&lt;&#x2F;p&gt;
+&lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
+&lt;img src=&quot;.\img\1.png&quot; style=&quot;zoom:60%;&quot; &#x2F;&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>python绘制candlestick</title>
+		<published>2022-01-15T16:42:14+00:00</published>
+		<updated>2022-01-15T16:42:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201151642/" type="text/html"/>
+		<id>https://ffangli.github.io/202201151642/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;tusharehuo-qu-xing-qing-shu-ju&quot;&gt;tushare获取行情数据&lt;&#x2F;h3&gt;
+&lt;p&gt;tushare获取历史行情数据的函数主要有三个：&lt;&#x2F;p&gt;
+&lt;p&gt;get_hist_data()： 获取近3年的日线数据&lt;&#x2F;p&gt;
+&lt;p&gt;get_h_data()：获取一年的日线数据&lt;&#x2F;p&gt;
+&lt;p&gt;get_k_data()：返回每一只股票从上市开始到当前交易日的所有日线数据&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tusharehuo-qu-jiao-yi-ri-li&quot;&gt;tushare获取交易日历&lt;&#x2F;h3&gt;
+&lt;p&gt;trade_cal()：获取各大交易所交易日历数据,默认提取的是上交所&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ta-libji-suan-jun-xian&quot;&gt;TA-Lib计算均线&lt;&#x2F;h3&gt;
+&lt;p&gt;10日均线&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sma_10 = talib.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SMA&lt;&#x2F;span&gt;&lt;span&gt;(np.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;array&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;同理计算30日均线&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;matplotlibhua-tu&quot;&gt;Matplotlib画图&lt;&#x2F;h2&gt;
+&lt;p&gt;官方文档：&lt;a href=&quot;https:&#x2F;&#x2F;matplotlib.org&#x2F;2.1.2&#x2F;api&#x2F;finance_api.html&quot;&gt;finance — Matplotlib 2.1.2 documentation&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;matplotlib-financecai-keng&quot;&gt;matplotlib.finance踩坑&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;attributeerror-module-mplfinance-has-no-attribute-candlestick-ochl&quot;&gt;AttributeError: module &#x27;mplfinance&#x27; has no attribute &#x27;candlestick_ochl&#x27;&lt;&#x2F;h4&gt;
+&lt;p&gt;原因：从matplotlib 2.2.0开始，matplotlib已经不包含finance模块；而mpl_finance模块从2020年开始弃用。&lt;&#x2F;p&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;conda install -c conda-forge mplfinance
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或者&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install --upgrade mplfinance
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;importerror-cannot-import-name-candlestick-ochl-from-mplfinance&quot;&gt;ImportError: cannot import name &#x27;candlestick_ochl&#x27; from &#x27;mplfinance&#x27;&lt;&#x2F;h4&gt;
+&lt;p&gt;原因：在新的mplfinance包下调用旧的API&lt;&#x2F;p&gt;
+&lt;p&gt;解决：将&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;from mpl_finance import
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;改为：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;from mplfinance.original_flavor import candlestick_ohlc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;candlestickhan-shu-hui-zhi-zha-zhu-tu&quot;&gt;candlestick函数绘制蜡烛图&lt;&#x2F;h3&gt;
+&lt;p&gt;matplotlib.finance共有四个画蜡烛图的函数&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;matplotlib.finance.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;candlestick_ochl&lt;&#x2F;span&gt;&lt;span&gt;(ax, quotes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;k&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;)  
+&lt;&#x2F;span&gt;&lt;span&gt;matplotlib.finance.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;candlestick_ohlc&lt;&#x2F;span&gt;&lt;span&gt;(ax, quotes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;k&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;matplotlib.finance.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;candlestick2_ochl&lt;&#x2F;span&gt;&lt;span&gt;(ax, opens, closes, highs, lows, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;k&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.75&lt;&#x2F;span&gt;&lt;span&gt;)  
+&lt;&#x2F;span&gt;&lt;span&gt;matplotlib.finance.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;candlestick2_ohlc&lt;&#x2F;span&gt;&lt;span&gt;(ax, opens, highs, lows, closes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;k&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.75&lt;&#x2F;span&gt;&lt;span&gt;) 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;chu-li-ri-xian-tu-de-shi-jian-jian-ge&quot;&gt;处理日线图的时间间隔&lt;&#x2F;h3&gt;
+&lt;p&gt;直接绘图会出现非交易日无法跳过导致图像断裂的情况，一般的方法都是建议重新调整横坐标，被动地过滤掉非交易时间段。例如每 10 个交易日标记一次。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_xticks&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_xticklabels&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;函数说明：&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;matplotlib-axes-axes-set-xticks&quot;&gt;matplotlib.axes.Axes.set_xticks()&lt;&#x2F;h4&gt;
+&lt;p&gt;用于使用刻度列表设置 x 刻度。&lt;&#x2F;p&gt;
+&lt;p&gt;[Matplotlib.axes.Axes.set_xticks() in Python - GeeksforGeeks](https:&#x2F;&#x2F;www.geeksforgeeks.org&#x2F;matplotlib-axes-axes-set_xticks-in-python&#x2F;#:~:text=The Axes.set_xticks () function in axes module of,set major ticks or to set minor ticks.)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Syntax:&lt;&#x2F;strong&gt; Axes.set_xticks(self, ticks, minor=False)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Parameters:&lt;&#x2F;strong&gt; This method accepts the following parameters.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ticks :&lt;&#x2F;strong&gt; This parameter is the list of x-axis tick locations.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;minor :&lt;&#x2F;strong&gt; This parameter is used whether set major ticks or to set minor ticks&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Return value:&lt;&#x2F;strong&gt; This method does not returns any value.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;matplotlib-axes-axes-set-xticklabels&quot;&gt;matplotlib.axes.Axes.set_xticklabels()&lt;&#x2F;h4&gt;
+&lt;p&gt;用于使用字符串标签列表设置 x-tick 标签，可以赋值给之前已经设置过的set_xtick。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.geeksforgeeks.org&#x2F;matplotlib-axes-axes-set_xticklabels-in-python&#x2F;&quot;&gt;Matplotlib.axes.Axes.set_xticklabels() in Python - GeeksforGeeks&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Syntax:&lt;&#x2F;strong&gt; Axes.set_xticklabels(self, labels, fontdict=None, minor=False, **kwargs)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Parameters:&lt;&#x2F;strong&gt; &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;labels :&lt;&#x2F;strong&gt; This parameter is the list of of string labels.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;fontdict :&lt;&#x2F;strong&gt; This parameter is the dictionary controlling the appearance of the ticklabels.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;minor :&lt;&#x2F;strong&gt; This parameter is used whether set major ticks or to set minor ticks&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Return value:&lt;&#x2F;strong&gt; This method returns a list of Text instances.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;volume-overlayhan-shu-hui-zhi-cheng-jiao-liang&quot;&gt;volume_overlay函数绘制成交量&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;matplotlib.finance.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;volume_overlay&lt;&#x2F;span&gt;&lt;span&gt;(ax, opens, closes, volumes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;k&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;liang-zhang-tu-dui-zhou&quot;&gt;两张图对轴&lt;&#x2F;h3&gt;
+&lt;p&gt;调整坐标轴，使两张图的间距一致&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;ax = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_axes&lt;&#x2F;span&gt;&lt;span&gt;([&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;span&gt;ax2 = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_axes&lt;&#x2F;span&gt;&lt;span&gt;([&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;talib
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;numpy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;np
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;tushare &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;ts
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;matplotlib.pyplot &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;plt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;mplfinance.original_flavor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;candlestick2_ochl, volume_overlay
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;__name__ == &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;__main__&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;:
+&lt;&#x2F;span&gt;&lt;span&gt;    data = ts.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get_k_data&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;399300&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;index&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-06-31&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;    sma_10 = talib.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SMA&lt;&#x2F;span&gt;&lt;span&gt;(np.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;array&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    sma_30 = talib.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SMA&lt;&#x2F;span&gt;&lt;span&gt;(np.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;array&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    fig = plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figsize&lt;&#x2F;span&gt;&lt;span&gt;=(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;17&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;    ax = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_axes&lt;&#x2F;span&gt;&lt;span&gt;([&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;span&gt;    ax2 = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_axes&lt;&#x2F;span&gt;&lt;span&gt;([&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.2&lt;&#x2F;span&gt;&lt;span&gt;])
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;candlestick2_ochl&lt;&#x2F;span&gt;&lt;span&gt;(ax, data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;g&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.6&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_xticks&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;    ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot&lt;&#x2F;span&gt;&lt;span&gt;(sma_10, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;label&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;10 日均线&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot&lt;&#x2F;span&gt;&lt;span&gt;(sma_30, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;label&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;30 日均线&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;legend&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;loc&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;upper left&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;grid&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;volume_overlay&lt;&#x2F;span&gt;&lt;span&gt;(ax2, data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;volume&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colorup&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;r&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;colordown&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;g&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;                       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;alpha&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.8&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_xticks&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;range&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;    ax2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_xticklabels&lt;&#x2F;span&gt;&lt;span&gt;(data[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rotation&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    ax2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;grid&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;show&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;plotlyhua-tu&quot;&gt;plotly画图&lt;&#x2F;h2&gt;
+&lt;p&gt;官方文档：&lt;a href=&quot;https:&#x2F;&#x2F;plotly.com&#x2F;python-api-reference&#x2F;generated&#x2F;plotly.graph_objects.Figure.html&quot;&gt;plotly.graph_objects.Figure — 5.5.0 documentation&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;candlestickhui-zhi-zha-zhu-tu&quot;&gt;Candlestick绘制蜡烛图&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Candlestick&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;tian-jia-zi-ding-yi-wen-ben-he-pi-zhu&quot;&gt;添加自定义文本和批注&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update_layout&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The Great Recession&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaxis_title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;AAPL Stock&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shapes &lt;&#x2F;span&gt;&lt;span&gt;= [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x0&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x1&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y0&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y1&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;line_width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)],
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotations&lt;&#x2F;span&gt;&lt;span&gt;=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.05&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;showarrow&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xanchor&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;left&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;text&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Increase Period Begins&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)]
+&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;dai-ma-1&quot;&gt;代码&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;plotly.graph_objects &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;go
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;tushare &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;ts
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;df = ts.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get_k_data&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;399300&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;index&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-06-31&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;fig = go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Figure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=[go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Candlestick&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;])])
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Candlestick without Rangeslider
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# fig.update_layout(xaxis_rangeslider_visible=False)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Adding Customized Text and Annotations
+&lt;&#x2F;span&gt;&lt;span&gt;fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update_layout&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The Great Recession&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaxis_title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;AAPL Stock&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shapes &lt;&#x2F;span&gt;&lt;span&gt;= [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x0&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x1&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y0&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y1&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;line_width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)],
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotations&lt;&#x2F;span&gt;&lt;span&gt;=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.05&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;showarrow&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xanchor&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;left&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;text&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Increase Period Begins&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)]
+&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;show&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;plotlyqian-ru-pyqt5&quot;&gt;plotly嵌入PyQt5&lt;&#x2F;h2&gt;
+&lt;p&gt;plotly的绘图对象是浏览器，可以用pyqt的QtWebEngineWidgets控件作为ployly的绘图对象，实现将plotly嵌入pyqt中。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;os
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;sys
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;tempfile
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;PyQt5.QtWidgets &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;QPushButton, QLineEdit, QLabel
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;plotly.io &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;to_html
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;plotly.graph_objs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;go
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;PyQt5 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;QtCore, QtGui, QtWidgets, QtWebEngineWidgets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;plotly.graph_objects &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;go
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;tushare &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;ts
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;PlotlyViewer&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;QtWebEngineWidgets.QWebEngineView&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    now_Id = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;399300&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    now_start_time = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    now_end_time = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-06-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fig&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;None&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;super&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;page&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;profile&lt;&#x2F;span&gt;&lt;span&gt;().downloadRequested.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;connect&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.on_downloadRequested)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;settings&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setAttribute&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;settings&lt;&#x2F;span&gt;&lt;span&gt;().ShowScrollBars, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;settings&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setAttribute&lt;&#x2F;span&gt;&lt;span&gt;(QtWebEngineWidgets.QWebEngineSettings.WebGLEnabled, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file = tempfile.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;NamedTemporaryFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mode&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;w&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;suffix&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.html&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;delete&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;resize&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1000&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;600&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setWindowTitle&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;candlestick&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_figure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getFig&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.now_Id, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.now_start_time, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.now_end_time))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb1 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLabel&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;股票代码：&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;40&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setStyleSheet&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;background-color: rgb(255,255,255)&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_Id = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLineEdit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_Id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;140&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb2 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLabel&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;起始日期：&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;250&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setStyleSheet&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;background-color: rgb(255,255,255)&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_start_time = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLineEdit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_start_time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;350&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb3 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLabel&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;结束日期：&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb3.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;460&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lb3.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setStyleSheet&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;background-color: rgb(255,255,255)&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_end_time = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QLineEdit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_end_time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;560&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_Id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setText&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;399300&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_start_time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setText&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.lineEdit_end_time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setText&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-06-01&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.btn1 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QPushButton&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;查看K线&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.btn1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;740&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.btn1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setCheckable&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;set_figure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fig&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;None&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;seek&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;fig is &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;None&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;            fig = go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Figure&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update_xaxes&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;showspikes&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update_yaxes&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;showspikes&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        html = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;to_html&lt;&#x2F;span&gt;&lt;span&gt;(fig, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;config&lt;&#x2F;span&gt;&lt;span&gt;={&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;responsive&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;scrollZoom&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;})
+&lt;&#x2F;span&gt;&lt;span&gt;        html += &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;lt;style&amp;gt;body{margin: 0;}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; \
+&lt;&#x2F;span&gt;&lt;span&gt;                &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.plot-container,.main-svg,.svg-container&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{width:100% !important; height:100% !important;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;lt;&#x2F;style&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;write&lt;&#x2F;span&gt;&lt;span&gt;(html)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;truncate&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;seek&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;load&lt;&#x2F;span&gt;&lt;span&gt;(QtCore.QUrl.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fromLocalFile&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.name))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;closeEvent&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;event&lt;&#x2F;span&gt;&lt;span&gt;: QtGui.QCloseEvent) -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;None&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        os.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;unlink&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.temp_file.name)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;super&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;closeEvent&lt;&#x2F;span&gt;&lt;span&gt;(event)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;sizeHint&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; QtCore.QSize:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;QtCore.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QSize&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;400&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;400&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;on_downloadRequested&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;download&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        dialog = QtWidgets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QFileDialog&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        dialog.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setDefaultSuffix&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;        path, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;_ &lt;&#x2F;span&gt;&lt;span&gt;= dialog.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getSaveFileName&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Save File&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, os.path.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;join&lt;&#x2F;span&gt;&lt;span&gt;(os.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getcwd&lt;&#x2F;span&gt;&lt;span&gt;(), &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;newplot.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;), &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;*.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;path:
+&lt;&#x2F;span&gt;&lt;span&gt;            download.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setPath&lt;&#x2F;span&gt;&lt;span&gt;(path)
+&lt;&#x2F;span&gt;&lt;span&gt;            download.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;accept&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;getFig&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        df = ts.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get_k_data&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;index&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;=start, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;=end)
+&lt;&#x2F;span&gt;&lt;span&gt;        fig = go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Figure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=[go.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Candlestick&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                             &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                             &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;high&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                             &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;low&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;],
+&lt;&#x2F;span&gt;&lt;span&gt;                                             &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;=df[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;])])
+&lt;&#x2F;span&gt;&lt;span&gt;        fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update_layout&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;The Great Recession&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaxis_title&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;AAPL Stock&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shapes&lt;&#x2F;span&gt;&lt;span&gt;=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x0&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x1&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y0&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y1&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;line_width&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)],
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotations&lt;&#x2F;span&gt;&lt;span&gt;=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2021-01-09&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.05&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;x&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;paper&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;showarrow&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xanchor&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;left&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;text&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Increase Period Begins&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)]
+&lt;&#x2F;span&gt;&lt;span&gt;        )
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;fig
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;__name__ == &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;__main__&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;:
+&lt;&#x2F;span&gt;&lt;span&gt;    app = QtWidgets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;QApplication&lt;&#x2F;span&gt;&lt;span&gt;(sys.argv)
+&lt;&#x2F;span&gt;&lt;span&gt;    pv = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PlotlyViewer&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    pv.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;show&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    app.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>python经验总结</title>
+		<published>2022-01-15T14:43:14+00:00</published>
+		<updated>2022-01-15T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201151443/" type="text/html"/>
+		<id>https://ffangli.github.io/202201151443/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;cha-zhao-an-zhuang-di-zhi&quot;&gt;查找安装地址&lt;&#x2F;h1&gt;
+&lt;p&gt;控制台&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;where python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;diao-shi-ce-shi&quot;&gt;调试&#x2F;测试&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;cheng-xu-ji-shi&quot;&gt;程序计时&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;time.perf_counter()&lt;&#x2F;code&gt;以秒为单位返回时间的浮点值&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;time.perf_counter_ns()&lt;&#x2F;code&gt;返回时间以纳秒为单位&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kong-zhi-tai-da-yin-ping-bi-yu-xian-shi&quot;&gt;控制台打印屏蔽与显示&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;sys, os
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Disable
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;blockPrint&lt;&#x2F;span&gt;&lt;span&gt;():
+&lt;&#x2F;span&gt;&lt;span&gt;    sys.stdout = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;(os.devnull, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;w&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Restore
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;enablePrint&lt;&#x2F;span&gt;&lt;span&gt;():
+&lt;&#x2F;span&gt;&lt;span&gt;    sys.stdout = sys.__stdout__
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;bao-cuo-chu-li&quot;&gt;报错处理&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;pythonban-ben-wen-ti&quot;&gt;Python版本问题&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;modulenotfounderror-no-module-named-cpickle&quot;&gt;ModuleNotFoundError: No module named &#x27;cPickle&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;python2有cPickle，但是python3没有cPickle&lt;&#x2F;p&gt;
+&lt;p&gt;python2使用：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;cPickle
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;python3使用：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;pickle
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;name-reload-is-not-defined&quot;&gt;name &#x27;reload&#x27; is not defined&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在Python2.x中由于str和byte之间没有明显区别，经常要依赖于defaultencoding来做转换。 &lt;&#x2F;li&gt;
+&lt;li&gt;在python3中有了明确的str和byte类型区别，从一种类型转换成另一种类型要显式指定&lt;em&gt;encoding。&lt;&#x2F;em&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;python2使用：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;sys
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;reload&lt;&#x2F;span&gt;&lt;span&gt;(sys)
+&lt;&#x2F;span&gt;&lt;span&gt;sys.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setdefaultencoding&lt;&#x2F;span&gt;&lt;span&gt;(‘utf-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;’)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;python3使用：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;importlib,sys
+&lt;&#x2F;span&gt;&lt;span&gt;importlib.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;reload&lt;&#x2F;span&gt;&lt;span&gt;(sys)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;attributeerror-module-sys-has-no-attribute-setdefaultencoding&quot;&gt;AttributeError: module &#x27;sys&#x27; has no attribute &#x27;setdefaultencoding&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;报错原因同上，python3没有&lt;code&gt;sys.setdefaultencoding(&#x27;utf-8&#x27;)&lt;&#x2F;code&gt;，删除该行即可&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;duo-xian-cheng-xiang-guan&quot;&gt;多线程相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;greenlet-error-cannot-switch-to-a-different-thread&quot;&gt;greenlet.error: cannot switch to a different thread&lt;&#x2F;h3&gt;
+&lt;p&gt;debug模式下会对线程的切换造成混乱,解决方案:&lt;&#x2F;p&gt;
+&lt;p&gt;第一种: 禁用debug模式即可&lt;&#x2F;p&gt;
+&lt;p&gt;第二种:在主函数中加入monkey patch&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;__name__ == &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;__main__&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;gevent &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;monkey
+&lt;&#x2F;span&gt;&lt;span&gt;    monkey.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;patch_all&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;pyqt5xiang-guan&quot;&gt;PyQt5相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;error-could-not-find-a-version-that-satisfies-the-requirement-pil-from-versions-none&quot;&gt;ERROR: Could not find a version that satisfies the requirement PIL (from versions: none)&lt;&#x2F;h3&gt;
+&lt;p&gt;ERROR: No matching distribution found for PIL&lt;&#x2F;p&gt;
+&lt;p&gt;PIL，全称 Python Imaging Library，是 Python 平台一个功能非常强大而且简单易用的图像处理库。但是，由于 PIL 仅支持到Python 2.7，加上年久失修，于是一群志愿者在 PIL 的基础上创建了兼容 Python 3 的版本，名字叫 Pillow ，现在可以通过安装 Pillow 来使用 PIL。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pip install pillow
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;importerror-cannot-import-name-options-from-pyecharts&quot;&gt;ImportError: cannot import name &#x27;options&#x27; from &#x27;pyecharts&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install pyecharts -U
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;numpyxiang-guan&quot;&gt;Numpy相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;valueerror-numpy-ndarray-size-changed-may-indicate-binary-incompatibility&quot;&gt;ValueError: numpy.ndarray size changed, may indicate binary incompatibility.&lt;&#x2F;h3&gt;
+&lt;p&gt;核心原因是 numpy 版本与当前一些库不匹配，把 numpy 更新到最新版本即可&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install --upgrade numpy
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;urllibxiang-guan&quot;&gt;urllib相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;attributeerror-module-urllib-has-no-attribute-request&quot;&gt;AttributeError: module &#x27;urllib&#x27; has no attribute &#x27;request&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;from urllib import request
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;unresolved-reference-urllib2&quot;&gt;Unresolved reference &#x27;urllib2&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;p&gt;在python3.3以后，用urllib.request代替urllib2&lt;&#x2F;p&gt;
+&lt;p&gt;import语句使用&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;from urllib import request
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;pandasxiang-guan&quot;&gt;pandas相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;settingwithcopywarning-a-value-is-trying-to-be-set-on-a-copy-of-a-slice-from-a-dataframe&quot;&gt;SettingWithCopyWarning:  A value is trying to be set on a copy of a slice from a DataFrame&lt;&#x2F;h3&gt;
+&lt;p&gt;在向DataFrame中插入新行时，Pandas报出了这个警告。虽然不影响程序执行，但还是不想看到警告（X&lt;&#x2F;p&gt;
+&lt;p&gt;事故现场：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;add = {&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ts_code&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: stock_code, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;trade_date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_date, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_price}
+&lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;解决方法：&lt;&#x2F;p&gt;
+&lt;p&gt;直接对副本修改就会出现这个警告，需要在修改前应该先对副本复制一下&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;add = {&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ts_code&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: stock_code, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;trade_date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_date, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_price}
+&lt;&#x2F;span&gt;&lt;span&gt;df = df.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>conda报错处理合集</title>
+		<published>2022-01-10T21:36:14+00:00</published>
+		<updated>2022-01-10T21:36:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201102136/" type="text/html"/>
+		<id>https://ffangli.github.io/202201102136/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;condageng-xin-bao-cuo&quot;&gt;conda更新报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;condavalueerror-malformed-version-string-invalid-character-s&quot;&gt;CondaValueError: Malformed version string &#x27;~&#x27;: invalid character(s).&lt;&#x2F;h3&gt;
+&lt;p&gt;尝试&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda upgrade -n base -c defaults --override-channels conda
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;condaan-zhuang-bao-bao-cuo&quot;&gt;conda安装包报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;packagesnotfounderror-the-following-packages-are-not-available-from-current-channels-ruamel-yaml-conda&quot;&gt;PackagesNotFoundError: The following packages are not available from current channels: ruamel_yaml_conda&lt;&#x2F;h3&gt;
+&lt;p&gt;pip和conda部分安装包名不完全一致&lt;&#x2F;p&gt;
+&lt;p&gt;pip下 &lt;strong&gt;ruamel_yaml_conda&lt;&#x2F;strong&gt; 等价于conda下 &lt;strong&gt;ruamel.yaml&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;使用：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda install -c conda-forge ruamel.yaml
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;removeerror-requests-is-a-dependency-of-conda-and-cannot-be-removed-from-conda-s-operating-environment&quot;&gt;RemoveError: &#x27;requests&#x27; is a dependency of conda and cannot be removed from conda&#x27;s operating environment&lt;&#x2F;h3&gt;
+&lt;p&gt;执行：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda update --force conda
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;condabian-ma-bao-cuo&quot;&gt;conda编码报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;fatal-python-error-init-sys-streams-can-t-initialize-sys-standard-streams-lookuperror-unknown-encoding-65001&quot;&gt;Fatal Python error: init_sys_streams: can&#x27;t initialize sys standard streams LookupError: unknown encoding: 65001&lt;&#x2F;h3&gt;
+&lt;p&gt;执行：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ set pythonioencoding=utf-8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;查看：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ echo %PYTHONIOENCODING%
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Quantative Trading相关环境配置</title>
+		<published>2022-01-09T17:21:14+00:00</published>
+		<updated>2022-01-09T17:21:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201091721/" type="text/html"/>
+		<id>https://ffangli.github.io/202201091721/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
+&lt;p&gt;如果conda已经没救了，尝试&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda clean --packages &amp;amp;&amp;amp; conda clean --all &amp;amp;&amp;amp; conda update --all
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;若conda还能正常执行安装命令，则跳过此步执行以下步骤&lt;&#x2F;p&gt;
+&lt;p&gt;在 Anaconda Prompt，执行&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda install anaconda-clean
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装完成后，执行&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ anaconda-clean
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;不想一个一个敲y可以&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ anaconda-clean --yes
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;然后再执行常规卸载重装流程&lt;&#x2F;p&gt;
+&lt;p&gt;需要注意anaconda版本和python版本的对应问题&lt;&#x2F;p&gt;
+&lt;p&gt;&amp;lt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.anaconda.com&#x2F;anaconda&#x2F;packages&#x2F;oldpkglists&#x2F;&quot;&gt;Old package lists — Anaconda documentation&lt;&#x2F;a&gt;&amp;gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tusharean-zhuang&quot;&gt;tushare安装&lt;&#x2F;h2&gt;
+&lt;p&gt;conda执行&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda install -c waditu tushare
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;来源：&amp;lt;&lt;a href=&quot;https:&#x2F;&#x2F;anaconda.org&#x2F;waditu&#x2F;tushare&quot;&gt;Tushare :: Anaconda.org&lt;&#x2F;a&gt;&amp;gt;&lt;&#x2F;p&gt;
+&lt;p&gt;也可以用pip，但是多python版本环境用pip安装后使用anaconda环境时出现找不到包的情况，走conda可以省很多事，后面同理&lt;&#x2F;p&gt;
+&lt;p&gt;如果有找不到的包可以去&lt;a href=&quot;https:&#x2F;&#x2F;anaconda.org&#x2F;&quot;&gt;https:&#x2F;&#x2F;anaconda.org&#x2F;&lt;&#x2F;a&gt;看看&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ta-liban-zhuang&quot;&gt;Ta-Lib安装&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda install -c conda-forge ta-lib
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ta-Lib0.4.23部分API调用会报错，换0.4.17可以解决&lt;&#x2F;p&gt;
+&lt;p&gt;但是ta-lib指定版本更新会报一堆错&lt;&#x2F;p&gt;
+&lt;p&gt;简单粗暴的解决办法:&lt;&#x2F;p&gt;
+&lt;p&gt;用&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;vnpy&#x2F;vnpy&quot;&gt;vnpy&#x2F;vnpy: 基于Python的开源量化交易平台开发框架 (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;自带ta-lib0.4.17&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pyqtan-zhuang&quot;&gt;PyQt安装&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda install -c anaconda pyqt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;pyqtzai-pycharmxia-de-huan-jing-pei-zhi&quot;&gt;PyQt在PyCharm下的环境配置&lt;&#x2F;h3&gt;
+&lt;p&gt;以下配置默认anaconda环境&lt;&#x2F;p&gt;
+&lt;p&gt;在Pycharm中，依次打开 File - Settings - Tools - External Tools，点击 &#x27; + &#x27; &lt;&#x2F;p&gt;
+&lt;h4 id=&quot;qt-designer&quot;&gt;Qt Designer&lt;&#x2F;h4&gt;
+&lt;p&gt;配置如下&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span&gt;Name: QtDisigner
+&lt;&#x2F;span&gt;&lt;span&gt;Program : C:\Users\用户名\Anaconda3\Lib\site-packages\qt5_applications\Qt\bin\designer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exe
+&lt;&#x2F;span&gt;&lt;span&gt;Working directory: $FileDir$
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意新版本的PyQt designer.exe的位置和以前不同&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;pyuic&quot;&gt;PyUIC&lt;&#x2F;h4&gt;
+&lt;p&gt;配置如下&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Name: PyUIC
+&lt;&#x2F;span&gt;&lt;span&gt;Program : C:\Users\用户名\Anaconda3\python.exe
+&lt;&#x2F;span&gt;&lt;span&gt;Arguments: -m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py
+&lt;&#x2F;span&gt;&lt;span&gt;Working directory: $FileDir$
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;pyrcc&quot;&gt;PyRCC&lt;&#x2F;h4&gt;
+&lt;p&gt;配置如下&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Name: PyRCC
+&lt;&#x2F;span&gt;&lt;span&gt;Program : C:\Users\用户名\Anaconda3\Scripts\pyrcc5.exe
+&lt;&#x2F;span&gt;&lt;span&gt;Arguments: $FileName$ -o $FileNameWithoutExtension$_rc.py
+&lt;&#x2F;span&gt;&lt;span&gt;Working directory: $FileDir$
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;配置全部完成后，可以在PyCharm主界面，依次点击 Tools - External Tools 启动QtDisigner、PyUIC和PyRCC&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>pandas经验总结</title>
+		<published>2022-01-05T14:43:14+00:00</published>
+		<updated>2022-01-05T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201051443/" type="text/html"/>
+		<id>https://ffangli.github.io/202201051443/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;pandasxian-shi-she-zhi&quot;&gt;pandas显示设置&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;kong-zhi-tai-da-yin-wan-zheng-shu-ju&quot;&gt;控制台打印完整数据&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示更多行
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_columns&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示100行
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示更多行
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_rows&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示100列
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#改变列宽,设置显示长度为100，默认为50
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_colwidth&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 设置换行，True可以换行显示。False不允许换行
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.expand_frame_repr&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;) 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 重置
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;reset_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_rows&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 全部重置
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;reset_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;all&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;pycharmda-kai-da-yin-da-shu-ju-wen-jian-xian-shi-bu-quan-de-jie-jue-fang-fa&quot;&gt;Pycharm打开（打印）大数据文件显示不全的解决方法&lt;&#x2F;h3&gt;
+&lt;p&gt;Pycharm IDEA对能关联的文件大小做了限制，默认值为2500kb&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;xiu-gai-fang-fa&quot;&gt;修改方法：&lt;&#x2F;h4&gt;
+&lt;p&gt;Pycharm菜单找到&lt;code&gt;Edit Custom Properties&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;追加字段：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;idea.max.intellisense.filesize = 20000
+&lt;&#x2F;span&gt;&lt;span&gt;idea.max.content.load.filesize = 20000
+&lt;&#x2F;span&gt;&lt;span&gt;idea.cycle.buffer.size = 20000
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;其中20000代表限制大小为20000kb&lt;&#x2F;p&gt;
+&lt;p&gt;重启Pycharm：&lt;&#x2F;p&gt;
+&lt;p&gt;Pycharm菜单File——&amp;gt;Invalidate caches &#x2F; ...&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shu-zi-ge-shi-hua-xian-shi&quot;&gt;数字格式化显示&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;she-zhi-floatlie-de-jing-du&quot;&gt;设置float列的精度&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;pandas&lt;&#x2F;code&gt;默认情况下float只显示小数点后6位&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;( &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.precision&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 设置显示小数点后4位
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这个设置不影响底层数据，它只影响float列的显示。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;shu-zi-ge-shi-hua-xian-shi-1&quot;&gt;数字格式化显示&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;pandas&lt;&#x2F;code&gt;中有一个选项&lt;code&gt;display.float_formatoption&lt;&#x2F;code&gt;可以用来格式化任何浮点列。&lt;&#x2F;p&gt;
+&lt;p&gt;这个设置项仅适用于浮点列，对于其他数据类型，必须将它们转换为浮点数才可以。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;设置数字精度&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.float_format&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,  &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:,.2f}&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;.format) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 精确到小数点后2位
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;百分号格式化&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.float_format&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:.2f}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;.format) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 显示带百分比的列
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;逗号格式化大值数字&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.float_format&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:,}&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;.format) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#例如100,000
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;geng-gai-hui-tu-fang-fa&quot;&gt;更改绘图方法&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;pandas&lt;&#x2F;code&gt;默认使用&lt;code&gt;matplotlib&lt;&#x2F;code&gt;作为绘图后端。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;激活backend&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;例如使用plotly：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.options.plotting.backend = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;plotly&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;plotting.backend&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;plotly&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;pei-zhi-info-de-shu-chu&quot;&gt;配置info()的输出&lt;&#x2F;h2&gt;
+&lt;p&gt;设置要分析的最大列数，默认为100。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_info_columns&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200&lt;&#x2F;span&gt;&lt;span&gt;) 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;设置计数null时的阈值，默认为1690785。设置一个较小的值可以避免在测试的时候计算所有&lt;code&gt;null&lt;&#x2F;code&gt;导致速度很慢&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;display.max_info_rows&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 只在行数不超过5时才计数null
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;xian-shi-she-zhi-he-zhong-zhi-suo-you-she-zhi&quot;&gt;显示设置和重置所有设置&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;describe_option&lt;&#x2F;span&gt;&lt;span&gt;()  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#展示所有设置和描述
+&lt;&#x2F;span&gt;&lt;span&gt;pd.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;reset_option&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;all&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#重置所有设置选项
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;bao-cuo-chu-li&quot;&gt;报错处理&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;settingwithcopywarning-a-value-is-trying-to-be-set-on-a-copy-of-a-slice-from-a-dataframe&quot;&gt;SettingWithCopyWarning:  A value is trying to be set on a copy of a slice from a DataFrame&lt;&#x2F;h2&gt;
+&lt;p&gt;在向DataFrame中插入新行时，Pandas报出了这个警告。虽然不影响程序执行，但还是不想看到警告（X&lt;&#x2F;p&gt;
+&lt;p&gt;事故现场：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;add = {&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ts_code&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: stock_code, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;trade_date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_date, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_price}
+&lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;解决方法：&lt;&#x2F;p&gt;
+&lt;p&gt;直接对副本修改就会出现这个警告，需要在修改前应该先对副本复制一下&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;add = {&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ts_code&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: stock_code, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;trade_date&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_date, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;close&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: now_price}
+&lt;&#x2F;span&gt;&lt;span&gt;df = df.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>pip报错处理合集</title>
+		<published>2021-12-12T16:13:14+00:00</published>
+		<updated>2021-12-12T16:13:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202112121613/" type="text/html"/>
+		<id>https://ffangli.github.io/202112121613/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;piphe-pip3de-qu-bie&quot;&gt;pip和pip3的区别&lt;&#x2F;h2&gt;
+&lt;p&gt;当一台电脑同时有多个版本的Python的时候，用pip3就可以自动区分用Python3来安装库，为了避免和Python2发生冲突的。如果电脑只安装了Python3，那么不管用pip还是pip3都一样的。
+安装了python3之后，会有pip3
+（1）使用pip install XXX ：
+新安装的库会放在这个目录下面：python2.7&#x2F;site-packages
+（2）使用pip3 install XXX ：
+新安装的库会放在这个目录下面：python3.7&#x2F;site-packages
+（3）如果使用python3执行程序，那么就不能importpython2.7&#x2F;site-packages中的库。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>python数据处理经验总结</title>
+		<published>2021-11-15T14:43:14+00:00</published>
+		<updated>2021-11-15T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202111151443/" type="text/html"/>
+		<id>https://ffangli.github.io/202111151443/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shu-ju-lei-xing-chu-li&quot;&gt;数据类型处理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;cha-kan-shu-ju-lei-xing&quot;&gt;查看数据类型&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;type-he-isinstance&quot;&gt;type()和isinstance()&lt;&#x2F;h4&gt;
+&lt;p&gt;区别：&lt;&#x2F;p&gt;
+&lt;p&gt;type() 不会认为子类是一种父类类型，不考虑继承关系。&lt;&#x2F;p&gt;
+&lt;p&gt;isinstance() 会认为子类是一种父类类型，考虑继承关系。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bytes&quot;&gt;bytes&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;byteshe-str&quot;&gt;bytes和str&lt;&#x2F;h4&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; type(b&amp;#39;xxxxx&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;class &amp;#39;bytes&amp;#39;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; type(&amp;#39;xxxxx&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;class &amp;#39;str&amp;#39;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;bytes是byte的序列，而str是unicode的序列。&lt;&#x2F;p&gt;
+&lt;p&gt;互相转化：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;bytes = str.encode()
+&lt;&#x2F;span&gt;&lt;span&gt;str = bytes.decode()
+&lt;&#x2F;span&gt;&lt;span&gt;str = bytes.decode(&amp;quot;gb2312&amp;quot;) #使用 gb2312 的方式
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;bytearray&quot;&gt;bytearray&lt;&#x2F;h4&gt;
+&lt;p&gt;bytearray是可变的。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;bytearray()&lt;&#x2F;strong&gt; 方法返回一个新字节数组。这个数组里的元素是可变的，并且每个元素的值范围: 0 &amp;lt;= x &amp;lt; 256。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt;bytearray()
+&lt;&#x2F;span&gt;&lt;span&gt;bytearray(b&amp;#39;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; bytearray([1,2,3])
+&lt;&#x2F;span&gt;&lt;span&gt;bytearray(b&amp;#39;\x01\x02\x03&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; bytearray(&amp;#39;runoob&amp;#39;, &amp;#39;utf-8&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;bytearray(b&amp;#39;runoob&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>python数据可视化</title>
+		<published>2021-08-15T14:43:14+00:00</published>
+		<updated>2021-08-15T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202108151443/" type="text/html"/>
+		<id>https://ffangli.github.io/202108151443/</id>
+		<content type="html">&lt;p&gt;常用可视化图表速查&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;ji-chu-tu-xing&quot;&gt;基础图形&lt;&#x2F;h2&gt;
+&lt;p&gt;https:&#x2F;&#x2F;seaborn.pydata.org&#x2F;&lt;&#x2F;p&gt;
+&lt;p&gt;seaborn中提供了与matplotlib类似的接口，其他高级作图函数都以这些底层作图函数为基础，进行封装，通常作为kind参数。各种基本图形既可以直接传入数组形式的变量数据，也可以传入DataFrame列名并传入data参数。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;seaborn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;sns
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 折线图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lineplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 条形图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;barplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 计数条形图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;countplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 散点图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;scatterplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 分类散点图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stripplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 分簇散点图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;swarmplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 与stipplot()的区别就是点不重叠
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 箱型图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boxplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 增强箱型图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boxenplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 适合大数据集，显示更多分位数
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 小提琴图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;violinplot&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 点图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pointplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 纵轴是均值，置信区间用标准差表示
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 核密度估计图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kdeplot&lt;&#x2F;span&gt;&lt;span&gt;(x,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bw&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2.0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shade&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#bw为带宽
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 地毯图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rugplot&lt;&#x2F;span&gt;&lt;span&gt;(x) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 直接将数据标记在坐标轴上
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 回归线图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;regplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 散点图附加回归线
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 热图
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;heatmap&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annot&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# annot表示显示数值
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 另外补充几种常用图
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 饼图
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#设置字体样式
+&lt;&#x2F;span&gt;&lt;span&gt;mpl.rcParams[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;font.family&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sans-serif&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;mpl.rcParams[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;font.sans-serif&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;SimHei&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]
+&lt;&#x2F;span&gt;&lt;span&gt;title = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;饼图&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;fig = plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figure&lt;&#x2F;span&gt;&lt;span&gt;(title, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figsize&lt;&#x2F;span&gt;&lt;span&gt;=(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tight_layout&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;ax = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_subplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;111&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;data = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;labels = [&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;d&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]
+&lt;&#x2F;span&gt;&lt;span&gt;explodes =[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;data]
+&lt;&#x2F;span&gt;&lt;span&gt;explodes[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] =&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.015
+&lt;&#x2F;span&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pie&lt;&#x2F;span&gt;&lt;span&gt;(data, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;labels&lt;&#x2F;span&gt;&lt;span&gt;= labels, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;radius&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.8&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#data 是数据，labels 是标签，radius 是饼图半径
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;explode&lt;&#x2F;span&gt;&lt;span&gt;=explodes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#explodes 为0 代表不偏离圆心， 不为零则代表偏离圆心的距离
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;autopct&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%1.1f%%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示所占比例，百分数
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pctdistance &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;labeldistance&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.7&lt;&#x2F;span&gt;&lt;span&gt;,  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# a,b,c,d 到圆心的距离
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;textprops&lt;&#x2F;span&gt;&lt;span&gt;={&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;black&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;}) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 标签和比例的格式
+&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;axis&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;equal&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 正圆
+&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;legend&lt;&#x2F;span&gt;&lt;span&gt;( &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;loc &lt;&#x2F;span&gt;&lt;span&gt;= &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;upper right&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bbox_to_anchor&lt;&#x2F;span&gt;&lt;span&gt;=(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.05&lt;&#x2F;span&gt;&lt;span&gt;), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;14&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;borderaxespad&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# loc =  &amp;#39;upper right&amp;#39; 位于右上角
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# bbox_to_anchor=[0.5, 0.5] # 外边距 上边 右边
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# ncol=2 分两列
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# borderaxespad = 0.3图例的内边距
+&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;suptitle&lt;&#x2F;span&gt;&lt;span&gt;(title+&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;pie&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#plt.savefig(filepath+&amp;#39;\name.png&amp;#39;,dpi=120,bbox_inches=&amp;#39;tight&amp;#39;) #可通过这个方法保存可视化的图片
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# plt.show()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# plt.close()
+&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;savefig&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bingtu.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dpi&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;120&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bbox_inches&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tight&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 极坐标图
+&lt;&#x2F;span&gt;&lt;span&gt;ax = plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;subplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;111&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;projection&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;polar&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# projection指投影到极坐标
+&lt;&#x2F;span&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot&lt;&#x2F;span&gt;&lt;span&gt;(x,y) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# x为角度(弧度制),y为径长
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 平行坐标图
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;pandas.plotting &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;parallel_coordinates
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;parallel_coordinates&lt;&#x2F;span&gt;&lt;span&gt;(data, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;key&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;gao-ji-han-shu&quot;&gt;高级函数&lt;&#x2F;h2&gt;
+&lt;p&gt;针对数据可视化的不同目的，seaborn提供了relplot()，catplot()，displot()，lmplot()四大主要高级函数。
+seaborn与pandas的DataFrame的结合非常好，因此传参是可以直接传入列名。
+返回的是FacetGrid(平面网格图)对象。
+这些高级函数的主要参数如下：
+x，y：输入变量
+data：输入数据df
+hue：分组变量
+style：如传入，则hue分组后每组数据作图风格可不一致
+col，row：决定平面网格图布局的变量
+kind：底层作图类型名称，如&amp;quot;line&amp;quot;,“bar”,&amp;quot;box&amp;quot;等
+注：由于返回的平面网格图子图间距可能不合理，可调用plt.tight_layout()自动调整。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ke-shi-hua-bian-liang-guan-xi-relationship&quot;&gt;可视化变量关系(relationship)&lt;&#x2F;h3&gt;
+&lt;p&gt;relplot()方便观察变量间的关系。&lt;&#x2F;p&gt;
+&lt;p&gt;sns.relplot() # 默认是散点图&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;fen-lei-shu-ju-de-fen-bu-tu-categorical&quot;&gt;分类数据的分布图(categorical)&lt;&#x2F;h3&gt;
+&lt;p&gt;catplot()可以很好观察分类数据的分布情况。&lt;&#x2F;p&gt;
+&lt;p&gt;sns.catplot()&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shu-ju-ji-fen-bu-tu-distribution&quot;&gt;数据集分布图(distribution)&lt;&#x2F;h3&gt;
+&lt;p&gt;特征工程前，需要对数据集的有一个整体的了解，seabon提供的高级函数displot()可以作各种分布图。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dan-bian-liang-fen-bu&quot;&gt;单变量分布&lt;&#x2F;h4&gt;
+&lt;p&gt;displot是hist(&lt;a href=&quot;https:&#x2F;&#x2F;so.csdn.net&#x2F;so&#x2F;search?q=%E7%9B%B4%E6%96%B9%E5%9B%BE&amp;amp;spm=1001.2101.3001.7020&quot;&gt;直方图&lt;&#x2F;a&gt;)、rugplot(地毯图)、kdeplot(核密度估计图)的高级封装。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;scipy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;stats
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;displot&lt;&#x2F;span&gt;&lt;span&gt;(x, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kde&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rug&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;=stats.gamma) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 直方图,若传入fit参数，则表示拟合相应的分布
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;shuang-bian-liang-fen-bu&quot;&gt;双变量分布&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;jointplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kind&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;scatter&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# scatter表示散点图，hex表示HexBin图，kde表示核密度估计图，reg表示添加回归线的散点图，resid表示残差图
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 定制图
+&lt;&#x2F;span&gt;&lt;span&gt;g = sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;JointGrid&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot_joint&lt;&#x2F;span&gt;&lt;span&gt;(plt.scatter)
+&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot_marginal&lt;&#x2F;span&gt;&lt;span&gt;(sns.displot)
+&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotate&lt;&#x2F;span&gt;&lt;span&gt;(stats.pearsonr)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;cheng-dui-bian-liang-fen-bu&quot;&gt;成对变量分布&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pairplot&lt;&#x2F;span&gt;&lt;span&gt;(data)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 定制图
+&lt;&#x2F;span&gt;&lt;span&gt;g = sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PairGrid&lt;&#x2F;span&gt;&lt;span&gt;(data)
+&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;map_diag&lt;&#x2F;span&gt;&lt;span&gt;(sns.kdeplot)
+&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;map_offdiag&lt;&#x2F;span&gt;&lt;span&gt;(sns.kdeplot)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;hui-gui-xian-tu-linear-model&quot;&gt;回归线图(linear model)&lt;&#x2F;h3&gt;
+&lt;p&gt;regplot()以及lmplot()都可以作回归线图，二者的区别是lmplot的参数data是必传的，而regplot不是。因此可以将regplot()视为底层函数。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lmplot&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;total_bill&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tip&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=tips)
+&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;residplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 残差图
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;lmplot重要参数解释：
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;ci:置信度
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;order: 拟合阶数
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;x_jitter: 施加噪声
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;robust: 鲁棒性
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;logistic: 逻辑斯谛回归
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;hue：分组回归
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;scatter_kws={&amp;quot;s&amp;quot;:80}: 散点图参数(例如点的大小)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;quot;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>paddle踩坑</title>
+		<published>2021-07-15T14:43:14+00:00</published>
+		<updated>2021-07-15T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202107151443/" type="text/html"/>
+		<id>https://ffangli.github.io/202107151443/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;这东西有CPU版本和GPU版本两种，GPU版本的完全依赖CUDA+CUDNN，直接pip install只会报一堆让人摸不着头脑的错（x&lt;&#x2F;p&gt;
+&lt;p&gt;CPU版本直接&lt;code&gt;python -m pip install paddlepaddle==2.3.0 -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;下面是GPU版本的踩坑记录&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cuda-cudnnan-zhuang&quot;&gt;CUDA+CUDNN安装&lt;&#x2F;h2&gt;
+&lt;p&gt;下载地址&lt;&#x2F;p&gt;
+&lt;p&gt;https:&#x2F;&#x2F;developer.nvidia.com&#x2F;cuda-toolkit-archive&lt;&#x2F;p&gt;
+&lt;p&gt;https:&#x2F;&#x2F;developer.nvidia.com&#x2F;rdp&#x2F;cudnn-archive   （下这个还要注册nvda账户orz&lt;&#x2F;p&gt;
+&lt;p&gt;目前(2022.4)paddle支持到10.2&lt;&#x2F;p&gt;
+&lt;p&gt;命令提示符&lt;code&gt;nvcc -V&lt;&#x2F;code&gt;检查CUDA是否安装成功&lt;&#x2F;p&gt;
+&lt;p&gt;CUDNN安装包解压后丢进&lt;code&gt;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;有冲突就覆盖（x&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;paddlean-zhuang&quot;&gt;paddle安装&lt;&#x2F;h2&gt;
+&lt;p&gt;CUDA10.2版本的镜像&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;python -m pip install paddlepaddle-gpu==2.3.0 -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;此时如果用paddle跑代码会出现报错：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;RuntimeError: (PreconditionNotMet) The third-party dynamic library (cudnn64_7.dll) that Paddle depends on is not configured correctly. (error code is 126)
+&lt;&#x2F;span&gt;&lt;span&gt;  Suggestions:
+&lt;&#x2F;span&gt;&lt;span&gt;  1. Check if the third-party dynamic library (e.g. CUDA, CUDNN) is installed correctly and its version is matched with paddlepaddle you installed.
+&lt;&#x2F;span&gt;&lt;span&gt;  2. Configure third-party dynamic library environment variables as follows:
+&lt;&#x2F;span&gt;&lt;span&gt;  - Linux: set LD_LIBRARY_PATH by `export LD_LIBRARY_PATH=...`
+&lt;&#x2F;span&gt;&lt;span&gt;  - Windows: set PATH by `set PATH=XXX; (at ..\paddle\phi\backends\dynload\dynamic_loader.cc:303)
+&lt;&#x2F;span&gt;&lt;span&gt;  [operator &amp;lt; uniform_random &amp;gt; error]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;缺少cudnn64_7.dll，需要手动下载丢进&lt;code&gt;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;下载地址：https:&#x2F;&#x2F;www.dll-files.com&#x2F;search&lt;&#x2F;p&gt;
+&lt;p&gt;我就是为了记录这个网址专门水了一篇（x&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Logistic regression algorithm</title>
+		<published>2021-03-01T16:42:14+00:00</published>
+		<updated>2021-03-01T16:42:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202103011642/" type="text/html"/>
+		<id>https://ffangli.github.io/202103011642/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
+&lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
+&lt;p&gt;​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success&#x2F;yes) or 0 (stands for failure&#x2F;no).&lt;&#x2F;p&gt;
+&lt;p&gt;In my opinion，&lt;&#x2F;p&gt;
+&lt;p&gt;Logistic regression = Linear regression + Sigmoid function&lt;&#x2F;p&gt;
+&lt;p&gt;Linear regression: 	z = w*x+b&lt;&#x2F;p&gt;
+&lt;p&gt;Sigmoid function: 	&lt;img src=&quot;.\img\sigmoid.PNG&quot; style=&quot;zoom: 33%;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;So, logistic regression:	&lt;img src=&quot;.\img\lr.jpg&quot; alt=&quot;lr&quot; style=&quot;zoom:15%;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;example-of-logistic-regression-in-python&quot;&gt;Example of Logistic Regression in Python&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Import library
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;datasets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.model_selection &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;train_test_split
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.linear_model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;LogisticRegression
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Loading datasets
+&lt;&#x2F;span&gt;&lt;span&gt;cancer = datasets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;load_breast_cancer&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_X = cancer.data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X.shape)
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_y = cancer.target
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_y.shape)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Dividing the training set and test set
+&lt;&#x2F;span&gt;&lt;span&gt;X_train, X_test, y_train, y_test = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;train_test_split&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    cancer_X, cancer_y, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test_size&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Model construction and training
+&lt;&#x2F;span&gt;&lt;span&gt;clf = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LogisticRegression&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_iter&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10000&lt;&#x2F;span&gt;&lt;span&gt;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# max_iter is needed
+&lt;&#x2F;span&gt;&lt;span&gt;clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;(X_train, y_train)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Model Testing
+&lt;&#x2F;span&gt;&lt;span&gt;clf_y_predict = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(X_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(clf_y_predict)
+&lt;&#x2F;span&gt;&lt;span&gt;score = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;score&lt;&#x2F;span&gt;&lt;span&gt;(X_test, y_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(score)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;import-library&quot;&gt;Import library&lt;&#x2F;h3&gt;
+&lt;p&gt;Import the libraries we need in sklearn, where datasets is the dataset that comes with sklearn, train_test_split is the data division training set and test set, and &lt;code&gt;LogisticRegression&lt;&#x2F;code&gt; is the logistic regression model in sklearn.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;loading-datasets&quot;&gt;Loading datasets&lt;&#x2F;h3&gt;
+&lt;p&gt;Load the breast cancer dataset in sklearn via datasets.load_breast_cancer(), where cancer_X is the data of each indicator to measure whether it is breast cancer or not, and cancer_y is the label data. Use shape to see the size of the data, cancer_X is the data of (569, 30) and has been preprocessed for direct use, cancer_y is the data of (569, 1).&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dividing-the-training-set-and-test-set&quot;&gt;Dividing the training set and test set&lt;&#x2F;h3&gt;
+&lt;p&gt;The data set is divided into training set and test set by train_test_split() function, where test_size is the division ratio, we set it to 0.3, i.e., the training set is 70% and the test set is 30% in the data set.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;model-construction-and-training&quot;&gt;Model construction and training&lt;&#x2F;h3&gt;
+&lt;p&gt;There are many machine learning algorithm models available in sklearn, and it is very easy to call them in the form above to build a logistic regression model and train it with the training set data. If you want to use other algorithms, just change the algorithm model.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;model-testing&quot;&gt;Model testing&lt;&#x2F;h3&gt;
+&lt;p&gt;After the fourth step of model training, we use the trained model to test the data. The first line of code is the data prediction result, the second line outputs the prediction result, the third line evaluates the scores predicted by the model, and the fourth outputs the scores.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The accuracy of the model prediction is 94.7% through the above test results, which shows that the logistic regression algorithm achieves better results.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;example-of-logistic-regression-in-r&quot;&gt;Example of Logistic Regression in R&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;R&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-R &quot;&gt;&lt;code class=&quot;language-R&quot; data-lang=&quot;R&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Load data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# install.packages(&amp;#39;mlbench&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;(BreastCancer, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;mlbench&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;bc &amp;lt;- BreastCancer[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;complete.cases&lt;&#x2F;span&gt;&lt;span&gt;(BreastCancer), ]  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# keep complete rows
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# check the structure of this dataset.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# str(bc)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# remove id column
+&lt;&#x2F;span&gt;&lt;span&gt;bc &amp;lt;- bc[,-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# convert to numeric
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt;(i in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  bc[, i] &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as.numeric&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as.character&lt;&#x2F;span&gt;&lt;span&gt;(bc[, i]))
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Change Y values to 1&amp;#39;s and 0&amp;#39;s
+&lt;&#x2F;span&gt;&lt;span&gt;bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ifelse&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class == &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;malignant&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;levels &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Prep Training and Test data.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# install.packages(&amp;#39;caret&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;library&lt;&#x2F;span&gt;&lt;span&gt;(caret)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;%ni%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;Negate&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;%in%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# define &amp;#39;not in&amp;#39; func
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;options&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;scipen&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;999&lt;&#x2F;span&gt;&lt;span&gt;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# prevents printing scientific notations.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;trainDataIndex &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;createDataPartition&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.7&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;list &lt;&#x2F;span&gt;&lt;span&gt;= F)
+&lt;&#x2F;span&gt;&lt;span&gt;trainData &amp;lt;- bc[trainDataIndex, ]
+&lt;&#x2F;span&gt;&lt;span&gt;testData &amp;lt;- bc[-trainDataIndex, ]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Class distribution of train data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Down Sample
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;down_train &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;downSample&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x &lt;&#x2F;span&gt;&lt;span&gt;= trainData[, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;colnames&lt;&#x2F;span&gt;&lt;span&gt;(trainData) %ni% &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Class&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;],
+&lt;&#x2F;span&gt;&lt;span&gt;                         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y &lt;&#x2F;span&gt;&lt;span&gt;= trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(down_train&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Up Sample (optional)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;up_train &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;upSample&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x &lt;&#x2F;span&gt;&lt;span&gt;= trainData[, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;colnames&lt;&#x2F;span&gt;&lt;span&gt;(trainData) %ni% &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Class&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;],
+&lt;&#x2F;span&gt;&lt;span&gt;                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y &lt;&#x2F;span&gt;&lt;span&gt;= trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(up_train&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Build Logistic Model
+&lt;&#x2F;span&gt;&lt;span&gt;logitmod &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;glm&lt;&#x2F;span&gt;&lt;span&gt;(Class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt; Cl.thickness + Cell.size + Cell.shape, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;family &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;binomial&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=down_train)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;summary&lt;&#x2F;span&gt;&lt;span&gt;(logitmod)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;pred &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(logitmod, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;newdata &lt;&#x2F;span&gt;&lt;span&gt;= testData, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;response&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;pred
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Recode factors
+&lt;&#x2F;span&gt;&lt;span&gt;y_pred_num &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ifelse&lt;&#x2F;span&gt;&lt;span&gt;(pred &amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;y_pred &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span&gt;(y_pred_num, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;levels&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;y_act &amp;lt;- testData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Accuracy
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;mean&lt;&#x2F;span&gt;&lt;span&gt;(y_pred == y_act)  											&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 94%
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.machinelearningplus.com&#x2F;machine-learning&#x2F;logistic-regression-tutorial-examples-r&#x2F;&quot;&gt;Logistic Regression - A Complete Tutorial with Examples in R (machinelearningplus.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The goal here is to model and predict if a given specimen (row in dataset) is &lt;code&gt;benign&lt;&#x2F;code&gt; or &lt;code&gt;malignant&lt;&#x2F;code&gt;, based on 9 other cell features. So, let’s load the data and keep only the complete cases.&lt;&#x2F;p&gt;
+&lt;p&gt;the training set is 70% and the test set is 30% in the data set.&lt;&#x2F;p&gt;
+&lt;p&gt;这里的目标是根据其他9个细胞特征，建立模型并预测一个给定的标本（数据集中的一行）是良性还是恶性。因此，让我们加载数据，只保留完整的病例。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;zhong-wen-ban-ben&quot;&gt;中文版本&lt;&#x2F;h1&gt;
+&lt;h3 id=&quot;luo-ji-hui-gui&quot;&gt;逻辑回归&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;C:%5CUsers%5Cprts%5CDesktop%5CLogistic_regression%5Cimg%5Ccn.jpg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pythonshi-li&quot;&gt;Python示例&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;一、导入库&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;datasets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.cross_validation &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;train_test_split
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.linear_model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;LogisticRegression
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;导入sklearn中我们需要的库，其中datasets为sklearn中自带的数据集，train_test_split为数据划分训练集和测试集，LogisticRegression为sklearn中的逻辑回归模型。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;二、加载数据集&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;cancer =datasets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;load_breast_cancer&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_X=cancer.data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X.shape)
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_y=cancer.target
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_y.shape)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通过datasets.load_breast_cancer()加载sklearn中的乳腺癌数据集，其中cancer_X为衡量是否为乳腺癌的各项指标数据，cancer_y为标签数据。使用shape来查看数据的规模，cancer_X为(569, 30)的数据，且已经进行预处理可以直接使用，cancer_y为(569, 1)的数据。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;三、划分训练集和测试集&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;X_train,X_test,y_train, y_test=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;train_test_split&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X,cancer_y,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test_size&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通过train_test_split()函数将数据集划分为训练集和测试集，其中test_size为划分比例，本次我们设为0.3，即数据集中训练集为70%，测试集为30%&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;四、模型构建与训练&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;clf = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LogisticRegression&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;(X_train,y_train)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;sklearn中为我们提供了很多机器学习算法模型，而且调用起来非常方便，形如上面的形式即可构建逻辑回归模型并使用训练集数据进行训练。如果要使用其它算法，只需更换算法模型即可。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;五、模型测试&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;clf_y_predict = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(X_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(clf_y_predict)
+&lt;&#x2F;span&gt;&lt;span&gt;score=clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;score&lt;&#x2F;span&gt;&lt;span&gt;(X_test,y_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(score)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;经过第四步模型训练后，使用训练好的模型来进行数据测试，第一行代码为数据预测结果，第二行输出预测结果，第三行为评估模型预测的分数，第四输出分数。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Solving stupid problems——装不上某个python包</title>
+		<published>2020-09-13T14:43:14+00:00</published>
+		<updated>2020-09-13T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202009131443/" type="text/html"/>
+		<id>https://ffangli.github.io/202009131443/</id>
+		<content type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shi-gu-xian-chang&quot;&gt;事故现场&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202009131443&#x2F;.%5Cimg%5C1.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;pip装不上，去&lt;a href=&quot;https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;stable-baselines3&#x2F;#files&quot;&gt;stable-baselines3 · PyPI&lt;&#x2F;a&gt;上下的whl也装不上&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wen-ti-jie-jue&quot;&gt;问题解决&lt;&#x2F;h2&gt;
+&lt;p&gt;python 中的egg文件；类似于Java 中的jar 包，把一系列的python源码文件、元数据文件、其他资源文件 zip 压缩，重新命名为.egg 文件，目的是作为一个整体进行发布。&lt;&#x2F;p&gt;
+&lt;p&gt;关于egg-info是什么：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.python101.pythonlibrary.org&#x2F;chapter38_eggs.html&quot;&gt;Chapter 38 - The Python egg — Python 101 1.0 documentation (pythonlibrary.org)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Built Distribution 和 Source Distribution&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;不同操作系统安装 Python 包的要求不完全相同，Built Distribution 是按照某类操作系统（例如 Linux）安装要求所打成的包，这样安装的时候只需要将包解压，文件放到适当的位置即可，效率比较高。但一个 Built Distribution 只适用于一类操作系统，例如 Linux 上的 Built Distribution 包无法在 Windows 上安装。而 Source Distribution 包便解决了这个问题，它是对源代码进行打包，将源代码打包成利于打成 Built Distribution 包的形式。这样，我们便可以通过 Source Distribution 包生成适用于特定类型操作系统的 Built Distribution 包，再进行安装。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;xxx.whl是Built Distribution &lt;&#x2F;p&gt;
+&lt;p&gt;xxx.tar.gz是 Source Distribution&lt;&#x2F;p&gt;
+&lt;p&gt;xxx.whl扔进&lt;code&gt;C:\Users\username\Anaconda3\Scripts&lt;&#x2F;code&gt;用pip安装，如上图所示&lt;&#x2F;p&gt;
+&lt;p&gt;xxx.tar.gz解压后包含xxx和xxx.egg-info两个文件夹，需要一起扔进&lt;code&gt;C:\Users\usern\Anaconda3\Lib\site-packages&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;直接把解压后的包扔进去或者没有egg-info都不能被python环境识别，在这里踩了坑orz&lt;&#x2F;p&gt;
+&lt;p&gt;类似egg-info这种伴生关系的还有dist-info&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

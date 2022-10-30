@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - MySQL使用经验总结</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201042037/#yu-ju-xiang-guan" class="toc-link">语句相关</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201042037/#mysqlfang-zhi-zhong-fu-cha-ru-xiang-tong-ji-lu" class="toc-link">MySQL防止重复插入相同记录</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201042037/#bao-cuo-chu-li" class="toc-link">报错处理</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201042037/#error-1064-42000-you-have-an-error-in-your-sql-syntax" class="toc-link">ERROR 1064 (42000): You have an error in your SQL syntax</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201042037/#pymysql" class="toc-link">PyMySQL</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201042037/#bao-cuo-chu-li-1" class="toc-link">报错处理</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201042037/#ubuntuhuan-jing-de-mysql" class="toc-link">ubuntu环境的MySQL</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201042037/#xiu-gai-mi-ma" class="toc-link">修改密码</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201042037/#gai-nian-he-yuan-li" class="toc-link">概念和原理</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201042037/#mysqlsuo-yin" class="toc-link">MySQL索引</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201042037&#x2F;">MySQL使用经验总结</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-04</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="yu-ju-xiang-guan">语句相关</h2>
+<h3 id="mysqlfang-zhi-zhong-fu-cha-ru-xiang-tong-ji-lu">MySQL防止重复插入相同记录</h3>
+<h4 id="shi-yong-mysql-suo-yin">使用MySQL 索引</h4>
+<p>创建索引</p>
+<pre data-lang="sql" style="background-color:#2b303b;color:#c0c5ce;" class="language-sql "><code class="language-sql" data-lang="sql"><span style="color:#b48ead;">CREATE UNIQUE INDEX </span><span>index_name ON </span><span style="color:#8fa1b3;">tablename</span><span>( index_column_1, index_column_2 );
+</span></code></pre>
+<p>在一个已存在表中添加一个唯一索引</p>
+<pre data-lang="sql" style="background-color:#2b303b;color:#c0c5ce;" class="language-sql "><code class="language-sql" data-lang="sql"><span style="color:#b48ead;">ALTER TABLE </span><span>table_name ADD INDEX index_name( index_column_1, index_column_2 ) ;
+</span></code></pre>
+<p>此时插入重复插入已有索引的记录会出现报错<code>IntegrityError: (1062, &quot;Duplicate entry 'xx' for key 'xxxxx'&quot;)</code></p>
+<p>解决方法：把<code>INSERT INTO</code> 改为 `INSERT IGNORE INTO</p>
+<h2 id="bao-cuo-chu-li">报错处理</h2>
+<h3 id="error-1064-42000-you-have-an-error-in-your-sql-syntax">ERROR 1064 (42000): You have an error in your SQL syntax</h3>
+<p>在MySQL中，为了区分MySQL的关键字与普通字符，MySQL引入了一个反引号。</p>
+<p>（就是键盘左上角数字1左边的那个</p>
+<p>使用了MySQL保留字或关键字却没有用反引号就会报这个错误。</p>
+<p>如果列名使用了MySQL保留字或关键字就要用反引号代替引号，注释不能用反引号，因为注释只是普通字符串，不是MySQL的关键字，只有关键字或保留字才能使用反引号。</p>
+<h2 id="pymysql">PyMySQL</h2>
+<h3 id="bao-cuo-chu-li-1">报错处理</h3>
+<h4 id="jie-kou-xing-shi-bao-cuo">接口形式报错</h4>
+<p>事故现场：</p>
+<p><img src="https://ffangli.github.io/202201042037/.%5Cimg%5Cpymysql_error.png" alt="" /></p>
+<p>解决：</p>
+<p><img src="https://ffangli.github.io/202201042037/.%5Cimg%5Cpymsql_solve.png" alt="" /></p>
+<h2 id="ubuntuhuan-jing-de-mysql">ubuntu环境的MySQL</h2>
+<h3 id="xiu-gai-mi-ma">修改密码</h3>
+<p>查看mysql数据库自动设置的随机账户与密码</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo cat /etc/mysql/debian.cnf
+</span></code></pre>
+<p>使用这组账号密码登录</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mysql -u debian-sys-maint -p
+</span></code></pre>
+<p>切换到mysql数据库</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>use mysql;
+</span></code></pre>
+<p>这里有个巨坑</p>
+<p>mysql 5.7.9以后废弃了password字段和password()函数；authentication_string:字段表示用户密码，而authentication_string字段下只能是mysql加密后的41位字符串密码。</p>
+<p><strong>正确的解决方法：</strong></p>
+<p>将字段置为空</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>update user set authentication_string=&#39;&#39; where user=&#39;root&#39;;      
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>alter user &#39;root&#39;@&#39;localhost&#39; identified with mysql_native_password by &#39;root&#39;;
+</span></code></pre>
+<p>最后的'root'是新密码</p>
+<p>修改后<code>quit</code></p>
+<p>重新登录</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>service mysql restart
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mysql -u root -p
+</span></code></pre>
+<h2 id="gai-nian-he-yuan-li">概念和原理</h2>
+<h3 id="mysqlsuo-yin">MySQL索引</h3>
+<p><a href="https://www.cnblogs.com/yrxing/p/14557150.html">索引</a></p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/mysql/">#MySQL</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

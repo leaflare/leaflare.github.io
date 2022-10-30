@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - R</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/r/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-03-01T16:42:14+00:00</updated>
+	<id>https://ffangli.github.io/tags/r/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Logistic regression algorithm</title>
+		<published>2021-03-01T16:42:14+00:00</published>
+		<updated>2021-03-01T16:42:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202103011642/" type="text/html"/>
+		<id>https://ffangli.github.io/202103011642/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
+&lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
+&lt;p&gt;​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success&#x2F;yes) or 0 (stands for failure&#x2F;no).&lt;&#x2F;p&gt;
+&lt;p&gt;In my opinion，&lt;&#x2F;p&gt;
+&lt;p&gt;Logistic regression = Linear regression + Sigmoid function&lt;&#x2F;p&gt;
+&lt;p&gt;Linear regression: 	z = w*x+b&lt;&#x2F;p&gt;
+&lt;p&gt;Sigmoid function: 	&lt;img src=&quot;.\img\sigmoid.PNG&quot; style=&quot;zoom: 33%;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;So, logistic regression:	&lt;img src=&quot;.\img\lr.jpg&quot; alt=&quot;lr&quot; style=&quot;zoom:15%;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;example-of-logistic-regression-in-python&quot;&gt;Example of Logistic Regression in Python&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Import library
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;datasets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.model_selection &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;train_test_split
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.linear_model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;LogisticRegression
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Loading datasets
+&lt;&#x2F;span&gt;&lt;span&gt;cancer = datasets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;load_breast_cancer&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_X = cancer.data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X.shape)
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_y = cancer.target
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_y.shape)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Dividing the training set and test set
+&lt;&#x2F;span&gt;&lt;span&gt;X_train, X_test, y_train, y_test = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;train_test_split&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    cancer_X, cancer_y, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test_size&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Model construction and training
+&lt;&#x2F;span&gt;&lt;span&gt;clf = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LogisticRegression&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_iter&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10000&lt;&#x2F;span&gt;&lt;span&gt;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# max_iter is needed
+&lt;&#x2F;span&gt;&lt;span&gt;clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;(X_train, y_train)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Model Testing
+&lt;&#x2F;span&gt;&lt;span&gt;clf_y_predict = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(X_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(clf_y_predict)
+&lt;&#x2F;span&gt;&lt;span&gt;score = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;score&lt;&#x2F;span&gt;&lt;span&gt;(X_test, y_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(score)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;import-library&quot;&gt;Import library&lt;&#x2F;h3&gt;
+&lt;p&gt;Import the libraries we need in sklearn, where datasets is the dataset that comes with sklearn, train_test_split is the data division training set and test set, and &lt;code&gt;LogisticRegression&lt;&#x2F;code&gt; is the logistic regression model in sklearn.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;loading-datasets&quot;&gt;Loading datasets&lt;&#x2F;h3&gt;
+&lt;p&gt;Load the breast cancer dataset in sklearn via datasets.load_breast_cancer(), where cancer_X is the data of each indicator to measure whether it is breast cancer or not, and cancer_y is the label data. Use shape to see the size of the data, cancer_X is the data of (569, 30) and has been preprocessed for direct use, cancer_y is the data of (569, 1).&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dividing-the-training-set-and-test-set&quot;&gt;Dividing the training set and test set&lt;&#x2F;h3&gt;
+&lt;p&gt;The data set is divided into training set and test set by train_test_split() function, where test_size is the division ratio, we set it to 0.3, i.e., the training set is 70% and the test set is 30% in the data set.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;model-construction-and-training&quot;&gt;Model construction and training&lt;&#x2F;h3&gt;
+&lt;p&gt;There are many machine learning algorithm models available in sklearn, and it is very easy to call them in the form above to build a logistic regression model and train it with the training set data. If you want to use other algorithms, just change the algorithm model.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;model-testing&quot;&gt;Model testing&lt;&#x2F;h3&gt;
+&lt;p&gt;After the fourth step of model training, we use the trained model to test the data. The first line of code is the data prediction result, the second line outputs the prediction result, the third line evaluates the scores predicted by the model, and the fourth outputs the scores.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The accuracy of the model prediction is 94.7% through the above test results, which shows that the logistic regression algorithm achieves better results.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;example-of-logistic-regression-in-r&quot;&gt;Example of Logistic Regression in R&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;R&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-R &quot;&gt;&lt;code class=&quot;language-R&quot; data-lang=&quot;R&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Load data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# install.packages(&amp;#39;mlbench&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;(BreastCancer, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;mlbench&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;bc &amp;lt;- BreastCancer[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;complete.cases&lt;&#x2F;span&gt;&lt;span&gt;(BreastCancer), ]  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# keep complete rows
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# check the structure of this dataset.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# str(bc)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# remove id column
+&lt;&#x2F;span&gt;&lt;span&gt;bc &amp;lt;- bc[,-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# convert to numeric
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt;(i in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  bc[, i] &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as.numeric&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as.character&lt;&#x2F;span&gt;&lt;span&gt;(bc[, i]))
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Change Y values to 1&amp;#39;s and 0&amp;#39;s
+&lt;&#x2F;span&gt;&lt;span&gt;bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ifelse&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class == &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;malignant&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;levels &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Prep Training and Test data.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# install.packages(&amp;#39;caret&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;library&lt;&#x2F;span&gt;&lt;span&gt;(caret)
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;%ni%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;Negate&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;%in%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# define &amp;#39;not in&amp;#39; func
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;options&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;scipen&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;999&lt;&#x2F;span&gt;&lt;span&gt;)  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# prevents printing scientific notations.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;trainDataIndex &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;createDataPartition&lt;&#x2F;span&gt;&lt;span&gt;(bc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.7&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;list &lt;&#x2F;span&gt;&lt;span&gt;= F)
+&lt;&#x2F;span&gt;&lt;span&gt;trainData &amp;lt;- bc[trainDataIndex, ]
+&lt;&#x2F;span&gt;&lt;span&gt;testData &amp;lt;- bc[-trainDataIndex, ]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Class distribution of train data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Down Sample
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;down_train &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;downSample&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x &lt;&#x2F;span&gt;&lt;span&gt;= trainData[, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;colnames&lt;&#x2F;span&gt;&lt;span&gt;(trainData) %ni% &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Class&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;],
+&lt;&#x2F;span&gt;&lt;span&gt;                         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y &lt;&#x2F;span&gt;&lt;span&gt;= trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(down_train&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Up Sample (optional)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set.seed&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;up_train &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;upSample&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;x &lt;&#x2F;span&gt;&lt;span&gt;= trainData[, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;colnames&lt;&#x2F;span&gt;&lt;span&gt;(trainData) %ni% &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Class&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;],
+&lt;&#x2F;span&gt;&lt;span&gt;                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;y &lt;&#x2F;span&gt;&lt;span&gt;= trainData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;table&lt;&#x2F;span&gt;&lt;span&gt;(up_train&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Build Logistic Model
+&lt;&#x2F;span&gt;&lt;span&gt;logitmod &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;glm&lt;&#x2F;span&gt;&lt;span&gt;(Class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt; Cl.thickness + Cell.size + Cell.shape, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;family &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;binomial&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=down_train)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;summary&lt;&#x2F;span&gt;&lt;span&gt;(logitmod)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;pred &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(logitmod, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;newdata &lt;&#x2F;span&gt;&lt;span&gt;= testData, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span&gt;= &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;response&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;pred
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Recode factors
+&lt;&#x2F;span&gt;&lt;span&gt;y_pred_num &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ifelse&lt;&#x2F;span&gt;&lt;span&gt;(pred &amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;y_pred &amp;lt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span&gt;(y_pred_num, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;levels&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;y_act &amp;lt;- testData&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt;Class
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Accuracy
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;mean&lt;&#x2F;span&gt;&lt;span&gt;(y_pred == y_act)  											&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 94%
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.machinelearningplus.com&#x2F;machine-learning&#x2F;logistic-regression-tutorial-examples-r&#x2F;&quot;&gt;Logistic Regression - A Complete Tutorial with Examples in R (machinelearningplus.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The goal here is to model and predict if a given specimen (row in dataset) is &lt;code&gt;benign&lt;&#x2F;code&gt; or &lt;code&gt;malignant&lt;&#x2F;code&gt;, based on 9 other cell features. So, let’s load the data and keep only the complete cases.&lt;&#x2F;p&gt;
+&lt;p&gt;the training set is 70% and the test set is 30% in the data set.&lt;&#x2F;p&gt;
+&lt;p&gt;这里的目标是根据其他9个细胞特征，建立模型并预测一个给定的标本（数据集中的一行）是良性还是恶性。因此，让我们加载数据，只保留完整的病例。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;zhong-wen-ban-ben&quot;&gt;中文版本&lt;&#x2F;h1&gt;
+&lt;h3 id=&quot;luo-ji-hui-gui&quot;&gt;逻辑回归&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;C:%5CUsers%5Cprts%5CDesktop%5CLogistic_regression%5Cimg%5Ccn.jpg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pythonshi-li&quot;&gt;Python示例&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;一、导入库&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;datasets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.cross_validation &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;train_test_split
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;sklearn.linear_model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;LogisticRegression
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;导入sklearn中我们需要的库，其中datasets为sklearn中自带的数据集，train_test_split为数据划分训练集和测试集，LogisticRegression为sklearn中的逻辑回归模型。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;二、加载数据集&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;cancer =datasets.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;load_breast_cancer&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_X=cancer.data
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X.shape)
+&lt;&#x2F;span&gt;&lt;span&gt;cancer_y=cancer.target
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(cancer_y.shape)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通过datasets.load_breast_cancer()加载sklearn中的乳腺癌数据集，其中cancer_X为衡量是否为乳腺癌的各项指标数据，cancer_y为标签数据。使用shape来查看数据的规模，cancer_X为(569, 30)的数据，且已经进行预处理可以直接使用，cancer_y为(569, 1)的数据。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;三、划分训练集和测试集&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;X_train,X_test,y_train, y_test=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;train_test_split&lt;&#x2F;span&gt;&lt;span&gt;(cancer_X,cancer_y,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;test_size&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;通过train_test_split()函数将数据集划分为训练集和测试集，其中test_size为划分比例，本次我们设为0.3，即数据集中训练集为70%，测试集为30%&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;四、模型构建与训练&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;clf = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LogisticRegression&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;(X_train,y_train)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;sklearn中为我们提供了很多机器学习算法模型，而且调用起来非常方便，形如上面的形式即可构建逻辑回归模型并使用训练集数据进行训练。如果要使用其它算法，只需更换算法模型即可。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;五、模型测试&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;clf_y_predict = clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;predict&lt;&#x2F;span&gt;&lt;span&gt;(X_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(clf_y_predict)
+&lt;&#x2F;span&gt;&lt;span&gt;score=clf.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;score&lt;&#x2F;span&gt;&lt;span&gt;(X_test,y_test)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(score)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;经过第四步模型训练后，使用训练好的模型来进行数据测试，第一行代码为数据预测结果，第二行输出预测结果，第三行为评估模型预测的分数，第四输出分数。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

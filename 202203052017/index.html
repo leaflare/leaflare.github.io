@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Reading Notes on Ease.ml</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202203052017/#question" class="toc-link">Question</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202203052017/#ease-ml" class="toc-link">Ease.ml</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202203052017/#ease-ml-ci-and-ease-ml-meter" class="toc-link">Ease.ml&#x2F;ci and Ease.ml&#x2F;meter</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202203052017&#x2F;">Reading Notes on Ease.ml</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-03-05</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Reading notes on </p>
+<p>Ease.ml: towards multi-tenant resource sharing for machine learning workloads</p>
+<p>https://doi.org/10.1145/3177732.3177737</p>
+<p>Ease.ml/ci and Ease.ml/meter in action: towards data management for statistical generalization</p>
+<p>https://doi.org/10.14778/3352063.3352110</p>
+<span id="continue-reading"></span>
+<h2 id="question">Question</h2>
+<p>As a &quot;service provider&quot; that manages a shared cluster of machines running machine learning workloads, what is the resource sharing strategy that maximizes the global satisfaction of all users? Resource sharing is a critical yet subtle issue in this multi-tenant scenario, as we have to balance between efficiency and fairness. Also, as of today, the counterpart of &quot;software engineering for ML&quot; is largely missing --- developers of ML applications are left with powerful tools (e.g., TensorFlow and PyTorch) but little guidance regarding the development lifecycle itself.</p>
+<h2 id="ease-ml">Ease.ml</h2>
+<p>Ease.ml, a declarative machine learning service platform. With ease.ml, a user defines the high-level schema of an ML application and submits the task via a Web interface. The system then deals with the rest, such as model selection and data movement. They first formalize the problem that we call multi-tenant model selection, aiming for minimizing the total regret of all users running automatic model selection tasks. Then  they develop a novel algorithm that combines multi-armed bandits with Bayesian optimization and prove a regret bound under the multi-tenant setting. Finally, they report the evaluation of ease.ml on synthetic data and on two services we are providing to our users, namely, image classification with deep neural networks and binary classification with Azure ML Studio.</p>
+<h2 id="ease-ml-ci-and-ease-ml-meter">Ease.ml/ci and Ease.ml/meter</h2>
+<p>Developing machine learning (ML) applications is similar to developing traditional software --- it is often an iterative process in which developers navigate within a rich space of requirements, design decisions, implementations, empirical quality, and performance. In traditional software development, software engineering is the field of study which provides principled guidelines for this iterative process.</p>
+<p>The authors look at the management of the ML development lifecycle from a data management perspective. They show two closely related systems, easy.ml/ci and easy.ml/meter, which provide some 'principled guidance' for ML application development: ci is a continuous integration engine for ML models, and meter is a 'profiler' for controlling overfitting of ML models. Both systems focus on managing the 'statistical generalisation capabilities' of the datasets used to assess the quality of ML applications, i.e. the validation set and the test set.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/db4ml/">#DB4ML</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

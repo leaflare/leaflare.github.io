@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - LaTex</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/categories/latex/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-29T15:36:14+00:00</updated>
+	<id>https://ffangli.github.io/categories/latex/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>LaTex使用总结</title>
+		<published>2022-01-29T15:36:14+00:00</published>
+		<updated>2022-01-29T15:36:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201291536/" type="text/html"/>
+		<id>https://ffangli.github.io/202201291536/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;xue-xi-bi-ji&quot;&gt;学习笔记&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_39876450&#x2F;article&#x2F;details&#x2F;112287980&quot;&gt;Overleaf速查表&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhang-jie-he-fen-ji-biao-ti&quot;&gt;章节和分级标题&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\chapter&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;章节&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\section&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;一级标题&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\subsection&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;二级标题&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;huan-xing&quot;&gt;换行&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;chuang-jian-yi-ge-xin-de-duan-luo&quot;&gt;创建一个新的段落&lt;&#x2F;h4&gt;
+&lt;p&gt;只需要在代码中添加一个空白行就可以了，下一个段落会有段首缩进&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\documentclass&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;article&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{document}
+&lt;&#x2F;span&gt;&lt;span&gt;第一自然段，有首行缩进
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;第二自然段，有首行缩进
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{document}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;bu-suo-jin-huan-xing&quot;&gt;不缩进换行&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\documentclass&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;article&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\usepackage&lt;&#x2F;span&gt;&lt;span&gt;[utf8]{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;inputenc&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{document}
+&lt;&#x2F;span&gt;&lt;span&gt;这是一个自然段，有缩进&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;这是&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\&lt;&#x2F;span&gt;&lt;span&gt;（两个反斜杠）产生的新行，没有缩进&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\newline
+&lt;&#x2F;span&gt;&lt;span&gt;这是&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\newline&lt;&#x2F;span&gt;&lt;span&gt;产生的新行，没有缩进&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hfill \break
+&lt;&#x2F;span&gt;&lt;span&gt;这是&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hfill \break&lt;&#x2F;span&gt;&lt;span&gt;产生的新行，没有缩进
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{document}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;\\&lt;&#x2F;code&gt;（两个反斜杠）&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;\newline&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;\hfill \break&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;以上三种换行方法效果相同&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;dan-duan-bu-shou-xing-suo-jin&quot;&gt;单段不首行缩进&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\noindent&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;	不需要首行缩进的段落内容
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zi-hao&quot;&gt;字号&lt;&#x2F;h2&gt;
+&lt;p&gt;从小到大&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;\tiny
+&lt;&#x2F;span&gt;&lt;span&gt;\scriptsize
+&lt;&#x2F;span&gt;&lt;span&gt;\footnotesize
+&lt;&#x2F;span&gt;&lt;span&gt;\small
+&lt;&#x2F;span&gt;&lt;span&gt;\normalsize
+&lt;&#x2F;span&gt;&lt;span&gt;\large
+&lt;&#x2F;span&gt;&lt;span&gt;\Large
+&lt;&#x2F;span&gt;&lt;span&gt;\LARGE
+&lt;&#x2F;span&gt;&lt;span&gt;\huge
+&lt;&#x2F;span&gt;&lt;span&gt;\Huge
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用形式&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{tiny}
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{tiny}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;wu-xu-lie-biao-yu-you-xu-lie-biao&quot;&gt;无序列表与有序列表&lt;&#x2F;h2&gt;
+&lt;p&gt;实心圆点无序列表&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{itemize}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{itemize}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用其他符号进行排列，例如星号&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{itemize}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[*] one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[*] two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[*] ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{itemize}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;数字顺序有序列表&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用其他形式的编号需要先加载包，\usepackage{enumerate}&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}[i)]
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}[1)]
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{enumerate}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;自定义编号形式&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{description}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[Step1] one
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[Step2] two
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\item&lt;&#x2F;span&gt;&lt;span&gt;[Step3] ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{description}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;cha-ru-tu-pian&quot;&gt;插入图片&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;overleaf-zhong-dao-ru-tu-pian&quot;&gt;Overleaf 中导入图片&lt;&#x2F;h3&gt;
+&lt;p&gt;在文件夹中存放图片&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{figure}[htp]
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\centering
+&lt;&#x2F;span&gt;&lt;span&gt;   	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\includegraphics&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;=0.8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\textwidth&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span&gt;=0.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\textwidth&lt;&#x2F;span&gt;&lt;span&gt;]{the.png}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\caption&lt;&#x2F;span&gt;&lt;span&gt;{An image of a galaxy}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\label&lt;&#x2F;span&gt;&lt;span&gt;{fig:galaxy}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{figure}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;\graphicspath{ {images&#x2F;} }&lt;&#x2F;code&gt; 指令告诉 LaTeX  图片是被存储在 &lt;code&gt;Images&#x2F;&lt;&#x2F;code&gt; 文件夹之中的，现在可以仅输入图片的文件名，不再需要输入它的路径了。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;\includegraphics[width=4cm]{InsertingImagesEx5}&lt;&#x2F;code&gt;需要注意的是，只需要输入图片的文件名，不包括它的后缀&lt;&#x2F;p&gt;
+&lt;p&gt;可用于调整图片大小和缩放&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cha-ru-biao-ge&quot;&gt;插入表格&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.tablesgenerator.com&#x2F;latex_tables&quot;&gt;TablesGenerator&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ding-yi-biao-ge-dan-lie-kuan-du&quot;&gt;定义表格单列宽度&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;\begin{tabular}{p{2cm}p{3cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;p{2cm}&lt;&#x2F;code&gt;就是代表第一列的宽度，后面依次是后面的宽度，会自动进行换行显示。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;an-ye-mian-kuan-du-diao-zheng-biao-ge&quot;&gt;按页面宽度调整表格&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;\setlength{\tabcolsep}{7mm}{XXXX}&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{center}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\textbf&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#ebcb8b;&quot;&gt;Table 2&lt;&#x2F;span&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;~~&lt;&#x2F;span&gt;&lt;span&gt;Improved table.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\setlength&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\tabcolsep&lt;&#x2F;span&gt;&lt;span&gt;}{7mm}{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{tabular}{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;cccccc&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\toprule
+&lt;&#x2F;span&gt;&lt;span&gt;Models  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;  &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hat &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;$  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;  &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\alpha&lt;&#x2F;span&gt;&lt;span&gt;$  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;  &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\beta&lt;&#x2F;span&gt;&lt;span&gt;_&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;$  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;  &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\beta&lt;&#x2F;span&gt;&lt;span&gt;_&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;$  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;  &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\beta&lt;&#x2F;span&gt;&lt;span&gt;_&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;$  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hline
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 30.6302  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.4127  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 9.4257  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 12.4089  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.5169  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 18.6986  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -6.6157  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 14.8586  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.4991  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 19.5421  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -7.0717  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.2183  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 3.06302  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.41266  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.11725  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 1.24089  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.51691  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.83605  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -0.66157  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;model  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 1.48586  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.49906  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.95609  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -0.70717  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 0.02183  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\bottomrule
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{tabular}}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{center}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;biao-ming&quot;&gt;表名&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{table}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{tabular}{|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|}
+&lt;&#x2F;span&gt;&lt;span&gt;	Any &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 112  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 123 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 132  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;	Zhang                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 324&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 345 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 345  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;	David                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 123                     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 34  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 45   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;	Araminta                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 133 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 33  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 35 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\ 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{tabular}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\caption&lt;&#x2F;span&gt;&lt;span&gt;{a table of scores}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{table}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;\caption{a table of scores}&lt;&#x2F;code&gt;设置表名，如果不需要自动编号可以使用&lt;code&gt;\caption*{a table of scores}&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;san-xing-xian-biao&quot;&gt;三行线表&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\toprule   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%第一行线
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%表示第一列占1.5cm 第二列占6cm 第三列占2cm 的距离 并且这几个字都是居中对齐
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\multicolumn&lt;&#x2F;span&gt;&lt;span&gt;{1}{m{1.5cm}}{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\centering&lt;&#x2F;span&gt;&lt;span&gt; Symbol} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\multicolumn&lt;&#x2F;span&gt;&lt;span&gt;{1}{m{6cm}}{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\centering&lt;&#x2F;span&gt;&lt;span&gt; Definition} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\multicolumn&lt;&#x2F;span&gt;&lt;span&gt;{1}{m{2cm}}{ Unit} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\midrule   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%第二行线
+&lt;&#x2F;span&gt;&lt;span&gt;     $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;V&lt;&#x2F;span&gt;&lt;span&gt;$ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; index &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;     $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;X&lt;&#x2F;span&gt;&lt;span&gt;$ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; The  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;     $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Y&lt;&#x2F;span&gt;&lt;span&gt;$ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; The &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;     $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Z&lt;&#x2F;span&gt;&lt;span&gt;$ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; The  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; -- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\bottomrule   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%第三行线
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;quan-xian-biao&quot;&gt;全线表&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{table}[H]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\setlength&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\tabcolsep&lt;&#x2F;span&gt;&lt;span&gt;}{20mm}{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{tabular}{|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span&gt;|}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hline
+&lt;&#x2F;span&gt;&lt;span&gt;第一行 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 的内容     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\ 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hline
+&lt;&#x2F;span&gt;&lt;span&gt;第二行 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt; 的内容     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;\\ 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\hline
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{tabular}}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\caption &lt;&#x2F;span&gt;&lt;span&gt;{表名}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{table}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;cha-ru-dai-ma&quot;&gt;插入代码&lt;&#x2F;h2&gt;
+&lt;p&gt;最简单的&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{verbatim}
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{verbatim}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;复杂一点的&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{lstlisting}
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{lstlisting}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\usepackage&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;listings&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\lstset&lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%
+&lt;&#x2F;span&gt;&lt;span&gt;    language=Octave,                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% the language of the code
+&lt;&#x2F;span&gt;&lt;span&gt;    basicstyle=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\footnotesize&lt;&#x2F;span&gt;&lt;span&gt;,           &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% the size of the fonts that are used for the code
+&lt;&#x2F;span&gt;&lt;span&gt;    numbers=left,                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% where to put the line-numbers
+&lt;&#x2F;span&gt;&lt;span&gt;    numberstyle=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\tiny\color&lt;&#x2F;span&gt;&lt;span&gt;{gray},  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% the style that is used for the line-numbers
+&lt;&#x2F;span&gt;&lt;span&gt;    stepnumber=2,                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% the step between two line-numbers. If it&amp;#39;s 1, each line
+&lt;&#x2F;span&gt;&lt;span&gt;                                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% will be numbered
+&lt;&#x2F;span&gt;&lt;span&gt;    numbersep=5pt,                  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% how far the line-numbers are from the code
+&lt;&#x2F;span&gt;&lt;span&gt;    backgroundcolor=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\color&lt;&#x2F;span&gt;&lt;span&gt;{white},      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% choose the background color. You must add \usepackage{color}
+&lt;&#x2F;span&gt;&lt;span&gt;    showspaces=false,               &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% show spaces adding particular underscores
+&lt;&#x2F;span&gt;&lt;span&gt;    showstringspaces=false,         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% underline spaces within strings
+&lt;&#x2F;span&gt;&lt;span&gt;    showtabs=false,                 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% show tabs within strings adding particular underscores
+&lt;&#x2F;span&gt;&lt;span&gt;    frame=single,                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% adds a frame around the code
+&lt;&#x2F;span&gt;&lt;span&gt;    rulecolor=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\color&lt;&#x2F;span&gt;&lt;span&gt;{black},        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+&lt;&#x2F;span&gt;&lt;span&gt;    tabsize=2,                      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% sets default tabsize to 2 spaces
+&lt;&#x2F;span&gt;&lt;span&gt;    captionpos=b,                   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% sets the caption-position to bottom
+&lt;&#x2F;span&gt;&lt;span&gt;    breaklines=true,                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% sets automatic line breaking
+&lt;&#x2F;span&gt;&lt;span&gt;    breakatwhitespace=false,        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% sets if automatic breaks should only happen at whitespace
+&lt;&#x2F;span&gt;&lt;span&gt;    title=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\lstname&lt;&#x2F;span&gt;&lt;span&gt;,                 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% show the filename of files included with \lstinputlisting;
+&lt;&#x2F;span&gt;&lt;span&gt;                                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% also try caption instead of title
+&lt;&#x2F;span&gt;&lt;span&gt;    keywordstyle=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\color&lt;&#x2F;span&gt;&lt;span&gt;{blue},          &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% keyword style
+&lt;&#x2F;span&gt;&lt;span&gt;    commentstyle=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\color&lt;&#x2F;span&gt;&lt;span&gt;{dkgreen},       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% comment style
+&lt;&#x2F;span&gt;&lt;span&gt;    stringstyle=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\color&lt;&#x2F;span&gt;&lt;span&gt;{mauve},         &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% string literal style
+&lt;&#x2F;span&gt;&lt;span&gt;    escapeinside={&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\%&lt;&#x2F;span&gt;&lt;span&gt;*}{*)},            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% if you want to add LaTeX within your code
+&lt;&#x2F;span&gt;&lt;span&gt;    morekeywords={*,...}               &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;% if you want to add more keywords to the set
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;yin-wen&quot;&gt;引文&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;\bibliographystyle{样式}
+&lt;&#x2F;span&gt;&lt;span&gt;1. plain，按字母的顺序排列，比较次序为作者、年度和标题
+&lt;&#x2F;span&gt;&lt;span&gt;2. unsrt，样式同plain，只是按照引用的先后排序
+&lt;&#x2F;span&gt;&lt;span&gt;3. alpha，用作者名首字母+年份后两位作标号，以字母顺序排序
+&lt;&#x2F;span&gt;&lt;span&gt;4. abbrv，类似plain，将月份全拼改为缩写，更显紧凑
+&lt;&#x2F;span&gt;&lt;span&gt;5. ieeetr，国际电气电子工程师协会期刊样式
+&lt;&#x2F;span&gt;&lt;span&gt;6. acm，美国计算机学会期刊样式
+&lt;&#x2F;span&gt;&lt;span&gt;7. siam，美国工业和应用数学学会期刊样式
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;\bibliography{xxx} %xxx.bib
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;wen-ti-jie-jue&quot;&gt;问题解决&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;latexbu-neng-xian-shi-zhong-wen-sheng-pi-zi&quot;&gt;LaTex不能显示中文生僻字&lt;&#x2F;h2&gt;
+&lt;p&gt;没错，就是我的名字&lt;&#x2F;p&gt;
+&lt;p&gt;事故现场：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\documentclass&lt;&#x2F;span&gt;&lt;span&gt;[
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;latin-font&lt;&#x2F;span&gt;&lt;span&gt; = win|mac|linux|gyre|none,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cjk-font&lt;&#x2F;span&gt;&lt;span&gt; = win|mac|linux|fandol|founder|noto|source|none,
+&lt;&#x2F;span&gt;&lt;span&gt;    ]{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;njuthesis&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;解决：把字体设置里的其他系统删掉（X&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\documentclass&lt;&#x2F;span&gt;&lt;span&gt;[
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;latin-font&lt;&#x2F;span&gt;&lt;span&gt; = win,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cjk-font&lt;&#x2F;span&gt;&lt;span&gt; = win,
+&lt;&#x2F;span&gt;&lt;span&gt;    ]{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;njuthesis&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;tu-pian-wei-zhi-gu-ding&quot;&gt;图片位置固定&lt;&#x2F;h2&gt;
+&lt;p&gt;为了避免图片位置被重排导致的图文分离，在&lt;code&gt;\begin{document}&lt;&#x2F;code&gt;前加上&lt;code&gt;\usepackage{float}&lt;&#x2F;code&gt;和&lt;code&gt;\usepackage{graphicx}&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;由此在画图表的时候产生了另一个问题：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;You have forgotten to include a float specifier, which tells LaTeX where to position your figure. To fix this, either insert a float specifier inside the square brackets (e.g. \begin{figure}[h]), or remove the square brackets (e.g. \begin{figure}). Find out more about float specifiers here.&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;解决办法：&lt;&#x2F;p&gt;
+&lt;p&gt;位置固定用 &lt;code&gt;\begin{figure}[H]&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;位置不固定用 &lt;code&gt;\begin{figure}[htp]&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bu-yin-yong-dan-shi-xian-shi-can-kao-wen-xian&quot;&gt;不引用但是显示参考文献&lt;&#x2F;h2&gt;
+&lt;p&gt;（不要问为什么不引用&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;latex&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-latex &quot;&gt;&lt;code class=&quot;language-latex&quot; data-lang=&quot;latex&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\addcontentsline&lt;&#x2F;span&gt;&lt;span&gt;{toc}{section}{参考文献}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\nocite&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%只加入到参考文献列表中，不在文中引用（显示[id]）
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\nocite&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;%显示所有文献
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\bibliographystyle&lt;&#x2F;span&gt;&lt;span&gt;{plain}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\begin&lt;&#x2F;span&gt;&lt;span&gt;{thebibliography}{}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\bibitem&lt;&#x2F;span&gt;&lt;span&gt;[1]{1} Book Title, Author
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;\end&lt;&#x2F;span&gt;&lt;span&gt;{thebibliography}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

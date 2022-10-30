@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - python经验总结</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151443/#cha-zhao-an-zhuang-di-zhi" class="toc-link">查找安装地址</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151443/#diao-shi-ce-shi" class="toc-link">调试&#x2F;测试</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#cheng-xu-ji-shi" class="toc-link">程序计时</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#kong-zhi-tai-da-yin-ping-bi-yu-xian-shi" class="toc-link">控制台打印屏蔽与显示</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151443/#bao-cuo-chu-li" class="toc-link">报错处理</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#pythonban-ben-wen-ti" class="toc-link">Python版本问题</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#duo-xian-cheng-xiang-guan" class="toc-link">多线程相关</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#pyqt5xiang-guan" class="toc-link">PyQt5相关</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#numpyxiang-guan" class="toc-link">Numpy相关</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#urllibxiang-guan" class="toc-link">urllib相关</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151443/#pandasxiang-guan" class="toc-link">pandas相关</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201151443&#x2F;">python经验总结</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-15</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h1 id="cha-zhao-an-zhuang-di-zhi">查找安装地址</h1>
+<p>控制台</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>where python
+</span></code></pre>
+<h1 id="diao-shi-ce-shi">调试/测试</h1>
+<h2 id="cheng-xu-ji-shi">程序计时</h2>
+<p><code>time.perf_counter()</code>以秒为单位返回时间的浮点值</p>
+<p><code>time.perf_counter_ns()</code>返回时间以纳秒为单位</p>
+<h2 id="kong-zhi-tai-da-yin-ping-bi-yu-xian-shi">控制台打印屏蔽与显示</h2>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>sys, os
+</span><span>
+</span><span style="color:#65737e;"># Disable
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">blockPrint</span><span>():
+</span><span>    sys.stdout = </span><span style="color:#96b5b4;">open</span><span>(os.devnull, &#39;</span><span style="color:#a3be8c;">w</span><span>&#39;)
+</span><span>
+</span><span style="color:#65737e;"># Restore
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">enablePrint</span><span>():
+</span><span>    sys.stdout = sys.__stdout__
+</span></code></pre>
+<h1 id="bao-cuo-chu-li">报错处理</h1>
+<h2 id="pythonban-ben-wen-ti">Python版本问题</h2>
+<h3 id="modulenotfounderror-no-module-named-cpickle">ModuleNotFoundError: No module named 'cPickle'</h3>
+<p>python2有cPickle，但是python3没有cPickle</p>
+<p>python2使用：</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>cPickle
+</span></code></pre>
+<p>python3使用：</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>pickle
+</span></code></pre>
+<h3 id="name-reload-is-not-defined">name 'reload' is not defined</h3>
+<ul>
+<li>在Python2.x中由于str和byte之间没有明显区别，经常要依赖于defaultencoding来做转换。 </li>
+<li>在python3中有了明确的str和byte类型区别，从一种类型转换成另一种类型要显式指定<em>encoding。</em></li>
+</ul>
+<p>python2使用：</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>sys
+</span><span style="color:#96b5b4;">reload</span><span>(sys)
+</span><span>sys.</span><span style="color:#bf616a;">setdefaultencoding</span><span>(‘utf-</span><span style="color:#d08770;">8</span><span>’)
+</span></code></pre>
+<p>python3使用：</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>importlib,sys
+</span><span>importlib.</span><span style="color:#bf616a;">reload</span><span>(sys)
+</span></code></pre>
+<h3 id="attributeerror-module-sys-has-no-attribute-setdefaultencoding">AttributeError: module 'sys' has no attribute 'setdefaultencoding'</h3>
+<p>报错原因同上，python3没有<code>sys.setdefaultencoding('utf-8')</code>，删除该行即可</p>
+<h2 id="duo-xian-cheng-xiang-guan">多线程相关</h2>
+<h3 id="greenlet-error-cannot-switch-to-a-different-thread">greenlet.error: cannot switch to a different thread</h3>
+<p>debug模式下会对线程的切换造成混乱,解决方案:</p>
+<p>第一种: 禁用debug模式即可</p>
+<p>第二种:在主函数中加入monkey patch</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">if </span><span>__name__ == &#39;</span><span style="color:#a3be8c;">__main__</span><span>&#39;:
+</span><span>    </span><span style="color:#b48ead;">from </span><span>gevent </span><span style="color:#b48ead;">import </span><span>monkey
+</span><span>    monkey.</span><span style="color:#bf616a;">patch_all</span><span>()
+</span></code></pre>
+<h2 id="pyqt5xiang-guan">PyQt5相关</h2>
+<h3 id="error-could-not-find-a-version-that-satisfies-the-requirement-pil-from-versions-none">ERROR: Could not find a version that satisfies the requirement PIL (from versions: none)</h3>
+<p>ERROR: No matching distribution found for PIL</p>
+<p>PIL，全称 Python Imaging Library，是 Python 平台一个功能非常强大而且简单易用的图像处理库。但是，由于 PIL 仅支持到Python 2.7，加上年久失修，于是一群志愿者在 PIL 的基础上创建了兼容 Python 3 的版本，名字叫 Pillow ，现在可以通过安装 Pillow 来使用 PIL。</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>pip install pillow
+</span></code></pre>
+<h3 id="importerror-cannot-import-name-options-from-pyecharts">ImportError: cannot import name 'options' from 'pyecharts'</h3>
+<p>解决：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pip install pyecharts -U
+</span></code></pre>
+<h2 id="numpyxiang-guan">Numpy相关</h2>
+<h3 id="valueerror-numpy-ndarray-size-changed-may-indicate-binary-incompatibility">ValueError: numpy.ndarray size changed, may indicate binary incompatibility.</h3>
+<p>核心原因是 numpy 版本与当前一些库不匹配，把 numpy 更新到最新版本即可</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pip install --upgrade numpy
+</span></code></pre>
+<h2 id="urllibxiang-guan">urllib相关</h2>
+<h3 id="attributeerror-module-urllib-has-no-attribute-request">AttributeError: module 'urllib' has no attribute 'request'</h3>
+<p>解决：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>from urllib import request
+</span></code></pre>
+<h3 id="unresolved-reference-urllib2">Unresolved reference 'urllib2'</h3>
+<p>解决：</p>
+<p>在python3.3以后，用urllib.request代替urllib2</p>
+<p>import语句使用</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>from urllib import request
+</span></code></pre>
+<h2 id="pandasxiang-guan">pandas相关</h2>
+<h3 id="settingwithcopywarning-a-value-is-trying-to-be-set-on-a-copy-of-a-slice-from-a-dataframe">SettingWithCopyWarning:  A value is trying to be set on a copy of a slice from a DataFrame</h3>
+<p>在向DataFrame中插入新行时，Pandas报出了这个警告。虽然不影响程序执行，但还是不想看到警告（X</p>
+<p>事故现场：</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>add = {&#39;</span><span style="color:#a3be8c;">ts_code</span><span>&#39;: stock_code, &#39;</span><span style="color:#a3be8c;">trade_date</span><span>&#39;: now_date, &#39;</span><span style="color:#a3be8c;">close</span><span>&#39;: now_price}
+</span><span>df.loc[</span><span style="color:#96b5b4;">len</span><span>(df)] = add
+</span></code></pre>
+<p>解决方法：</p>
+<p>直接对副本修改就会出现这个警告，需要在修改前应该先对副本复制一下</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>add = {&#39;</span><span style="color:#a3be8c;">ts_code</span><span>&#39;: stock_code, &#39;</span><span style="color:#a3be8c;">trade_date</span><span>&#39;: now_date, &#39;</span><span style="color:#a3be8c;">close</span><span>&#39;: now_price}
+</span><span>df = df.</span><span style="color:#bf616a;">copy</span><span>()
+</span><span>df.loc[</span><span style="color:#96b5b4;">len</span><span>(df)] = add
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

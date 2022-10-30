@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - python数据处理经验总结</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202111151443/#shu-ju-lei-xing-chu-li" class="toc-link">数据类型处理</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111151443/#cha-kan-shu-ju-lei-xing" class="toc-link">查看数据类型</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111151443/#bytes" class="toc-link">bytes</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202111151443&#x2F;">python数据处理经验总结</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-11-15</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="shu-ju-lei-xing-chu-li">数据类型处理</h2>
+<h3 id="cha-kan-shu-ju-lei-xing">查看数据类型</h3>
+<h4 id="type-he-isinstance">type()和isinstance()</h4>
+<p>区别：</p>
+<p>type() 不会认为子类是一种父类类型，不考虑继承关系。</p>
+<p>isinstance() 会认为子类是一种父类类型，考虑继承关系。</p>
+<h3 id="bytes">bytes</h3>
+<h4 id="byteshe-str">bytes和str</h4>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&gt;&gt;&gt; type(b&#39;xxxxx&#39;)
+</span><span>&lt;class &#39;bytes&#39;&gt;
+</span><span> 
+</span><span>&gt;&gt;&gt; type(&#39;xxxxx&#39;)
+</span><span>&lt;class &#39;str&#39;&gt;
+</span></code></pre>
+<p>bytes是byte的序列，而str是unicode的序列。</p>
+<p>互相转化：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>bytes = str.encode()
+</span><span>str = bytes.decode()
+</span><span>str = bytes.decode(&quot;gb2312&quot;) #使用 gb2312 的方式
+</span></code></pre>
+<h4 id="bytearray">bytearray</h4>
+<p>bytearray是可变的。</p>
+<p><strong>bytearray()</strong> 方法返回一个新字节数组。这个数组里的元素是可变的，并且每个元素的值范围: 0 &lt;= x &lt; 256。</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&gt;&gt;&gt;bytearray()
+</span><span>bytearray(b&#39;&#39;)
+</span><span>&gt;&gt;&gt; bytearray([1,2,3])
+</span><span>bytearray(b&#39;\x01\x02\x03&#39;)
+</span><span>&gt;&gt;&gt; bytearray(&#39;runoob&#39;, &#39;utf-8&#39;)
+</span><span>bytearray(b&#39;runoob&#39;)
+</span><span>&gt;&gt;&gt;
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

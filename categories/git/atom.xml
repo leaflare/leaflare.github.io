@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Git</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/categories/git/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-08T20:08:34+00:00</updated>
+	<id>https://ffangli.github.io/categories/git/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>github pages搭建个人博客</title>
+		<published>2022-01-08T20:08:34+00:00</published>
+		<updated>2022-01-08T20:08:34+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201082008/" type="text/html"/>
+		<id>https://ffangli.github.io/202201082008/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;scoopan-zhuang&quot;&gt;Scoop安装&lt;&#x2F;h3&gt;
+&lt;p&gt;Scoop是适用于 Windows 的命令行安装程序&lt;&#x2F;p&gt;
+&lt;p&gt;PowerShell执行：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&amp;#39;https:&#x2F;&#x2F;get.scoop.sh&amp;#39;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;iwr -useb get.scoop.sh | iex
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;zolaan-zhuang&quot;&gt;zola安装&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ scoop install zola
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;scoop报错解决：&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ScoopInstaller&#x2F;Scoop&#x2F;issues&#x2F;4495&quot;&gt;How can I go back to original REPO https:&#x2F;&#x2F;github.com&#x2F;lukesampson&#x2F;scoop · Issue #4495 · ScoopInstaller&#x2F;Scoop · GitHub&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ben-di-pei-zhi&quot;&gt;本地配置&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;clishi-yong&quot;&gt;CLI使用&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;chu-shi-hua&quot;&gt;初始化&lt;&#x2F;h4&gt;
+&lt;p&gt;本地新建空文件夹&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span&gt;$ git init
+&lt;&#x2F;span&gt;&lt;span&gt;$ zola init
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;得到目录结构&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;├── config.toml
+&lt;&#x2F;span&gt;&lt;span&gt;├── content
+&lt;&#x2F;span&gt;&lt;span&gt;├── sass
+&lt;&#x2F;span&gt;&lt;span&gt;├── static
+&lt;&#x2F;span&gt;&lt;span&gt;├── templates
+&lt;&#x2F;span&gt;&lt;span&gt;└── themes
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;config-toml&quot;&gt;config.toml:&lt;&#x2F;h4&gt;
+&lt;p&gt;TOML 格式的必需 Zola 配置文件。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;content&quot;&gt;content:&lt;&#x2F;h4&gt;
+&lt;p&gt;包含所有博客内容（主要是 .md 文件）。&lt;&#x2F;p&gt;
+&lt;p&gt;content目录示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;content&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;  |- _index.md
+&lt;&#x2F;span&gt;&lt;span&gt;  `- first&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;       |- index.md
+&lt;&#x2F;span&gt;&lt;span&gt;       `- image.png
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;md文件示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;+++
+&lt;&#x2F;span&gt;&lt;span&gt;title = &amp;quot;标题&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;date = 2022-1-8 20:08:21
+&lt;&#x2F;span&gt;&lt;span&gt;slug = &amp;quot;202201082008&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;[taxonomies]
+&lt;&#x2F;span&gt;&lt;span&gt;categories = [&amp;quot;分类&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;tags = [&amp;quot;标签&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;+++
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;描述
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;!-- more --&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;博客内容
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;sass&quot;&gt;sass：&lt;&#x2F;h4&gt;
+&lt;p&gt;包含要编译的 Sass 文件，非 Sass 文件将被忽略。复制编译文件时，将保留sass文件夹的目录结构;例如，sass&#x2F;something&#x2F;site.scss 上的文件将被编译为 public&#x2F;something&#x2F;site.css。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;static&quot;&gt;static：&lt;&#x2F;h4&gt;
+&lt;p&gt;包含任何类型的文件，主要是图片 &#x2F; js 等静态资源。静态目录中的所有文件&#x2F;目录将按原样复制到输出目录。如果静态文件很大，则可以通过在配置文件中设置 hard_link_static = true 来配置 Zola 硬链接。&lt;&#x2F;p&gt;
+&lt;p&gt;static下的文件在其他地方以根开头的 URL 访问，比如 static&#x2F;abc.ico 用 &#x2F;abc.ico&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;templates&quot;&gt;templates：&lt;&#x2F;h4&gt;
+&lt;p&gt;包含用于呈现网站的所有 Tera 模板。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;themes&quot;&gt;themes：&lt;&#x2F;h4&gt;
+&lt;p&gt;包含用于网站的主题。如果不打算使用主题，将此目录留空。&lt;&#x2F;p&gt;
+&lt;p&gt;附：zola theme列表&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;themes&quot;&gt;https:&#x2F;&#x2F;www.getzola.org&#x2F;themes&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mo-ban-shi-yong&quot;&gt;模板使用&lt;&#x2F;h3&gt;
+&lt;p&gt;cd 根目录&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git submodule add https:&#x2F;&#x2F;github.com&#x2F;getzola&#x2F;after-dark.git themes&#x2F;after-dark
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;github-actionspei-zhi&quot;&gt;Github Actions配置&lt;&#x2F;h3&gt;
+&lt;p&gt;在根目录下创建.github\workflows，新建文件pages.yml&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;# On every push this script is executed
+&lt;&#x2F;span&gt;&lt;span&gt;on: push
+&lt;&#x2F;span&gt;&lt;span&gt;name: Build and deploy GH Pages
+&lt;&#x2F;span&gt;&lt;span&gt;jobs:
+&lt;&#x2F;span&gt;&lt;span&gt;  build:
+&lt;&#x2F;span&gt;&lt;span&gt;    runs-on: ubuntu-latest
+&lt;&#x2F;span&gt;&lt;span&gt;    if: github.ref == &amp;#39;refs&#x2F;heads&#x2F;main&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    steps:
+&lt;&#x2F;span&gt;&lt;span&gt;      - name: checkout
+&lt;&#x2F;span&gt;&lt;span&gt;        uses: actions&#x2F;checkout@v2
+&lt;&#x2F;span&gt;&lt;span&gt;      - name: build_and_deploy
+&lt;&#x2F;span&gt;&lt;span&gt;        uses: shalzz&#x2F;zola-deploy-action@v0.14.1
+&lt;&#x2F;span&gt;&lt;span&gt;        env:
+&lt;&#x2F;span&gt;&lt;span&gt;          # Target branch
+&lt;&#x2F;span&gt;&lt;span&gt;          PAGES_BRANCH: gh-pages
+&lt;&#x2F;span&gt;&lt;span&gt;          # Provide personal access token
+&lt;&#x2F;span&gt;&lt;span&gt;          TOKEN: ${{ secrets.TOKEN }}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;build-serve&quot;&gt;build&amp;amp;serve&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ zola build
+&lt;&#x2F;span&gt;&lt;span&gt;$ zola serve
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;浏览器打开http:&#x2F;&#x2F;127.0.0.1:1111即可看到初始页面&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;github-pagespei-zhi&quot;&gt;GitHub Pages配置&lt;&#x2F;h2&gt;
+&lt;p&gt;推送github后会自动进行pages-build-deployment&lt;&#x2F;p&gt;
+&lt;p&gt;生成gh-pages分支&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;zhu-yi-yao-zai-settings-pageszhong-she-zhi-sourcefen-zhi-wei-gh-pagesfen-zhi&quot;&gt;注意要在Settings-Pages中设置Source分支为gh-pages分支&lt;&#x2F;h5&gt;
+&lt;h1 id=&quot;bugji-lu&quot;&gt;Bug记录&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;tu-pian-xian-shi&quot;&gt;图片显示&lt;&#x2F;h2&gt;
+&lt;p&gt;图片在本地zola serve能显示，到GitHub显示不了，&lt;&#x2F;p&gt;
+&lt;p&gt;但是设置例如&lt;code&gt;&amp;lt;img src=&amp;quot;.\img\0.png&amp;quot; style=&amp;quot;zoom:80%;&amp;quot;&#x2F;&amp;gt;&lt;&#x2F;code&gt; 的图片尺寸后又可以正常显示了&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>git submodule 踩坑记录</title>
+		<published>2022-01-08T12:41:34+00:00</published>
+		<updated>2022-01-08T12:41:34+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201081241/" type="text/html"/>
+		<id>https://ffangli.github.io/202201081241/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;以https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git为例&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tian-jia-zi-mo-kuai&quot;&gt;添加子模块&lt;&#x2F;h3&gt;
+&lt;p&gt;添加一个远程仓库项目子模块到一个已有的主仓库项目中。&lt;&#x2F;p&gt;
+&lt;p&gt;添加模块&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git submodule add https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git GWToolkit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;写错地址的补救方式&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git rm --cached 仓库名
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;拉取出现空仓库&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git submodule update --init --recursive
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;添加后，根目录下会出现 &lt;code&gt;.gitmodules&lt;&#x2F;code&gt; 文件，如果之前暴力删除了submodule，这里的 &lt;code&gt;.gitmodules&lt;&#x2F;code&gt; 文件也要删除。反过来，如果暴力删除了 &lt;code&gt;.gitmodules&lt;&#x2F;code&gt; 文件，删除或重新拉取submodule之前要先&lt;code&gt;git restore .gitmodules&lt;&#x2F;code&gt; 。&lt;&#x2F;p&gt;
+&lt;p&gt;后文有完整的删除流程。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;cha-kan-zi-mo-kuai&quot;&gt;查看子模块&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git submodule
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;geng-xin-zi-mo-kuai&quot;&gt;更新子模块&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git submodule update
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;shan-chu-zi-mo-kuai&quot;&gt;删除子模块&lt;&#x2F;h3&gt;
+&lt;p&gt;step1. 删除子模块仓库本身&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git rm --cached 仓库名
+&lt;&#x2F;span&gt;&lt;span&gt;$ rm -rf 仓库名
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;step2. 删除 &lt;code&gt;.gitmodules&lt;&#x2F;code&gt; 文件中相关子模块的信息&lt;&#x2F;p&gt;
+&lt;p&gt;形如：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;[submodule &amp;quot;GWToolkit&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;        path = GWToolkit
+&lt;&#x2F;span&gt;&lt;span&gt;        url = https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;step3. 删除 &lt;code&gt;.git&#x2F;config&lt;&#x2F;code&gt; 中相关子模块信息&lt;&#x2F;p&gt;
+&lt;p&gt;形如：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;[submodule &amp;quot;GWToolkit&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;        url = https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git
+&lt;&#x2F;span&gt;&lt;span&gt;        active = true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;step4. 删除 &lt;code&gt;.git&lt;&#x2F;code&gt; 文件夹中的相关子模块文件&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ rm -rf .git&#x2F;modules&#x2F;GWToolkit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>git报错处理合集</title>
+		<published>2022-01-07T17:45:12+00:00</published>
+		<updated>2022-01-07T17:45:12+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201071745/" type="text/html"/>
+		<id>https://ffangli.github.io/202201071745/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;大部分都是网络问题报错&lt;&#x2F;p&gt;
+&lt;p&gt;又是饱受gfw折磨的一天 テ_デ&lt;&#x2F;p&gt;
+&lt;p&gt;记录一下（曾经可能）有效的方法&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;wang-luo-wen-ti-bao-cuo&quot;&gt;网络问题报错&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;jie-jue-githublian-bu-shang&quot;&gt;解决github连不上&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;xiu-gai-hosts&quot;&gt;修改hosts&lt;&#x2F;h4&gt;
+&lt;p&gt;在 C:\Windows\System32\drivers\etc 文件夹下找到hosts文件&lt;&#x2F;p&gt;
+&lt;p&gt;Run  as Administrator打开&lt;&#x2F;p&gt;
+&lt;p&gt;添加：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;140.82.113.3  www.github.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;查询IP地址使用：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ipaddress.com&quot;&gt;https:&#x2F;&#x2F;ipaddress.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;shi-yong-jing-xiang&quot;&gt;使用镜像&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com.cnpmjs.org&quot;&gt;https:&#x2F;&#x2F;github.com.cnpmjs.org&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;qu-giteepeng-yun-qi&quot;&gt;去Gitee碰运气&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;gitee.com&quot;&gt;https:&#x2F;&#x2F;gitee.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;ke-xue-shang-wang&quot;&gt;科学上网&lt;&#x2F;h4&gt;
+&lt;p&gt;能解决浏览器访问的问题&lt;&#x2F;p&gt;
+&lt;p&gt;但命令行还是会间歇性失效orz&lt;&#x2F;p&gt;
+&lt;p&gt;命令行设置代理&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt; http_proxy=http:&#x2F;&#x2F;127.0.0.1:1081
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt; https_proxy=http:&#x2F;&#x2F;127.0.0.1:1081
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;bashdai-li&quot;&gt;bash代理&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ALL_PROXY&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;127.0.0.1:1081
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ALL_PROXY&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;socks5:&#x2F;&#x2F;127.0.0.1:1081
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;failed-to-connect-to-github-com-port-443-connection-timed-out&quot;&gt;Failed to connect to github.com port 443:connection timed out&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;bi-jiao-ke-neng-you-yong-de-jie-jue-fang-fa&quot;&gt;比较可能有用的解决方法&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;zhong-xin-she-zhi-dai-li&quot;&gt;重新设置代理&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global&lt;&#x2F;span&gt;&lt;span&gt; http.proxy http:&#x2F;&#x2F;127.0.0.1:1080
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global&lt;&#x2F;span&gt;&lt;span&gt; https.proxy http:&#x2F;&#x2F;127.0.0.1:1080
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;qu-xiao-quan-ju-dai-li&quot;&gt;取消全局代理&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global --unset&lt;&#x2F;span&gt;&lt;span&gt; http.proxy
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global --unset&lt;&#x2F;span&gt;&lt;span&gt; https.proxy
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;体感上这个有用的概率更高一点&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;qi-ta-ceng-jing-you-xiao-de-jie-jue-fang-fa&quot;&gt;其他曾经有效的解决方法&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;bao-gua-dan-bu-xian-yu&quot;&gt;包括但不限于：&lt;&#x2F;h5&gt;
+&lt;p&gt;把梯子关了&lt;&#x2F;p&gt;
+&lt;p&gt;重开一个git bash&lt;&#x2F;p&gt;
+&lt;p&gt;关机重启&lt;&#x2F;p&gt;
+&lt;p&gt;换个时间再试一次&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;openssl-ssl-read-connection-was-reset-errno-10054&quot;&gt;OpenSSL SSL_read: Connection was reset, errno 10054&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;openssl-ssl-read-connection-was-reset-errno-10054-fatal-expected-flush-after-ref-listing&quot;&gt;OpenSSL SSL_read: Connection was reset, errno 10054 fatal: expected flush after ref listing&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global&lt;&#x2F;span&gt;&lt;span&gt; http.sslVerify &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;git-cloneshi-bai&quot;&gt;git clone失败&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;fatal-early-eof-fatal-index-pack-failed&quot;&gt;fatal: early EOF fatal: index-pack failed&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;关闭压缩：&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global&lt;&#x2F;span&gt;&lt;span&gt; core.compression 0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;截断一部分测试能否成功拉取：&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --depth&lt;&#x2F;span&gt;&lt;span&gt; 1 &amp;lt;repo_URI&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;若成功，则继续拉取剩下的部分&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; fetch&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --unshallow
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; fetch&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --depth&lt;&#x2F;span&gt;&lt;span&gt;=2147483647
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;git pull&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; pull&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --all
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;huan-xing-fu&quot;&gt;换行符&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;warning-lf-will-be-replaced-by-crlf&quot;&gt;warning: LF will be replaced by CRLF&lt;&#x2F;h2&gt;
+&lt;p&gt;简单粗暴&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; config&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --global&lt;&#x2F;span&gt;&lt;span&gt; core.autocrlf false
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;下三大主流操作系统的换行符：&lt;&#x2F;p&gt;
+&lt;p&gt;Uinx&#x2F;Linux 采用换行符LF 表示下一行（LF：LineFeed，换行）；&lt;&#x2F;p&gt;
+&lt;p&gt;Dos 和Windows 采用CRLF （回车+换行）表示下一行（CRLF：CarriageReturn LineFeed，回车换行）；&lt;&#x2F;p&gt;
+&lt;p&gt;Mac OS采用回车CR表示下一行（CR：CarriageReturn，回车）。&lt;&#x2F;p&gt;
+&lt;p&gt;通过 &lt;code&gt;git config [--global] core.autocrlf true | false | input&lt;&#x2F;code&gt; 命令来设置Git 对待换行符的方式&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;true&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;​		Git会可以在你add（提交）代码时自动地把换行结束符CRLF转换成 LF，而在checkout （签出）代码时把LF转换成CRLF。如果是在Windows系统上，把它设置成true，这样git代码时，LF会被转换成CRLF&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;false&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;​		换行符不做任何改变，文本文件保持其原来的样子。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;input&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;​		add 时Git会把CRLF转换为LF，而check时仍旧为LF，所以Windows 操作系统不建议设置此值。&lt;&#x2F;p&gt;
+&lt;p&gt;可以通过 &lt;code&gt;git config core.autocrlf&lt;&#x2F;code&gt; 命令来显示当前Git 中对待换行符的方式&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;ge-ren-fang-wen-ling-pai&quot;&gt;个人访问令牌&lt;&#x2F;h1&gt;
+&lt;p&gt;github21年8月13后不再支持用户名密码的方式验证&lt;&#x2F;p&gt;
+&lt;p&gt;不小心用了&lt;code&gt;git config --global --unset credential.helper&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;现在每个本地仓库都要重新验证一次orz&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;git remote set-url origin https:&#x2F;&#x2F;[githubtoken]@github.com&#x2F;[username]&#x2F;[repositoryname].git
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>git总结</title>
+		<published>2021-10-07T17:45:12+00:00</published>
+		<updated>2021-10-07T17:45:12+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202110071745/" type="text/html"/>
+		<id>https://ffangli.github.io/202110071745/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;gitignore&quot;&gt;.gitignore&lt;&#x2F;h4&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;# Java
+&lt;&#x2F;span&gt;&lt;span&gt;*.class
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;# Eclipse
+&lt;&#x2F;span&gt;&lt;span&gt;.classpath
+&lt;&#x2F;span&gt;&lt;span&gt;.project
+&lt;&#x2F;span&gt;&lt;span&gt;.settings&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;# Intellij
+&lt;&#x2F;span&gt;&lt;span&gt;.idea&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;*.iml
+&lt;&#x2F;span&gt;&lt;span&gt;*.iws
+&lt;&#x2F;span&gt;&lt;span&gt;out&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;# Mac
+&lt;&#x2F;span&gt;&lt;span&gt;.DS_Store
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;# Maven
+&lt;&#x2F;span&gt;&lt;span&gt;log&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;target&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;# svn
+&lt;&#x2F;span&gt;&lt;span&gt;.svn&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;scandir&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;rebel.xml
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;#lilei environment
+&lt;&#x2F;span&gt;&lt;span&gt;dep2.sh
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;#log
+&lt;&#x2F;span&gt;&lt;span&gt;*.log
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;git-rebase&quot;&gt;git rebase&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;he-bing-ben-di-commit&quot;&gt;合并本地commit&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ git rebase -i [startpoint] [endpoint]
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; -i 的含义是：--interactive, 即弹出交互式的界面让用户编辑完成合并操作
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; [startpoint] 指的是合并区间的起点。
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; [endpoint] 指的是合并区间的终点，默认是当前分支 HEAD 所指向的 commit。
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; 这里的区间是一个前开后闭的区间。
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol&gt;
+&lt;li&gt;编辑 commit 内容。将 &amp;quot;pick&amp;quot; 改成 &amp;quot;squash&amp;quot; 或者 &amp;quot;s&amp;quot;，意思是将该 commit和 前面的 commit合并。修改合并之后的 commit 注释。编辑完成后，保存并退出（wq!）。&lt;&#x2F;li&gt;
+&lt;li&gt;完成上一步后进入了一个临时的分支（从 development 分支切出来的临时分支）。基于这个临时分支，创建一个新的分支 &lt;code&gt;git checkout -b feature&#x2F;temp&lt;&#x2F;code&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;再切回 development 分支，执行：git rebase feature&#x2F;temp合并分支。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;git-commit-amend&quot;&gt;git commit --amend&lt;&#x2F;h2&gt;
+&lt;p&gt;commit message信息修改&lt;&#x2F;p&gt;
+&lt;p&gt;执行&lt;code&gt;git commit --amend&lt;&#x2F;code&gt;出现编辑界面（vim），编辑方法同Linux下的vim，编辑后保存并退出&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

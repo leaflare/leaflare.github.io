@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Npm</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/npm/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-12-15T12:55:12+00:00</updated>
+	<id>https://ffangli.github.io/tags/npm/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>npm报错处理合集</title>
+		<published>2021-12-15T12:55:12+00:00</published>
+		<updated>2021-12-15T12:55:12+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202112151255/" type="text/html"/>
+		<id>https://ffangli.github.io/202112151255/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;npm-warn-deprecated-core-js-2-6-11-core-js-3-is-no-longer-maintained-and-not-recommended-for-usage&quot;&gt;npm WARN deprecated core-js@2.6.11: core-js@&amp;lt;3 is no longer maintained and not recommended for usage&lt;&#x2F;h2&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;powershell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-powershell &quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span&gt;npm install --save  -g core-js@^&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;a-complete-log-of-this-run-can-be-fund-in-c-users-yong-hu-appdata-roaming-npm-cache-logs&quot;&gt;A complete log of this run can be fund in: C\Users\用户\AppData\Roaming\npm-cache_logs&lt;&#x2F;h2&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;p&gt;删除node_modules文件夹&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;npm cache clean --force
+&lt;&#x2F;span&gt;&lt;span&gt;npm install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

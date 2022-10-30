@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - WSL</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/categories/wsl/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-26T22:05:54+00:00</updated>
+	<id>https://ffangli.github.io/categories/wsl/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>WSL使用记录</title>
+		<published>2022-01-26T22:05:54+00:00</published>
+		<updated>2022-01-26T22:05:54+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201262205/" type="text/html"/>
+		<id>https://ffangli.github.io/202201262205/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wslan-zhuang&quot;&gt;WSL安装&lt;&#x2F;h2&gt;
+&lt;p&gt;微软商店下载需要的Linux发行版&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dockerpei-zhi-wsl-integration&quot;&gt;Docker配置WSL Integration&lt;&#x2F;h2&gt;
+&lt;p&gt;启动Docker Desktop&lt;&#x2F;p&gt;
+&lt;p&gt;docker settings——&amp;gt;General——&amp;gt;勾选&lt;code&gt;Use the WSL 2 based engine&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;docker settings——&amp;gt;Resources——&amp;gt;WSL Integration——&amp;gt;选择要启用的WSL 2 版本&lt;&#x2F;p&gt;
+&lt;p&gt;如果已经安装配置过WSL却出现&lt;code&gt;You don’t have any WSL 2 distro. Please convert a WSL 1 distro to WSL 2&lt;&#x2F;code&gt;，解决方法如下：&lt;&#x2F;p&gt;
+&lt;p&gt;使用命令检查WSL模式：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl.exe -l -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;将已存在的Linux发行版转到v2：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl.exe --set-version ubuntu 2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;(Ubuntu是要启用的发行版本)&lt;&#x2F;p&gt;
+&lt;p&gt;将 WSL 2 设置为默认版本：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --set-default-version 2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;fu-chang-yong-docker-ming-ling&quot;&gt;附常用Docker 命令：&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;通过输入以下命令列出 Docker CLI 中可用的命令：&lt;code&gt;docker&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;使用以下命令列出特定命令的信息：&lt;code&gt;docker &amp;lt;COMMAND&amp;gt; --help&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：&lt;code&gt;docker image ls --all&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;使用以下命令列出计算机上的容器：&lt;code&gt;docker container ls --all&lt;&#x2F;code&gt; 或 &lt;code&gt;docker ps -a&lt;&#x2F;code&gt;（如果没有 -a 显示全部标志，则仅显示正在运行的容器）&lt;&#x2F;li&gt;
+&lt;li&gt;使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU &amp;amp; 内存）：&lt;code&gt;docker info&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;wslshe-zhi&quot;&gt;WSL设置&lt;&#x2F;h2&gt;
+&lt;p&gt;在宿主机上找到WSL：&lt;&#x2F;p&gt;
+&lt;p&gt;WIN+R 或者文件资源管理器 输入&lt;code&gt;\\wsl$&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;\\wsl$\Ubuntu\etc\apt&lt;&#x2F;code&gt;sources.list换国内镜像&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;~&lt;&#x2F;code&gt;目录下的文件对应&lt;code&gt;\\wsl$\Ubuntu\home\unix&lt;&#x2F;code&gt;目录&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;vs-code&quot;&gt;VS Code&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;jin-ru-wslgong-zuo-huan-jing&quot;&gt;进入WSL工作环境&lt;&#x2F;h3&gt;
+&lt;p&gt;VS Code安装Remote - WSL插件&lt;&#x2F;p&gt;
+&lt;p&gt;按&lt;strong&gt;F1&lt;&#x2F;strong&gt;或**【Ctrl】+【Shift】+【P】**，打开命令面板，输入关键词&amp;quot;WSL&amp;quot;，选择需要的Linux发行版&lt;&#x2F;p&gt;
+&lt;p&gt;或者&lt;&#x2F;p&gt;
+&lt;p&gt;点击VS Code左下角的打开远程窗口图标——&amp;gt;New WSL Window using Distro...&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;da-kai-xiang-mu&quot;&gt;打开项目&lt;&#x2F;h3&gt;
+&lt;p&gt;打开 wsl 终端，进入到要打开的项目中，在项目中执行命令&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;code .
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或者&lt;&#x2F;p&gt;
+&lt;p&gt;在VS Code中进入WSL工作环境后，&lt;&#x2F;p&gt;
+&lt;p&gt;打开命令面板，输入关键词&amp;quot;Remote-Containers&amp;quot;，选择在容器中打开文件夹&lt;&#x2F;p&gt;
+&lt;p&gt;—&amp;gt;选择要容器化的项目文件夹&lt;&#x2F;p&gt;
+&lt;p&gt;—&amp;gt;选择container configuration definition&lt;&#x2F;p&gt;
+&lt;p&gt;此后系统将打开新的 VS Code 实例，并生成新映像，生成完成后会启动容器。 会出现新的 &lt;code&gt;.devcontainer&lt;&#x2F;code&gt; 文件夹，其中 &lt;code&gt;Dockerfile&lt;&#x2F;code&gt; 和 &lt;code&gt;devcontainer.json&lt;&#x2F;code&gt; 文件中包含容器配置信息。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;zai-rong-qi-nei-yun-xing-he-diao-shi&quot;&gt;在容器内运行和调试&lt;&#x2F;h3&gt;
+&lt;p&gt;打开“运行”菜单（Ctrl+Shift+D 或选择最左侧菜单栏上的选项卡）。 &lt;&#x2F;p&gt;
+&lt;p&gt;然后选择“运行和调试”以选择调试配置，并选择最适合项目的配置&lt;&#x2F;p&gt;
+&lt;p&gt;选择“运行”——&amp;gt;“启动调试”（或只按 F5 键）。 会在 VS Code 中打开终端，出现：“正在 http:&#x2F;&#x2F;127.0.0.1:8000&#x2F; 启动开发服务器。使用 CONTROL-C 退出服务器。”&lt;&#x2F;p&gt;
+&lt;p&gt;按住 Control 键并选择显示的地址，可以在默认 Web 浏览器中打开，并查看在其容器中运行的项目。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ming-ling-xing-dai-li&quot;&gt;命令行代理&lt;&#x2F;h2&gt;
+&lt;p&gt;使用&lt;code&gt;ipconfig&lt;&#x2F;code&gt;查询宿主机的ip&lt;&#x2F;p&gt;
+&lt;p&gt;在WSL命令行配置，例如export ALL_PROXY=http:192.168.1.105:1081&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;export ALL_PROXY=http:&#x2F;&#x2F;宿主机ip:1081
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>

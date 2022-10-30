@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Quantative Trading相关环境配置</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201091721/#anacondazhong-zhuang" class="toc-link">Anaconda重装</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201091721/#tusharean-zhuang" class="toc-link">tushare安装</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201091721/#ta-liban-zhuang" class="toc-link">Ta-Lib安装</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201091721/#pyqtan-zhuang" class="toc-link">PyQt安装</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201091721/#pyqtzai-pycharmxia-de-huan-jing-pei-zhi" class="toc-link">PyQt在PyCharm下的环境配置</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201091721&#x2F;">Quantative Trading相关环境配置</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-09</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="anacondazhong-zhuang">Anaconda重装</h2>
+<p>如果conda已经没救了，尝试</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ conda clean --packages &amp;&amp; conda clean --all &amp;&amp; conda update --all
+</span></code></pre>
+<p>若conda还能正常执行安装命令，则跳过此步执行以下步骤</p>
+<p>在 Anaconda Prompt，执行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ conda install anaconda-clean
+</span></code></pre>
+<p>安装完成后，执行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ anaconda-clean
+</span></code></pre>
+<p>不想一个一个敲y可以</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ anaconda-clean --yes
+</span></code></pre>
+<p>然后再执行常规卸载重装流程</p>
+<p>需要注意anaconda版本和python版本的对应问题</p>
+<p>&lt;<a href="https://docs.anaconda.com/anaconda/packages/oldpkglists/">Old package lists — Anaconda documentation</a>&gt;</p>
+<h2 id="tusharean-zhuang">tushare安装</h2>
+<p>conda执行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ conda install -c waditu tushare
+</span></code></pre>
+<p>来源：&lt;<a href="https://anaconda.org/waditu/tushare">Tushare :: Anaconda.org</a>&gt;</p>
+<p>也可以用pip，但是多python版本环境用pip安装后使用anaconda环境时出现找不到包的情况，走conda可以省很多事，后面同理</p>
+<p>如果有找不到的包可以去<a href="https://anaconda.org/">https://anaconda.org/</a>看看</p>
+<h2 id="ta-liban-zhuang">Ta-Lib安装</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ conda install -c conda-forge ta-lib
+</span></code></pre>
+<p>Ta-Lib0.4.23部分API调用会报错，换0.4.17可以解决</p>
+<p>但是ta-lib指定版本更新会报一堆错</p>
+<p>简单粗暴的解决办法:</p>
+<p>用<a href="https://github.com/vnpy/vnpy">vnpy/vnpy: 基于Python的开源量化交易平台开发框架 (github.com)</a></p>
+<p>自带ta-lib0.4.17</p>
+<h2 id="pyqtan-zhuang">PyQt安装</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ conda install -c anaconda pyqt
+</span></code></pre>
+<h3 id="pyqtzai-pycharmxia-de-huan-jing-pei-zhi">PyQt在PyCharm下的环境配置</h3>
+<p>以下配置默认anaconda环境</p>
+<p>在Pycharm中，依次打开 File - Settings - Tools - External Tools，点击 ' + ' </p>
+<h4 id="qt-designer">Qt Designer</h4>
+<p>配置如下</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span>Name: QtDisigner
+</span><span>Program : C:\Users\用户名\Anaconda3\Lib\site-packages\qt5_applications\Qt\bin\designer.</span><span style="color:#bf616a;">exe
+</span><span>Working directory: $FileDir$
+</span></code></pre>
+<p>注意新版本的PyQt designer.exe的位置和以前不同</p>
+<h4 id="pyuic">PyUIC</h4>
+<p>配置如下</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Name: PyUIC
+</span><span>Program : C:\Users\用户名\Anaconda3\python.exe
+</span><span>Arguments: -m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py
+</span><span>Working directory: $FileDir$
+</span></code></pre>
+<h4 id="pyrcc">PyRCC</h4>
+<p>配置如下</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Name: PyRCC
+</span><span>Program : C:\Users\用户名\Anaconda3\Scripts\pyrcc5.exe
+</span><span>Arguments: $FileName$ -o $FileNameWithoutExtension$_rc.py
+</span><span>Working directory: $FileDir$
+</span></code></pre>
+<p>配置全部完成后，可以在PyCharm主界面，依次点击 Tools - External Tools 启动QtDisigner、PyUIC和PyRCC</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/quant/">#Quant</a>
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

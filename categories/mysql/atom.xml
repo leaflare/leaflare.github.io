@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - MySQL</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/categories/mysql/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-04T20:37:19+00:00</updated>
+	<id>https://ffangli.github.io/categories/mysql/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>MySQL使用经验总结</title>
+		<published>2022-01-04T20:37:19+00:00</published>
+		<updated>2022-01-04T20:37:19+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201042037/" type="text/html"/>
+		<id>https://ffangli.github.io/202201042037/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;yu-ju-xiang-guan&quot;&gt;语句相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysqlfang-zhi-zhong-fu-cha-ru-xiang-tong-ji-lu&quot;&gt;MySQL防止重复插入相同记录&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;shi-yong-mysql-suo-yin&quot;&gt;使用MySQL 索引&lt;&#x2F;h4&gt;
+&lt;p&gt;创建索引&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sql&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sql &quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;CREATE UNIQUE INDEX &lt;&#x2F;span&gt;&lt;span&gt;index_name ON &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;tablename&lt;&#x2F;span&gt;&lt;span&gt;( index_column_1, index_column_2 );
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在一个已存在表中添加一个唯一索引&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sql&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sql &quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ALTER TABLE &lt;&#x2F;span&gt;&lt;span&gt;table_name ADD INDEX index_name( index_column_1, index_column_2 ) ;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;此时插入重复插入已有索引的记录会出现报错&lt;code&gt;IntegrityError: (1062, &amp;quot;Duplicate entry &#x27;xx&#x27; for key &#x27;xxxxx&#x27;&amp;quot;)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;解决方法：把&lt;code&gt;INSERT INTO&lt;&#x2F;code&gt; 改为 `INSERT IGNORE INTO&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bao-cuo-chu-li&quot;&gt;报错处理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;error-1064-42000-you-have-an-error-in-your-sql-syntax&quot;&gt;ERROR 1064 (42000): You have an error in your SQL syntax&lt;&#x2F;h3&gt;
+&lt;p&gt;在MySQL中，为了区分MySQL的关键字与普通字符，MySQL引入了一个反引号。&lt;&#x2F;p&gt;
+&lt;p&gt;（就是键盘左上角数字1左边的那个&lt;&#x2F;p&gt;
+&lt;p&gt;使用了MySQL保留字或关键字却没有用反引号就会报这个错误。&lt;&#x2F;p&gt;
+&lt;p&gt;如果列名使用了MySQL保留字或关键字就要用反引号代替引号，注释不能用反引号，因为注释只是普通字符串，不是MySQL的关键字，只有关键字或保留字才能使用反引号。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pymysql&quot;&gt;PyMySQL&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;bao-cuo-chu-li-1&quot;&gt;报错处理&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;jie-kou-xing-shi-bao-cuo&quot;&gt;接口形式报错&lt;&#x2F;h4&gt;
+&lt;p&gt;事故现场：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymysql_error.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymsql_solve.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ubuntuhuan-jing-de-mysql&quot;&gt;ubuntu环境的MySQL&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;xiu-gai-mi-ma&quot;&gt;修改密码&lt;&#x2F;h3&gt;
+&lt;p&gt;查看mysql数据库自动设置的随机账户与密码&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo cat &#x2F;etc&#x2F;mysql&#x2F;debian.cnf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用这组账号密码登录&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -u debian-sys-maint -p
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;切换到mysql数据库&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;use mysql;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这里有个巨坑&lt;&#x2F;p&gt;
+&lt;p&gt;mysql 5.7.9以后废弃了password字段和password()函数；authentication_string:字段表示用户密码，而authentication_string字段下只能是mysql加密后的41位字符串密码。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;正确的解决方法：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;将字段置为空&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;update user set authentication_string=&amp;#39;&amp;#39; where user=&amp;#39;root&amp;#39;;      
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;alter user &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; identified with mysql_native_password by &amp;#39;root&amp;#39;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;最后的&#x27;root&#x27;是新密码&lt;&#x2F;p&gt;
+&lt;p&gt;修改后&lt;code&gt;quit&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;重新登录&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;service mysql restart
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -u root -p
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;gai-nian-he-yuan-li&quot;&gt;概念和原理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysqlsuo-yin&quot;&gt;MySQL索引&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yrxing&#x2F;p&#x2F;14557150.html&quot;&gt;索引&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

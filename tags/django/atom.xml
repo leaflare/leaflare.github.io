@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Django</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/django/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-11-25T12:55:12+00:00</updated>
+	<id>https://ffangli.github.io/tags/django/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Django经验总结</title>
+		<published>2021-11-25T12:55:12+00:00</published>
+		<updated>2021-11-25T12:55:12+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202111251255/" type="text/html"/>
+		<id>https://ffangli.github.io/202111251255/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;djangoshi-yong-db-sqlite3&quot;&gt;Django使用db.sqlite3&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;chuang-jian-yi-ge-xiang-mu-bing-qi-dong&quot;&gt;创建一个项目并启动&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;django-admin startproject xiangmuming
+&lt;&#x2F;span&gt;&lt;span&gt;cd xiangmuming
+&lt;&#x2F;span&gt;&lt;span&gt;python manage.py runserver
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;chu-shi-hua-adminzhang-hao-he-mi-ma&quot;&gt;初始化admin账号和密码&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Django提供admin后台，便于统一管理用户、权限和权限组，超级用户初始化方法&lt;&#x2F;li&gt;
+&lt;li&gt;创建管理员账户：&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;python manage.py createsuperuser
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;​		根据提示设置用户名、邮箱和密码，然后就可以用这个账号登录到后台&lt;&#x2F;p&gt;
+&lt;p&gt;​		或者：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;python manage.py createsuperuser --username=root --email=root@root.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;pei-zhi-shu-ju-biao&quot;&gt;配置数据表&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;python manage.py migrate  #迁移django自带的表，有变更的表结构同步到数据库  后面不跟app默认更新所有的app变更
+&lt;&#x2F;span&gt;&lt;span&gt;python manage.py makemigrations  #将有变更的表结构生成迁移
+&lt;&#x2F;span&gt;&lt;span&gt;python  manage.py sqlmigrate+表名+序列号  #查询变更迁移的sql语句
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;&quot;&gt;&lt;&#x2F;h3&gt;
+</content>
+	</entry>
+</feed>

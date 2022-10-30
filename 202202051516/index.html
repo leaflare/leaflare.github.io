@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Graphviz使用记录</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202051516/#an-zhuang-pei-zhi" class="toc-link">安装配置</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202202051516/#python-diao-yong-graphviz-gong-ju" class="toc-link">Python 调用 Graphviz 工具</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202202051516/#ce-shi-dai-ma" class="toc-link">测试代码</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202051516/#hui-zhi-pythonlei-tu" class="toc-link">绘制Python类图</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202202051516/#li-zi" class="toc-link">例子</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202051516&#x2F;">Graphviz使用记录</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-02-05</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<p>Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。</p>
+<h2 id="an-zhuang-pei-zhi">安装配置</h2>
+<p>官网<a href="http://www.graphviz.org/">Graphviz</a></p>
+<p>下载<a href="https://graphviz.org/download/">Download | Graphviz</a></p>
+<p>Graphviz是一个用 dot 语言编写的绘图脚本，在Windows中直接用pip安装会出现下面的报错</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>graphviz.backend.execute.ExecutableNotFound: failed to execute &#39;dot&#39;, make sure the Graphviz executables are on your systems&#39; PATH
+</span></code></pre>
+<p>需要将graphviz中的bin路径添加到环境变量path中</p>
+<p>控制台输入命令：<code>dot -version</code>检验是否配置成功</p>
+<p>在Python中使用，需要</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pip install graphviz
+</span></code></pre>
+<h3 id="python-diao-yong-graphviz-gong-ju">Python 调用 Graphviz 工具</h3>
+<p>控制台输入</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>echo process1 = subprocess.Popen(command1,stdout=subprocess.PIPE,shell=True)
+</span></code></pre>
+<p>Python 安装路径下，找到文件 <strong>subprocess.py</strong></p>
+<p>如果是Anaconda，文件所在的地址是C:\Users\xxx\Anaconda3\Lib</p>
+<p>找到 <strong>Popen(object)</strong> 类</p>
+<p><img src="https://ffangli.github.io/202202051516/.%5Cimg%5Cpopen.png" alt="" /></p>
+<p>找到这个类的 <strong>init()<strong>方法，把 640行的</strong>shell=False</strong> 修改为 <strong>shell=True</strong>。</p>
+<p><img src="https://ffangli.github.io/202202051516/.%5Cimg%5Cinit.png" alt="" /></p>
+<p>记得重启IDE！</p>
+<h3 id="ce-shi-dai-ma">测试代码</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>graphviz </span><span style="color:#b48ead;">import </span><span>Digraph
+</span><span style="color:#65737e;"># 需要一个对象来作为生成 DOT 脚本的载体，通过这个语句实例化一个图形对象。
+</span><span>dot = </span><span style="color:#bf616a;">Digraph</span><span>(&#39;</span><span style="color:#a3be8c;">test</span><span>&#39;)
+</span><span style="color:#65737e;"># node() 方法可以在对象中生成一个结点
+</span><span>dot.</span><span style="color:#bf616a;">node</span><span>(&quot;</span><span style="color:#a3be8c;">1</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">start</span><span>&quot;)
+</span><span>dot.</span><span style="color:#bf616a;">node</span><span>(&quot;</span><span style="color:#a3be8c;">2</span><span>&quot;,&quot;</span><span style="color:#a3be8c;">end</span><span>&quot;)
+</span><span style="color:#65737e;"># edge() 方法可以添加一条边
+</span><span>dot.</span><span style="color:#bf616a;">edge</span><span>(&#39;</span><span style="color:#a3be8c;">1</span><span>&#39;,&#39;</span><span style="color:#a3be8c;">2</span><span>&#39;)
+</span><span style="color:#65737e;"># 对象.view(filename=&quot;文件名&quot;, directory=&quot;输出路径&quot;)
+</span><span>dot.</span><span style="color:#bf616a;">view</span><span>()
+</span><span style="color:#96b5b4;">print</span><span>(dot)
+</span></code></pre>
+<p>运行生成test.gv.pdf文件，效果如下图：</p>
+<img src=".\img\res.png" style="zoom:100%;" />
+<p>print(dot)在控制台打印出</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>digraph test {
+</span><span>	1 [label=&quot;start&quot;]
+</span><span>	2 [label=&quot;end&quot;]
+</span><span>	1 -&gt; 2
+</span><span>}
+</span></code></pre>
+<p>上面的代码可以直接放到 Graphviz 工具(GVEdit)里运行</p>
+<p>详细参数介绍<a href="https://www.cnblogs.com/Zzbj/p/11431015.html">Graphviz参数</a></p>
+<h2 id="hui-zhi-pythonlei-tu">绘制Python类图</h2>
+<p>安装Pyreverse（在pylint模块）</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pip install pylint
+</span></code></pre>
+<p>命令行检查</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pyreverse -h
+</span></code></pre>
+<h3 id="li-zi">例子</h3>
+<p><code>__init__</code>.py文件，（默认设置只能画这个文件名，暂时还没试出来不改文件名画图的方法</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">A</span><span style="color:#eff1f5;">():
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#b48ead;">pass
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">B</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">A</span><span style="color:#eff1f5;">):
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.m_b = &quot;</span><span style="color:#a3be8c;">Hello B</span><span>&quot;
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">C</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">B</span><span style="color:#eff1f5;">):
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.m_c = </span><span style="color:#d08770;">123
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">D</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">B</span><span style="color:#eff1f5;">):
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.m_d = [</span><span style="color:#d08770;">12</span><span>, </span><span style="color:#d08770;">123</span><span>]
+</span></code></pre>
+<p>目录结构：/code/example/_<em>init</em>_.py</p>
+<p>在code目录命令行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pyreverse example/
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>dot -Tpdf classes.dot -o classes.pdf
+</span></code></pre>
+<p>产生文件classes.dot和classes.pdf</p>
+<img src=".\img\0.png" style="zoom:80%;" />
+<img src=".\img\1.png" style="zoom:60%;" />
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/visuization/">#Visuization</a>
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                        <a href="https://ffangli.github.io/tags/graphviz/">#Graphviz</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

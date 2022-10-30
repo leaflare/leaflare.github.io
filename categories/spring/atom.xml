@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Spring</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/categories/spring/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-17T11:23:41+00:00</updated>
+	<id>https://ffangli.github.io/categories/spring/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Spring 装配 Bean</title>
+		<published>2022-01-17T11:23:41+00:00</published>
+		<updated>2022-01-17T11:23:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201171123/" type="text/html"/>
+		<id>https://ffangli.github.io/202201171123/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;spring-zhuang-pei-bean&quot;&gt;Spring 装配 Bean&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;装配机制
+&lt;ol&gt;
+&lt;li&gt;在XML中进行显式配置&lt;&#x2F;li&gt;
+&lt;li&gt;在Java中进行显式配置&lt;&#x2F;li&gt;
+&lt;li&gt;隐式的bean发现机制和自动装配&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;原则：
+&lt;ol&gt;
+&lt;li&gt;显式配置越少越好，尽量使用自动配置&lt;&#x2F;li&gt;
+&lt;li&gt;推荐使用类型安全并且比XML更加强大的JavaConfig&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Spring 框架的核心是 Spring 容器。容器负责管理应用中组件的生命周期，它会创建这些组件并保证它们的依赖能够得到满足，这样组件才能完成预定的任务。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xmlpei-zhi&quot;&gt;XML配置&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Bean file&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.dashboardapp.beanwire;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireXML &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;message;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;setMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;message&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;this&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.message  &lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; message;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;getMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.out.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;println&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Message is : &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; +&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; message);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;XML configuration file&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;encoding&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;UTF-8&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns:xsi&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xsi:schemaLocation&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans-3.2.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;beanwire&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;com.dashboardapp.beanwire.BeanWireXML&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Main Java file&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.dashboardapp.beanwire;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.support.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;FileSystemXmlApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireXMLMain &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public static void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;args&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;		  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; context &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;FileSystemXmlApplicationContext&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;                &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;WebContent&#x2F;WEB-INF&#x2F;appConfig.xml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);	   
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireXML&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; beanwireobj &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireXML&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;)context.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getBean&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;beanwire&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      beanwireobj.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello Bean. You are wired by XML config.....!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      beanwireobj.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;java-configpei-zhi&quot;&gt;Java Config配置&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Bean class&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.dashboardapp.beanwire;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWire &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;message;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;setMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;message&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;this&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.message  &lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; message;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;getMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;System&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.out.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;println&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Message is : &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; +&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; message);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;两个注释用于通知Spring容器将加载BeanWire Bean。&lt;&#x2F;p&gt;
+&lt;p&gt;@Configuration注释通知 Spring 容器，此类是 Bean 定义的源。&lt;&#x2F;p&gt;
+&lt;p&gt;@Bean注释通知spring框架，该方法将返回一个对象，该对象需要在Spring应用程序上下文中注册为Bean。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;具有注释的 Bean 配置类&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.dashboardapp.beanwire;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.*;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Configuration
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Bean 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWire &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;beanwire&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWire&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Main class&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.dashboardapp.beanwire;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.*;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireMain &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public static void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;args&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; ctx &lt;&#x2F;span&gt;&lt;span&gt;= 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AnnotationConfigApplicationContext&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWireConfig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);	   
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWire&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; beanwire &lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; ctx.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getBean&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;BeanWire&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      beanwire.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello Bean. You are wired by annotation.....!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	      beanwire.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getMessage&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;	   }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;zi-dong-hua-zhuang-pei-bean&quot;&gt;自动化装配 bean&lt;&#x2F;h2&gt;
+&lt;p&gt;Spring 从两个角度来实现自动化装配：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;组件扫描（component scanning）：Spring 会自动发现应用上下文中所创建的 bean。&lt;&#x2F;li&gt;
+&lt;li&gt;自动装配（autowiring）：Spring 自动满足 bean 之间的依赖。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;wei-zu-jian-sao-miao-de-beanming-ming&quot;&gt;为组件扫描的Bean命名&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;@Componet(&amp;quot;Bean_Name&amp;quot;)&lt;&#x2F;code&gt;：可以为组件扫描的bean命名&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;@Named(&amp;quot;lonelyHeartsClub&amp;quot;)&lt;&#x2F;code&gt;：Spring支持将@Named作为@Component 注解的替代方案，他们在绝大多数场景中，是可以互相替换的。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;she-zhi-zu-jian-sao-miao-de-ji-chu-bao&quot;&gt;设置组件扫描的基础包&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;@ComponentScan(&amp;quot;soundsystem&amp;quot;)&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;@ComponentScan(basePackages=&amp;quot;soundsystem)&amp;quot;&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;@ComponentScan(basePackages={&amp;quot;soundsystem&amp;quot;, &amp;quot;video&amp;quot;})&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;@ComponentScan(basePackageClasses={CDPlayer.class, DVDPlayer.class})&lt;&#x2F;code&gt;：建议这种方式，可以检查出是否有问题&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;wei-beantian-jia-shi-xian-zi-dong-zhuang-pei&quot;&gt;为Bean添加实现自动装配&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;@Autowired&lt;&#x2F;code&gt;注解完成自动装配
+&lt;ol&gt;
+&lt;li&gt;可以修饰构造器。&lt;&#x2F;li&gt;
+&lt;li&gt;可以修饰Setter方法。&lt;&#x2F;li&gt;
+&lt;li&gt;可以修饰变量声明。&lt;&#x2F;li&gt;
+&lt;li&gt;可选参数：&lt;code&gt;required=false&lt;&#x2F;code&gt;:如果没有bean也不会装配。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;使用&lt;code&gt;@Inject&lt;&#x2F;code&gt;注解：源自于Java依赖注入规范。&lt;&#x2F;li&gt;
+&lt;li&gt;在大多数场景下，这两个注解是可以替换的。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;dao-ru-he-hun-he-pei-zhi&quot;&gt;导入和混合配置&lt;&#x2F;h2&gt;
+&lt;p&gt;在自动装配时，spring并不在意要装配的 bean 来自哪里。自动装配的时候会考虑到 Spring 容器中所有的 bean，不管它是在 JavaConfig 或 XML 中声明的还是通过组件扫描获取到的。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;import-xml-configuration-in-java-config&quot;&gt;Import XML Configuration in Java Config&lt;&#x2F;h3&gt;
+&lt;p&gt;使用@ImportResource批注，并提供要导入的 XML 配置文件的位置。可以选择指定多个配置文件。@Import注释用于导入额外的Spring Java配置文件。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.memorynotfound.spring.core;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Configuration&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Import&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ImportResource&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Configuration
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Import&lt;&#x2F;span&gt;&lt;span&gt;({ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;DbConfig&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;})
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ImportResource&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;classpath:app-config.xml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AppConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;下面是位于同一包中的第二个配置文件，并在主配置中被加载。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.memorynotfound.spring.core;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Configuration&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Import&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ImportResource&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Configuration
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;DbConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;app-config.xml&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;encoding&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;UTF-8&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns:xsi&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xsi:schemaLocation&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;                           http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在标准的Java SE环境中，使用ConfigApplicationContext引导Spring，并提供Java Configuration类作为参数。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span&gt; context = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AnnotationConfigApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AppConfig&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 Web 服务器环境中启动 spring 时，应该在 web-INF 目录中的 web.xml 文件中添加上下文参数:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context-param&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;contextClass&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-value&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-value&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context-param&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;loading-java-config-in-xml&quot;&gt;Loading Java Config in XML&lt;&#x2F;h3&gt;
+&lt;p&gt;可以在Spring XML配置文件中加载Java配置文件。通过注册 &amp;lt;context：component-scan&#x2F;&amp;gt; 元素并添加属性 base-package 并指定要自动扫描 Java 配置文件所在的包。第一个&lt;import&#x2F;&gt;元素导入其他 xml 配置文件。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;encoding&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;UTF-8&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns:xsi&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns:context&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xsi:schemaLocation&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;                           http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;                           http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;                           http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;context&#x2F;spring-context.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;lt;!-- loading additional xml config --&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;resource&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;classpath:db-config.xml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;lt;!-- loading java config files in package --&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context:component-scan &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;base-package&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;com.memorynotfound.spring.core.config&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;db-config.xml&lt;&#x2F;strong&gt; &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;encoding&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;UTF-8&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xmlns:xsi&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;xsi:schemaLocation&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;                           http:&#x2F;&#x2F;www.springframework.org&#x2F;schema&#x2F;beans&#x2F;spring-beans.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;beans&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这是在xml配置中加载的java配置文件，它位于com.memorynotfound.spring.core.config包中:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span&gt;com.memorynotfound.spring.core.config;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;org.springframework.context.annotation.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Configuration&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Configuration
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AppConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以使用 ClassPathXmlApplicationContext 引导 spring 应用程序，并提供 Spring XML 配置文件的位置：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span&gt; context = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ClassPathXmlApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app-config.xml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在 Web 应用程序中使用 spring 时，可以通过添加以下上下文参数来注册 Spring XML 配置文件:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context-param&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;contextConfigLocation&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-value&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;classpath:app-config.xml&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;param-value&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;context-param&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.eduonix.com&#x2F;java-programming-2&#x2F;learn-how-to-wire-spring-beans-by-using-xml-and-java-classes&#x2F;&quot;&gt;How to wire Spring Beans by using XML and Java classes (eduonix.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;memorynotfound.com&#x2F;mixing-xml-java-config-spring&#x2F;&quot;&gt;Mixing XML and Java Configuration with Spring (memorynotfound.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>JDBC for MySQL</title>
+		<published>2022-01-14T20:17:19+00:00</published>
+		<updated>2022-01-14T20:17:19+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201142017/" type="text/html"/>
+		<id>https://ffangli.github.io/202201142017/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zai-pom-xmljia-ru-jdbc-driver-mysql-connector-java&quot;&gt;在pom.xml加入JDBC driver mysql-connector-java&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;&#x2F;artifactId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;version&amp;gt;5.7.29&amp;lt;&#x2F;version&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;附MySQL版本查询命令：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -V
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;application-ymlwen-jian-pei-zhi&quot;&gt;application.yml文件配置&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysql-jdbc-driver-url&quot;&gt;MySQL JDBC driver URL&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol&#x2F;&#x2F;[hosts][&#x2F;database][?properties]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;简单示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol – jdbc:mysql:
+&lt;&#x2F;span&gt;&lt;span&gt;host – mysql.db.server:3306
+&lt;&#x2F;span&gt;&lt;span&gt;database – my_database
+&lt;&#x2F;span&gt;&lt;span&gt;properties – useSSL=false&amp;amp;serverTimezone=UTC
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;kuo-zhan&quot;&gt;扩展&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;protocol&quot;&gt;Protocol&lt;&#x2F;h4&gt;
+&lt;p&gt;除了&amp;quot;jdbc:mysql:&amp;quot;协议还支持：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Load-balancing JDBC connections – jdbc:mysql:loadbalance:
+&lt;&#x2F;span&gt;&lt;span&gt;JDBC replication connections – jdbc:mysql:replication: 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hosts&quot;&gt;Hosts&lt;&#x2F;h4&gt;
+&lt;p&gt;如果需要处理多个主机，可以在逗号分隔的列表中列出主机：host1，host2,..., hostN。&lt;&#x2F;p&gt;
+&lt;p&gt;还可以用方括号将逗号分隔的主机列表括起来：[host1， host2,...,hostN]。&lt;&#x2F;p&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:loadbalance:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name?user=dbUser&amp;amp;password=1234567&amp;amp;loadBalanceConnectionGroup=group_name&amp;amp;ha.enableJMX=true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;properties-and-user-credentials&quot;&gt;Properties and User Credentials&lt;&#x2F;h4&gt;
+&lt;p&gt;有效的全局属性将应用于所有主机。&lt;&#x2F;p&gt;
+&lt;p&gt;格式：&lt;&#x2F;p&gt;
+&lt;p&gt;属性前面有一个问号&amp;quot;？&amp;quot;，并写成key=value键值对，由&amp;quot;&amp;amp;&amp;quot;符号分隔：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?prop1=value1&amp;amp;prop2=value2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以将User Credentials放在属性列表中：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?user=root&amp;amp;password=mypass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以在每个主机前面加上&amp;quot;user：password@host&amp;quot;格式：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass@myhost1:3306&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果 JDBC URL 包含主机列表，并且所有主机都使用相同的User Credentials，则可以在主机列表前面加上前缀：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;详细文档：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-jdbc-url-format.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.2 Connection URL Syntax&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-configuration-properties.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.3 Configuration Properties&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mysqllian-jie-shi-li&quot;&gt;MySQL连接示例&lt;&#x2F;h3&gt;
+&lt;p&gt;MySQL database： “&lt;em&gt;my_database&lt;&#x2F;em&gt;” &lt;&#x2F;p&gt;
+&lt;p&gt;host： “&lt;em&gt;mysql.db.server&lt;&#x2F;em&gt;“&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;@Test
+&lt;&#x2F;span&gt;&lt;span&gt;public void givenMysqlDb_thenCreateConnectionObject() {
+&lt;&#x2F;span&gt;&lt;span&gt;    String jdbcUrl = &amp;quot;jdbc:mysql:&#x2F;&#x2F;mysql.db.server:3306&#x2F;my_database?useSSL=false&amp;amp;serverTimezone=UTC&amp;quot;;    
+&lt;&#x2F;span&gt;&lt;span&gt;    String username = &amp;quot;User&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    String password = &amp;quot;1234567&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
+&lt;&#x2F;span&gt;&lt;span&gt;        assertNotNull(conn);
+&lt;&#x2F;span&gt;&lt;span&gt;    } catch (SQLException e) {
+&lt;&#x2F;span&gt;&lt;span&gt;        System.err.format(&amp;quot;SQL State: %s\n%s&amp;quot;, e.getSQLState(), e.getMessage());
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Boot连接MySQL报错处理合集</title>
+		<published>2022-01-12T19:33:41+00:00</published>
+		<updated>2022-01-12T19:33:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201121933/" type="text/html"/>
+		<id>https://ffangli.github.io/202201121933/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;hikaripool-1-exception-during-pool-initialization&quot;&gt;HikariPool-1 - Exception during pool initialization.&lt;&#x2F;h3&gt;
+&lt;p&gt;HikariPool是SpringBoot默认数据库连接池，该报错说明数据库配置有问题&lt;&#x2F;p&gt;
+&lt;p&gt;在application.yml配置文件中逐项检查username、password、url中IP地址、端口号等是否正确&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jdbc-urlcai-keng&quot;&gt;jdbc url踩坑&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;com-mysql-cj-jdbc-exceptions-communicationsexception-communications-link-failure&quot;&gt;com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure&lt;&#x2F;h3&gt;
+&lt;p&gt;重新在本地跑以前部署过的项目，遇到这个问题&lt;&#x2F;p&gt;
+&lt;p&gt;解决：把jdbc url的ip地址改成localhost:3306&lt;&#x2F;p&gt;
+&lt;p&gt;3306 ：SQL数据库的端口&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;javax-net-ssl-sslexception-message-closing-inbound-before-receiving-peer-s-close-notify&quot;&gt;javax.net.ssl.SSLException MESSAGE: closing inbound before receiving peer&#x27;s close_notify&lt;&#x2F;h3&gt;
+&lt;p&gt;使用mysql8.0以上版本数据库，要设置useSSL=false否则会出现上述报错&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?useSSL=false
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;反之，mysql8.0以下版本例如mysql5.7如果url包含useSSL，也可能会报错，删除该项即可解决&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-server-time-zone-value-is-unrecognized&quot;&gt;The server time zone value ‘????’ is unrecognized&lt;&#x2F;h3&gt;
+&lt;p&gt;时区设置serverTimezone=GMT%2B8&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?serverTimezone=GMT%2B8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;也可以在application.yml “spring:”下添加：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jackson:
+&lt;&#x2F;span&gt;&lt;span&gt;    time-zone: GMT+8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Boot下的VO, PO, DO, DTO, BO, DAO, POJO</title>
+		<published>2022-01-12T10:53:41+00:00</published>
+		<updated>2022-01-12T10:53:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201121053/" type="text/html"/>
+		<id>https://ffangli.github.io/202201121053/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;gai-nian&quot;&gt;概念&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.codetd.com&#x2F;en&#x2F;article&#x2F;12351967&quot;&gt;VO, PO, DO, DTO, BO, QO, DAO, POJO concept - Code World (codetd.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;VO（View Object）&lt;&#x2F;strong&gt;：视图对象，用于展示层，它的作用是把某个指定页面（或组件）的所有数据封装起来。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;PO（Persistent Object）&lt;&#x2F;strong&gt;：持久化对象，它跟持久层（通常是关系型数据库）的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中的每个字段（或若干个）就对应PO的一个（或若干个）属性。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DO（Domain Object）&lt;&#x2F;strong&gt;：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DTO（Data Transfer Object）&lt;&#x2F;strong&gt;：数据传输对象，这个概念来源于J2EE的设计模式，原来的目的是为了EJB的分布式应用提供粗粒度的数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载，但在这里，我泛指用于展示层与服务层之间的数据传输对象。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;BO(Business Object)&lt;&#x2F;strong&gt;：业务对象，业务对象的主要功能是将业务逻辑封装为对象。此对象可以包括一个或多个其他对象。封装业务逻辑的 Java 对象可以通过调用 DAO 方法与 PO 和 VO 一起执行业务操作。例如，一份简历，具有教育经验，工作经验，社会关系等。我们可以对应教育经验的PO，工作经验的PO和社会关系的PO。创建与简历对应的 BO 对象以处理简历，并且每个 BO 都包含这些采购订单。当以这种方式处理业务逻辑时，我们可以使用BO。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;POJO (Plain Ordinary Java Object)&lt;&#x2F;strong&gt; ：简单和不规则的 java 对象，纯传统 Java 对象。也就是说，在某些对象&#x2F;关系映射工具中，可以维护数据库表记录的持久对象完全是符合Java Bean规范的纯Java对象，无需添加其他属性和方法。我的理解是，最基本的Java Bean只有属性字段和setter和getter方法。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DAO (Data Access Object)：&lt;&#x2F;strong&gt; 数据访问对象，是 Sun 的标准 J2EE 设计模式。此模式中的接口之一是 DAO，它对持久性层进行负操作。为业务层提供接口。此对象用于访问数据库。DAO通常与PO结合使用，包含各种数据库操作方法。通过其方法，结合PO对数据库执行相关操作。夹在业务逻辑和数据库资源之间。配合VO，提供数据库CRUD操作.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mo-xing&quot;&gt;模型&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201121053&#x2F;.&#x2F;Three-tier_architecture.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户发出请求（可能是填写表单），表单的数据在展示层被匹配为VO。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;展示层把VO转换为服务层对应方法所要求的DTO，传送给服务层。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;服务层首先根据DTO的数据构造（或重建）一个DO，调用DO的业务方法完成具体业务。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;服务层把DO转换为持久层对应的PO（可以使用ORM工具，也可以不用），调用持久层的持久化方法，把PO传递给它，完成持久化操作。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Review</title>
+		<published>2021-12-16T21:53:16+00:00</published>
+		<updated>2021-12-16T21:53:16+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202112162153/" type="text/html"/>
+		<id>https://ffangli.github.io/202112162153/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;降低 Java 开发的复杂性，Spring 采取的关键策略&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于 POJO 的轻量级和最小侵入性编程；&lt;&#x2F;li&gt;
+&lt;li&gt;通过依赖注入和面向接口实现松耦合；&lt;&#x2F;li&gt;
+&lt;li&gt;基于切面和惯例进行声明式编程；&lt;&#x2F;li&gt;
+&lt;li&gt;通过切面和模板减少样板式代码。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;pojo-he-zui-xiao-qin-ru-xing-bian-cheng&quot;&gt;POJO 和最小侵入性编程&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;POJO&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Plain Ordinary Java Object简单的Java对象。&lt;&#x2F;p&gt;
+&lt;p&gt;POJO的内在含义是指那些没有从任何类继承、也没有实现任何接口，更没有被其它框架侵入的java对象。POJO让开发者可专注于业务逻辑和脱离框架的单元测试。除此之外， 由于POJO并不须要继承框架的类或实现其接口，开发者能够极其灵活地搭建继承结构和建造应用。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;POJO与JavaBean的区别：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;所有 JavaBeans 都是 POJO，但并非所有 POJO 都是 JavaBeans。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;1612334&#x2F;difference-between-dto-vo-pojo-javabeans&quot;&gt;java - Difference between DTO, VO, POJO, JavaBeans? - Stack Overflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;非侵入编程模型&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;在基于 Spring 构建的应用中，它的类通常没有任何痕迹表明你使用了 Spring。最坏的场景是，一个类或许会使用 Spring 注解，但它依旧是 POJO。Spring 的非侵入编程模型意味着这个类在 Spring 应用和非 Spring 应用中都可以发挥同样的作用。Spring通过DI来装配POJO。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yi-lai-zhu-ru-di&quot;&gt;依赖注入（DI）&lt;&#x2F;h2&gt;
+&lt;p&gt;依赖注入（DI）可以保证对象的依赖关系将由系统中负责协调各对象的第三方组件在创建对象的时候进行设定，而对象无需自行创建或管理它们的依赖关系。依赖注入会将所依赖的关系自动交给目标对象，而不是让对象自己去获取依赖。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;san-chong-yi-lai-zhu-ru-ji-ben-lei-xing&quot;&gt;三种依赖注入基本类型&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;constructor 注入：依赖项通过类构造函数提供。&lt;&#x2F;li&gt;
+&lt;li&gt;setter 注入：客户端公开注入器用于注入依赖项的 setter 方法。&lt;&#x2F;li&gt;
+&lt;li&gt;interface 注入：依赖项提供一个注入器方法，该方法将依赖项注入到传递给它的任何客户端中。客户端必须实现一个接口，该接口公开接受依赖关系的 setter 方法。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;yi-lai-zhu-ru-de-zhi-ze&quot;&gt;依赖注入的职责&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建对象&lt;&#x2F;li&gt;
+&lt;li&gt;了解哪些类需要这些对象&lt;&#x2F;li&gt;
+&lt;li&gt;为他们提供所有这些对象&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;shi-yong-di-de-hao-chu&quot;&gt;使用 DI 的好处&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;有助于单元测试。&lt;&#x2F;li&gt;
+&lt;li&gt;简化了样板代码，因为依赖项的初始化由注入器组件完成。&lt;&#x2F;li&gt;
+&lt;li&gt;扩展应用程序变得更加容易。&lt;&#x2F;li&gt;
+&lt;li&gt;有助于启用松散耦合，在应用程序编程中非常重要。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;shi-yong-dide-que-dian&quot;&gt;使用DI的缺点&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;如果过度使用可能会导致管理问题和其他问题。&lt;&#x2F;li&gt;
+&lt;li&gt;许多编译时错误被推送到运行时。&lt;&#x2F;li&gt;
+&lt;li&gt;依赖注入框架是通过反射或动态编程实现的。这可能会妨碍 IDE 自动化的使用，例如&amp;quot;查找引用&amp;quot;、&amp;quot;显示调用层次结构&amp;quot;和安全重构。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;springyi-lai-zhu-ru&quot;&gt;Spring依赖注入&lt;&#x2F;h2&gt;
+&lt;p&gt;Spring依赖注入的三种方式：constructors, setters or fields&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;constructor-based-dependency-injection&quot;&gt;Constructor-Based Dependency Injection&lt;&#x2F;h3&gt;
+&lt;p&gt;在基于构造函数的依赖关系注入的情况下，容器将调用一个构造函数，每个构造函数的参数表示我们要设置的依赖项。Spring 主要按类型解析每个参数，后跟属性名称和索引以消除歧义。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;java-config&quot;&gt;Java Config&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Configuration
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;AppConfig &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Bean
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;() {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ItemImpl1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Bean
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;() {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;());
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;@Configuration注释指示该类是 Bean 定义的源。使用方法上的@Bean注释来定义 Bean。如果不指定自定义名称，则Bean名称将默认为方法名称。对于具有默认单例作用域的 Bean，Spring 首先检查该 Bean 的缓存实例是否已存在，如果不存在，则仅创建一个新实例。如果使用原型作用域，容器将为每个方法调用返回一个新的 Bean 实例。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;xml-configuration&quot;&gt;XML configuration&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.ItemImpl1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.Store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;constructor-arg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ItemImpl1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;index&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;setter-based-dependency-injection&quot;&gt;Setter-Based Dependency Injection&lt;&#x2F;h3&gt;
+&lt;p&gt;对于基于 setter 的 DI，容器在调用无参数构造函数或无参数静态工厂方法来实例化 Bean 后，将调用我们类的 setter 方法。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;java-config-1&quot;&gt;Java Config&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Bean
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store&lt;&#x2F;span&gt;&lt;span&gt; store = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    store.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setItem&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; store;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;xml-configuration-1&quot;&gt;XML configuration&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.Store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;property &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;ref&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;yi-lai-zhu-ru-fang-shi-xuan-ze&quot;&gt;依赖注入方式选择&lt;&#x2F;h4&gt;
+&lt;p&gt;可以为同一 Bean 组合基于构造函数和基于 setter 的注入类型。Spring 文档建议对强制依赖项使用基于构造函数的注入，对可选依赖项使用基于 setter 的注入。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;field-based-dependency-injection&quot;&gt;Field-Based Dependency Injection&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;java-config-2&quot;&gt;Java Config&lt;&#x2F;h4&gt;
+&lt;p&gt;使用@Autowired注释标记依赖关系来注入依赖项&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Autowired
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;item; 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;构造对象时，如果没有constructor或 setter 方法来注入 Item Bean，则容器将使用反射将 Item 注入到存储中。&lt;&#x2F;p&gt;
+&lt;p&gt;此类型不推荐使用XML 配置。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;autowiring-dependencies&quot;&gt;Autowiring Dependencies&lt;&#x2F;h3&gt;
+&lt;p&gt;自动依赖装配允许Spring容器通过检查已定义的bean来自动解析协作bean之间的依赖关系。&lt;&#x2F;p&gt;
+&lt;p&gt;使用 XML 配置自动依赖装配 Bean 有四种模式：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;no：&lt;&#x2F;strong&gt; 默认值 - 这意味着没有自动连接用于bean，我们必须显式命名依赖项。&lt;&#x2F;li&gt;
+&lt;li&gt;**byName:**自动依赖装配是根据属性的名称完成的，因此Spring将查找与需要设置的属性同名的Bean。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;byType:&lt;&#x2F;strong&gt; 类似于 &lt;em&gt;byName&lt;&#x2F;em&gt; 自动依赖装配，仅基于属性的类型。这意味着Spring将寻找具有相同类型属性的Bean进行设置。如果有多个该类型的 Bean，则框架会引发异常。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;constructor:&lt;&#x2F;strong&gt; 自动依赖装配是基于构造函数参数完成的，这意味着Spring将查找与构造函数参数类型相同的bean。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;shi-li&quot;&gt;示例&lt;&#x2F;h4&gt;
+&lt;p&gt;装配item bean到store bean&lt;&#x2F;p&gt;
+&lt;p&gt;byType &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Bean&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;autowire &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Autowire&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;BY_TYPE&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;item;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;setItem&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;){
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;this&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;.item &lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; item;    
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;或使用*@Autowired* 注解：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{        
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Autowired    
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;item; 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;XML configuration:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.store.Store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;autowire&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;byType&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt; &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果有多个相同类型的 Bean，我们可以使用@Qualifier注释按名称引用 Bean&lt;&#x2F;p&gt;
+&lt;p&gt;byName&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Store &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Autowired
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    @&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Qualifier&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Item &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;item;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;XML configuration:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.ItemImpl1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.Store&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;autowire&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;byName&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;ke-yi-tong-guo-xian-shi-ding-yi-constructor-can-shu-huo-setter-yi-lai-xiang-lai-fu-gai-zi-dong-zhuang-pei&quot;&gt;可以通过显式定义constructor 参数或 setter 依赖项来覆盖自动装配。&lt;&#x2F;h4&gt;
+&lt;h3 id=&quot;lazy-initialized-beans&quot;&gt;Lazy Initialized Beans&lt;&#x2F;h3&gt;
+&lt;p&gt;默认情况下，容器在初始化期间创建并配置所有单例 Bean。为了避免这种情况，我们可以在 Bean 配置上使用值为 true 的 lazy-init 属性：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bean &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;item1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;org.baeldung.store.ItemImpl1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;lazy-init&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;因此，item1 Bean 将仅在首次请求时初始化，而不是在启动时初始化。这样做的好处是初始化时间更快，但坏处是，在请求Bean之前，不会发现任何配置错误，这可能是在应用程序已经运行后的几个小时甚至几天。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kong-zhi-fan-zhuan-ioc-inversion-of-control&quot;&gt;控制反转IoC (Inversion of Control)&lt;&#x2F;h2&gt;
+&lt;p&gt;控制反转是软件工程中的一个原则，它将对象或程序部分的控制权转移到容器或框架中。通常在面向对象编程的上下文中使用它。与传统编程（我们的自定义代码调用库）相比，IoC 使框架能够控制程序流并调用我们的自定义代码。为了实现这一点，框架使用内置了其他行为的抽象。如果想添加自己的行为，需要扩展框架的类或插入自己的类。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;iocde-you-dian&quot;&gt;IoC的优点&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;将任务的执行与其实现分离&lt;&#x2F;li&gt;
+&lt;li&gt;使在不同实现之间切换变得更加容易&lt;&#x2F;li&gt;
+&lt;li&gt;程序的更大模块化&lt;&#x2F;li&gt;
+&lt;li&gt;通过隔离组件或模拟其依赖关系，并允许组件通过协定进行通信，更轻松地测试程序&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;可以通过各种机制实现控制反转，例如：策略设计模式，服务定位器模式，工厂模式和依赖注入（DI）。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;spring-ioc-container&quot;&gt;Spring IoC Container&lt;&#x2F;h2&gt;
+&lt;p&gt;在Spring框架中，接口ApplicationContext表示IoC容器。Spring 容器负责实例化、配置和组装称为 Bean 的对象，以及管理其生命周期。&lt;&#x2F;p&gt;
+&lt;p&gt;Spring 框架提供了 ApplicationContext 接口的几种实现：&lt;&#x2F;p&gt;
+&lt;p&gt;ClassPathXmlApplicationContext 和 FileSystemXmlApplicationContext 用于独立应用程序，WebApplicationContext 用于 Web 应用程序。&lt;&#x2F;p&gt;
+&lt;p&gt;为了组装 Bean，容器使用配置元数据，这些元数据可以是 XML 配置或注释的形式。&lt;&#x2F;p&gt;
+&lt;p&gt;以下是手动实例化容器的一种方法：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ApplicationContext&lt;&#x2F;span&gt;&lt;span&gt; context
+&lt;&#x2F;span&gt;&lt;span&gt;  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ClassPathXmlApplicationContext&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;applicationContext.xml&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;要在上面的示例中设置 item 属性，可以使用元数据。然后，容器将读取此元数据，并在运行时使用它来组装 Bean。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mian-xiang-qie-mian-bian-cheng-aop&quot;&gt;面向切面编程AOP&lt;&#x2F;h2&gt;
+&lt;p&gt;DI 能够让相互协作的软件组件保持松散耦合，而面向切面编程（aspect-oriented programming，AOP）允许把遍布应用各处的功能分离出来形成可重用的组件。&lt;&#x2F;p&gt;
+&lt;p&gt;AOP 能够使服务模块化，并以声明的方式将它们应用到它们需要影响的组件中去。这些组件会具有更高的内聚性并且会更加关注自身的业务，完全不需要了解涉及系统服务所带来复杂性。AOP 能够确保 POJO 的简单性。&lt;&#x2F;p&gt;
+&lt;p&gt;使用AOP有助于将核心应用程序逻辑与常见的可重复任务（输入验证、日志记录、错误处理等）分开。从主代码中剔除后者，并垂直定义它。例如：在运行时，可以使用 AOP 对易受 SQL 注入影响的应用程序进行热修补，或者将入侵检测和审核日志记录功能直接嵌入到应用程序中，而无需修改基础源代码。&lt;&#x2F;p&gt;
+&lt;p&gt;AOP code：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;function mainProgram()
+&lt;&#x2F;span&gt;&lt;span&gt;{ 
+&lt;&#x2F;span&gt;&lt;span&gt;   var x =  foo();
+&lt;&#x2F;span&gt;&lt;span&gt;   doSomethingWith(x);
+&lt;&#x2F;span&gt;&lt;span&gt;   return x;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;aspect logging
+&lt;&#x2F;span&gt;&lt;span&gt;{ 
+&lt;&#x2F;span&gt;&lt;span&gt;    before (mainProgram is called):
+&lt;&#x2F;span&gt;&lt;span&gt;    { 
+&lt;&#x2F;span&gt;&lt;span&gt;       log.Write(&amp;quot;entering mainProgram&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    after (mainProgram is called):
+&lt;&#x2F;span&gt;&lt;span&gt;    { 
+&lt;&#x2F;span&gt;&lt;span&gt;       log.Write(  &amp;quot;exiting mainProgram with return value of &amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;                  + mainProgram.returnValue);
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt; } 
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;aspect verification
+&lt;&#x2F;span&gt;&lt;span&gt;{ 
+&lt;&#x2F;span&gt;&lt;span&gt;    before (doSomethingWith is called):
+&lt;&#x2F;span&gt;&lt;span&gt;    { 
+&lt;&#x2F;span&gt;&lt;span&gt;       if (doSomethingWith.arguments[0] == null) 
+&lt;&#x2F;span&gt;&lt;span&gt;       { 
+&lt;&#x2F;span&gt;&lt;span&gt;          throw NullArgumentException();
+&lt;&#x2F;span&gt;&lt;span&gt;       }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;       if (!doSomethingWith.caller.isAuthenticated)
+&lt;&#x2F;span&gt;&lt;span&gt;       { 
+&lt;&#x2F;span&gt;&lt;span&gt;          throw Securityexception();
+&lt;&#x2F;span&gt;&lt;span&gt;       }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;aspect-weaver code：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;function mainProgram()
+&lt;&#x2F;span&gt;&lt;span&gt;{ 
+&lt;&#x2F;span&gt;&lt;span&gt;   log.Write(&amp;quot;entering mainProgram&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   var x = foo();   
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   if (x == null) throw NullArgumentException();
+&lt;&#x2F;span&gt;&lt;span&gt;   if (!mainProgramIsAuthenticated()) throw Securityexception();
+&lt;&#x2F;span&gt;&lt;span&gt;   doSomethingWith(x);   
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   log.Write(&amp;quot;exiting mainProgram with return value of &amp;quot;+ x);
+&lt;&#x2F;span&gt;&lt;span&gt;   return x;
+&lt;&#x2F;span&gt;&lt;span&gt;} 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;shi-yong-mo-ban-xiao-chu-yang-shi-dai-ma&quot;&gt;使用模板消除样式代码&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;JDBC、JMS、JNDI、REST等等都存在有大量的样式代码&lt;&#x2F;li&gt;
+&lt;li&gt;例如：JDBC的模板：jdbcTemplate&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;bean&quot;&gt;Bean&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在基于Spring的应用中，应用对象生存于Spring容器(container)中，Spring容器负责创建对象并装配，配置它们并管理它们的整个生活周期，从new到finalize()&lt;&#x2F;li&gt;
+&lt;li&gt;Spring容器不同类型
+&lt;ol&gt;
+&lt;li&gt;bean工厂(org.springframework.beans.factory.BeanFactory)提供DI的支持&lt;&#x2F;li&gt;
+&lt;li&gt;应用上下文(org.springframework.context.ApplicationContext)基于BeanFactory构建，并提供应用框架级别的服务。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;ying-yong-shang-xia-wen&quot;&gt;应用上下文&lt;&#x2F;h2&gt;
+&lt;p&gt;常见的Spring上下文：区别在于如何装载配置&lt;&#x2F;p&gt;
+&lt;p&gt;**AnnotationConfigApplicationContext：**从一个或多个基于 Java 的配置类中加载 Spring 应用上下文。&lt;&#x2F;p&gt;
+&lt;p&gt;**AnnotationConfigWebApplicationContext：**从一个或多个基于 Java 的配置类中加载 Spring Web 应用上下文。&lt;&#x2F;p&gt;
+&lt;p&gt;**ClassPathXmlApplicationContext：**从类路径下的一个或多个 XML 配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。&lt;&#x2F;p&gt;
+&lt;p&gt;**FileSystemXmlapplicationcontext：**从文件系统下的一 个或多个 XML 配置文件中加载上下文定义。&lt;&#x2F;p&gt;
+&lt;p&gt;**XmlWebApplicationContext：**从 Web 应用下的一个或多个 XML 配置文件中加载上下文定义。&lt;&#x2F;p&gt;
+&lt;p&gt;上下文准备就绪后就可以调用上下文的getBean()从容器中获取Bean&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;beande-sheng-ming-zhou-qi&quot;&gt;Bean的生命周期&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202112162153&#x2F;.&#x2F;spring_bean_life_cycle.jpg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Spring对bean进行&lt;strong&gt;实例化&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Spring将值和bean的引用注入到bean对应的属性中&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了BeanNameAware接口，Spring将bean的ID传递给setBeanName()方法&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了BeanFactoryAware接口，Spring将调用 setBeanFactory()方法，将BeanFactory容器实例传入&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了ApplicationContextAware接口，Spring 将调用setApplicationContext()方法，将bean所在的应用上下文的引用传入进来；&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了BeanPostProcessor接口，Spring 将调用它们的postProcessBefore-Initialization()方法；&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了InitializingBean接口，Spring 将调用它们的afterPropertiesSet()方法。类似地，如果bean使用 initmethod声明了初始化方法，该方法也会被调用；&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了BeanPostProcessor接口，Spring将调用它们的postProcessAfter-Initialization()方法；&lt;&#x2F;li&gt;
+&lt;li&gt;此时，bean已经准备就绪，可以被应用程序使用了，它们将一直驻留在应用上下文中，直到该应用上下文被销毁；&lt;&#x2F;li&gt;
+&lt;li&gt;如果bean实现了DisposableBean接口，Spring 将调用它的destroy()接口方法：如果destroy-method声明了销毁方法，则该方法也会被调用。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;book-resource&quot;&gt;Book&amp;amp;Resource&lt;&#x2F;h2&gt;
+&lt;p&gt;&amp;lt;&lt;a href=&quot;https:&#x2F;&#x2F;potoyang.gitbook.io&#x2F;spring-in-action-v4&#x2F;&quot;&gt;Spring 实战（第 4 版） - Spring 实战(第四版) (gitbook.io)&lt;&#x2F;a&gt;&amp;gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.manning.com&#x2F;books&#x2F;spring-in-action-fourth-edition&quot;&gt;Spring in Action, Fourth Edition (manning.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.freecodecamp.org&#x2F;news&#x2F;a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f&#x2F;&quot;&gt;A quick intro to Dependency Injection: what it is, and when to use it (freecodecamp.org)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.geeksforgeeks.org&#x2F;spring-dependency-injection-with-example&#x2F;&quot;&gt;Spring Dependency Injection with Example - GeeksforGeeks&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.baeldung.com&#x2F;inversion-control-and-dependency-injection-in-spring&quot;&gt;Inversion of Control and Dependency Injection with Spring | Baeldung&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;242177&#x2F;what-is-aspect-oriented-programming&quot;&gt;aop - What is aspect-oriented programming? - Stack Overflow&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

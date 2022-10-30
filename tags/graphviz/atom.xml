@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Graphviz</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/graphviz/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-02-05T15:16:18+00:00</updated>
+	<id>https://ffangli.github.io/tags/graphviz/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Graphviz使用记录</title>
+		<published>2022-02-05T15:16:18+00:00</published>
+		<updated>2022-02-05T15:16:18+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
+		<id>https://ffangli.github.io/202202051516/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
+&lt;p&gt;官网&lt;a href=&quot;http:&#x2F;&#x2F;www.graphviz.org&#x2F;&quot;&gt;Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;下载&lt;a href=&quot;https:&#x2F;&#x2F;graphviz.org&#x2F;download&#x2F;&quot;&gt;Download | Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Graphviz是一个用 dot 语言编写的绘图脚本，在Windows中直接用pip安装会出现下面的报错&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;graphviz.backend.execute.ExecutableNotFound: failed to execute &amp;#39;dot&amp;#39;, make sure the Graphviz executables are on your systems&amp;#39; PATH
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;需要将graphviz中的bin路径添加到环境变量path中&lt;&#x2F;p&gt;
+&lt;p&gt;控制台输入命令：&lt;code&gt;dot -version&lt;&#x2F;code&gt;检验是否配置成功&lt;&#x2F;p&gt;
+&lt;p&gt;在Python中使用，需要&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install graphviz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;python-diao-yong-graphviz-gong-ju&quot;&gt;Python 调用 Graphviz 工具&lt;&#x2F;h3&gt;
+&lt;p&gt;控制台输入&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;echo process1 = subprocess.Popen(command1,stdout=subprocess.PIPE,shell=True)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 安装路径下，找到文件 &lt;strong&gt;subprocess.py&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;如果是Anaconda，文件所在的地址是C:\Users\xxx\Anaconda3\Lib&lt;&#x2F;p&gt;
+&lt;p&gt;找到 &lt;strong&gt;Popen(object)&lt;&#x2F;strong&gt; 类&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;找到这个类的 &lt;strong&gt;init()&lt;strong&gt;方法，把 640行的&lt;&#x2F;strong&gt;shell=False&lt;&#x2F;strong&gt; 修改为 &lt;strong&gt;shell=True&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;记得重启IDE！&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ce-shi-dai-ma&quot;&gt;测试代码&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;graphviz &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;Digraph
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 需要一个对象来作为生成 DOT 脚本的载体，通过这个语句实例化一个图形对象。
+&lt;&#x2F;span&gt;&lt;span&gt;dot = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Digraph&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# node() 方法可以在对象中生成一个结点
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;start&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;node&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# edge() 方法可以添加一条边
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;edge&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 对象.view(filename=&amp;quot;文件名&amp;quot;, directory=&amp;quot;输出路径&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;dot.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;view&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(dot)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;运行生成test.gv.pdf文件，效果如下图：&lt;&#x2F;p&gt;
+&lt;img src=&quot;.\img\res.png&quot; style=&quot;zoom:100%;&quot; &#x2F;&gt;
+&lt;p&gt;print(dot)在控制台打印出&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;digraph test {
+&lt;&#x2F;span&gt;&lt;span&gt;	1 [label=&amp;quot;start&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;	2 [label=&amp;quot;end&amp;quot;]
+&lt;&#x2F;span&gt;&lt;span&gt;	1 -&amp;gt; 2
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;上面的代码可以直接放到 Graphviz 工具(GVEdit)里运行&lt;&#x2F;p&gt;
+&lt;p&gt;详细参数介绍&lt;a href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;Zzbj&#x2F;p&#x2F;11431015.html&quot;&gt;Graphviz参数&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;hui-zhi-pythonlei-tu&quot;&gt;绘制Python类图&lt;&#x2F;h2&gt;
+&lt;p&gt;安装Pyreverse（在pylint模块）&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pip install pylint
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;命令行检查&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pyreverse -h
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;li-zi&quot;&gt;例子&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;__init__&lt;&#x2F;code&gt;.py文件，（默认设置只能画这个文件名，暂时还没试出来不改文件名画图的方法&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;():
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pass
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;A&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_b = &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello B&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;C&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_c = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;123
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;D&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;B&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;__init__&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.m_d = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;123&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;目录结构：&#x2F;code&#x2F;example&#x2F;_&lt;em&gt;init&lt;&#x2F;em&gt;_.py&lt;&#x2F;p&gt;
+&lt;p&gt;在code目录命令行&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;pyreverse example&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;dot -Tpdf classes.dot -o classes.pdf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;产生文件classes.dot和classes.pdf&lt;&#x2F;p&gt;
+&lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
+&lt;img src=&quot;.\img\1.png&quot; style=&quot;zoom:60%;&quot; &#x2F;&gt;
+</content>
+	</entry>
+</feed>

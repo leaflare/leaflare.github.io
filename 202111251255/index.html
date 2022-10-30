@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Django经验总结</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202111251255/#djangoshi-yong-db-sqlite3" class="toc-link">Django使用db.sqlite3</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111251255/#chuang-jian-yi-ge-xiang-mu-bing-qi-dong" class="toc-link">创建一个项目并启动</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111251255/#chu-shi-hua-adminzhang-hao-he-mi-ma" class="toc-link">初始化admin账号和密码</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111251255/#pei-zhi-shu-ju-biao" class="toc-link">配置数据表</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202111251255/#" class="toc-link"></a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202111251255&#x2F;">Django经验总结</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-11-25</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="djangoshi-yong-db-sqlite3">Django使用db.sqlite3</h2>
+<h3 id="chuang-jian-yi-ge-xiang-mu-bing-qi-dong">创建一个项目并启动</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>django-admin startproject xiangmuming
+</span><span>cd xiangmuming
+</span><span>python manage.py runserver
+</span></code></pre>
+<h3 id="chu-shi-hua-adminzhang-hao-he-mi-ma">初始化admin账号和密码</h3>
+<ul>
+<li>Django提供admin后台，便于统一管理用户、权限和权限组，超级用户初始化方法</li>
+<li>创建管理员账户：</li>
+</ul>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>python manage.py createsuperuser
+</span></code></pre>
+<p>​		根据提示设置用户名、邮箱和密码，然后就可以用这个账号登录到后台</p>
+<p>​		或者：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>python manage.py createsuperuser --username=root --email=root@root.com
+</span></code></pre>
+<h3 id="pei-zhi-shu-ju-biao">配置数据表</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>python manage.py migrate  #迁移django自带的表，有变更的表结构同步到数据库  后面不跟app默认更新所有的app变更
+</span><span>python manage.py makemigrations  #将有变更的表结构生成迁移
+</span><span>python  manage.py sqlmigrate+表名+序列号  #查询变更迁移的sql语句
+</span></code></pre>
+<h3 id=""></h3>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/django/">#Django</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

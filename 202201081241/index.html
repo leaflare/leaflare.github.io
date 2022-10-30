@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - git submodule 踩坑记录</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201081241/#tian-jia-zi-mo-kuai" class="toc-link">添加子模块</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201081241/#cha-kan-zi-mo-kuai" class="toc-link">查看子模块</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201081241/#geng-xin-zi-mo-kuai" class="toc-link">更新子模块</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201081241/#shan-chu-zi-mo-kuai" class="toc-link">删除子模块</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201081241&#x2F;">git submodule 踩坑记录</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-08</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<p>以https://github.com/iphysresearch/GWToolkit.git为例</p>
+<h3 id="tian-jia-zi-mo-kuai">添加子模块</h3>
+<p>添加一个远程仓库项目子模块到一个已有的主仓库项目中。</p>
+<p>添加模块</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git submodule add https://github.com/iphysresearch/GWToolkit.git GWToolkit
+</span></code></pre>
+<p>写错地址的补救方式</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git rm --cached 仓库名
+</span></code></pre>
+<p>拉取出现空仓库</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git submodule update --init --recursive
+</span></code></pre>
+<p>添加后，根目录下会出现 <code>.gitmodules</code> 文件，如果之前暴力删除了submodule，这里的 <code>.gitmodules</code> 文件也要删除。反过来，如果暴力删除了 <code>.gitmodules</code> 文件，删除或重新拉取submodule之前要先<code>git restore .gitmodules</code> 。</p>
+<p>后文有完整的删除流程。</p>
+<h3 id="cha-kan-zi-mo-kuai">查看子模块</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git submodule
+</span></code></pre>
+<h3 id="geng-xin-zi-mo-kuai">更新子模块</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git submodule update
+</span></code></pre>
+<h3 id="shan-chu-zi-mo-kuai">删除子模块</h3>
+<p>step1. 删除子模块仓库本身</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git rm --cached 仓库名
+</span><span>$ rm -rf 仓库名
+</span></code></pre>
+<p>step2. 删除 <code>.gitmodules</code> 文件中相关子模块的信息</p>
+<p>形如：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>[submodule &quot;GWToolkit&quot;]
+</span><span>        path = GWToolkit
+</span><span>        url = https://github.com/iphysresearch/GWToolkit.git
+</span></code></pre>
+<p>step3. 删除 <code>.git/config</code> 中相关子模块信息</p>
+<p>形如：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>[submodule &quot;GWToolkit&quot;]
+</span><span>        url = https://github.com/iphysresearch/GWToolkit.git
+</span><span>        active = true
+</span></code></pre>
+<p>step4. 删除 <code>.git</code> 文件夹中的相关子模块文件</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ rm -rf .git/modules/GWToolkit
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/git/">#Git</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

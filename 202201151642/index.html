@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - python绘制candlestick</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151642/#shu-ju-huo-qu" class="toc-link">数据获取</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#tusharehuo-qu-xing-qing-shu-ju" class="toc-link">tushare获取行情数据</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#tusharehuo-qu-jiao-yi-ri-li" class="toc-link">tushare获取交易日历</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#ta-libji-suan-jun-xian" class="toc-link">TA-Lib计算均线</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151642/#matplotlibhua-tu" class="toc-link">Matplotlib画图</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#matplotlib-financecai-keng" class="toc-link">matplotlib.finance踩坑</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#candlestickhan-shu-hui-zhi-zha-zhu-tu" class="toc-link">candlestick函数绘制蜡烛图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#chu-li-ri-xian-tu-de-shi-jian-jian-ge" class="toc-link">处理日线图的时间间隔</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#volume-overlayhan-shu-hui-zhi-cheng-jiao-liang" class="toc-link">volume_overlay函数绘制成交量</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#liang-zhang-tu-dui-zhou" class="toc-link">两张图对轴</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#dai-ma" class="toc-link">代码</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151642/#plotlyhua-tu" class="toc-link">plotly画图</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#candlestickhui-zhi-zha-zhu-tu" class="toc-link">Candlestick绘制蜡烛图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#tian-jia-zi-ding-yi-wen-ben-he-pi-zhu" class="toc-link">添加自定义文本和批注</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201151642/#dai-ma-1" class="toc-link">代码</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201151642/#plotlyqian-ru-pyqt5" class="toc-link">plotly嵌入PyQt5</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201151642&#x2F;">python绘制candlestick</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-15</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="shu-ju-huo-qu">数据获取</h2>
+<h3 id="tusharehuo-qu-xing-qing-shu-ju">tushare获取行情数据</h3>
+<p>tushare获取历史行情数据的函数主要有三个：</p>
+<p>get_hist_data()： 获取近3年的日线数据</p>
+<p>get_h_data()：获取一年的日线数据</p>
+<p>get_k_data()：返回每一只股票从上市开始到当前交易日的所有日线数据</p>
+<h3 id="tusharehuo-qu-jiao-yi-ri-li">tushare获取交易日历</h3>
+<p>trade_cal()：获取各大交易所交易日历数据,默认提取的是上交所</p>
+<h3 id="ta-libji-suan-jun-xian">TA-Lib计算均线</h3>
+<p>10日均线</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>sma_10 = talib.</span><span style="color:#bf616a;">SMA</span><span>(np.</span><span style="color:#bf616a;">array</span><span>(data[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;]), </span><span style="color:#d08770;">10</span><span>)
+</span></code></pre>
+<p>同理计算30日均线</p>
+<h2 id="matplotlibhua-tu">Matplotlib画图</h2>
+<p>官方文档：<a href="https://matplotlib.org/2.1.2/api/finance_api.html">finance — Matplotlib 2.1.2 documentation</a></p>
+<h3 id="matplotlib-financecai-keng">matplotlib.finance踩坑</h3>
+<h4 id="attributeerror-module-mplfinance-has-no-attribute-candlestick-ochl">AttributeError: module 'mplfinance' has no attribute 'candlestick_ochl'</h4>
+<p>原因：从matplotlib 2.2.0开始，matplotlib已经不包含finance模块；而mpl_finance模块从2020年开始弃用。</p>
+<p>解决：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>conda install -c conda-forge mplfinance
+</span></code></pre>
+<p>或者</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>pip install --upgrade mplfinance
+</span></code></pre>
+<h4 id="importerror-cannot-import-name-candlestick-ochl-from-mplfinance">ImportError: cannot import name 'candlestick_ochl' from 'mplfinance'</h4>
+<p>原因：在新的mplfinance包下调用旧的API</p>
+<p>解决：将</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>from mpl_finance import
+</span></code></pre>
+<p>改为：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>from mplfinance.original_flavor import candlestick_ohlc
+</span></code></pre>
+<h3 id="candlestickhan-shu-hui-zhi-zha-zhu-tu">candlestick函数绘制蜡烛图</h3>
+<p>matplotlib.finance共有四个画蜡烛图的函数</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>matplotlib.finance.</span><span style="color:#bf616a;">candlestick_ochl</span><span>(ax, quotes, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">0.2</span><span>, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">k</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">1.0</span><span>)  
+</span><span>matplotlib.finance.</span><span style="color:#bf616a;">candlestick_ohlc</span><span>(ax, quotes, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">0.2</span><span>, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">k</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">1.0</span><span>)
+</span><span>matplotlib.finance.</span><span style="color:#bf616a;">candlestick2_ochl</span><span>(ax, opens, closes, highs, lows, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">k</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">0.75</span><span>)  
+</span><span>matplotlib.finance.</span><span style="color:#bf616a;">candlestick2_ohlc</span><span>(ax, opens, highs, lows, closes, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">k</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">0.75</span><span>) 
+</span></code></pre>
+<h3 id="chu-li-ri-xian-tu-de-shi-jian-jian-ge">处理日线图的时间间隔</h3>
+<p>直接绘图会出现非交易日无法跳过导致图像断裂的情况，一般的方法都是建议重新调整横坐标，被动地过滤掉非交易时间段。例如每 10 个交易日标记一次。</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>ax.</span><span style="color:#bf616a;">set_xticks</span><span>(</span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">len</span><span>(data[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;]), </span><span style="color:#d08770;">10</span><span>))
+</span><span>ax.</span><span style="color:#bf616a;">set_xticklabels</span><span>(data[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;][::</span><span style="color:#d08770;">10</span><span>])
+</span></code></pre>
+<p>函数说明：</p>
+<h4 id="matplotlib-axes-axes-set-xticks">matplotlib.axes.Axes.set_xticks()</h4>
+<p>用于使用刻度列表设置 x 刻度。</p>
+<p>[Matplotlib.axes.Axes.set_xticks() in Python - GeeksforGeeks](https://www.geeksforgeeks.org/matplotlib-axes-axes-set_xticks-in-python/#:~:text=The Axes.set_xticks () function in axes module of,set major ticks or to set minor ticks.)</p>
+<p><strong>Syntax:</strong> Axes.set_xticks(self, ticks, minor=False)</p>
+<p><strong>Parameters:</strong> This method accepts the following parameters.</p>
+<ul>
+<li><strong>ticks :</strong> This parameter is the list of x-axis tick locations.</li>
+<li><strong>minor :</strong> This parameter is used whether set major ticks or to set minor ticks</li>
+</ul>
+<p><strong>Return value:</strong> This method does not returns any value.</p>
+<h4 id="matplotlib-axes-axes-set-xticklabels">matplotlib.axes.Axes.set_xticklabels()</h4>
+<p>用于使用字符串标签列表设置 x-tick 标签，可以赋值给之前已经设置过的set_xtick。</p>
+<p><a href="https://www.geeksforgeeks.org/matplotlib-axes-axes-set_xticklabels-in-python/">Matplotlib.axes.Axes.set_xticklabels() in Python - GeeksforGeeks</a></p>
+<p><strong>Syntax:</strong> Axes.set_xticklabels(self, labels, fontdict=None, minor=False, **kwargs)</p>
+<p><strong>Parameters:</strong> </p>
+<ul>
+<li><strong>labels :</strong> This parameter is the list of of string labels.</li>
+<li><strong>fontdict :</strong> This parameter is the dictionary controlling the appearance of the ticklabels.</li>
+<li><strong>minor :</strong> This parameter is used whether set major ticks or to set minor ticks</li>
+</ul>
+<p><strong>Return value:</strong> This method returns a list of Text instances.</p>
+<h3 id="volume-overlayhan-shu-hui-zhi-cheng-jiao-liang">volume_overlay函数绘制成交量</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>matplotlib.finance.</span><span style="color:#bf616a;">volume_overlay</span><span>(ax, opens, closes, volumes, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">k</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">1.0</span><span>)
+</span></code></pre>
+<h3 id="liang-zhang-tu-dui-zhou">两张图对轴</h3>
+<p>调整坐标轴，使两张图的间距一致</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>ax = fig.</span><span style="color:#bf616a;">add_axes</span><span>([</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">0.2</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">0.5</span><span>])
+</span><span>ax2 = fig.</span><span style="color:#bf616a;">add_axes</span><span>([</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">0.2</span><span>])
+</span></code></pre>
+<h3 id="dai-ma">代码</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>talib
+</span><span style="color:#b48ead;">import </span><span>numpy </span><span style="color:#b48ead;">as </span><span>np
+</span><span style="color:#b48ead;">import </span><span>tushare </span><span style="color:#b48ead;">as </span><span>ts
+</span><span style="color:#b48ead;">import </span><span>matplotlib.pyplot </span><span style="color:#b48ead;">as </span><span>plt
+</span><span style="color:#b48ead;">from </span><span>mplfinance.original_flavor </span><span style="color:#b48ead;">import </span><span>candlestick2_ochl, volume_overlay
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">if </span><span>__name__ == &#39;</span><span style="color:#a3be8c;">__main__</span><span>&#39;:
+</span><span>    data = ts.</span><span style="color:#bf616a;">get_k_data</span><span>(&#39;</span><span style="color:#a3be8c;">399300</span><span>&#39;, </span><span style="color:#bf616a;">index</span><span>=</span><span style="color:#d08770;">True</span><span>, </span><span style="color:#bf616a;">start</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-01</span><span>&#39;, </span><span style="color:#bf616a;">end</span><span>=&#39;</span><span style="color:#a3be8c;">2021-06-31</span><span>&#39;)
+</span><span>    sma_10 = talib.</span><span style="color:#bf616a;">SMA</span><span>(np.</span><span style="color:#bf616a;">array</span><span>(data[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;]), </span><span style="color:#d08770;">10</span><span>)
+</span><span>    sma_30 = talib.</span><span style="color:#bf616a;">SMA</span><span>(np.</span><span style="color:#bf616a;">array</span><span>(data[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;]), </span><span style="color:#d08770;">30</span><span>)
+</span><span>
+</span><span>    fig = plt.</span><span style="color:#bf616a;">figure</span><span>(</span><span style="color:#bf616a;">figsize</span><span>=(</span><span style="color:#d08770;">17</span><span>, </span><span style="color:#d08770;">10</span><span>))
+</span><span>    ax = fig.</span><span style="color:#bf616a;">add_axes</span><span>([</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0.2</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0.5</span><span>])
+</span><span>    ax2 = fig.</span><span style="color:#bf616a;">add_axes</span><span>([</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0.2</span><span>])
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">candlestick2_ochl</span><span>(ax, data[&#39;</span><span style="color:#a3be8c;">open</span><span>&#39;], data[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;], data[&#39;</span><span style="color:#a3be8c;">high</span><span>&#39;], data[&#39;</span><span style="color:#a3be8c;">low</span><span>&#39;],
+</span><span>                          </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">0.5</span><span>, </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">g</span><span>&#39;, </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">0.6</span><span>)
+</span><span>    ax.</span><span style="color:#bf616a;">set_xticks</span><span>(</span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">len</span><span>(data[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;]), </span><span style="color:#d08770;">10</span><span>))
+</span><span>    ax.</span><span style="color:#bf616a;">plot</span><span>(sma_10, </span><span style="color:#bf616a;">label</span><span>=&#39;</span><span style="color:#a3be8c;">10 日均线</span><span>&#39;)
+</span><span>    ax.</span><span style="color:#bf616a;">plot</span><span>(sma_30, </span><span style="color:#bf616a;">label</span><span>=&#39;</span><span style="color:#a3be8c;">30 日均线</span><span>&#39;)
+</span><span>    ax.</span><span style="color:#bf616a;">legend</span><span>(</span><span style="color:#bf616a;">loc</span><span>=&#39;</span><span style="color:#a3be8c;">upper left</span><span>&#39;)
+</span><span>    ax.</span><span style="color:#bf616a;">grid</span><span>(</span><span style="color:#d08770;">True</span><span>)
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">volume_overlay</span><span>(ax2, data[&#39;</span><span style="color:#a3be8c;">open</span><span>&#39;], data[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;], data[&#39;</span><span style="color:#a3be8c;">volume</span><span>&#39;], </span><span style="color:#bf616a;">colorup</span><span>=&#39;</span><span style="color:#a3be8c;">r</span><span>&#39;, </span><span style="color:#bf616a;">colordown</span><span>=&#39;</span><span style="color:#a3be8c;">g</span><span>&#39;, </span><span style="color:#bf616a;">width</span><span>=</span><span style="color:#d08770;">0.5</span><span>,
+</span><span>                       </span><span style="color:#bf616a;">alpha</span><span>=</span><span style="color:#d08770;">0.8</span><span>)
+</span><span>    ax2.</span><span style="color:#bf616a;">set_xticks</span><span>(</span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">len</span><span>(data[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;]), </span><span style="color:#d08770;">10</span><span>))
+</span><span>    ax2.</span><span style="color:#bf616a;">set_xticklabels</span><span>(data[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;][::</span><span style="color:#d08770;">10</span><span>], </span><span style="color:#bf616a;">rotation</span><span>=</span><span style="color:#d08770;">30</span><span>)
+</span><span>    ax2.</span><span style="color:#bf616a;">grid</span><span>(</span><span style="color:#d08770;">True</span><span>)
+</span><span>
+</span><span>    plt.</span><span style="color:#bf616a;">show</span><span>()
+</span><span>
+</span><span>
+</span><span>
+</span></code></pre>
+<h2 id="plotlyhua-tu">plotly画图</h2>
+<p>官方文档：<a href="https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html">plotly.graph_objects.Figure — 5.5.0 documentation</a></p>
+<h3 id="candlestickhui-zhi-zha-zhu-tu">Candlestick绘制蜡烛图</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>go.</span><span style="color:#bf616a;">Candlestick</span><span>(</span><span style="color:#bf616a;">x</span><span>=df[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;], </span><span style="color:#bf616a;">open</span><span>=df[&#39;</span><span style="color:#a3be8c;">open</span><span>&#39;], </span><span style="color:#bf616a;">high</span><span>=df[&#39;</span><span style="color:#a3be8c;">high</span><span>&#39;], </span><span style="color:#bf616a;">low</span><span>=df[&#39;</span><span style="color:#a3be8c;">low</span><span>&#39;],
+</span><span style="color:#bf616a;">close</span><span>=df[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;])
+</span></code></pre>
+<h3 id="tian-jia-zi-ding-yi-wen-ben-he-pi-zhu">添加自定义文本和批注</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>fig.</span><span style="color:#bf616a;">update_layout</span><span>(
+</span><span>    </span><span style="color:#bf616a;">title</span><span>=&#39;</span><span style="color:#a3be8c;">The Great Recession</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">yaxis_title</span><span>=&#39;</span><span style="color:#a3be8c;">AAPL Stock</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">shapes </span><span>= [</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>        </span><span style="color:#bf616a;">x0</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">x1</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y0</span><span>=</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#bf616a;">y1</span><span>=</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>        </span><span style="color:#bf616a;">line_width</span><span>=</span><span style="color:#d08770;">2</span><span>)],
+</span><span>    </span><span style="color:#bf616a;">annotations</span><span>=[</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>        </span><span style="color:#bf616a;">x</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y</span><span>=</span><span style="color:#d08770;">0.05</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>        </span><span style="color:#bf616a;">showarrow</span><span>=</span><span style="color:#d08770;">False</span><span>, </span><span style="color:#bf616a;">xanchor</span><span>=&#39;</span><span style="color:#a3be8c;">left</span><span>&#39;, </span><span style="color:#bf616a;">text</span><span>=&#39;</span><span style="color:#a3be8c;">Increase Period Begins</span><span>&#39;)]
+</span><span>)
+</span></code></pre>
+<h3 id="dai-ma-1">代码</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>plotly.graph_objects </span><span style="color:#b48ead;">as </span><span>go
+</span><span style="color:#b48ead;">import </span><span>tushare </span><span style="color:#b48ead;">as </span><span>ts
+</span><span>
+</span><span>df = ts.</span><span style="color:#bf616a;">get_k_data</span><span>(&#39;</span><span style="color:#a3be8c;">399300</span><span>&#39;, </span><span style="color:#bf616a;">index</span><span>=</span><span style="color:#d08770;">True</span><span>, </span><span style="color:#bf616a;">start</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-01</span><span>&#39;, </span><span style="color:#bf616a;">end</span><span>=&#39;</span><span style="color:#a3be8c;">2021-06-31</span><span>&#39;)
+</span><span>fig = go.</span><span style="color:#bf616a;">Figure</span><span>(</span><span style="color:#bf616a;">data</span><span>=[go.</span><span style="color:#bf616a;">Candlestick</span><span>(</span><span style="color:#bf616a;">x</span><span>=df[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;],
+</span><span>                                     </span><span style="color:#bf616a;">open</span><span>=df[&#39;</span><span style="color:#a3be8c;">open</span><span>&#39;],
+</span><span>                                     </span><span style="color:#bf616a;">high</span><span>=df[&#39;</span><span style="color:#a3be8c;">high</span><span>&#39;],
+</span><span>                                     </span><span style="color:#bf616a;">low</span><span>=df[&#39;</span><span style="color:#a3be8c;">low</span><span>&#39;],
+</span><span>                                     </span><span style="color:#bf616a;">close</span><span>=df[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;])])
+</span><span>
+</span><span style="color:#65737e;"># Candlestick without Rangeslider
+</span><span style="color:#65737e;"># fig.update_layout(xaxis_rangeslider_visible=False)
+</span><span>
+</span><span style="color:#65737e;"># Adding Customized Text and Annotations
+</span><span>fig.</span><span style="color:#bf616a;">update_layout</span><span>(
+</span><span>    </span><span style="color:#bf616a;">title</span><span>=&#39;</span><span style="color:#a3be8c;">The Great Recession</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">yaxis_title</span><span>=&#39;</span><span style="color:#a3be8c;">AAPL Stock</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">shapes </span><span>= [</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>        </span><span style="color:#bf616a;">x0</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">x1</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y0</span><span>=</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#bf616a;">y1</span><span>=</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>        </span><span style="color:#bf616a;">line_width</span><span>=</span><span style="color:#d08770;">2</span><span>)],
+</span><span>    </span><span style="color:#bf616a;">annotations</span><span>=[</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>        </span><span style="color:#bf616a;">x</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y</span><span>=</span><span style="color:#d08770;">0.05</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>        </span><span style="color:#bf616a;">showarrow</span><span>=</span><span style="color:#d08770;">False</span><span>, </span><span style="color:#bf616a;">xanchor</span><span>=&#39;</span><span style="color:#a3be8c;">left</span><span>&#39;, </span><span style="color:#bf616a;">text</span><span>=&#39;</span><span style="color:#a3be8c;">Increase Period Begins</span><span>&#39;)]
+</span><span>)
+</span><span>fig.</span><span style="color:#bf616a;">show</span><span>()
+</span></code></pre>
+<h2 id="plotlyqian-ru-pyqt5">plotly嵌入PyQt5</h2>
+<p>plotly的绘图对象是浏览器，可以用pyqt的QtWebEngineWidgets控件作为ployly的绘图对象，实现将plotly嵌入pyqt中。</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>os
+</span><span style="color:#b48ead;">import </span><span>sys
+</span><span style="color:#b48ead;">import </span><span>tempfile
+</span><span>
+</span><span style="color:#b48ead;">from </span><span>PyQt5.QtWidgets </span><span style="color:#b48ead;">import </span><span>QPushButton, QLineEdit, QLabel
+</span><span style="color:#b48ead;">from </span><span>plotly.io </span><span style="color:#b48ead;">import </span><span>to_html
+</span><span style="color:#b48ead;">import </span><span>plotly.graph_objs </span><span style="color:#b48ead;">as </span><span>go
+</span><span style="color:#b48ead;">from </span><span>PyQt5 </span><span style="color:#b48ead;">import </span><span>QtCore, QtGui, QtWidgets, QtWebEngineWidgets
+</span><span style="color:#b48ead;">import </span><span>plotly.graph_objects </span><span style="color:#b48ead;">as </span><span>go
+</span><span style="color:#b48ead;">import </span><span>tushare </span><span style="color:#b48ead;">as </span><span>ts
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">PlotlyViewer</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">QtWebEngineWidgets.QWebEngineView</span><span style="color:#eff1f5;">):
+</span><span>    now_Id = &#39;</span><span style="color:#a3be8c;">399300</span><span>&#39;
+</span><span>    now_start_time = &#39;</span><span style="color:#a3be8c;">2021-01-01</span><span>&#39;
+</span><span>    now_end_time = &#39;</span><span style="color:#a3be8c;">2021-06-01</span><span>&#39;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#96b5b4;">__init__</span><span>(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">fig</span><span>=</span><span style="color:#d08770;">None</span><span>):
+</span><span>        </span><span style="color:#96b5b4;">super</span><span>().</span><span style="color:#96b5b4;">__init__</span><span>()
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">page</span><span>().</span><span style="color:#bf616a;">profile</span><span>().downloadRequested.</span><span style="color:#bf616a;">connect</span><span>(</span><span style="color:#bf616a;">self</span><span>.on_downloadRequested)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">settings</span><span>().</span><span style="color:#bf616a;">setAttribute</span><span>(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">settings</span><span>().ShowScrollBars, </span><span style="color:#d08770;">False</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">settings</span><span>().</span><span style="color:#bf616a;">setAttribute</span><span>(QtWebEngineWidgets.QWebEngineSettings.WebGLEnabled, </span><span style="color:#d08770;">True</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file = tempfile.</span><span style="color:#bf616a;">NamedTemporaryFile</span><span>(</span><span style="color:#bf616a;">mode</span><span>=&quot;</span><span style="color:#a3be8c;">w</span><span>&quot;, </span><span style="color:#bf616a;">suffix</span><span>=&quot;</span><span style="color:#a3be8c;">.html</span><span>&quot;, </span><span style="color:#bf616a;">delete</span><span>=</span><span style="color:#d08770;">False</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">resize</span><span>(</span><span style="color:#d08770;">1000</span><span>, </span><span style="color:#d08770;">600</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">setWindowTitle</span><span>(&quot;</span><span style="color:#a3be8c;">candlestick</span><span>&quot;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">set_figure</span><span>(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">getFig</span><span>(</span><span style="color:#bf616a;">self</span><span>.now_Id, </span><span style="color:#bf616a;">self</span><span>.now_start_time, </span><span style="color:#bf616a;">self</span><span>.now_end_time))
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb1 = </span><span style="color:#bf616a;">QLabel</span><span>(&#39;</span><span style="color:#a3be8c;">股票代码：</span><span>&#39;, </span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb1.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">40</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb1.</span><span style="color:#bf616a;">setStyleSheet</span><span>(&#39;</span><span style="color:#a3be8c;">background-color: rgb(255,255,255)</span><span>&#39;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_Id = </span><span style="color:#bf616a;">QLineEdit</span><span>(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_Id.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">140</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb2 = </span><span style="color:#bf616a;">QLabel</span><span>(&#39;</span><span style="color:#a3be8c;">起始日期：</span><span>&#39;, </span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb2.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">250</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb2.</span><span style="color:#bf616a;">setStyleSheet</span><span>(&#39;</span><span style="color:#a3be8c;">background-color: rgb(255,255,255)</span><span>&#39;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_start_time = </span><span style="color:#bf616a;">QLineEdit</span><span>(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_start_time.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">350</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb3 = </span><span style="color:#bf616a;">QLabel</span><span>(&#39;</span><span style="color:#a3be8c;">结束日期：</span><span>&#39;, </span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb3.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">460</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lb3.</span><span style="color:#bf616a;">setStyleSheet</span><span>(&#39;</span><span style="color:#a3be8c;">background-color: rgb(255,255,255)</span><span>&#39;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_end_time = </span><span style="color:#bf616a;">QLineEdit</span><span>(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_end_time.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">560</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_Id.</span><span style="color:#bf616a;">setText</span><span>(&#39;</span><span style="color:#a3be8c;">399300</span><span>&#39;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_start_time.</span><span style="color:#bf616a;">setText</span><span>(&#39;</span><span style="color:#a3be8c;">2021-01-01</span><span>&#39;)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.lineEdit_end_time.</span><span style="color:#bf616a;">setText</span><span>(&#39;</span><span style="color:#a3be8c;">2021-06-01</span><span>&#39;)
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.btn1 = </span><span style="color:#bf616a;">QPushButton</span><span>(&quot;</span><span style="color:#a3be8c;">查看K线</span><span>&quot;, </span><span style="color:#bf616a;">self</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.btn1.</span><span style="color:#bf616a;">move</span><span>(</span><span style="color:#d08770;">740</span><span>, </span><span style="color:#d08770;">25</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.btn1.</span><span style="color:#bf616a;">setCheckable</span><span>(</span><span style="color:#d08770;">True</span><span>)
+</span><span>
+</span><span>
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">set_figure</span><span>(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">fig</span><span>=</span><span style="color:#d08770;">None</span><span>):
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file.</span><span style="color:#bf616a;">seek</span><span>(</span><span style="color:#d08770;">0</span><span>)
+</span><span>        </span><span style="color:#b48ead;">if </span><span>fig is </span><span style="color:#d08770;">None</span><span>:
+</span><span>            fig = go.</span><span style="color:#bf616a;">Figure</span><span>()
+</span><span>        fig.</span><span style="color:#bf616a;">update_xaxes</span><span>(</span><span style="color:#bf616a;">showspikes</span><span>=</span><span style="color:#d08770;">True</span><span>)
+</span><span>        fig.</span><span style="color:#bf616a;">update_yaxes</span><span>(</span><span style="color:#bf616a;">showspikes</span><span>=</span><span style="color:#d08770;">True</span><span>)
+</span><span>        html = </span><span style="color:#bf616a;">to_html</span><span>(fig, </span><span style="color:#bf616a;">config</span><span>={&quot;</span><span style="color:#a3be8c;">responsive</span><span>&quot;: </span><span style="color:#d08770;">True</span><span>, &#39;</span><span style="color:#a3be8c;">scrollZoom</span><span>&#39;: </span><span style="color:#d08770;">True</span><span>})
+</span><span>        html += &quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">&lt;style&gt;body{margin: 0;}</span><span>&quot; \
+</span><span>                &quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">.plot-container,.main-svg,.svg-container</span><span style="color:#d08770;">{width:100% !important; height:100% !important;}</span><span style="color:#a3be8c;">&lt;/style&gt;</span><span>&quot;
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file.</span><span style="color:#bf616a;">write</span><span>(html)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file.</span><span style="color:#bf616a;">truncate</span><span>()
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file.</span><span style="color:#bf616a;">seek</span><span>(</span><span style="color:#d08770;">0</span><span>)
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">load</span><span>(QtCore.QUrl.</span><span style="color:#bf616a;">fromLocalFile</span><span>(</span><span style="color:#bf616a;">self</span><span>.temp_file.name))
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">closeEvent</span><span>(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">event</span><span>: QtGui.QCloseEvent) -&gt; </span><span style="color:#d08770;">None</span><span>:
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.temp_file.</span><span style="color:#bf616a;">close</span><span>()
+</span><span>        os.</span><span style="color:#bf616a;">unlink</span><span>(</span><span style="color:#bf616a;">self</span><span>.temp_file.name)
+</span><span>        </span><span style="color:#96b5b4;">super</span><span>().</span><span style="color:#bf616a;">closeEvent</span><span>(event)
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">sizeHint</span><span>(</span><span style="color:#bf616a;">self</span><span>) -&gt; QtCore.QSize:
+</span><span>        </span><span style="color:#b48ead;">return </span><span>QtCore.</span><span style="color:#bf616a;">QSize</span><span>(</span><span style="color:#d08770;">400</span><span>, </span><span style="color:#d08770;">400</span><span>)
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">on_downloadRequested</span><span>(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">download</span><span>):
+</span><span>        dialog = QtWidgets.</span><span style="color:#bf616a;">QFileDialog</span><span>()
+</span><span>        dialog.</span><span style="color:#bf616a;">setDefaultSuffix</span><span>(&quot;</span><span style="color:#a3be8c;">.png</span><span>&quot;)
+</span><span>        path, </span><span style="color:#bf616a;">_ </span><span>= dialog.</span><span style="color:#bf616a;">getSaveFileName</span><span>(</span><span style="color:#bf616a;">self</span><span>, &quot;</span><span style="color:#a3be8c;">Save File</span><span>&quot;, os.path.</span><span style="color:#bf616a;">join</span><span>(os.</span><span style="color:#bf616a;">getcwd</span><span>(), &quot;</span><span style="color:#a3be8c;">newplot.png</span><span>&quot;), &quot;</span><span style="color:#a3be8c;">*.png</span><span>&quot;)
+</span><span>        </span><span style="color:#b48ead;">if </span><span>path:
+</span><span>            download.</span><span style="color:#bf616a;">setPath</span><span>(path)
+</span><span>            download.</span><span style="color:#bf616a;">accept</span><span>()
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">getFig</span><span>(</span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">id</span><span>, </span><span style="color:#bf616a;">start</span><span>, </span><span style="color:#bf616a;">end</span><span>):
+</span><span>        df = ts.</span><span style="color:#bf616a;">get_k_data</span><span>(</span><span style="color:#96b5b4;">id</span><span>, </span><span style="color:#bf616a;">index</span><span>=</span><span style="color:#d08770;">True</span><span>, </span><span style="color:#bf616a;">start</span><span>=start, </span><span style="color:#bf616a;">end</span><span>=end)
+</span><span>        fig = go.</span><span style="color:#bf616a;">Figure</span><span>(</span><span style="color:#bf616a;">data</span><span>=[go.</span><span style="color:#bf616a;">Candlestick</span><span>(</span><span style="color:#bf616a;">x</span><span>=df[&#39;</span><span style="color:#a3be8c;">date</span><span>&#39;],
+</span><span>                                             </span><span style="color:#bf616a;">open</span><span>=df[&#39;</span><span style="color:#a3be8c;">open</span><span>&#39;],
+</span><span>                                             </span><span style="color:#bf616a;">high</span><span>=df[&#39;</span><span style="color:#a3be8c;">high</span><span>&#39;],
+</span><span>                                             </span><span style="color:#bf616a;">low</span><span>=df[&#39;</span><span style="color:#a3be8c;">low</span><span>&#39;],
+</span><span>                                             </span><span style="color:#bf616a;">close</span><span>=df[&#39;</span><span style="color:#a3be8c;">close</span><span>&#39;])])
+</span><span>        fig.</span><span style="color:#bf616a;">update_layout</span><span>(
+</span><span>            </span><span style="color:#bf616a;">title</span><span>=&#39;</span><span style="color:#a3be8c;">The Great Recession</span><span>&#39;,
+</span><span>            </span><span style="color:#bf616a;">yaxis_title</span><span>=&#39;</span><span style="color:#a3be8c;">AAPL Stock</span><span>&#39;,
+</span><span>            </span><span style="color:#bf616a;">shapes</span><span>=[</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>                </span><span style="color:#bf616a;">x0</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">x1</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y0</span><span>=</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#bf616a;">y1</span><span>=</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>                </span><span style="color:#bf616a;">line_width</span><span>=</span><span style="color:#d08770;">2</span><span>)],
+</span><span>            </span><span style="color:#bf616a;">annotations</span><span>=[</span><span style="color:#bf616a;">dict</span><span>(
+</span><span>                </span><span style="color:#bf616a;">x</span><span>=&#39;</span><span style="color:#a3be8c;">2021-01-09</span><span>&#39;, </span><span style="color:#bf616a;">y</span><span>=</span><span style="color:#d08770;">0.05</span><span>, </span><span style="color:#bf616a;">xref</span><span>=&#39;</span><span style="color:#a3be8c;">x</span><span>&#39;, </span><span style="color:#bf616a;">yref</span><span>=&#39;</span><span style="color:#a3be8c;">paper</span><span>&#39;,
+</span><span>                </span><span style="color:#bf616a;">showarrow</span><span>=</span><span style="color:#d08770;">False</span><span>, </span><span style="color:#bf616a;">xanchor</span><span>=&#39;</span><span style="color:#a3be8c;">left</span><span>&#39;, </span><span style="color:#bf616a;">text</span><span>=&#39;</span><span style="color:#a3be8c;">Increase Period Begins</span><span>&#39;)]
+</span><span>        )
+</span><span>        </span><span style="color:#b48ead;">return </span><span>fig
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">if </span><span>__name__ == &quot;</span><span style="color:#a3be8c;">__main__</span><span>&quot;:
+</span><span>    app = QtWidgets.</span><span style="color:#bf616a;">QApplication</span><span>(sys.argv)
+</span><span>    pv = </span><span style="color:#bf616a;">PlotlyViewer</span><span>()
+</span><span>    pv.</span><span style="color:#bf616a;">show</span><span>()
+</span><span>    app.</span><span style="color:#bf616a;">exec_</span><span>()
+</span><span>
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/quant/">#Quant</a>
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

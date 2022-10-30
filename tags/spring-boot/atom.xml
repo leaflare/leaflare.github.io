@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Spring Boot</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/spring-boot/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-14T20:17:19+00:00</updated>
+	<id>https://ffangli.github.io/tags/spring-boot/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>JDBC for MySQL</title>
+		<published>2022-01-14T20:17:19+00:00</published>
+		<updated>2022-01-14T20:17:19+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201142017/" type="text/html"/>
+		<id>https://ffangli.github.io/202201142017/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zai-pom-xmljia-ru-jdbc-driver-mysql-connector-java&quot;&gt;在pom.xml加入JDBC driver mysql-connector-java&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;&#x2F;artifactId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;version&amp;gt;5.7.29&amp;lt;&#x2F;version&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;附MySQL版本查询命令：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -V
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;application-ymlwen-jian-pei-zhi&quot;&gt;application.yml文件配置&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysql-jdbc-driver-url&quot;&gt;MySQL JDBC driver URL&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol&#x2F;&#x2F;[hosts][&#x2F;database][?properties]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;简单示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol – jdbc:mysql:
+&lt;&#x2F;span&gt;&lt;span&gt;host – mysql.db.server:3306
+&lt;&#x2F;span&gt;&lt;span&gt;database – my_database
+&lt;&#x2F;span&gt;&lt;span&gt;properties – useSSL=false&amp;amp;serverTimezone=UTC
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;kuo-zhan&quot;&gt;扩展&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;protocol&quot;&gt;Protocol&lt;&#x2F;h4&gt;
+&lt;p&gt;除了&amp;quot;jdbc:mysql:&amp;quot;协议还支持：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Load-balancing JDBC connections – jdbc:mysql:loadbalance:
+&lt;&#x2F;span&gt;&lt;span&gt;JDBC replication connections – jdbc:mysql:replication: 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hosts&quot;&gt;Hosts&lt;&#x2F;h4&gt;
+&lt;p&gt;如果需要处理多个主机，可以在逗号分隔的列表中列出主机：host1，host2,..., hostN。&lt;&#x2F;p&gt;
+&lt;p&gt;还可以用方括号将逗号分隔的主机列表括起来：[host1， host2,...,hostN]。&lt;&#x2F;p&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:loadbalance:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name?user=dbUser&amp;amp;password=1234567&amp;amp;loadBalanceConnectionGroup=group_name&amp;amp;ha.enableJMX=true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;properties-and-user-credentials&quot;&gt;Properties and User Credentials&lt;&#x2F;h4&gt;
+&lt;p&gt;有效的全局属性将应用于所有主机。&lt;&#x2F;p&gt;
+&lt;p&gt;格式：&lt;&#x2F;p&gt;
+&lt;p&gt;属性前面有一个问号&amp;quot;？&amp;quot;，并写成key=value键值对，由&amp;quot;&amp;amp;&amp;quot;符号分隔：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?prop1=value1&amp;amp;prop2=value2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以将User Credentials放在属性列表中：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?user=root&amp;amp;password=mypass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以在每个主机前面加上&amp;quot;user：password@host&amp;quot;格式：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass@myhost1:3306&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果 JDBC URL 包含主机列表，并且所有主机都使用相同的User Credentials，则可以在主机列表前面加上前缀：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;详细文档：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-jdbc-url-format.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.2 Connection URL Syntax&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-configuration-properties.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.3 Configuration Properties&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mysqllian-jie-shi-li&quot;&gt;MySQL连接示例&lt;&#x2F;h3&gt;
+&lt;p&gt;MySQL database： “&lt;em&gt;my_database&lt;&#x2F;em&gt;” &lt;&#x2F;p&gt;
+&lt;p&gt;host： “&lt;em&gt;mysql.db.server&lt;&#x2F;em&gt;“&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;@Test
+&lt;&#x2F;span&gt;&lt;span&gt;public void givenMysqlDb_thenCreateConnectionObject() {
+&lt;&#x2F;span&gt;&lt;span&gt;    String jdbcUrl = &amp;quot;jdbc:mysql:&#x2F;&#x2F;mysql.db.server:3306&#x2F;my_database?useSSL=false&amp;amp;serverTimezone=UTC&amp;quot;;    
+&lt;&#x2F;span&gt;&lt;span&gt;    String username = &amp;quot;User&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    String password = &amp;quot;1234567&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
+&lt;&#x2F;span&gt;&lt;span&gt;        assertNotNull(conn);
+&lt;&#x2F;span&gt;&lt;span&gt;    } catch (SQLException e) {
+&lt;&#x2F;span&gt;&lt;span&gt;        System.err.format(&amp;quot;SQL State: %s\n%s&amp;quot;, e.getSQLState(), e.getMessage());
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Boot连接MySQL报错处理合集</title>
+		<published>2022-01-12T19:33:41+00:00</published>
+		<updated>2022-01-12T19:33:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201121933/" type="text/html"/>
+		<id>https://ffangli.github.io/202201121933/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;hikaripool-1-exception-during-pool-initialization&quot;&gt;HikariPool-1 - Exception during pool initialization.&lt;&#x2F;h3&gt;
+&lt;p&gt;HikariPool是SpringBoot默认数据库连接池，该报错说明数据库配置有问题&lt;&#x2F;p&gt;
+&lt;p&gt;在application.yml配置文件中逐项检查username、password、url中IP地址、端口号等是否正确&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jdbc-urlcai-keng&quot;&gt;jdbc url踩坑&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;com-mysql-cj-jdbc-exceptions-communicationsexception-communications-link-failure&quot;&gt;com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure&lt;&#x2F;h3&gt;
+&lt;p&gt;重新在本地跑以前部署过的项目，遇到这个问题&lt;&#x2F;p&gt;
+&lt;p&gt;解决：把jdbc url的ip地址改成localhost:3306&lt;&#x2F;p&gt;
+&lt;p&gt;3306 ：SQL数据库的端口&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;javax-net-ssl-sslexception-message-closing-inbound-before-receiving-peer-s-close-notify&quot;&gt;javax.net.ssl.SSLException MESSAGE: closing inbound before receiving peer&#x27;s close_notify&lt;&#x2F;h3&gt;
+&lt;p&gt;使用mysql8.0以上版本数据库，要设置useSSL=false否则会出现上述报错&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?useSSL=false
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;反之，mysql8.0以下版本例如mysql5.7如果url包含useSSL，也可能会报错，删除该项即可解决&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-server-time-zone-value-is-unrecognized&quot;&gt;The server time zone value ‘????’ is unrecognized&lt;&#x2F;h3&gt;
+&lt;p&gt;时区设置serverTimezone=GMT%2B8&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?serverTimezone=GMT%2B8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;也可以在application.yml “spring:”下添加：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jackson:
+&lt;&#x2F;span&gt;&lt;span&gt;    time-zone: GMT+8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Boot下的VO, PO, DO, DTO, BO, DAO, POJO</title>
+		<published>2022-01-12T10:53:41+00:00</published>
+		<updated>2022-01-12T10:53:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201121053/" type="text/html"/>
+		<id>https://ffangli.github.io/202201121053/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;gai-nian&quot;&gt;概念&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.codetd.com&#x2F;en&#x2F;article&#x2F;12351967&quot;&gt;VO, PO, DO, DTO, BO, QO, DAO, POJO concept - Code World (codetd.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;VO（View Object）&lt;&#x2F;strong&gt;：视图对象，用于展示层，它的作用是把某个指定页面（或组件）的所有数据封装起来。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;PO（Persistent Object）&lt;&#x2F;strong&gt;：持久化对象，它跟持久层（通常是关系型数据库）的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中的每个字段（或若干个）就对应PO的一个（或若干个）属性。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DO（Domain Object）&lt;&#x2F;strong&gt;：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DTO（Data Transfer Object）&lt;&#x2F;strong&gt;：数据传输对象，这个概念来源于J2EE的设计模式，原来的目的是为了EJB的分布式应用提供粗粒度的数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载，但在这里，我泛指用于展示层与服务层之间的数据传输对象。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;BO(Business Object)&lt;&#x2F;strong&gt;：业务对象，业务对象的主要功能是将业务逻辑封装为对象。此对象可以包括一个或多个其他对象。封装业务逻辑的 Java 对象可以通过调用 DAO 方法与 PO 和 VO 一起执行业务操作。例如，一份简历，具有教育经验，工作经验，社会关系等。我们可以对应教育经验的PO，工作经验的PO和社会关系的PO。创建与简历对应的 BO 对象以处理简历，并且每个 BO 都包含这些采购订单。当以这种方式处理业务逻辑时，我们可以使用BO。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;POJO (Plain Ordinary Java Object)&lt;&#x2F;strong&gt; ：简单和不规则的 java 对象，纯传统 Java 对象。也就是说，在某些对象&#x2F;关系映射工具中，可以维护数据库表记录的持久对象完全是符合Java Bean规范的纯Java对象，无需添加其他属性和方法。我的理解是，最基本的Java Bean只有属性字段和setter和getter方法。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DAO (Data Access Object)：&lt;&#x2F;strong&gt; 数据访问对象，是 Sun 的标准 J2EE 设计模式。此模式中的接口之一是 DAO，它对持久性层进行负操作。为业务层提供接口。此对象用于访问数据库。DAO通常与PO结合使用，包含各种数据库操作方法。通过其方法，结合PO对数据库执行相关操作。夹在业务逻辑和数据库资源之间。配合VO，提供数据库CRUD操作.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mo-xing&quot;&gt;模型&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201121053&#x2F;.&#x2F;Three-tier_architecture.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户发出请求（可能是填写表单），表单的数据在展示层被匹配为VO。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;展示层把VO转换为服务层对应方法所要求的DTO，传送给服务层。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;服务层首先根据DTO的数据构造（或重建）一个DO，调用DO的业务方法完成具体业务。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;服务层把DO转换为持久层对应的PO（可以使用ORM工具，也可以不用），调用持久层的持久化方法，把PO传递给它，完成持久化操作。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+</feed>

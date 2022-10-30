@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Reading Notes on Gorgon</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202252017/#abstract" class="toc-link">ABSTRACT</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202252017/#introduction" class="toc-link">INTRODUCTION</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202252017/#related-work" class="toc-link">RELATED WORK</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202252017/#conclusion" class="toc-link">CONCLUSION</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202252017&#x2F;">Reading Notes on Gorgon</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-02-25</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Reading notes on https://doi.org/10.1109/ISCA45697.2020.00035</p>
+<p>Gorgon: Accelerating Machine Learning from Relational Data</p>
+<span id="continue-reading"></span>
+<h2 id="abstract">ABSTRACT</h2>
+<p>One emerging application is in-database machine learning: a high-performance, low-friction interface for analytics on large databases. They co-locate database and machine learning processing in a unified reconfigurable data analytics accelerator, Gorgon, which flexibly shares resources between db and ml without compromising performance or incurring excessive overheads in either domain. They distill and integrate database parallel patterns into an existing ML-focused cgra, increasing area by less than 4% while outperforming a multicore software baseline by 1500X. They also explore the performance impact of unifying db and ml in a single accelerator, showing up to 4x speedup over split accelerators.</p>
+<h2 id="introduction">INTRODUCTION</h2>
+<p>Gorgon is a unified data analytics CGRA for in-database machine learning (DB+ML) with ML-focused parallel patterns (map, reduce, etc.) and DB-focused parallel patterns (sort, join, group-by, etc.). Gorgon thus accelerates full data-processing pipelines and is more reconfigurable than previous CGRAS.</p>
+<p>Industrial BD+ML systems, like Google's BigQuery ML and Apaches' MADlib, add ML inference and training to the relational model as new SQL operators. DB and ML have been accelerated individually, but no single hardware platform accelerates both.</p>
+<p>The key contribution of this paper:</p>
+<p>Detailed microarchitectual and system=level design of low-overhead database primitives embedded in a general-purpose reconfigurable accelerator.</p>
+<p>An evaluation of end-to-end system performance, including comparisons to software and independent DB and ML accelerators.</p>
+<h2 id="related-work">RELATED WORK</h2>
+<p>database acceleration ASICs,Q100</p>
+<p>FPGA database accelerators</p>
+<p>Domain-agnostic dataflow accelerators NoC</p>
+<p>In-database Machine Learning DAnA</p>
+<p>A variety of software solutions integrate ML with database operations, including Apache's Spark and MADlib. Greenplum Database and Google's BigQuery ML. Spark is an open-source distributed data-processing engine for various workloads, including SQL, machine learning, and graph processing.BigQuery ML can run ML models in its cloud data warehouse. MADlib is an open-source project that provides SQL-based ML algorithms that run in a database.</p>
+<h2 id="conclusion">CONCLUSION</h2>
+<p>A unified, performant, and flexible accelerator--the ideal, combining the advantages of fixed-function accelerators and FPGAS--would simplify data center management by keeping compute resources homogeneous. Furthermore, accelerator unification enables new, cross-domain applications like DB+ML. Gorgon demonstrates the potential for reuse between accelerators by embedding database inspired paralled patterns in a general-purpose fabric originally designed for ML; it is also the first system to fuse and accelerate DB+ML processing on a single chip, accelerating full data-processing pipelines. </p>
+<p>Gorgon is better-suited to data center integration than a sea of heterogeneous accelerators and faster. Furthermore, a unified platform shares expensive resources and large dice in advanced nodes. By adding database support to an ML-focused accelerator, Gorgon enables more powerful ML pipelines than existing accelerators.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/db4ml/">#DB4ML</a>
+                    
+                        <a href="https://ffangli.github.io/tags/ml4db/">#ML4DB</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

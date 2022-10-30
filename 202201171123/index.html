@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Spring 装配 Bean</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#spring-zhuang-pei-bean" class="toc-link">Spring 装配 Bean</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#xmlpei-zhi" class="toc-link">XML配置</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#java-configpei-zhi" class="toc-link">Java Config配置</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#zi-dong-hua-zhuang-pei-bean" class="toc-link">自动化装配 bean</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201171123/#wei-zu-jian-sao-miao-de-beanming-ming" class="toc-link">为组件扫描的Bean命名</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201171123/#she-zhi-zu-jian-sao-miao-de-ji-chu-bao" class="toc-link">设置组件扫描的基础包</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201171123/#wei-beantian-jia-shi-xian-zi-dong-zhuang-pei" class="toc-link">为Bean添加实现自动装配</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#dao-ru-he-hun-he-pei-zhi" class="toc-link">导入和混合配置</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201171123/#import-xml-configuration-in-java-config" class="toc-link">Import XML Configuration in Java Config</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201171123/#loading-java-config-in-xml" class="toc-link">Loading Java Config in XML</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201171123/#resource" class="toc-link">Resource</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201171123&#x2F;">Spring 装配 Bean</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-17</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="spring-zhuang-pei-bean">Spring 装配 Bean</h2>
+<ol>
+<li>装配机制
+<ol>
+<li>在XML中进行显式配置</li>
+<li>在Java中进行显式配置</li>
+<li>隐式的bean发现机制和自动装配</li>
+</ol>
+</li>
+<li>原则：
+<ol>
+<li>显式配置越少越好，尽量使用自动配置</li>
+<li>推荐使用类型安全并且比XML更加强大的JavaConfig</li>
+</ol>
+</li>
+</ol>
+<p>Spring 框架的核心是 Spring 容器。容器负责管理应用中组件的生命周期，它会创建这些组件并保证它们的依赖能够得到满足，这样组件才能完成预定的任务。</p>
+<h2 id="xmlpei-zhi">XML配置</h2>
+<p><strong>Bean file</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.dashboardapp.beanwire;
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">BeanWireXML </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">String </span><span style="color:#eff1f5;">message;
+</span><span style="color:#eff1f5;">	   </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">setMessage</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">message</span><span style="color:#eff1f5;">){
+</span><span style="color:#eff1f5;">	      </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.message  </span><span>=</span><span style="color:#eff1f5;"> message;
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">	   </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">getMessage</span><span style="color:#eff1f5;">(){
+</span><span style="color:#eff1f5;">	      </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">Message is : </span><span>&quot; +</span><span style="color:#eff1f5;"> message);
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p><strong>XML configuration file</strong></p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;?</span><span style="color:#bf616a;">xml </span><span style="color:#d08770;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0</span><span>&quot; </span><span style="color:#d08770;">encoding</span><span>=&quot;</span><span style="color:#a3be8c;">UTF-8</span><span>&quot;?&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">beans </span><span style="color:#d08770;">xmlns</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans</span><span>&quot;
+</span><span>    </span><span style="color:#d08770;">xmlns:xsi</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.w3.org/2001/XMLSchema-instance</span><span>&quot;
+</span><span>    </span><span style="color:#d08770;">xsi:schemaLocation</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans
+</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span><span>&quot;&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">bean </span><span style="color:#d08770;">id</span><span>=&quot;</span><span style="color:#a3be8c;">beanwire</span><span>&quot; </span><span style="color:#d08770;">class</span><span>=&quot;</span><span style="color:#a3be8c;">com.dashboardapp.beanwire.BeanWireXML</span><span>&quot;&gt;
+</span><span>            &lt;/</span><span style="color:#bf616a;">bean</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">beans</span><span>&gt;
+</span></code></pre>
+<p><strong>Main Java file</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.dashboardapp.beanwire;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.</span><span style="color:#ebcb8b;">ApplicationContext</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.support.</span><span style="color:#ebcb8b;">FileSystemXmlApplicationContext</span><span>;
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">BeanWireXMLMain </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public static void </span><span style="color:#8fa1b3;">main</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">		  </span><span style="color:#ebcb8b;">ApplicationContext</span><span style="color:#eff1f5;"> context </span><span>= </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">FileSystemXmlApplicationContext</span><span style="color:#eff1f5;">(
+</span><span style="color:#eff1f5;">                </span><span>&quot;</span><span style="color:#a3be8c;">WebContent/WEB-INF/appConfig.xml</span><span>&quot;</span><span style="color:#eff1f5;">);	   
+</span><span style="color:#eff1f5;">	      </span><span style="color:#ebcb8b;">BeanWireXML</span><span style="color:#eff1f5;"> beanwireobj </span><span>= </span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">BeanWireXML</span><span style="color:#eff1f5;">)context.</span><span style="color:#bf616a;">getBean</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">beanwire</span><span>&quot;</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">	      beanwireobj.</span><span style="color:#bf616a;">setMessage</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">Hello Bean. You are wired by XML config.....!</span><span>&quot;</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">	      beanwireobj.</span><span style="color:#bf616a;">getMessage</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<h2 id="java-configpei-zhi">Java Config配置</h2>
+<p><strong>Bean class</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.dashboardapp.beanwire;
+</span><span>
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">BeanWire </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">private </span><span style="color:#ebcb8b;">String </span><span style="color:#eff1f5;">message;
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">	   </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">setMessage</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String </span><span style="color:#bf616a;">message</span><span style="color:#eff1f5;">){
+</span><span style="color:#eff1f5;">	      </span><span style="color:#bf616a;">this</span><span style="color:#eff1f5;">.message  </span><span>=</span><span style="color:#eff1f5;"> message;
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">	   </span><span style="color:#b48ead;">public void </span><span style="color:#8fa1b3;">getMessage</span><span style="color:#eff1f5;">(){
+</span><span style="color:#eff1f5;">	      </span><span style="color:#ebcb8b;">System</span><span style="color:#eff1f5;">.out.</span><span style="color:#bf616a;">println</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">Message is : </span><span>&quot; +</span><span style="color:#eff1f5;"> message);
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p>两个注释用于通知Spring容器将加载BeanWire Bean。</p>
+<p>@Configuration注释通知 Spring 容器，此类是 Bean 定义的源。</p>
+<p>@Bean注释通知spring框架，该方法将返回一个对象，该对象需要在Spring应用程序上下文中注册为Bean。</p>
+<p><strong>具有注释的 Bean 配置类</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.dashboardapp.beanwire;
+</span><span>
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.*;
+</span><span>
+</span><span>@</span><span style="color:#bf616a;">Configuration
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">BeanWireConfig </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	@</span><span style="color:#bf616a;">Bean 
+</span><span style="color:#eff1f5;">	   </span><span style="color:#b48ead;">public </span><span style="color:#ebcb8b;">BeanWire </span><span style="color:#8fa1b3;">beanwire</span><span style="color:#eff1f5;">(){
+</span><span style="color:#eff1f5;">	      </span><span style="color:#b48ead;">return new </span><span style="color:#ebcb8b;">BeanWire</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p><strong>Main class</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.dashboardapp.beanwire;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.</span><span style="color:#ebcb8b;">ApplicationContext</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.*;
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">BeanWireMain </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">	</span><span style="color:#b48ead;">public static void </span><span style="color:#8fa1b3;">main</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">String</span><span style="color:#b48ead;">[] </span><span style="color:#bf616a;">args</span><span style="color:#eff1f5;">) {
+</span><span style="color:#eff1f5;">	      </span><span style="color:#ebcb8b;">ApplicationContext</span><span style="color:#eff1f5;"> ctx </span><span>= 
+</span><span style="color:#eff1f5;">	      </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">AnnotationConfigApplicationContext</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">BeanWireConfig</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">class</span><span style="color:#eff1f5;">);	   
+</span><span style="color:#eff1f5;">	      </span><span style="color:#ebcb8b;">BeanWire</span><span style="color:#eff1f5;"> beanwire </span><span>=</span><span style="color:#eff1f5;"> ctx.</span><span style="color:#bf616a;">getBean</span><span style="color:#eff1f5;">(</span><span style="color:#ebcb8b;">BeanWire</span><span style="color:#eff1f5;">.</span><span style="color:#bf616a;">class</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">	      beanwire.</span><span style="color:#bf616a;">setMessage</span><span style="color:#eff1f5;">(</span><span>&quot;</span><span style="color:#a3be8c;">Hello Bean. You are wired by annotation.....!</span><span>&quot;</span><span style="color:#eff1f5;">);
+</span><span style="color:#eff1f5;">	      beanwire.</span><span style="color:#bf616a;">getMessage</span><span style="color:#eff1f5;">();
+</span><span style="color:#eff1f5;">	   }
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<h2 id="zi-dong-hua-zhuang-pei-bean">自动化装配 bean</h2>
+<p>Spring 从两个角度来实现自动化装配：</p>
+<ul>
+<li>组件扫描（component scanning）：Spring 会自动发现应用上下文中所创建的 bean。</li>
+<li>自动装配（autowiring）：Spring 自动满足 bean 之间的依赖。</li>
+</ul>
+<h3 id="wei-zu-jian-sao-miao-de-beanming-ming">为组件扫描的Bean命名</h3>
+<ol>
+<li><code>@Componet(&quot;Bean_Name&quot;)</code>：可以为组件扫描的bean命名</li>
+<li><code>@Named(&quot;lonelyHeartsClub&quot;)</code>：Spring支持将@Named作为@Component 注解的替代方案，他们在绝大多数场景中，是可以互相替换的。</li>
+</ol>
+<h3 id="she-zhi-zu-jian-sao-miao-de-ji-chu-bao">设置组件扫描的基础包</h3>
+<ol>
+<li><code>@ComponentScan(&quot;soundsystem&quot;)</code></li>
+<li><code>@ComponentScan(basePackages=&quot;soundsystem)&quot;</code></li>
+<li><code>@ComponentScan(basePackages={&quot;soundsystem&quot;, &quot;video&quot;})</code></li>
+<li><code>@ComponentScan(basePackageClasses={CDPlayer.class, DVDPlayer.class})</code>：建议这种方式，可以检查出是否有问题</li>
+</ol>
+<h3 id="wei-beantian-jia-shi-xian-zi-dong-zhuang-pei">为Bean添加实现自动装配</h3>
+<ol>
+<li>使用<code>@Autowired</code>注解完成自动装配
+<ol>
+<li>可以修饰构造器。</li>
+<li>可以修饰Setter方法。</li>
+<li>可以修饰变量声明。</li>
+<li>可选参数：<code>required=false</code>:如果没有bean也不会装配。</li>
+</ol>
+</li>
+<li>使用<code>@Inject</code>注解：源自于Java依赖注入规范。</li>
+<li>在大多数场景下，这两个注解是可以替换的。</li>
+</ol>
+<h2 id="dao-ru-he-hun-he-pei-zhi">导入和混合配置</h2>
+<p>在自动装配时，spring并不在意要装配的 bean 来自哪里。自动装配的时候会考虑到 Spring 容器中所有的 bean，不管它是在 JavaConfig 或 XML 中声明的还是通过组件扫描获取到的。</p>
+<h3 id="import-xml-configuration-in-java-config">Import XML Configuration in Java Config</h3>
+<p>使用@ImportResource批注，并提供要导入的 XML 配置文件的位置。可以选择指定多个配置文件。@Import注释用于导入额外的Spring Java配置文件。</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.memorynotfound.spring.core;
+</span><span>
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">Configuration</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">Import</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">ImportResource</span><span>;
+</span><span>
+</span><span>@</span><span style="color:#bf616a;">Configuration
+</span><span>@</span><span style="color:#bf616a;">Import</span><span>({ </span><span style="color:#ebcb8b;">DbConfig</span><span>.</span><span style="color:#bf616a;">class </span><span>})
+</span><span>@</span><span style="color:#bf616a;">ImportResource</span><span>(&quot;</span><span style="color:#a3be8c;">classpath:app-config.xml</span><span>&quot;)
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">AppConfig </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p>下面是位于同一包中的第二个配置文件，并在主配置中被加载。</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.memorynotfound.spring.core;
+</span><span>
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">Configuration</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">Import</span><span>;
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">ImportResource</span><span>;
+</span><span>
+</span><span>@</span><span style="color:#bf616a;">Configuration
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">DbConfig </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p>app-config.xml</p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;?</span><span style="color:#bf616a;">xml </span><span style="color:#d08770;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0</span><span>&quot; </span><span style="color:#d08770;">encoding</span><span>=&quot;</span><span style="color:#a3be8c;">UTF-8</span><span>&quot;?&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">beans </span><span style="color:#d08770;">xmlns</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xmlns:xsi</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.w3.org/2001/XMLSchema-instance</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xsi:schemaLocation</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans
+</span><span style="color:#a3be8c;">                           http://www.springframework.org/schema/beans/spring-beans.xsd</span><span>&quot;&gt;
+</span><span>
+</span><span>
+</span><span>&lt;/</span><span style="color:#bf616a;">beans</span><span>&gt;
+</span></code></pre>
+<p>在标准的Java SE环境中，使用ConfigApplicationContext引导Spring，并提供Java Configuration类作为参数。</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">ApplicationContext</span><span> context = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">AnnotationConfigApplicationContext</span><span>(</span><span style="color:#ebcb8b;">AppConfig</span><span>.</span><span style="color:#bf616a;">class</span><span>);
+</span></code></pre>
+<p>在 Web 服务器环境中启动 spring 时，应该在 web-INF 目录中的 web.xml 文件中添加上下文参数:</p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;</span><span style="color:#bf616a;">context-param</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">param-name</span><span>&gt;contextClass&lt;/</span><span style="color:#bf616a;">param-name</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">param-value</span><span>&gt;org.springframework.web.context.support.AnnotationConfigWebApplicationContext&lt;/</span><span style="color:#bf616a;">param-value</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">context-param</span><span>&gt;
+</span></code></pre>
+<h3 id="loading-java-config-in-xml">Loading Java Config in XML</h3>
+<p>可以在Spring XML配置文件中加载Java配置文件。通过注册 &lt;context：component-scan/&gt; 元素并添加属性 base-package 并指定要自动扫描 Java 配置文件所在的包。第一个<import/>元素导入其他 xml 配置文件。</p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;?</span><span style="color:#bf616a;">xml </span><span style="color:#d08770;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0</span><span>&quot; </span><span style="color:#d08770;">encoding</span><span>=&quot;</span><span style="color:#a3be8c;">UTF-8</span><span>&quot;?&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">beans </span><span style="color:#d08770;">xmlns</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xmlns:xsi</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.w3.org/2001/XMLSchema-instance</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xmlns:context</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/context</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xsi:schemaLocation</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans
+</span><span style="color:#a3be8c;">                           http://www.springframework.org/schema/beans/spring-beans.xsd
+</span><span style="color:#a3be8c;">                           http://www.springframework.org/schema/context
+</span><span style="color:#a3be8c;">                           http://www.springframework.org/schema/context/spring-context.xsd</span><span>&quot;&gt;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">&lt;!-- loading additional xml config --&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">import </span><span style="color:#d08770;">resource</span><span>=&quot;</span><span style="color:#a3be8c;">classpath:db-config.xml</span><span>&quot;/&gt;
+</span><span>    
+</span><span>    </span><span style="color:#65737e;">&lt;!-- loading java config files in package --&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">context:component-scan </span><span style="color:#d08770;">base-package</span><span>=&quot;</span><span style="color:#a3be8c;">com.memorynotfound.spring.core.config</span><span>&quot; /&gt;
+</span><span>
+</span><span>&lt;/</span><span style="color:#bf616a;">beans</span><span>&gt;
+</span></code></pre>
+<p><strong>db-config.xml</strong> </p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;?</span><span style="color:#bf616a;">xml </span><span style="color:#d08770;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0</span><span>&quot; </span><span style="color:#d08770;">encoding</span><span>=&quot;</span><span style="color:#a3be8c;">UTF-8</span><span>&quot;?&gt;
+</span><span>&lt;</span><span style="color:#bf616a;">beans </span><span style="color:#d08770;">xmlns</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xmlns:xsi</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.w3.org/2001/XMLSchema-instance</span><span>&quot;
+</span><span>       </span><span style="color:#d08770;">xsi:schemaLocation</span><span>=&quot;</span><span style="color:#a3be8c;">http://www.springframework.org/schema/beans
+</span><span style="color:#a3be8c;">                           http://www.springframework.org/schema/beans/spring-beans.xsd</span><span>&quot;&gt;
+</span><span>
+</span><span>&lt;/</span><span style="color:#bf616a;">beans</span><span>&gt;
+</span></code></pre>
+<p>这是在xml配置中加载的java配置文件，它位于com.memorynotfound.spring.core.config包中:</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#b48ead;">package </span><span>com.memorynotfound.spring.core.config;
+</span><span>
+</span><span style="color:#b48ead;">import </span><span>org.springframework.context.annotation.</span><span style="color:#ebcb8b;">Configuration</span><span>;
+</span><span>
+</span><span>@</span><span style="color:#bf616a;">Configuration
+</span><span style="color:#b48ead;">public class </span><span style="color:#ebcb8b;">AppConfig </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">
+</span><span style="color:#eff1f5;">}
+</span></code></pre>
+<p>可以使用 ClassPathXmlApplicationContext 引导 spring 应用程序，并提供 Spring XML 配置文件的位置：</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">ApplicationContext</span><span> context = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ClassPathXmlApplicationContext</span><span>(&quot;</span><span style="color:#a3be8c;">app-config.xml</span><span>&quot;);
+</span></code></pre>
+<p>在 Web 应用程序中使用 spring 时，可以通过添加以下上下文参数来注册 Spring XML 配置文件:</p>
+<pre data-lang="xml" style="background-color:#2b303b;color:#c0c5ce;" class="language-xml "><code class="language-xml" data-lang="xml"><span>&lt;</span><span style="color:#bf616a;">context-param</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">param-name</span><span>&gt;contextConfigLocation&lt;/</span><span style="color:#bf616a;">param-name</span><span>&gt;
+</span><span>    &lt;</span><span style="color:#bf616a;">param-value</span><span>&gt;classpath:app-config.xml&lt;/</span><span style="color:#bf616a;">param-value</span><span>&gt;
+</span><span>&lt;/</span><span style="color:#bf616a;">context-param</span><span>&gt;
+</span></code></pre>
+<h2 id="resource">Resource</h2>
+<p><a href="https://blog.eduonix.com/java-programming-2/learn-how-to-wire-spring-beans-by-using-xml-and-java-classes/">How to wire Spring Beans by using XML and Java classes (eduonix.com)</a></p>
+<p><a href="https://memorynotfound.com/mixing-xml-java-config-spring/">Mixing XML and Java Configuration with Spring (memorynotfound.com)</a></p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/spring/">#Spring</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

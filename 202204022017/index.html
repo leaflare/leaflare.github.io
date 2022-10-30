@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Reading Notes on Anti-Caching</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202204022017/#questions" class="toc-link">Questions</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202204022017/#design-goals" class="toc-link">Design goals</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202204022017/#design" class="toc-link">Design</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202204022017/#conclusions" class="toc-link">Conclusions</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202204022017/#resource" class="toc-link">Resource</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202204022017&#x2F;">Reading Notes on Anti-Caching</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-04-02</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)</p>
+<span id="continue-reading"></span>
+<p>Anti-Caching is a data management mechanism designed by the H-Store project team for all-memory databases and is expected to solve the problem of physical memory limitations.</p>
+<h2 id="questions">Questions</h2>
+<p>The reason for the redesign is that the previous disk-based BufferManager had an excessive overhead in full memory scenarios (if the page is already in main memory, finding the corresponding memory pointer based on the page identifier is completely useless, according to a According to a SIGMOD 2018 paper, 1/3 of CPU cycles are wasted here). For this reason, many pure memory databases have abandoned BufferManager (e.g. H-Store, VoltDB [the commercial version of H-Store], MemSQL, and RAMCloud). The problem was that when the amount of physical memory was exceeded, pure in-memory databases started to experience page faults, which suddenly and severely slowed down the system. So at the time, pure memory databases were advising users not to manage more data than was available in physical memory. To solve this problem, the H-Store project team designed Anti-Caching.</p>
+<h2 id="design-goals">Design goals</h2>
+<p>When physical memory is about to be exhausted, the database collects cold data and writes it to disk in a cost effective manner.</p>
+<p>Unlike previous cache mechanisms, data does not exist in both hard disk and memory, but only in one of these places. Because memory is the primary carrier of data, the typical scenario is that data starts in memory and then cold data is expelled to the hard disk (rather than data starting on the hard disk and hot data being cached to memory). This approach is actually somewhat similar to virtual memory, except that memory is now managed by the database rather than the operating system, which provides more precise control (e.g., tuple level eviction).</p>
+<p>To understand the design of Anti-Caching it may be useful to review the key features of the H-Stored pure memory database: the H-Store is single-transaction (multiple physical nodes, multiple partitions per node, one thread per partition responsible for executing queries involving that partition), so it is lock-free. This is fine when the query mostly involves only one partition), so there is no locking. In terms of persistence, snapshots are flushed periodically, and command logs are also flushed (irregularly, or less than a max period, I guess) (after the group, to reduce the number of I/Os), and only after the command log has been dropped does the commit return successful.</p>
+<h2 id="design">Design</h2>
+<p>The core operation for implementing Anti-Caching is a two-step process.</p>
+<p>Aggregate the tuple of cold data to be expelled from memory (according to the LRU) into a block.
+Update an in-memory table (evicted table) to keep track of which tuples have been written to disk.
+And, because H-Stroe is single-transaction, maintaining these data structures does not require chaining.</p>
+<p>All that remains to be solved is some auxiliary data structures and how to do this elegantly. For example, in addition to the evicted table, there will be a block table to maintain all blocks. To facilitate access to cold data, a LRU Chain is maintained (for each table), so that when a tuple is accessed, it is retrieved directly from its original location and placed at the end of the chain. When implemented, the pointer to this bi-linked table is placed directly in the tuple header to reduce memory usage. To reduce CPU pressure, only some transactions are selected to update the LRU information (sampling). In addition to the data itself, the block table and evicted table are also written to disk during persistence.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Question: Why do we need block tables?
+My understanding is that if only evicted tables were used, then each tuple would have to hold specific block location information, which would undoubtedly increase the memory footprint and undermine the design goal of expelling tuples to reduce memory pressure. Using additional block tables in a dictionary-like fashion can further compress memory usage.</p>
+<p>Another trade-off is that the tuple from the block has to be merged back into the in-memory table structure, but should it be just this data? Or should the whole block be merged? If the former, the blocks on disk will need to be tidied up regularly, otherwise there will be more and more holes. If the latter, it may increase the memory load and the number of evicts.</p>
+<p>The experiments were compared with MySQL, MySQL + Memcached, using the YCSB (Yahoo Cloud Serving Benchmark) and TPC-C (OLTP) datasets. The basic conclusion is that the more skewed the query the more pronounced the Anti-Caching effect. After all, most of the hot pages used can be kept in memory at this point.</p>
+<h2 id="resource">Resource</h2>
+<p>Justin DeBrabant, Andrew Pavlo, Stephen Tu, Michael Stonebraker, and Stan Zdonik. 2013. Anti-caching: a new approach to database management system architecture. Proc. VLDB Endow. 6, 14 (September 2013), 1942–1953. https://doi.org/10.14778/2556549.2556575</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/state-of-the-art-db/">#State-of-the-art DB</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

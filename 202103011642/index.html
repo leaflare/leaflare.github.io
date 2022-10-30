@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Logistic regression algorithm</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202103011642/#logistic-regression-algorithm" class="toc-link">Logistic regression algorithm</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202103011642/#example-of-logistic-regression-in-python" class="toc-link">Example of Logistic Regression in Python</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202103011642/#example-of-logistic-regression-in-r" class="toc-link">Example of Logistic Regression in R</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202103011642/#zhong-wen-ban-ben" class="toc-link">中文版本</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202103011642/#luo-ji-hui-gui" class="toc-link">逻辑回归</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202103011642/#pythonshi-li" class="toc-link">Python示例</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202103011642&#x2F;">Logistic regression algorithm</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-03-01</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h1 id="logistic-regression-algorithm">Logistic regression algorithm</h1>
+<p>​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.</p>
+<p>​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success/yes) or 0 (stands for failure/no).</p>
+<p>In my opinion，</p>
+<p>Logistic regression = Linear regression + Sigmoid function</p>
+<p>Linear regression: 	z = w*x+b</p>
+<p>Sigmoid function: 	<img src=".\img\sigmoid.PNG" style="zoom: 33%;" /></p>
+<p>So, logistic regression:	<img src=".\img\lr.jpg" alt="lr" style="zoom:15%;" /></p>
+<h2 id="example-of-logistic-regression-in-python">Example of Logistic Regression in Python</h2>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#65737e;"># Import library
+</span><span style="color:#b48ead;">from </span><span>sklearn </span><span style="color:#b48ead;">import </span><span>datasets
+</span><span style="color:#b48ead;">from </span><span>sklearn.model_selection </span><span style="color:#b48ead;">import </span><span>train_test_split
+</span><span style="color:#b48ead;">from </span><span>sklearn.linear_model </span><span style="color:#b48ead;">import </span><span>LogisticRegression
+</span><span style="color:#65737e;"># Loading datasets
+</span><span>cancer = datasets.</span><span style="color:#bf616a;">load_breast_cancer</span><span>()
+</span><span>cancer_X = cancer.data
+</span><span style="color:#96b5b4;">print</span><span>(cancer_X.shape)
+</span><span>cancer_y = cancer.target
+</span><span style="color:#96b5b4;">print</span><span>(cancer_y.shape)
+</span><span style="color:#65737e;"># Dividing the training set and test set
+</span><span>X_train, X_test, y_train, y_test = </span><span style="color:#bf616a;">train_test_split</span><span>(
+</span><span>    cancer_X, cancer_y, </span><span style="color:#bf616a;">test_size</span><span>=</span><span style="color:#d08770;">0.3</span><span>)
+</span><span style="color:#65737e;"># Model construction and training
+</span><span>clf = </span><span style="color:#bf616a;">LogisticRegression</span><span>(</span><span style="color:#bf616a;">max_iter</span><span>=</span><span style="color:#d08770;">10000</span><span>)  </span><span style="color:#65737e;"># max_iter is needed
+</span><span>clf.</span><span style="color:#bf616a;">fit</span><span>(X_train, y_train)
+</span><span style="color:#65737e;"># Model Testing
+</span><span>clf_y_predict = clf.</span><span style="color:#bf616a;">predict</span><span>(X_test)
+</span><span style="color:#96b5b4;">print</span><span>(clf_y_predict)
+</span><span>score = clf.</span><span style="color:#bf616a;">score</span><span>(X_test, y_test)
+</span><span style="color:#96b5b4;">print</span><span>(score)
+</span></code></pre>
+<h3 id="import-library">Import library</h3>
+<p>Import the libraries we need in sklearn, where datasets is the dataset that comes with sklearn, train_test_split is the data division training set and test set, and <code>LogisticRegression</code> is the logistic regression model in sklearn.</p>
+<h3 id="loading-datasets">Loading datasets</h3>
+<p>Load the breast cancer dataset in sklearn via datasets.load_breast_cancer(), where cancer_X is the data of each indicator to measure whether it is breast cancer or not, and cancer_y is the label data. Use shape to see the size of the data, cancer_X is the data of (569, 30) and has been preprocessed for direct use, cancer_y is the data of (569, 1).</p>
+<h3 id="dividing-the-training-set-and-test-set">Dividing the training set and test set</h3>
+<p>The data set is divided into training set and test set by train_test_split() function, where test_size is the division ratio, we set it to 0.3, i.e., the training set is 70% and the test set is 30% in the data set.</p>
+<h3 id="model-construction-and-training">Model construction and training</h3>
+<p>There are many machine learning algorithm models available in sklearn, and it is very easy to call them in the form above to build a logistic regression model and train it with the training set data. If you want to use other algorithms, just change the algorithm model.</p>
+<h3 id="model-testing">Model testing</h3>
+<p>After the fourth step of model training, we use the trained model to test the data. The first line of code is the data prediction result, the second line outputs the prediction result, the third line evaluates the scores predicted by the model, and the fourth outputs the scores.</p>
+<p><img src="https://ffangli.github.io/202103011642/.%5Cimg%5Cpython_result.PNG" alt="" /></p>
+<p>The accuracy of the model prediction is 94.7% through the above test results, which shows that the logistic regression algorithm achieves better results.</p>
+<h2 id="example-of-logistic-regression-in-r">Example of Logistic Regression in R</h2>
+<pre data-lang="R" style="background-color:#2b303b;color:#c0c5ce;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#65737e;"># Load data
+</span><span style="color:#65737e;"># install.packages(&#39;mlbench&#39;)
+</span><span style="color:#96b5b4;">data</span><span>(BreastCancer, </span><span style="color:#bf616a;">package</span><span>=&quot;</span><span style="color:#a3be8c;">mlbench</span><span>&quot;)
+</span><span>bc &lt;- BreastCancer[</span><span style="color:#96b5b4;">complete.cases</span><span>(BreastCancer), ]  </span><span style="color:#65737e;"># keep complete rows
+</span><span>
+</span><span style="color:#65737e;"># check the structure of this dataset.
+</span><span style="color:#65737e;"># str(bc)
+</span><span>
+</span><span style="color:#65737e;"># remove id column
+</span><span>bc &lt;- bc[,-</span><span style="color:#d08770;">1</span><span>]
+</span><span>
+</span><span style="color:#65737e;"># convert to numeric
+</span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#d08770;">9</span><span>) {
+</span><span>  bc[, i] &lt;- </span><span style="color:#96b5b4;">as.numeric</span><span>(</span><span style="color:#96b5b4;">as.character</span><span>(bc[, i]))
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;"># Change Y values to 1&#39;s and 0&#39;s
+</span><span>bc</span><span style="color:#b48ead;">$</span><span>Class &lt;- </span><span style="color:#96b5b4;">ifelse</span><span>(bc</span><span style="color:#b48ead;">$</span><span>Class == &quot;</span><span style="color:#a3be8c;">malignant</span><span>&quot;, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>)
+</span><span>bc</span><span style="color:#b48ead;">$</span><span>Class &lt;- </span><span style="color:#96b5b4;">factor</span><span>(bc</span><span style="color:#b48ead;">$</span><span>Class, </span><span style="color:#bf616a;">levels </span><span>= </span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>))
+</span><span>
+</span><span style="color:#65737e;"># Prep Training and Test data.
+</span><span style="color:#65737e;"># install.packages(&#39;caret&#39;)
+</span><span style="color:#96b5b4;">library</span><span>(caret)
+</span><span>&#39;</span><span style="color:#a3be8c;">%ni%</span><span>&#39; &lt;- </span><span style="color:#96b5b4;">Negate</span><span>(&#39;</span><span style="color:#a3be8c;">%in%</span><span>&#39;)  </span><span style="color:#65737e;"># define &#39;not in&#39; func
+</span><span style="color:#96b5b4;">options</span><span>(</span><span style="color:#bf616a;">scipen</span><span>=</span><span style="color:#d08770;">999</span><span>)  </span><span style="color:#65737e;"># prevents printing scientific notations.
+</span><span style="color:#96b5b4;">set.seed</span><span>(</span><span style="color:#d08770;">100</span><span>)
+</span><span>trainDataIndex &lt;- </span><span style="color:#bf616a;">createDataPartition</span><span>(bc</span><span style="color:#b48ead;">$</span><span>Class, </span><span style="color:#bf616a;">p</span><span>=</span><span style="color:#d08770;">0.7</span><span>, </span><span style="color:#bf616a;">list </span><span>= F)
+</span><span>trainData &lt;- bc[trainDataIndex, ]
+</span><span>testData &lt;- bc[-trainDataIndex, ]
+</span><span>
+</span><span style="color:#65737e;"># Class distribution of train data
+</span><span style="color:#96b5b4;">table</span><span>(trainData</span><span style="color:#b48ead;">$</span><span>Class)
+</span><span>
+</span><span style="color:#65737e;"># Down Sample
+</span><span style="color:#96b5b4;">set.seed</span><span>(</span><span style="color:#d08770;">100</span><span>)
+</span><span>down_train &lt;- </span><span style="color:#bf616a;">downSample</span><span>(</span><span style="color:#bf616a;">x </span><span>= trainData[, </span><span style="color:#96b5b4;">colnames</span><span>(trainData) %ni% &quot;</span><span style="color:#a3be8c;">Class</span><span>&quot;],
+</span><span>                         </span><span style="color:#bf616a;">y </span><span>= trainData</span><span style="color:#b48ead;">$</span><span>Class)
+</span><span>
+</span><span style="color:#96b5b4;">table</span><span>(down_train</span><span style="color:#b48ead;">$</span><span>Class)
+</span><span>
+</span><span>
+</span><span style="color:#65737e;"># Up Sample (optional)
+</span><span style="color:#96b5b4;">set.seed</span><span>(</span><span style="color:#d08770;">100</span><span>)
+</span><span>up_train &lt;- </span><span style="color:#bf616a;">upSample</span><span>(</span><span style="color:#bf616a;">x </span><span>= trainData[, </span><span style="color:#96b5b4;">colnames</span><span>(trainData) %ni% &quot;</span><span style="color:#a3be8c;">Class</span><span>&quot;],
+</span><span>                     </span><span style="color:#bf616a;">y </span><span>= trainData</span><span style="color:#b48ead;">$</span><span>Class)
+</span><span>
+</span><span style="color:#96b5b4;">table</span><span>(up_train</span><span style="color:#b48ead;">$</span><span>Class)
+</span><span>
+</span><span style="color:#65737e;"># Build Logistic Model
+</span><span>logitmod &lt;- </span><span style="color:#96b5b4;">glm</span><span>(Class </span><span style="color:#b48ead;">~</span><span> Cl.thickness + Cell.size + Cell.shape, </span><span style="color:#bf616a;">family </span><span>= &quot;</span><span style="color:#a3be8c;">binomial</span><span>&quot;, </span><span style="color:#bf616a;">data</span><span>=down_train)
+</span><span>
+</span><span style="color:#96b5b4;">summary</span><span>(logitmod)
+</span><span>
+</span><span>pred &lt;- </span><span style="color:#96b5b4;">predict</span><span>(logitmod, </span><span style="color:#bf616a;">newdata </span><span>= testData, </span><span style="color:#bf616a;">type </span><span>= &quot;</span><span style="color:#a3be8c;">response</span><span>&quot;)
+</span><span>pred
+</span><span>
+</span><span style="color:#65737e;"># Recode factors
+</span><span>y_pred_num &lt;- </span><span style="color:#96b5b4;">ifelse</span><span>(pred &gt; </span><span style="color:#d08770;">0.5</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>)
+</span><span>y_pred &lt;- </span><span style="color:#96b5b4;">factor</span><span>(y_pred_num, </span><span style="color:#bf616a;">levels</span><span>=</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>))
+</span><span>y_act &lt;- testData</span><span style="color:#b48ead;">$</span><span>Class
+</span><span>
+</span><span style="color:#65737e;"># Accuracy
+</span><span style="color:#96b5b4;">mean</span><span>(y_pred == y_act)  											</span><span style="color:#65737e;"># 94%
+</span></code></pre>
+<p><a href="https://www.machinelearningplus.com/machine-learning/logistic-regression-tutorial-examples-r/">Logistic Regression - A Complete Tutorial with Examples in R (machinelearningplus.com)</a></p>
+<p>The goal here is to model and predict if a given specimen (row in dataset) is <code>benign</code> or <code>malignant</code>, based on 9 other cell features. So, let’s load the data and keep only the complete cases.</p>
+<p>the training set is 70% and the test set is 30% in the data set.</p>
+<p>这里的目标是根据其他9个细胞特征，建立模型并预测一个给定的标本（数据集中的一行）是良性还是恶性。因此，让我们加载数据，只保留完整的病例。</p>
+<h1 id="zhong-wen-ban-ben">中文版本</h1>
+<h3 id="luo-ji-hui-gui">逻辑回归</h3>
+<p><img src="C:%5CUsers%5Cprts%5CDesktop%5CLogistic_regression%5Cimg%5Ccn.jpg" alt="" /></p>
+<h3 id="pythonshi-li">Python示例</h3>
+<p><strong>一、导入库</strong></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>sklearn </span><span style="color:#b48ead;">import </span><span>datasets
+</span><span style="color:#b48ead;">from </span><span>sklearn.cross_validation </span><span style="color:#b48ead;">import </span><span>train_test_split
+</span><span style="color:#b48ead;">from </span><span>sklearn.linear_model </span><span style="color:#b48ead;">import </span><span>LogisticRegression
+</span></code></pre>
+<p>导入sklearn中我们需要的库，其中datasets为sklearn中自带的数据集，train_test_split为数据划分训练集和测试集，LogisticRegression为sklearn中的逻辑回归模型。</p>
+<p><strong>二、加载数据集</strong></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>cancer =datasets.</span><span style="color:#bf616a;">load_breast_cancer</span><span>()
+</span><span>cancer_X=cancer.data
+</span><span style="color:#96b5b4;">print</span><span>(cancer_X.shape)
+</span><span>cancer_y=cancer.target
+</span><span style="color:#96b5b4;">print</span><span>(cancer_y.shape)
+</span></code></pre>
+<p>通过datasets.load_breast_cancer()加载sklearn中的乳腺癌数据集，其中cancer_X为衡量是否为乳腺癌的各项指标数据，cancer_y为标签数据。使用shape来查看数据的规模，cancer_X为(569, 30)的数据，且已经进行预处理可以直接使用，cancer_y为(569, 1)的数据。</p>
+<p><strong>三、划分训练集和测试集</strong></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>X_train,X_test,y_train, y_test=</span><span style="color:#bf616a;">train_test_split</span><span>(cancer_X,cancer_y,</span><span style="color:#bf616a;">test_size</span><span>=</span><span style="color:#d08770;">0.3</span><span>)
+</span></code></pre>
+<p>通过train_test_split()函数将数据集划分为训练集和测试集，其中test_size为划分比例，本次我们设为0.3，即数据集中训练集为70%，测试集为30%</p>
+<p><strong>四、模型构建与训练</strong></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>clf = </span><span style="color:#bf616a;">LogisticRegression</span><span>()
+</span><span>clf.</span><span style="color:#bf616a;">fit</span><span>(X_train,y_train)
+</span></code></pre>
+<p>sklearn中为我们提供了很多机器学习算法模型，而且调用起来非常方便，形如上面的形式即可构建逻辑回归模型并使用训练集数据进行训练。如果要使用其它算法，只需更换算法模型即可。</p>
+<p><strong>五、模型测试</strong></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>clf_y_predict = clf.</span><span style="color:#bf616a;">predict</span><span>(X_test)
+</span><span style="color:#96b5b4;">print</span><span>(clf_y_predict)
+</span><span>score=clf.</span><span style="color:#bf616a;">score</span><span>(X_test,y_test)
+</span><span style="color:#96b5b4;">print</span><span>(score)
+</span></code></pre>
+<p>经过第四步模型训练后，使用训练好的模型来进行数据测试，第一行代码为数据预测结果，第二行输出预测结果，第三行为评估模型预测的分数，第四输出分数。</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/r/">#R</a>
+                    
+                        <a href="https://ffangli.github.io/tags/python/">#Python</a>
+                    
+                        <a href="https://ffangli.github.io/tags/machine-learning/">#Machine Learning</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

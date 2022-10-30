@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - git总结</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202110071745/#pei-zhi" class="toc-link">配置</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202110071745/#gitignore" class="toc-link">.gitignore</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202110071745/#git-rebase" class="toc-link">git rebase</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202110071745/#he-bing-ben-di-commit" class="toc-link">合并本地commit</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202110071745/#git-commit-amend" class="toc-link">git commit --amend</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202110071745&#x2F;">git总结</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2021-10-07</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="pei-zhi">配置</h2>
+<h4 id="gitignore">.gitignore</h4>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span># Java
+</span><span>*.class
+</span><span> 
+</span><span># Eclipse
+</span><span>.classpath
+</span><span>.project
+</span><span>.settings/
+</span><span> 
+</span><span># Intellij
+</span><span>.idea/
+</span><span>*.iml
+</span><span>*.iws
+</span><span>out/
+</span><span> 
+</span><span># Mac
+</span><span>.DS_Store
+</span><span> 
+</span><span># Maven
+</span><span>log/
+</span><span>target/
+</span><span> 
+</span><span># svn
+</span><span>.svn/
+</span><span> 
+</span><span>scandir/
+</span><span>rebel.xml
+</span><span> 
+</span><span>#lilei environment
+</span><span>dep2.sh
+</span><span> 
+</span><span>#log
+</span><span>*.log
+</span></code></pre>
+<h2 id="git-rebase">git rebase</h2>
+<h3 id="he-bing-ben-di-commit">合并本地commit</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git rebase -i [startpoint] [endpoint]
+</span><span>// -i 的含义是：--interactive, 即弹出交互式的界面让用户编辑完成合并操作
+</span><span>// [startpoint] 指的是合并区间的起点。
+</span><span>// [endpoint] 指的是合并区间的终点，默认是当前分支 HEAD 所指向的 commit。
+</span><span>// 这里的区间是一个前开后闭的区间。
+</span></code></pre>
+<ol>
+<li>编辑 commit 内容。将 &quot;pick&quot; 改成 &quot;squash&quot; 或者 &quot;s&quot;，意思是将该 commit和 前面的 commit合并。修改合并之后的 commit 注释。编辑完成后，保存并退出（wq!）。</li>
+<li>完成上一步后进入了一个临时的分支（从 development 分支切出来的临时分支）。基于这个临时分支，创建一个新的分支 <code>git checkout -b feature/temp</code>。</li>
+<li>再切回 development 分支，执行：git rebase feature/temp合并分支。</li>
+</ol>
+<h2 id="git-commit-amend">git commit --amend</h2>
+<p>commit message信息修改</p>
+<p>执行<code>git commit --amend</code>出现编辑界面（vim），编辑方法同Linux下的vim，编辑后保存并退出</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/git/">#Git</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

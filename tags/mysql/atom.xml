@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - MySQL</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/mysql/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-14T20:17:19+00:00</updated>
+	<id>https://ffangli.github.io/tags/mysql/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>JDBC for MySQL</title>
+		<published>2022-01-14T20:17:19+00:00</published>
+		<updated>2022-01-14T20:17:19+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201142017/" type="text/html"/>
+		<id>https://ffangli.github.io/202201142017/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;zai-pom-xmljia-ru-jdbc-driver-mysql-connector-java&quot;&gt;在pom.xml加入JDBC driver mysql-connector-java&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;&#x2F;artifactId&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;version&amp;gt;5.7.29&amp;lt;&#x2F;version&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;dependency&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;附MySQL版本查询命令：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -V
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;application-ymlwen-jian-pei-zhi&quot;&gt;application.yml文件配置&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysql-jdbc-driver-url&quot;&gt;MySQL JDBC driver URL&lt;&#x2F;h3&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol&#x2F;&#x2F;[hosts][&#x2F;database][?properties]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;简单示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;protocol – jdbc:mysql:
+&lt;&#x2F;span&gt;&lt;span&gt;host – mysql.db.server:3306
+&lt;&#x2F;span&gt;&lt;span&gt;database – my_database
+&lt;&#x2F;span&gt;&lt;span&gt;properties – useSSL=false&amp;amp;serverTimezone=UTC
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;kuo-zhan&quot;&gt;扩展&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;protocol&quot;&gt;Protocol&lt;&#x2F;h4&gt;
+&lt;p&gt;除了&amp;quot;jdbc:mysql:&amp;quot;协议还支持：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Load-balancing JDBC connections – jdbc:mysql:loadbalance:
+&lt;&#x2F;span&gt;&lt;span&gt;JDBC replication connections – jdbc:mysql:replication: 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hosts&quot;&gt;Hosts&lt;&#x2F;h4&gt;
+&lt;p&gt;如果需要处理多个主机，可以在逗号分隔的列表中列出主机：host1，host2,..., hostN。&lt;&#x2F;p&gt;
+&lt;p&gt;还可以用方括号将逗号分隔的主机列表括起来：[host1， host2,...,hostN]。&lt;&#x2F;p&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;span&gt;jdbc:mysql:loadbalance:&#x2F;&#x2F;myhost1:3306,myhost2:3307&#x2F;db_name?user=dbUser&amp;amp;password=1234567&amp;amp;loadBalanceConnectionGroup=group_name&amp;amp;ha.enableJMX=true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;properties-and-user-credentials&quot;&gt;Properties and User Credentials&lt;&#x2F;h4&gt;
+&lt;p&gt;有效的全局属性将应用于所有主机。&lt;&#x2F;p&gt;
+&lt;p&gt;格式：&lt;&#x2F;p&gt;
+&lt;p&gt;属性前面有一个问号&amp;quot;？&amp;quot;，并写成key=value键值对，由&amp;quot;&amp;amp;&amp;quot;符号分隔：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?prop1=value1&amp;amp;prop2=value2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以将User Credentials放在属性列表中：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;myhost1:3306&#x2F;db_name?user=root&amp;amp;password=mypass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;可以在每个主机前面加上&amp;quot;user：password@host&amp;quot;格式：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass@myhost1:3306&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;如果 JDBC URL 包含主机列表，并且所有主机都使用相同的User Credentials，则可以在主机列表前面加上前缀：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jdbc:mysql:&#x2F;&#x2F;root:mypass[myhost1:3306,myhost2:3307]&#x2F;db_name
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;详细文档：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-jdbc-url-format.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.2 Connection URL Syntax&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;doc&#x2F;connector-j&#x2F;8.0&#x2F;en&#x2F;connector-j-reference-configuration-properties.html&quot;&gt;MySQL :: MySQL Connector&#x2F;J 8.0 Developer Guide :: 6.3 Configuration Properties&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mysqllian-jie-shi-li&quot;&gt;MySQL连接示例&lt;&#x2F;h3&gt;
+&lt;p&gt;MySQL database： “&lt;em&gt;my_database&lt;&#x2F;em&gt;” &lt;&#x2F;p&gt;
+&lt;p&gt;host： “&lt;em&gt;mysql.db.server&lt;&#x2F;em&gt;“&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;@Test
+&lt;&#x2F;span&gt;&lt;span&gt;public void givenMysqlDb_thenCreateConnectionObject() {
+&lt;&#x2F;span&gt;&lt;span&gt;    String jdbcUrl = &amp;quot;jdbc:mysql:&#x2F;&#x2F;mysql.db.server:3306&#x2F;my_database?useSSL=false&amp;amp;serverTimezone=UTC&amp;quot;;    
+&lt;&#x2F;span&gt;&lt;span&gt;    String username = &amp;quot;User&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    String password = &amp;quot;1234567&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
+&lt;&#x2F;span&gt;&lt;span&gt;        assertNotNull(conn);
+&lt;&#x2F;span&gt;&lt;span&gt;    } catch (SQLException e) {
+&lt;&#x2F;span&gt;&lt;span&gt;        System.err.format(&amp;quot;SQL State: %s\n%s&amp;quot;, e.getSQLState(), e.getMessage());
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>Spring Boot连接MySQL报错处理合集</title>
+		<published>2022-01-12T19:33:41+00:00</published>
+		<updated>2022-01-12T19:33:41+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201121933/" type="text/html"/>
+		<id>https://ffangli.github.io/202201121933/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;hikaripool-1-exception-during-pool-initialization&quot;&gt;HikariPool-1 - Exception during pool initialization.&lt;&#x2F;h3&gt;
+&lt;p&gt;HikariPool是SpringBoot默认数据库连接池，该报错说明数据库配置有问题&lt;&#x2F;p&gt;
+&lt;p&gt;在application.yml配置文件中逐项检查username、password、url中IP地址、端口号等是否正确&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jdbc-urlcai-keng&quot;&gt;jdbc url踩坑&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;com-mysql-cj-jdbc-exceptions-communicationsexception-communications-link-failure&quot;&gt;com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure&lt;&#x2F;h3&gt;
+&lt;p&gt;重新在本地跑以前部署过的项目，遇到这个问题&lt;&#x2F;p&gt;
+&lt;p&gt;解决：把jdbc url的ip地址改成localhost:3306&lt;&#x2F;p&gt;
+&lt;p&gt;3306 ：SQL数据库的端口&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;javax-net-ssl-sslexception-message-closing-inbound-before-receiving-peer-s-close-notify&quot;&gt;javax.net.ssl.SSLException MESSAGE: closing inbound before receiving peer&#x27;s close_notify&lt;&#x2F;h3&gt;
+&lt;p&gt;使用mysql8.0以上版本数据库，要设置useSSL=false否则会出现上述报错&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?useSSL=false
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;反之，mysql8.0以下版本例如mysql5.7如果url包含useSSL，也可能会报错，删除该项即可解决&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-server-time-zone-value-is-unrecognized&quot;&gt;The server time zone value ‘????’ is unrecognized&lt;&#x2F;h3&gt;
+&lt;p&gt;时区设置serverTimezone=GMT%2B8&lt;&#x2F;p&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;url：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;database_name?serverTimezone=GMT%2B8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;也可以在application.yml “spring:”下添加：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;jackson:
+&lt;&#x2F;span&gt;&lt;span&gt;    time-zone: GMT+8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>MySQL使用经验总结</title>
+		<published>2022-01-04T20:37:19+00:00</published>
+		<updated>2022-01-04T20:37:19+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201042037/" type="text/html"/>
+		<id>https://ffangli.github.io/202201042037/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;yu-ju-xiang-guan&quot;&gt;语句相关&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysqlfang-zhi-zhong-fu-cha-ru-xiang-tong-ji-lu&quot;&gt;MySQL防止重复插入相同记录&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;shi-yong-mysql-suo-yin&quot;&gt;使用MySQL 索引&lt;&#x2F;h4&gt;
+&lt;p&gt;创建索引&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sql&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sql &quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;CREATE UNIQUE INDEX &lt;&#x2F;span&gt;&lt;span&gt;index_name ON &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;tablename&lt;&#x2F;span&gt;&lt;span&gt;( index_column_1, index_column_2 );
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在一个已存在表中添加一个唯一索引&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sql&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sql &quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ALTER TABLE &lt;&#x2F;span&gt;&lt;span&gt;table_name ADD INDEX index_name( index_column_1, index_column_2 ) ;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;此时插入重复插入已有索引的记录会出现报错&lt;code&gt;IntegrityError: (1062, &amp;quot;Duplicate entry &#x27;xx&#x27; for key &#x27;xxxxx&#x27;&amp;quot;)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;解决方法：把&lt;code&gt;INSERT INTO&lt;&#x2F;code&gt; 改为 `INSERT IGNORE INTO&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bao-cuo-chu-li&quot;&gt;报错处理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;error-1064-42000-you-have-an-error-in-your-sql-syntax&quot;&gt;ERROR 1064 (42000): You have an error in your SQL syntax&lt;&#x2F;h3&gt;
+&lt;p&gt;在MySQL中，为了区分MySQL的关键字与普通字符，MySQL引入了一个反引号。&lt;&#x2F;p&gt;
+&lt;p&gt;（就是键盘左上角数字1左边的那个&lt;&#x2F;p&gt;
+&lt;p&gt;使用了MySQL保留字或关键字却没有用反引号就会报这个错误。&lt;&#x2F;p&gt;
+&lt;p&gt;如果列名使用了MySQL保留字或关键字就要用反引号代替引号，注释不能用反引号，因为注释只是普通字符串，不是MySQL的关键字，只有关键字或保留字才能使用反引号。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pymysql&quot;&gt;PyMySQL&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;bao-cuo-chu-li-1&quot;&gt;报错处理&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;jie-kou-xing-shi-bao-cuo&quot;&gt;接口形式报错&lt;&#x2F;h4&gt;
+&lt;p&gt;事故现场：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymysql_error.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;解决：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymsql_solve.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ubuntuhuan-jing-de-mysql&quot;&gt;ubuntu环境的MySQL&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;xiu-gai-mi-ma&quot;&gt;修改密码&lt;&#x2F;h3&gt;
+&lt;p&gt;查看mysql数据库自动设置的随机账户与密码&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo cat &#x2F;etc&#x2F;mysql&#x2F;debian.cnf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用这组账号密码登录&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -u debian-sys-maint -p
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;切换到mysql数据库&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;use mysql;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这里有个巨坑&lt;&#x2F;p&gt;
+&lt;p&gt;mysql 5.7.9以后废弃了password字段和password()函数；authentication_string:字段表示用户密码，而authentication_string字段下只能是mysql加密后的41位字符串密码。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;正确的解决方法：&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;将字段置为空&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;update user set authentication_string=&amp;#39;&amp;#39; where user=&amp;#39;root&amp;#39;;      
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;alter user &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; identified with mysql_native_password by &amp;#39;root&amp;#39;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;最后的&#x27;root&#x27;是新密码&lt;&#x2F;p&gt;
+&lt;p&gt;修改后&lt;code&gt;quit&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;重新登录&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;service mysql restart
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mysql -u root -p
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;gai-nian-he-yuan-li&quot;&gt;概念和原理&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;mysqlsuo-yin&quot;&gt;MySQL索引&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yrxing&#x2F;p&#x2F;14557150.html&quot;&gt;索引&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

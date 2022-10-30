@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Reading Notes on Vertica-ML</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202172017/#abstract" class="toc-link">ABSTRACT</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202172017/#introduction" class="toc-link">INTRODUCTION</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202202172017/#vertica-ecosystem" class="toc-link">VERTICA ECOSYSTEM</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202172017&#x2F;">Reading Notes on Vertica-ML</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-02-17</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>Reading notes on  https://doi.org/10.1145/3318464.3386137</p>
+<p>Vertica-ML: Distributed Machine Learning in Vertica Database</p>
+<span id="continue-reading"></span>
+<h2 id="abstract">ABSTRACT</h2>
+<p>An in-database machine learning system can provide many advantages in this scenario, e.g., eliminating the overhead of data transfer, avoiding the maintenance costs of a separate analytical system, and addressing data security and provenance concerns. This subsystem, Vertica-ML, includes machine learning functionalities with SQL API which cover a complete data science workflow as well as model management.  Machine learning models in Vertica are treated as first-class database objects like tables and views; therefore, they enjoy a similar mechanism for archiving and managing.</p>
+<h2 id="introduction">INTRODUCTION</h2>
+<ul>
+<li>An intuitive SQL interface for machine learning It treats models as first-class database objects, and allows business analysts and other SQL users to do more advanced data analysis using the same language they are comfortable with. </li>
+<li>A variety of ML algorithms and tools In addition to distributed algorithms for training predictive models, the set of SQL functions introduced by Vertica-ML covers different stages of a data scientist’s typical workflow. </li>
+<li>A special model object and model management In contrast to previous in-database ML systems which have been oblivious of model management, Vertica-ML provides capabilities to facilitate it. </li>
+<li>Distributed in-memory storage It is integrated into the distributed architecture of Vertica DBMS with the ability to spill to disk when needed</li>
+</ul>
+<h2 id="vertica-ecosystem">VERTICA ECOSYSTEM</h2>
+<p><img src="https://ffangli.github.io/202202172017/.%5Cimg%5C1.PNG" alt="" /></p>
+<p>Firstly, the authors describe the main structure of Vertica. They emphasise that Vertica supports UDF (User Defined Function) and Metafunction, which is currently the more popular implementation in the industry and is the general idea in Presto ML.</p>
+<p>Metafunction is a Vertica-specific function that differs from UDF in that UDF can be used as part of a SQL statement, whereas Metafunction can only be used after a SELECT keyword or even in a FROM clause. Metafunction can only be used after a SELECT keyword, not even in a FROM clause. In fact, the main purpose of Metafunction in Vertica-ML is to pass parameters to machine learning algorithms.</p>
+<p>Vertica-ML also provides management functions for the trained models. The user can use get_model_summary and get_model_attribute to obtain the appropriate meta-information about the model. The model is stored as an object in a database table. This allows us to modify a model using the traditional ALTER or DROP statements.</p>
+<p>Since the machine learning algorithms are implemented directly in the analytical database, parallel computing is a must. Because Vertica itself is a distributed multi-node database, each node computes a portion of the data and does aggregation on a single node.</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/db4ml/">#DB4ML</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - github pages搭建个人博客</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201082008/#an-zhuang" class="toc-link">安装</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#scoopan-zhuang" class="toc-link">Scoop安装</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#zolaan-zhuang" class="toc-link">zola安装</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201082008/#ben-di-pei-zhi" class="toc-link">本地配置</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#clishi-yong" class="toc-link">CLI使用</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#mo-ban-shi-yong" class="toc-link">模板使用</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#github-actionspei-zhi" class="toc-link">Github Actions配置</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#build-serve" class="toc-link">build&amp;serve</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201082008/#github-pagespei-zhi" class="toc-link">GitHub Pages配置</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#zhu-yi-yao-zai-settings-pageszhong-she-zhi-sourcefen-zhi-wei-gh-pagesfen-zhi" class="toc-link">注意要在Settings-Pages中设置Source分支为gh-pages分支</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201082008/#bugji-lu" class="toc-link">Bug记录</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201082008/#tu-pian-xian-shi" class="toc-link">图片显示</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201082008&#x2F;">github pages搭建个人博客</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-08</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span>
+<h2 id="an-zhuang">安装</h2>
+<h3 id="scoopan-zhuang">Scoop安装</h3>
+<p>Scoop是适用于 Windows 的命令行安装程序</p>
+<p>PowerShell执行：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;)
+</span></code></pre>
+<p>或</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>iwr -useb get.scoop.sh | iex
+</span></code></pre>
+<h3 id="zolaan-zhuang">zola安装</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ scoop install zola
+</span></code></pre>
+<p>scoop报错解决：<a href="https://github.com/ScoopInstaller/Scoop/issues/4495">How can I go back to original REPO https://github.com/lukesampson/scoop · Issue #4495 · ScoopInstaller/Scoop · GitHub</a></p>
+<h2 id="ben-di-pei-zhi">本地配置</h2>
+<h3 id="clishi-yong">CLI使用</h3>
+<h4 id="chu-shi-hua">初始化</h4>
+<p>本地新建空文件夹</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span>$ git init
+</span><span>$ zola init
+</span></code></pre>
+<p>得到目录结构</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>├── config.toml
+</span><span>├── content
+</span><span>├── sass
+</span><span>├── static
+</span><span>├── templates
+</span><span>└── themes
+</span></code></pre>
+<h4 id="config-toml">config.toml:</h4>
+<p>TOML 格式的必需 Zola 配置文件。</p>
+<h4 id="content">content:</h4>
+<p>包含所有博客内容（主要是 .md 文件）。</p>
+<p>content目录示例：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>content/
+</span><span>  |- _index.md
+</span><span>  `- first/
+</span><span>       |- index.md
+</span><span>       `- image.png
+</span></code></pre>
+<p>md文件示例：</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>+++
+</span><span>title = &quot;标题&quot;
+</span><span>date = 2022-1-8 20:08:21
+</span><span>slug = &quot;202201082008&quot;
+</span><span>[taxonomies]
+</span><span>categories = [&quot;分类&quot;]
+</span><span>tags = [&quot;标签&quot;]
+</span><span>+++
+</span><span>
+</span><span>描述
+</span><span>
+</span><span>&lt;!-- more --&gt;
+</span><span>
+</span><span>博客内容
+</span></code></pre>
+<h4 id="sass">sass：</h4>
+<p>包含要编译的 Sass 文件，非 Sass 文件将被忽略。复制编译文件时，将保留sass文件夹的目录结构;例如，sass/something/site.scss 上的文件将被编译为 public/something/site.css。</p>
+<h4 id="static">static：</h4>
+<p>包含任何类型的文件，主要是图片 / js 等静态资源。静态目录中的所有文件/目录将按原样复制到输出目录。如果静态文件很大，则可以通过在配置文件中设置 hard_link_static = true 来配置 Zola 硬链接。</p>
+<p>static下的文件在其他地方以根开头的 URL 访问，比如 static/abc.ico 用 /abc.ico</p>
+<h4 id="templates">templates：</h4>
+<p>包含用于呈现网站的所有 Tera 模板。</p>
+<h4 id="themes">themes：</h4>
+<p>包含用于网站的主题。如果不打算使用主题，将此目录留空。</p>
+<p>附：zola theme列表</p>
+<p><a href="https://www.getzola.org/themes">https://www.getzola.org/themes</a></p>
+<h3 id="mo-ban-shi-yong">模板使用</h3>
+<p>cd 根目录</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ git submodule add https://github.com/getzola/after-dark.git themes/after-dark
+</span></code></pre>
+<h3 id="github-actionspei-zhi">Github Actions配置</h3>
+<p>在根目录下创建.github\workflows，新建文件pages.yml</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span># On every push this script is executed
+</span><span>on: push
+</span><span>name: Build and deploy GH Pages
+</span><span>jobs:
+</span><span>  build:
+</span><span>    runs-on: ubuntu-latest
+</span><span>    if: github.ref == &#39;refs/heads/main&#39;
+</span><span>    steps:
+</span><span>      - name: checkout
+</span><span>        uses: actions/checkout@v2
+</span><span>      - name: build_and_deploy
+</span><span>        uses: shalzz/zola-deploy-action@v0.14.1
+</span><span>        env:
+</span><span>          # Target branch
+</span><span>          PAGES_BRANCH: gh-pages
+</span><span>          # Provide personal access token
+</span><span>          TOKEN: ${{ secrets.TOKEN }}
+</span></code></pre>
+<h3 id="build-serve">build&amp;serve</h3>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ zola build
+</span><span>$ zola serve
+</span></code></pre>
+<p>浏览器打开http://127.0.0.1:1111即可看到初始页面</p>
+<h2 id="github-pagespei-zhi">GitHub Pages配置</h2>
+<p>推送github后会自动进行pages-build-deployment</p>
+<p>生成gh-pages分支</p>
+<h5 id="zhu-yi-yao-zai-settings-pageszhong-she-zhi-sourcefen-zhi-wei-gh-pagesfen-zhi">注意要在Settings-Pages中设置Source分支为gh-pages分支</h5>
+<h1 id="bugji-lu">Bug记录</h1>
+<h2 id="tu-pian-xian-shi">图片显示</h2>
+<p>图片在本地zola serve能显示，到GitHub显示不了，</p>
+<p>但是设置例如<code>&lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot;/&gt;</code> 的图片尺寸后又可以正常显示了</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/git/">#Git</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

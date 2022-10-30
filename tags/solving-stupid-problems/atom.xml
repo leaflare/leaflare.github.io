@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - Solving stupid problems</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/solving-stupid-problems/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2020-09-13T14:43:14+00:00</updated>
+	<id>https://ffangli.github.io/tags/solving-stupid-problems/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>Solving stupid problems——装不上某个python包</title>
+		<published>2020-09-13T14:43:14+00:00</published>
+		<updated>2020-09-13T14:43:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202009131443/" type="text/html"/>
+		<id>https://ffangli.github.io/202009131443/</id>
+		<content type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;shi-gu-xian-chang&quot;&gt;事故现场&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202009131443&#x2F;.%5Cimg%5C1.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;pip装不上，去&lt;a href=&quot;https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;stable-baselines3&#x2F;#files&quot;&gt;stable-baselines3 · PyPI&lt;&#x2F;a&gt;上下的whl也装不上&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wen-ti-jie-jue&quot;&gt;问题解决&lt;&#x2F;h2&gt;
+&lt;p&gt;python 中的egg文件；类似于Java 中的jar 包，把一系列的python源码文件、元数据文件、其他资源文件 zip 压缩，重新命名为.egg 文件，目的是作为一个整体进行发布。&lt;&#x2F;p&gt;
+&lt;p&gt;关于egg-info是什么：&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.python101.pythonlibrary.org&#x2F;chapter38_eggs.html&quot;&gt;Chapter 38 - The Python egg — Python 101 1.0 documentation (pythonlibrary.org)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Built Distribution 和 Source Distribution&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;不同操作系统安装 Python 包的要求不完全相同，Built Distribution 是按照某类操作系统（例如 Linux）安装要求所打成的包，这样安装的时候只需要将包解压，文件放到适当的位置即可，效率比较高。但一个 Built Distribution 只适用于一类操作系统，例如 Linux 上的 Built Distribution 包无法在 Windows 上安装。而 Source Distribution 包便解决了这个问题，它是对源代码进行打包，将源代码打包成利于打成 Built Distribution 包的形式。这样，我们便可以通过 Source Distribution 包生成适用于特定类型操作系统的 Built Distribution 包，再进行安装。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;xxx.whl是Built Distribution &lt;&#x2F;p&gt;
+&lt;p&gt;xxx.tar.gz是 Source Distribution&lt;&#x2F;p&gt;
+&lt;p&gt;xxx.whl扔进&lt;code&gt;C:\Users\username\Anaconda3\Scripts&lt;&#x2F;code&gt;用pip安装，如上图所示&lt;&#x2F;p&gt;
+&lt;p&gt;xxx.tar.gz解压后包含xxx和xxx.egg-info两个文件夹，需要一起扔进&lt;code&gt;C:\Users\usern\Anaconda3\Lib\site-packages&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;直接把解压后的包扔进去或者没有egg-info都不能被python环境识别，在这里踩了坑orz&lt;&#x2F;p&gt;
+&lt;p&gt;类似egg-info这种伴生关系的还有dist-info&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

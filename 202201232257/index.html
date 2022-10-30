@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - VSCode驯化过程记录</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201232257/#zi-dong-bao-cun" class="toc-link">自动保存</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201232257/#c-mingw" class="toc-link">C++&#x2F;MinGW</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201232257/#bian-yi-yun-xing" class="toc-link">编译运行</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201232257/#javadan-wen-jian" class="toc-link">Java单文件</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201232257/#launch-json-1" class="toc-link">launch.json</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201232257/#cai-keng" class="toc-link">踩坑</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201232257/#python-in-wsl" class="toc-link">Python in WSL</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201232257&#x2F;">VSCode驯化过程记录</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-23</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>换电脑，获得一只野生的VSCode</p>
+<span id="continue-reading"></span>
+<h2 id="zi-dong-bao-cun">自动保存</h2>
+<p><strong>【Ctrl】+【，】</strong>，打开常用设置，第一行就是<code>File:Auto Save</code></p>
+<p>想知道有多少受害者（X</p>
+<p>懒人选择<code>afterDelay</code>，上方搜索框直接搜<code>auto save delay</code>设置延迟时间</p>
+<h2 id="c-mingw">C++/MinGW</h2>
+<p>确保环境变量配置正确：</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">g++ --version
+</span><span style="color:#bf616a;">gdb --version
+</span></code></pre>
+<p>打开VS Code，安装插件C/C++</p>
+<p>然后**【Ctrl】+【Shift】+【P】**，打开命令面板，输入关键词&quot;C/C++&quot;</p>
+<p>选中<strong>编辑配置 (UI)</strong></p>
+<p>设置<strong>编译器路径</strong>和<strong>IntelliSense模式</strong></p>
+<p>编写C程序选择<code>gcc.exe</code>，C++选择<code>g++.exe</code></p>
+<p>IntelliSense模式选择<code>gcc-x64</code>。（windows默认为windows-msvc-x64）</p>
+<h3 id="bian-yi-yun-xing">编译运行</h3>
+<p>第一次执行编译任务前，需要先进行配置</p>
+<p>选择菜单栏【终端】→【配置任务…】</p>
+<p>在弹出的待选项中按需求选择gcc或g++</p>
+<p>之后会自动创建一个<code>tasks.json</code>文件，放在<code>.vscode</code>中</p>
+<p>同目录下还有一个<code>launch.json</code>文件需要配置</p>
+<h4 id="tasks-json">tasks.json</h4>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">2.0.0</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#a3be8c;">tasks</span><span>&quot;: [
+</span><span>        {
+</span><span>            &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">cppbuild</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">label</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">C/C++: g++.exe build active file</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">command</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">C:/msys64/mingw64/bin/g++.exe</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">args</span><span>&quot;: [
+</span><span>                &quot;</span><span style="color:#a3be8c;">-g</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#a3be8c;">${file}</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#a3be8c;">-o</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#a3be8c;">${fileDirname}</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">${fileBasenameNoExtension}.exe</span><span>&quot;
+</span><span>            ],
+</span><span>            &quot;</span><span style="color:#a3be8c;">options</span><span>&quot;: {
+</span><span>                &quot;</span><span style="color:#a3be8c;">cwd</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">${fileDirname}</span><span>&quot;
+</span><span>            },
+</span><span>            &quot;</span><span style="color:#a3be8c;">problemMatcher</span><span>&quot;: [
+</span><span>                &quot;</span><span style="color:#a3be8c;">$gcc</span><span>&quot;
+</span><span>            ],
+</span><span>            &quot;</span><span style="color:#a3be8c;">group</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">build</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#a3be8c;">detail</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">compiler: C:/msys64/mingw64/bin/g++.exe</span><span>&quot;
+</span><span>        }
+</span><span style="background-color:#bf616a;color:#2b303b;">}</span><span>
+</span></code></pre>
+<ul>
+<li>command和detail可以不用绝对路径</li>
+</ul>
+<h4 id="launch-json">launch.json</h4>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>  &quot;</span><span style="color:#a3be8c;">version</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">0.2.0</span><span>&quot;,
+</span><span>  &quot;</span><span style="color:#a3be8c;">configurations</span><span>&quot;: [
+</span><span>    {
+</span><span>      &quot;</span><span style="color:#a3be8c;">name</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">g++.exe - Build and debug active file</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">cppdbg</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">request</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">launch</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">program</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">${fileDirname}</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">${fileBasenameNoExtension}.exe</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">args</span><span>&quot;: [],
+</span><span>      &quot;</span><span style="color:#a3be8c;">stopAtEntry</span><span>&quot;: </span><span style="color:#d08770;">false</span><span>,
+</span><span>      &quot;</span><span style="color:#a3be8c;">cwd</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">${fileDirname}</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">environment</span><span>&quot;: [],
+</span><span>      &quot;</span><span style="color:#a3be8c;">externalConsole</span><span>&quot;: </span><span style="color:#d08770;">false</span><span>,
+</span><span>      &quot;</span><span style="color:#a3be8c;">MIMode</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">gdb</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">miDebuggerPath</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">C:</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">msys64</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">mingw64</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">bin</span><span style="color:#96b5b4;">\\</span><span style="color:#a3be8c;">gdb.exe</span><span>&quot;,
+</span><span>      &quot;</span><span style="color:#a3be8c;">setupCommands</span><span>&quot;: [
+</span><span>        {
+</span><span>          &quot;</span><span style="color:#a3be8c;">description</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">Enable pretty-printing for gdb</span><span>&quot;,
+</span><span>          &quot;</span><span style="color:#a3be8c;">text</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">-enable-pretty-printing</span><span>&quot;,
+</span><span>          &quot;</span><span style="color:#a3be8c;">ignoreFailures</span><span>&quot;: </span><span style="color:#d08770;">true
+</span><span>        }
+</span><span>      ],
+</span><span>      &quot;</span><span style="color:#a3be8c;">preLaunchTask</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">C/C++: g++.exe build active file</span><span>&quot;
+</span><span>    }
+</span><span>  ]
+</span><span>}
+</span></code></pre>
+<ul>
+<li>miDebuggerPath改成本地绝对路径</li>
+<li>preLaunchTask和tasks.json的label对应</li>
+</ul>
+<p>打开要编译的代码文件，选择菜单栏【终端】→【运行生成任务...】</p>
+<p>或者 <strong>【Ctrl】+【Shift】+【B】</strong></p>
+<p>在弹出的待选项中选择之前生成的任务</p>
+<p>运气好的话目录下已经有.exe文件了</p>
+<p>好麻烦，还不如直接命令行 <code>g++ xxx.cpp</code>（X</p>
+<p>但是有个坑：需要用<code>.\</code>指明它是当前目录下的可执行文件，因为VS Code的默认终端实际上是PowerShell。</p>
+<h2 id="javadan-wen-jian">Java单文件</h2>
+<h4 id="launch-json-1">launch.json</h4>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>{
+</span><span>    &quot;version&quot;: &quot;0.2.0&quot;,
+</span><span>    &quot;configurations&quot;: [
+</span><span>        {
+</span><span>            &quot;type&quot;: &quot;java&quot;,
+</span><span>            &quot;name&quot;: &quot;Debug (Launch) - Current File&quot;,
+</span><span>            &quot;request&quot;: &quot;launch&quot;,
+</span><span>            &quot;mainClass&quot;: &quot;${file}&quot;
+</span><span>        },
+</span><span>        {
+</span><span>            &quot;type&quot;: &quot;java&quot;,
+</span><span>            &quot;name&quot;: &quot;Debug (Launch)-Hello&lt;java_single_file_9fc652ff&gt;&quot;,
+</span><span>            &quot;request&quot;: &quot;launch&quot;,
+</span><span>            &quot;mainClass&quot;: &quot;HelloWorld&quot;
+</span><span>        }
+</span><span>    ]
+</span><span>}
+</span></code></pre>
+<p>配置了两个 launch，一个是以当前打开的 Java 源文件作为主类调试，一个是以 HelloWorld.java 作为主类进行调试</p>
+<p>部分插件不再支持Java8，需要手动插件降低版本</p>
+<p>懒人（x 命令行编译：</p>
+<p>【Ctrl】+【Shift】+【`】打开终端，cd到文件目录</p>
+<p>javac xxx.java</p>
+<p>java xxx</p>
+<p>解决中文编码报错<code>错误: 编码GBK的不可映射字符</code></p>
+<p>方法1. 编译的时候使用带参数的编译指令：javac -encoding utf-8 xxx.java</p>
+<p>方法2. 单文件改配置</p>
+<p>在vscode左下角找到编码utf-8的地方，并点击utf-8</p>
+<p>→选择save with encoding</p>
+<p>→选择GBK</p>
+<p>方法3. 全局改配置</p>
+<p>【Ctrl】+【Shift】+【P】→ settings → encoding</p>
+<h3 id="cai-keng">踩坑</h3>
+<p>在vscode内运行java出现<code>javac : 无法将“javac”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。</code></p>
+<p>但是在cmd和powershell里检查java和javac都是正常的</p>
+<p>事故原因：配置java环境变量时，配置了classpath，导致无法在当前目录下找到主类，而jdk6以后其实就不用再配置classpath了</p>
+<p>解决办法：删除classpath，再重启vscode</p>
+<h2 id="python-in-wsl">Python in WSL</h2>
+<p>命令行创建并激活虚拟环境</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>python3 -m venv .venv
+</span><span>source .venv/bin/activate
+</span></code></pre>
+<p>打开VSCode</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>code .
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/ide/">#IDE</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

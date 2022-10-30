@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - Nightwatch使用笔记</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201241745/#jian-yao-jie-shao" class="toc-link">简要介绍</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201241745/#yun-zuo-yuan-li" class="toc-link">运作原理</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202201241745/#huan-jing-da-jian" class="toc-link">环境搭建</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201241745/#chang-gui-an-zhuang-pei-zhi" class="toc-link">常规安装配置</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201241745/#vue-clian-zhuang-nightwatch" class="toc-link">vue-cli安装Nightwatch</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://ffangli.github.io/202201241745/#geng-jian-ji-de-fang-fa-zhi-jie-qu-dong-liu-lan-qi" class="toc-link">更简洁的方法——直接驱动浏览器</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201241745&#x2F;">Nightwatch使用笔记</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-01-24</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>一个自动化e2e测试框架</p>
+<span id="continue-reading"></span>
+<h2 id="jian-yao-jie-shao">简要介绍</h2>
+<p>Nightwatch 是专门给网页使用的自动化测试框架，它使用 W3C WebDriver API（过去称为 Selenium WebDriver）来自动操作浏览器。 好处是可撰写并自动执行 End-to-End Testing 与 Node.js 的 Unit Testing，并简化设定 CI（Continuous Integration，持续整合）的过程。</p>
+<p>WebDriver 是让开发者撰写程序来操作浏览器的远程控制界面，可作为跨浏览器自动化测试的工具。 Nightwatch 即是通过 WebDriver API 来控制浏览器，模拟人类的各种操作行为，例如：浏览特定网址、输入文字、点击按钮等。</p>
+<h3 id="yun-zuo-yuan-li">运作原理</h3>
+<p>Nightwatch 将我们所撰写的测试程式码转成 HTTP Request 送到 WebDriver Server（也就是 Selenium Server），Selenium Server 再送到浏览器，接着 Selenium Server 回传 HTTP Response 回来给 Nightwatch。 Nightwatch 几乎必须至少送两次 Request 到 Selenium Server 才能完成一个完整的指令（Command）或断言（Assertion）。 第一个 Request 是依照 CSS Selector 或 Xpath 来定位网页元素，第二个指令是对这个网页元素执行指令或断言。</p>
+<h2 id="huan-jing-da-jian">环境搭建</h2>
+<h3 id="chang-gui-an-zhuang-pei-zhi">常规安装配置</h3>
+<p>官网：<a href="https://nightwatchjs.org/">Nightwatch.js | Node.js powered End-to-End testing framework (nightwatchjs.org)</a></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>npm install selenium-standalone --save-dev
+</span><span>npm install nightwatch --save-dev
+</span></code></pre>
+<h4 id="an-zhuang-chromedriver">安装ChromeDriver</h4>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>npm install chromedriver --save-dev
+</span></code></pre>
+<p>其他浏览器同理，Microsoft Edge似乎不能直接用npm安装，需要自己去官网下载</p>
+<h4 id="chromeliu-lan-qi-yun-xing">Chrome浏览器运行</h4>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>npx nightwatch node_modules/nightwatch/examples/tests/ecosia.js --env chrome
+</span></code></pre>
+<h4 id="ming-ling-xing-qi-dong-nightwatch">命令行启动 Nightwatch</h4>
+<ol>
+<li>指定环境测试</li>
+</ol>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>npm test
+</span></code></pre>
+<p>在 package.json 设定的 npm test 会执行当前项目下的 Nightwatch Test Runner 并指定环境为 local 以进行测试。</p>
+<ol start="2">
+<li>使用全局安装的 Nightwatch Test Runner 进行测试</li>
+</ol>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>nightwatch
+</span></code></pre>
+<p>示例：<a href="https://github.com/cythilya/nightwatch101">cythilya/nightwatch101: 使用 Nightwatch 實現 End-to-End Testing ★ (github.com)</a></p>
+<h3 id="vue-clian-zhuang-nightwatch">vue-cli安装Nightwatch</h3>
+<p>在 vue-cli 中选择使用 e2e tests，vue-cli 会自动安装 selenium-server 和 chromedriver 等必要工具</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>vue add @vue/e2e-nightwatch
+</span></code></pre>
+<p>运行 e2e 测试</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>vue-cli-service test:e2e
+</span></code></pre>
+<p>vue-cli 安装的 Nightwatch 会依赖一个 Selenium Server和一个 java 程序</p>
+<p>Nightwatch 和浏览器需要通过 Selenium Server 来通信</p>
+<h3 id="geng-jian-ji-de-fang-fa-zhi-jie-qu-dong-liu-lan-qi">更简洁的方法——直接驱动浏览器</h3>
+<p>Nightwatch@1.0 可以直接驱动浏览器, 无需 Selenium Server</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>npm install nightwatch@1.0.8
+</span></code></pre>
+<h4 id="jian-dan-shi-li">简单示例</h4>
+<p>配置文件 nightwatch.conf.js</p>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#c0c5ce;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span>module.exports = {
+</span><span>
+</span><span>  &quot;</span><span style="color:#a3be8c;">webdriver</span><span>&quot;: {
+</span><span>
+</span><span>    &quot;</span><span style="color:#a3be8c;">server_path</span><span>&quot;: </span><span style="color:#96b5b4;">require</span><span>(&#39;</span><span style="color:#a3be8c;">chromedriver</span><span>&#39;).</span><span style="color:#bf616a;">path</span><span>, </span><span style="color:#65737e;">// ChromeDriver 安装地址
+</span><span>
+</span><span>    &quot;</span><span style="color:#a3be8c;">start_process</span><span>&quot;: </span><span style="color:#d08770;">true</span><span>, </span><span style="color:#65737e;">// 需要启动 driver
+</span><span>
+</span><span>    &quot;</span><span style="color:#a3be8c;">port</span><span>&quot;: </span><span style="color:#d08770;">9515 </span><span style="color:#65737e;">// driver 启动的端口, 一般是 9515 或 4444
+</span><span>
+</span><span>  },
+</span><span>
+</span><span>  &quot;</span><span style="color:#a3be8c;">test_settings</span><span>&quot;: {
+</span><span>
+</span><span>    &quot;</span><span style="color:#a3be8c;">default</span><span>&quot;: {
+</span><span>
+</span><span>      &quot;</span><span style="color:#a3be8c;">desiredCapabilities</span><span>&quot;: {
+</span><span>
+</span><span>        &quot;</span><span style="color:#a3be8c;">browserName</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">chrome</span><span>&quot; </span><span style="color:#65737e;">// 指定浏览器名
+</span><span>
+</span><span>      }
+</span><span>
+</span><span>    }
+</span><span>
+</span><span>  }
+</span><span>
+</span><span>}
+</span></code></pre>
+<p>测试脚本 e2e.test.js</p>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#c0c5ce;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span>module.exports = {
+</span><span>
+</span><span>  &#39;</span><span style="color:#a3be8c;">Basic e2e Test</span><span>&#39; (</span><span style="color:#bf616a;">browser</span><span>) {
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">browser
+</span><span>
+</span><span>      .</span><span style="color:#8fa1b3;">url</span><span>(&#39;</span><span style="color:#a3be8c;">http://so.com</span><span>&#39;) </span><span style="color:#65737e;">// 打开 so.com 网页
+</span><span>
+</span><span>      .</span><span style="color:#8fa1b3;">waitForElementVisible</span><span>(&#39;</span><span style="color:#a3be8c;">body</span><span>&#39;) </span><span style="color:#65737e;">// 确认能看到 body 元素
+</span><span>
+</span><span>      .</span><span style="color:#8fa1b3;">setValue</span><span>(&#39;</span><span style="color:#a3be8c;">#input</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">Nightwatch</span><span>&#39;) </span><span style="color:#65737e;">// 在搜索框输入 Nightwatch
+</span><span>
+</span><span>      .</span><span style="color:#96b5b4;">click</span><span>(&#39;</span><span style="color:#a3be8c;">#search-button</span><span>&#39;) </span><span style="color:#65737e;">// 点击搜索
+</span><span>
+</span><span>      .</span><span style="color:#96b5b4;">pause</span><span>(</span><span style="color:#d08770;">1000</span><span>) </span><span style="color:#65737e;">// 等待1秒钟
+</span><span>
+</span><span>      .</span><span style="color:#bf616a;">assert</span><span>.</span><span style="color:#8fa1b3;">containsText</span><span>(&#39;</span><span style="color:#a3be8c;">#container</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">Nightwatch</span><span>&#39;) </span><span style="color:#65737e;">// 查询结果包含 Nightwatch
+</span><span>
+</span><span>      .</span><span style="color:#8fa1b3;">end</span><span>()
+</span><span>
+</span><span>  }
+</span><span>
+</span><span>}
+</span></code></pre>
+<p>运行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>node_modules\.bin\nightwatch e2e.test.js
+</span></code></pre>
+<p><img src="https://ffangli.github.io/202201241745/.%5Cimg%5Csample.png" alt="" /></p>
+<p>测试结果会以XML文件形式输出到tests_output目录下</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/node-js/">#Node.js</a>
+                    
+                        <a href="https://ffangli.github.io/tags/nightwatch/">#Nightwatch</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+	<title>Fang Li - C&#x2F;C++</title>
+	<subtitle>Fang Li&#x27;s Blog</subtitle>
+	<link href="https://ffangli.github.io/tags/c-c/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ffangli.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2022-01-13T21:05:54+00:00</updated>
+	<id>https://ffangli.github.io/tags/c-c/atom.xml</id>
+	<entry xml:lang="zh">
+		<title>C&#x2F;C++_动态内存分配</title>
+		<published>2022-01-13T21:05:54+00:00</published>
+		<updated>2022-01-13T21:05:54+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201132105/" type="text/html"/>
+		<id>https://ffangli.github.io/202201132105/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;nei-cun-fen-pei&quot;&gt;内存分配&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;jing-tai-fen-pei&quot;&gt;静态分配&lt;&#x2F;h3&gt;
+&lt;p&gt;编译时分配或内存的静态分配：命名变量的内存由编译器分配。在编译时必须知道确切的大小和存储，对于数组声明，大小必须是恒定的。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dong-tai-fen-pei&quot;&gt;动态分配&lt;&#x2F;h3&gt;
+&lt;p&gt;运行时分配或动态分配内存：在运行时分配内存，在程序运行中动态分配内存空间，内存段称为堆或自由存储。在这种情况下，编译器不必事先知道项目的确切空间或编号。在这种情况下，指针起着重要作用。&lt;&#x2F;p&gt;
+&lt;p&gt;可以在程序运行时动态分配存储空间，但不能&amp;quot;动态&amp;quot;创建新的变量名称，因此，动态分配需要两个条件：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在内存中创建动态空间&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;将其地址存储在指针中（从而可以访问空间）&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;jing-tai-nei-cun-fen-pei-he-dong-tai-nei-cun-fen-pei-de-bi-jiao&quot;&gt;静态内存分配和动态内存分配的比较&lt;&#x2F;h3&gt;
+&lt;p&gt;C++ 程序中的内存分为两个部分：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;**栈：**在函数内部声明的所有变量都将占用栈内存。&lt;&#x2F;li&gt;
+&lt;li&gt;**堆：**这是程序中未使用的内存，在程序运行时可用于动态分配内存。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;静态内存是由系统自动分配，由系统自动释放的； 静态内存是在栈分配的。&lt;&#x2F;p&gt;
+&lt;p&gt;动态内存是由程序员手动分配,手动释放的；动态内存是在堆分配的。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cdong-tai-nei-cun-fen-pei&quot;&gt;C动态内存分配&lt;&#x2F;h2&gt;
+&lt;p&gt;C语言使用了一个库解决方案实现动态内存分配，其函数malloc( )，calloc( )，realloc( )和free( )在&lt;cstdlib&gt;（在C中称为&amp;lt;stdlib.h&amp;gt;）中定义。这些函数可用于C++，用于分配和解除分配动态内存。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;malloc&lt;&#x2F;span&gt;&lt;span&gt;(size_t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;size&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;size&lt;&#x2F;strong&gt; − 内存块的大小，以字节为单位。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;分配请求的内存并返回指向该内存的指针。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;calloc&lt;&#x2F;span&gt;&lt;span&gt;(size_t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nitems&lt;&#x2F;span&gt;&lt;span&gt;, size_t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;size&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;nitems&lt;&#x2F;strong&gt; − 要分配的元素数。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;size&lt;&#x2F;strong&gt; − 元素的大小。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;malloc 和 calloc 的不同之处在于，malloc 不会将内存设置为零，而 calloc 会将分配的内存设置为零。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;realloc&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ptr&lt;&#x2F;span&gt;&lt;span&gt;, size_t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;size&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ptr&lt;&#x2F;strong&gt; − 指向先前使用malloc，calloc或realloc分配的内存块的指针，以进行重新分配。如果是 NULL，则分配一个新块，并且函数将返回指向该块的指针。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;size&lt;&#x2F;strong&gt; − 内存块的新大小，以字节为单位。如果为 0 并且 ptr 指向现有内存块，则 ptr 所指向的内存块将解除分配，并返回 NULL 指针。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;free&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;void &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ptr&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ptr&lt;&#x2F;strong&gt; − 指向先前分配了 malloc、calloc 或 realloc 以解除分配的内存块的指针。如果空指针作为参数传递，则不会发生任何操作。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdio.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdlib.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main &lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char &lt;&#x2F;span&gt;&lt;span&gt;*str;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Initial memory allocation *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;   str = (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char &lt;&#x2F;span&gt;&lt;span&gt;*) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;malloc&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;strcpy&lt;&#x2F;span&gt;&lt;span&gt;(str, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tutorialspoint&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;String = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%s&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;,  Address = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%u&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, str, str);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Reallocating memory *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;   str = (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char &lt;&#x2F;span&gt;&lt;span&gt;*) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;realloc&lt;&#x2F;span&gt;&lt;span&gt;(str, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;strcat&lt;&#x2F;span&gt;&lt;span&gt;(str, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.com&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;String = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%s&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;,  Address = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%u&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, str, str);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Deallocate allocated memory *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;free&lt;&#x2F;span&gt;&lt;span&gt;(str);
+&lt;&#x2F;span&gt;&lt;span&gt;   
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;输出：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span&gt;String = tutorialspoint, Address = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;355090448
+&lt;&#x2F;span&gt;&lt;span&gt;String = tutorialspoint.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;com&lt;&#x2F;span&gt;&lt;span&gt;, Address = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;355090448
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;c-dong-tai-nei-cun-fen-pei&quot;&gt;C++动态内存分配&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;new-he-delete-yun-suan-fu&quot;&gt;new 和 delete 运算符&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt; data-type;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;例如：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;* p; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; declares a pointer p
+&lt;&#x2F;span&gt;&lt;span&gt;p = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new int&lt;&#x2F;span&gt;&lt;span&gt;;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; dynamically allocate an int for loading the address in p
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;double &lt;&#x2F;span&gt;&lt;span&gt;* d;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; declares a pointer d
+&lt;&#x2F;span&gt;&lt;span&gt;d = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new double&lt;&#x2F;span&gt;&lt;span&gt;;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; dynamically allocate a double and loading the address in p
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;C 中的 malloc（） 函数在C++中仍然存在，但建议避免使用 malloc( )函数。&lt;&#x2F;p&gt;
+&lt;p&gt;因为容易出错（X&lt;&#x2F;p&gt;
+&lt;p&gt;因为new 不仅分配内存，它还构造对象 （√&lt;&#x2F;p&gt;
+&lt;p&gt;当不再需要动态分配的变量时，可以使用 delete 运算符来释放内存空间。(对应free( ))&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;delete&lt;&#x2F;span&gt;&lt;span&gt; var_name;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;简单示例：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std; 
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;double&lt;&#x2F;span&gt;&lt;span&gt;* val = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    val = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new double&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    *val = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;38184.26&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Value is : &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; *val &amp;lt;&amp;lt; endl;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;delete&lt;&#x2F;span&gt;&lt;span&gt; val;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;shu-zu-dong-tai-nei-cun-fen-pei&quot;&gt;数组动态内存分配&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char&lt;&#x2F;span&gt;&lt;span&gt;* val  = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Pointer initialized with NULL value
+&lt;&#x2F;span&gt;&lt;span&gt;val = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new char&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;40&lt;&#x2F;span&gt;&lt;span&gt;];     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Request memory for the variable
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;delete []&lt;&#x2F;span&gt;&lt;span&gt; val;			&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Delete the array pointed to by val
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;gou-zao-han-shu-dong-tai-nei-cun-fen-pei&quot;&gt;构造函数动态内存分配&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std; 
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;stud &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;public&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;stud&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        cout &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Constructor Used&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; endl;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;~stud&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;        cout &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Destructor Used&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt; endl;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;    }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    stud* S = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt; stud[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;6&lt;&#x2F;span&gt;&lt;span&gt;];
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;delete[]&lt;&#x2F;span&gt;&lt;span&gt; S;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>C++STL笔记</title>
+		<published>2022-01-11T18:36:14+00:00</published>
+		<updated>2022-01-11T18:36:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201111836/" type="text/html"/>
+		<id>https://ffangli.github.io/202201111836/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h1 id=&quot;rong-qi&quot;&gt;容器&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;mapdie-dai-qi&quot;&gt;map迭代器&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;iterator-firsthe-iterator-second&quot;&gt;iterator-&amp;gt;first和iterator-&amp;gt;second&lt;&#x2F;h3&gt;
+&lt;p&gt;分别指向键值和数值&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span&gt;map&amp;lt;string, string&amp;gt; m;
+&lt;&#x2F;span&gt;&lt;span&gt;m[&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;one&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;] = &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sdfasf&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;迭代器类型需和容器保持一致
+&lt;&#x2F;span&gt;&lt;span&gt;map&amp;lt;string, string&amp;gt;::iterator p = m.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;string a=p-&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;first&lt;&#x2F;span&gt;&lt;span&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; a值是 &amp;quot;one&amp;quot; 也可以写作p.first
+&lt;&#x2F;span&gt;&lt;span&gt;string b=p-&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;second&lt;&#x2F;span&gt;&lt;span&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;b值是 &amp;quot;sdfasf&amp;quot;,也可以写作p.second
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;erase-han-shu&quot;&gt;erase（）函数&lt;&#x2F;h2&gt;
+&lt;p&gt;函数原型：&lt;&#x2F;p&gt;
+&lt;p&gt;（1）string&amp;amp; erase ( size_t pos = 0, size_t n = npos );&lt;&#x2F;p&gt;
+&lt;p&gt;（2）iterator erase ( iterator position );&lt;&#x2F;p&gt;
+&lt;p&gt;（3）iterator erase ( iterator first, iterator last );
+对应用法：&lt;&#x2F;p&gt;
+&lt;p&gt;（1）erase(pos,n); 删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符&lt;&#x2F;p&gt;
+&lt;p&gt;（2）erase(position);删除position处的一个字符(position是个string类型的迭代器)&lt;&#x2F;p&gt;
+&lt;p&gt;（3）erase(first,last);删除从first到last之间的字符（first和last都是迭代器）&lt;&#x2F;p&gt;
+&lt;p&gt;注意事项：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;erase函数的返回值是一个指向被删除元素的下一个元素的迭代器。&lt;&#x2F;li&gt;
+&lt;li&gt;注意使用完erase函数之后的迭代器是否会产生野指针。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;示例：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main &lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;string &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str &lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;This is an example phrase.&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;string::iterator it;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;第（1）种方法
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;erase &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cout &amp;lt;&amp;lt; str &amp;lt;&amp;lt; endl;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; &amp;quot;This is an phrase.&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;第（2）种方法
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;it=str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;()+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;erase &lt;&#x2F;span&gt;&lt;span&gt;(it);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cout &amp;lt;&amp;lt; str &amp;lt;&amp;lt; endl;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; &amp;quot;This is a phrase.&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;第（3）种方法
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;erase &lt;&#x2F;span&gt;&lt;span&gt;(str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;()+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;, str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;()-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cout &amp;lt;&amp;lt; str &amp;lt;&amp;lt; endl;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; &amp;quot;This phrase.&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;zi-fu-chuan&quot;&gt;字符串&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;string-npos&quot;&gt;string::npos&lt;&#x2F;h2&gt;
+&lt;p&gt;npos是一个常数，表示size_t的最大值（Maximum value for size_t）。&lt;&#x2F;p&gt;
+&lt;p&gt;许多容器都提供这个东西，用来表示不存在的位置，类型一般是std::container_type::size_type。&lt;&#x2F;p&gt;
+&lt;p&gt;用法：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;npos可以表示string的结束位子，是string::type_size 类型的，也就是find（）返回的类型。find函数在找不到指定值得情况下会返回string::npos。举例如下（计算字符串中含有的不同字符的个数）：&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    string b;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getline&lt;&#x2F;span&gt;&lt;span&gt;(cin,b);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; count=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;i&amp;lt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;127&lt;&#x2F;span&gt;&lt;span&gt;;i++)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;(b.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;find&lt;&#x2F;span&gt;&lt;span&gt;(i)!=string::npos)
+&lt;&#x2F;span&gt;&lt;span&gt;        count++;
+&lt;&#x2F;span&gt;&lt;span&gt;    cout&amp;lt;&amp;lt;count;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;string::npos作为string的成员函数的一个长度参数时，表示“直到字符串结束（until the end of the string）”。例如：&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;limits&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    string filename = &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;test.cpp&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;filename : &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; filename &amp;lt;&amp;lt; endl;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;    size_t idx = filename.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;find&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;as a return value
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;(idx == string::npos)    
+&lt;&#x2F;span&gt;&lt;span&gt;    {
+&lt;&#x2F;span&gt;&lt;span&gt;        cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;filename does not contain any period!&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; endl;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else
+&lt;&#x2F;span&gt;&lt;span&gt;    {
+&lt;&#x2F;span&gt;&lt;span&gt;        string tmpname = filename;
+&lt;&#x2F;span&gt;&lt;span&gt;        tmpname.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(idx + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, string::npos, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;xxx&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;string::npos作为长度参数，表示直到字符串结束
+&lt;&#x2F;span&gt;&lt;span&gt;        cout &amp;lt;&amp;lt; &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;repalce: &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;lt;&amp;lt; tmpname &amp;lt;&amp;lt; endl;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;执行结果：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;filename:test.cpp
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;replace: test.xxx
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;注意事项：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;npos的类型&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;int idx = str.find(&amp;quot;abc&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;if (idx == string::npos)
+&lt;&#x2F;span&gt;&lt;span&gt;  ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;上述代码中，idx的类型被定义为int，这是错误的，即使定义为 unsigned int 也是错的，它必须定义为 string::size_type。因为 string::size_type (由字符串配置器 allocator 定义) 描述的是 size，故需为无符号整数型别。因为缺省配置器以型别 size_t 作为 size_type，于是 -1 被转换为无符号整数型别，npos 也就成了该型别的最大无符号值。不过实际数值还是取决于型别 size_type 的实际定义。不幸的是这些最大值都不相同。事实上，(unsigned long)-1 和 (unsigned short)-1 不同(前提是两者型别大小不同)。因此，比较式 idx == string::npos 中，如果 idx 的值为-1，由于 idx 和字符串string::npos 型别不同，比较结果可能得到 false。
+要想判断 find() 的结果是否为npos，最好的办法是直接比较：
+if (str.find(&amp;quot;abc&amp;quot;) == string::npos) { ... }&lt;&#x2F;p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;string 类提供了 6 种查找函数,每种函数以不同形式的 find 命名。这些操作全都返回 string::size_type 类型的值，以下标形式标记查找匹配所发生的位置；或者返回一个名为 string::npos 的特殊值，说明查找没有匹配。string 类将 npos 定义为保证大于任何有效下标的值。&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;blog.chinaunix.net&#x2F;uid-10014667-id-375027.html&quot;&gt;string::npos 无符号数的陷阱-tang312-ChinaUnix博客&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;da-xiao-xie-zhuan-huan&quot;&gt;大小写转换&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;char&quot;&gt;char&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;toupper&lt;&#x2F;strong&gt;
+函数原型: &lt;code&gt;int toupper(int ch);&lt;&#x2F;code&gt;
+函数返回: 与ch相应的大写字母&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;tolower&lt;&#x2F;strong&gt;
+函数原型: &lt;code&gt;int tolower(int ch);&lt;&#x2F;code&gt;
+函数返回: 返回ch所代表的字符的小写字母&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;string s=&amp;quot;ABCDE&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;s=tolower(s[0]);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;char-1&quot;&gt;char[]&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;strupr&lt;&#x2F;strong&gt;
+函数原型：&lt;code&gt;char *strupr（char *a）&lt;&#x2F;code&gt;
+函数功能：把字符串a中的串转换成大写
+函数返回: 返回指向s参数的指针
+所属文件：&lt;code&gt;#include &amp;lt;string.h&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;strlwr&lt;&#x2F;strong&gt;
+函数原型: &lt;code&gt;char *strlwr（char *a）&lt;&#x2F;code&gt;
+函数功能：将字符串a转换为小写形式
+函数返回: 返回指向s参数的指针
+所属文件：&lt;code&gt;#include &amp;lt;string.h&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;char s[]=&amp;quot;ABCDE&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;char *p=strlwr(s);&#x2F;&#x2F;返回指向s参数的指针。
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;string&quot;&gt;string&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;transform和tolower及toupper进行结合&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;所属文件：#include&lt;algorithm&gt;
+transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个容器的首迭代器，last1为第一个容器的末迭代器，first2为第二个容器的首迭代器，result为存放结果的容器，binary_op为要进行操作的二元函数对象或sturct、class&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;iostream&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;algorithm&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;using namespace&lt;&#x2F;span&gt;&lt;span&gt; std;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;    string str = &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;JFwxs&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;transform&lt;&#x2F;span&gt;&lt;span&gt;(str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;(),str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;(),str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;(),::toupper);
+&lt;&#x2F;span&gt;&lt;span&gt;    cout&amp;lt;&amp;lt;str&amp;lt;&amp;lt;endl;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;输出JFWXS
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;transform&lt;&#x2F;span&gt;&lt;span&gt;(str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;(),str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;end&lt;&#x2F;span&gt;&lt;span&gt;(),str.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;begin&lt;&#x2F;span&gt;&lt;span&gt;(),::tolower);
+&lt;&#x2F;span&gt;&lt;span&gt;    cout&amp;lt;&amp;lt;str&amp;lt;&amp;lt;endl;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;输出jfwxs
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;cai-keng-ji-lu&quot;&gt;踩坑记录&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;can-shu-lei-xing-tong-yi&quot;&gt;参数类型统一&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;error-no-matching-function-for-call-to-min-int-std-basic-string-size-type&quot;&gt;[Error] no matching function for call to &#x27;min(int&amp;amp;, std::basic_string&lt;char&gt;::size_type)&#x27;&lt;&#x2F;h3&gt;
+&lt;p&gt;STL原型&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;template&amp;lt; class T &amp;gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;const T&amp;amp; min( const T&amp;amp; a, const T&amp;amp; b );
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;报错语句&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;min(n, str.size());
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;使用强制类型转换，改为&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;min(n, int(str.size()));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="zh">
+		<title>C++_编译报错处理合集</title>
+		<published>2022-01-11T17:36:14+00:00</published>
+		<updated>2022-01-11T17:36:14+00:00</updated>
+		<link rel="alternate" href="https://ffangli.github.io/202201111736/" type="text/html"/>
+		<id>https://ffangli.github.io/202201111736/</id>
+		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;h2 id=&quot;bian-yi-bao-cuo&quot;&gt;编译报错&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;error-system-was-not-declared-in-this-scope&quot;&gt;error: &#x27;system&#x27; was not declared in this scope&lt;&#x2F;h3&gt;
+&lt;p&gt;使用&lt;code&gt;system(&amp;quot;pause&amp;quot;);&lt;&#x2F;code&gt;缺少头文件&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;cstdlib&amp;gt; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;error-malloc-was-not-declared-in-this-scope&quot;&gt;error: &#x27;malloc&#x27; was not declared in this scope&lt;&#x2F;h3&gt;
+&lt;p&gt;使用&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;malloc.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;也可以直接用&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;stdlib.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;函数原型&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;void *malloc(size_t size) 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;size： 内存块的大小，以字节为单位。&lt;&#x2F;p&gt;
+&lt;p&gt;该函数返回一个指针 ，指向已分配大小的内存。如果请求失败，则返回 NULL。&lt;&#x2F;p&gt;
+&lt;p&gt;补充：&lt;&#x2F;p&gt;
+&lt;p&gt;重新分配内存&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;void *realloc(void *ptr, size_t size)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;error-memset-was-not-declared-in-this-scope&quot;&gt;error: &#x27;memset&#x27; was not declared in this scope&lt;&#x2F;h3&gt;
+&lt;p&gt;补充头文件&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;cstring&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+</feed>
