@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Quant</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/quant/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-15T16:42:14+00:00</updated>
-	<id>https://ffangli.github.io/categories/quant/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>python绘制candlestick</title>
-		<published>2022-01-15T16:42:14+00:00</published>
-		<updated>2022-01-15T16:42:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201151642/" type="text/html"/>
-		<id>https://ffangli.github.io/202201151642/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - Quant</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/quant/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-15T16:42:14+00:00</updated>
+    <id>https://ffangli.github.io/categories/quant/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>python绘制candlestick</title>
+        <published>2022-01-15T16:42:14+00:00</published>
+        <updated>2022-01-15T16:42:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201151642/" type="text/html"/>
+        <id>https://ffangli.github.io/202201151642/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;tusharehuo-qu-xing-qing-shu-ju&quot;&gt;tushare获取行情数据&lt;&#x2F;h3&gt;
 &lt;p&gt;tushare获取历史行情数据的函数主要有三个：&lt;&#x2F;p&gt;
@@ -285,14 +288,17 @@
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Quantative Trading相关环境配置</title>
-		<published>2022-01-09T17:21:14+00:00</published>
-		<updated>2022-01-09T17:21:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201091721/" type="text/html"/>
-		<id>https://ffangli.github.io/202201091721/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Quantative Trading相关环境配置</title>
+        <published>2022-01-09T17:21:14+00:00</published>
+        <updated>2022-01-09T17:21:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201091721/" type="text/html"/>
+        <id>https://ffangli.github.io/202201091721/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
 &lt;p&gt;如果conda已经没救了，尝试&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda clean --packages &amp;amp;&amp;amp; conda clean --all &amp;amp;&amp;amp; conda update --all
@@ -354,5 +360,5 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;配置全部完成后，可以在PyCharm主界面，依次点击 Tools - External Tools 启动QtDisigner、PyUIC和PyRCC&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

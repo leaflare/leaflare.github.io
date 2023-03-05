@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Solving stupid problems</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/solving-stupid-problems/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2020-09-13T14:43:14+00:00</updated>
-	<id>https://ffangli.github.io/tags/solving-stupid-problems/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Solving stupid problems——装不上某个python包</title>
-		<published>2020-09-13T14:43:14+00:00</published>
-		<updated>2020-09-13T14:43:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202009131443/" type="text/html"/>
-		<id>https://ffangli.github.io/202009131443/</id>
-		<content type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
+    <title>Fang Li - Solving stupid problems</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/solving-stupid-problems/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2020-09-13T14:43:14+00:00</updated>
+    <id>https://ffangli.github.io/tags/solving-stupid-problems/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Solving stupid problems——装不上某个python包</title>
+        <published>2020-09-13T14:43:14+00:00</published>
+        <updated>2020-09-13T14:43:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202009131443/" type="text/html"/>
+        <id>https://ffangli.github.io/202009131443/</id>
+        <content type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shi-gu-xian-chang&quot;&gt;事故现场&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202009131443&#x2F;.%5Cimg%5C1.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
@@ -33,5 +36,5 @@
 &lt;p&gt;直接把解压后的包扔进去或者没有egg-info都不能被python环境识别，在这里踩了坑orz&lt;&#x2F;p&gt;
 &lt;p&gt;类似egg-info这种伴生关系的还有dist-info&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

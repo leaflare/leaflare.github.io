@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - WSL</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-26T22:05:54+00:00</updated>
-	<id>https://ffangli.github.io/tags/wsl/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>WSL使用记录</title>
-		<published>2022-01-26T22:05:54+00:00</published>
-		<updated>2022-01-26T22:05:54+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201262205/" type="text/html"/>
-		<id>https://ffangli.github.io/202201262205/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - WSL</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-26T22:05:54+00:00</updated>
+    <id>https://ffangli.github.io/tags/wsl/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>WSL使用记录</title>
+        <published>2022-01-26T22:05:54+00:00</published>
+        <updated>2022-01-26T22:05:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201262205/" type="text/html"/>
+        <id>https://ffangli.github.io/202201262205/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;wslan-zhuang&quot;&gt;WSL安装&lt;&#x2F;h2&gt;
 &lt;p&gt;微软商店下载需要的Linux发行版&lt;&#x2F;p&gt;
@@ -72,5 +75,5 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;export ALL_PROXY=http:&#x2F;&#x2F;宿主机ip:1081
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

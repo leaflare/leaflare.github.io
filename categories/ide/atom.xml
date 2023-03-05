@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - IDE</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/ide/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-23T22:57:09+00:00</updated>
-	<id>https://ffangli.github.io/categories/ide/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>VSCode驯化过程记录</title>
-		<published>2022-01-23T22:57:09+00:00</published>
-		<updated>2022-01-23T22:57:09+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201232257/" type="text/html"/>
-		<id>https://ffangli.github.io/202201232257/</id>
-		<content type="html">&lt;p&gt;换电脑，获得一只野生的VSCode&lt;&#x2F;p&gt;
+    <title>Fang Li - IDE</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/ide/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-23T22:57:09+00:00</updated>
+    <id>https://ffangli.github.io/categories/ide/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>VSCode驯化过程记录</title>
+        <published>2022-01-23T22:57:09+00:00</published>
+        <updated>2022-01-23T22:57:09+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201232257/" type="text/html"/>
+        <id>https://ffangli.github.io/202201232257/</id>
+        <content type="html">&lt;p&gt;换电脑，获得一只野生的VSCode&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;zi-dong-bao-cun&quot;&gt;自动保存&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;strong&gt;【Ctrl】+【，】&lt;&#x2F;strong&gt;，打开常用设置，第一行就是&lt;code&gt;File:Auto Save&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
@@ -150,5 +153,5 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;code .
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - MySQL</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/mysql/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-04T20:37:19+00:00</updated>
-	<id>https://ffangli.github.io/categories/mysql/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>MySQL使用经验总结</title>
-		<published>2022-01-04T20:37:19+00:00</published>
-		<updated>2022-01-04T20:37:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201042037/" type="text/html"/>
-		<id>https://ffangli.github.io/202201042037/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - MySQL</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/mysql/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-04T20:37:19+00:00</updated>
+    <id>https://ffangli.github.io/categories/mysql/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>MySQL使用经验总结</title>
+        <published>2022-01-04T20:37:19+00:00</published>
+        <updated>2022-01-04T20:37:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201042037/" type="text/html"/>
+        <id>https://ffangli.github.io/202201042037/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;yu-ju-xiang-guan&quot;&gt;语句相关&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;mysqlfang-zhi-zhong-fu-cha-ru-xiang-tong-ji-lu&quot;&gt;MySQL防止重复插入相同记录&lt;&#x2F;h3&gt;
 &lt;h4 id=&quot;shi-yong-mysql-suo-yin&quot;&gt;使用MySQL 索引&lt;&#x2F;h4&gt;
@@ -68,5 +71,5 @@
 &lt;h3 id=&quot;mysqlsuo-yin&quot;&gt;MySQL索引&lt;&#x2F;h3&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yrxing&#x2F;p&#x2F;14557150.html&quot;&gt;索引&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

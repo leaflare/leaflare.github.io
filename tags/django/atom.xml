@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Django</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/django/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2021-11-25T12:55:12+00:00</updated>
-	<id>https://ffangli.github.io/tags/django/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Django经验总结</title>
-		<published>2021-11-25T12:55:12+00:00</published>
-		<updated>2021-11-25T12:55:12+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202111251255/" type="text/html"/>
-		<id>https://ffangli.github.io/202111251255/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - Django</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/django/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-11-25T12:55:12+00:00</updated>
+    <id>https://ffangli.github.io/tags/django/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Django经验总结</title>
+        <published>2021-11-25T12:55:12+00:00</published>
+        <updated>2021-11-25T12:55:12+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202111251255/" type="text/html"/>
+        <id>https://ffangli.github.io/202111251255/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;djangoshi-yong-db-sqlite3&quot;&gt;Django使用db.sqlite3&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;chuang-jian-yi-ge-xiang-mu-bing-qi-dong&quot;&gt;创建一个项目并启动&lt;&#x2F;h3&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;django-admin startproject xiangmuming
@@ -38,5 +41,5 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;&quot;&gt;&lt;&#x2F;h3&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

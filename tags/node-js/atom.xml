@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Node.js</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/node-js/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-24T17:45:12+00:00</updated>
-	<id>https://ffangli.github.io/tags/node-js/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Nightwatch使用笔记</title>
-		<published>2022-01-24T17:45:12+00:00</published>
-		<updated>2022-01-24T17:45:12+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201241745/" type="text/html"/>
-		<id>https://ffangli.github.io/202201241745/</id>
-		<content type="html">&lt;p&gt;一个自动化e2e测试框架&lt;&#x2F;p&gt;
+    <title>Fang Li - Node.js</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/node-js/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-24T17:45:12+00:00</updated>
+    <id>https://ffangli.github.io/tags/node-js/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Nightwatch使用笔记</title>
+        <published>2022-01-24T17:45:12+00:00</published>
+        <updated>2022-01-24T17:45:12+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201241745/" type="text/html"/>
+        <id>https://ffangli.github.io/202201241745/</id>
+        <content type="html">&lt;p&gt;一个自动化e2e测试框架&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;jian-yao-jie-shao&quot;&gt;简要介绍&lt;&#x2F;h2&gt;
 &lt;p&gt;Nightwatch 是专门给网页使用的自动化测试框架，它使用 W3C WebDriver API（过去称为 Selenium WebDriver）来自动操作浏览器。 好处是可撰写并自动执行 End-to-End Testing 与 Node.js 的 Unit Testing，并简化设定 CI（Continuous Integration，持续整合）的过程。&lt;&#x2F;p&gt;
@@ -120,14 +123,17 @@
 &lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201241745&#x2F;.%5Cimg%5Csample.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;测试结果会以XML文件形式输出到tests_output目录下&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>npm报错处理合集</title>
-		<published>2021-12-15T12:55:12+00:00</published>
-		<updated>2021-12-15T12:55:12+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202112151255/" type="text/html"/>
-		<id>https://ffangli.github.io/202112151255/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>npm报错处理合集</title>
+        <published>2021-12-15T12:55:12+00:00</published>
+        <updated>2021-12-15T12:55:12+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202112151255/" type="text/html"/>
+        <id>https://ffangli.github.io/202112151255/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;npm-warn-deprecated-core-js-2-6-11-core-js-3-is-no-longer-maintained-and-not-recommended-for-usage&quot;&gt;npm WARN deprecated core-js@2.6.11: core-js@&amp;lt;3 is no longer maintained and not recommended for usage&lt;&#x2F;h2&gt;
 &lt;p&gt;解决：&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;powershell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-powershell &quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span&gt;npm install --save  -g core-js@^&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3
@@ -139,5 +145,5 @@
 &lt;&#x2F;span&gt;&lt;span&gt;npm install
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

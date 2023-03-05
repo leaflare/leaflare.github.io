@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Eng</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/eng/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-06-07T20:17:19+00:00</updated>
-	<id>https://ffangli.github.io/categories/eng/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Reading Notes on FEDB</title>
-		<published>2022-06-07T20:17:19+00:00</published>
-		<updated>2022-06-07T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202206072017/" type="text/html"/>
-		<id>https://ffangli.github.io/202206072017/</id>
-		<content type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
+    <title>Fang Li - Eng</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/eng/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-06-07T20:17:19+00:00</updated>
+    <id>https://ffangli.github.io/categories/eng/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Reading Notes on FEDB</title>
+        <published>2022-06-07T20:17:19+00:00</published>
+        <updated>2022-06-07T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202206072017/" type="text/html"/>
+        <id>https://ffangli.github.io/202206072017/</id>
+        <content type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;FEDB is an open source in memory feature database from Fourth Paradigm.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -27,14 +30,17 @@
 &lt;p&gt;https:&#x2F;&#x2F;github.com&#x2F;4paradigm&#x2F;OpenMLDB&lt;&#x2F;p&gt;
 &lt;p&gt;Chen, Cheng, et al. &amp;quot;Optimizing in-memory database engine for AI-powered on-line decision augmentation using persistent memory.&amp;quot; &lt;em&gt;Proceedings of the VLDB Endowment&lt;&#x2F;em&gt; 14.5 (2021): 799-812.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Data Blocks</title>
-		<published>2022-05-22T20:17:19+00:00</published>
-		<updated>2022-05-22T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202205222017/" type="text/html"/>
-		<id>https://ffangli.github.io/202205222017/</id>
-		<content type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Data Blocks</title>
+        <published>2022-05-22T20:17:19+00:00</published>
+        <updated>2022-05-22T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202205222017/" type="text/html"/>
+        <id>https://ffangli.github.io/202205222017/</id>
+        <content type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Data Blocks is a storage layer technology developed by the TUM database group to reduce the memory footprint of HyPer (OLTP + OLAP hybrid main memory database) without sacrificing existing performance.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -86,14 +92,17 @@ then the index value &lt;&#x2F;p&gt;
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;Harald Lang, Tobias Mühlbauer, Florian Funke, Peter A. Boncz, Thomas Neumann, and Alfons Kemper. 2016. Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation. In Proceedings of the 2016 International Conference on Management of Data (SIGMOD &#x27;16). Association for Computing Machinery, New York, NY, USA, 311–326. https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;2882903.2882925&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Anti-Caching</title>
-		<published>2022-04-02T20:17:19+00:00</published>
-		<updated>2022-04-02T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202204022017/" type="text/html"/>
-		<id>https://ffangli.github.io/202204022017/</id>
-		<content type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Anti-Caching</title>
+        <published>2022-04-02T20:17:19+00:00</published>
+        <updated>2022-04-02T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202204022017/" type="text/html"/>
+        <id>https://ffangli.github.io/202204022017/</id>
+        <content type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Anti-Caching is a data management mechanism designed by the H-Store project team for all-memory databases and is expected to solve the problem of physical memory limitations.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -116,14 +125,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;Justin DeBrabant, Andrew Pavlo, Stephen Tu, Michael Stonebraker, and Stan Zdonik. 2013. Anti-caching: a new approach to database management system architecture. Proc. VLDB Endow. 6, 14 (September 2013), 1942–1953. https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;2556549.2556575&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on LeanStore</title>
-		<published>2022-03-13T20:17:19+00:00</published>
-		<updated>2022-03-13T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203132017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203132017/</id>
-		<content type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on LeanStore</title>
+        <published>2022-03-13T20:17:19+00:00</published>
+        <updated>2022-03-13T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203132017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203132017/</id>
+        <content type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;LeanStore is a database designed by the TUM database group after HyPer&#x27;s pure in-memory database, which favours large in-memory scenarios but provides better management of ultra-physical in-memory data volumes than a pure in-memory database.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -144,14 +156,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;V. Leis, M. Haubenschild, A. Kemper and T. Neumann, &amp;quot;LeanStore: In-Memory Data Management beyond Main Memory,&amp;quot; 2018 IEEE 34th International Conference on Data Engineering (ICDE), 2018, pp. 185-196, doi: 10.1109&#x2F;ICDE.2018.00026.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on umbra</title>
-		<published>2022-03-09T20:17:19+00:00</published>
-		<updated>2022-03-09T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203092017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203092017/</id>
-		<content type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on umbra</title>
+        <published>2022-03-09T20:17:19+00:00</published>
+        <updated>2022-03-09T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203092017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203092017/</id>
+        <content type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
 &lt;p&gt;Umbra: A Disk-Based System with In-Memory Performance (CIDR 2020, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;basic-info&quot;&gt;Basic Info&lt;&#x2F;h2&gt;
@@ -165,14 +180,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;umbra-db.com&#x2F;&quot;&gt;Umbra&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Ease.ml</title>
-		<published>2022-03-05T20:17:19+00:00</published>
-		<updated>2022-03-05T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203052017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203052017/</id>
-		<content type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Ease.ml</title>
+        <published>2022-03-05T20:17:19+00:00</published>
+        <updated>2022-03-05T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203052017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203052017/</id>
+        <content type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml: towards multi-tenant resource sharing for machine learning workloads&lt;&#x2F;p&gt;
 &lt;p&gt;https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3177732.3177737&lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml&#x2F;ci and Ease.ml&#x2F;meter in action: towards data management for statistical generalization&lt;&#x2F;p&gt;
@@ -186,14 +204,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;p&gt;Developing machine learning (ML) applications is similar to developing traditional software --- it is often an iterative process in which developers navigate within a rich space of requirements, design decisions, implementations, empirical quality, and performance. In traditional software development, software engineering is the field of study which provides principled guidelines for this iterative process.&lt;&#x2F;p&gt;
 &lt;p&gt;The authors look at the management of the ML development lifecycle from a data management perspective. They show two closely related systems, easy.ml&#x2F;ci and easy.ml&#x2F;meter, which provide some &#x27;principled guidance&#x27; for ML application development: ci is a continuous integration engine for ML models, and meter is a &#x27;profiler&#x27; for controlling overfitting of ML models. Both systems focus on managing the &#x27;statistical generalisation capabilities&#x27; of the datasets used to assess the quality of ML applications, i.e. the validation set and the test set.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on IDEL</title>
-		<published>2022-03-01T20:17:19+00:00</published>
-		<updated>2022-03-01T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203012017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203012017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on IDEL</title>
+        <published>2022-03-01T20:17:19+00:00</published>
+        <updated>2022-03-01T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203012017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203012017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
 &lt;p&gt;IDEL: In-Database Entity Linking with Neural Embeddings&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -212,14 +233,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;p&gt;Embeddings in Databases&lt;&#x2F;p&gt;
 &lt;p&gt;Entity Linking and knowledge base completion&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Gorgon</title>
-		<published>2022-02-25T20:17:19+00:00</published>
-		<updated>2022-02-25T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202252017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Gorgon</title>
+        <published>2022-02-25T20:17:19+00:00</published>
+        <updated>2022-02-25T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202252017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -240,14 +264,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;p&gt;A unified, performant, and flexible accelerator--the ideal, combining the advantages of fixed-function accelerators and FPGAS--would simplify data center management by keeping compute resources homogeneous. Furthermore, accelerator unification enables new, cross-domain applications like DB+ML. Gorgon demonstrates the potential for reuse between accelerators by embedding database inspired paralled patterns in a general-purpose fabric originally designed for ML; it is also the first system to fuse and accelerate DB+ML processing on a single chip, accelerating full data-processing pipelines. &lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon is better-suited to data center integration than a sea of heterogeneous accelerators and faster. Furthermore, a unified platform shares expensive resources and large dice in advanced nodes. By adding database support to an ML-focused accelerator, Gorgon enables more powerful ML pipelines than existing accelerators.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on XuanYuan</title>
-		<published>2022-02-21T20:17:19+00:00</published>
-		<updated>2022-02-21T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202212017/</id>
-		<content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on XuanYuan</title>
+        <published>2022-02-21T20:17:19+00:00</published>
+        <updated>2022-02-21T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202212017/</id>
+        <content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
 &lt;p&gt;On one hand they integrate AI techniques into databases to provide self-configuring, self-optimizing, self-monitoring, self-diagnosis, self-healing, self-assembling, and self-security capabilities. On the other hand, they enable databases to provide AI capabilities using declarative languages in order to lower the barrier of using AI.&lt;&#x2F;p&gt;
@@ -280,14 +307,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;edge-computing-database&quot;&gt;Edge Computing Database&lt;&#x2F;h2&gt;
 &lt;p&gt;Most databases are designed to be deployed on servers. With the development of 5G and IOT devices, it calls for a tiny database embedded in small devices. There are several challenges in designing such a tiny database. The first is database security to protect the data. The second is real-time data processing. The small device has low computing power, and it is rather challenging to provide high performance on such small devices. The third is data migration among different devices. Some devices have small storage and it is challenging to migrate the data across different devices.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on SubspaceDB</title>
-		<published>2022-02-18T20:17:19+00:00</published>
-		<updated>2022-02-18T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202182017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202182017/</id>
-		<content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on SubspaceDB</title>
+        <published>2022-02-18T20:17:19+00:00</published>
+        <updated>2022-02-18T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202182017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202182017/</id>
+        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
 &lt;p&gt;SubspaceDB : In-database subspace clustering for analytical query processing&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -342,14 +372,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
 &lt;p&gt;SubspaceDB is comprised of algebraic relational operators that facilitate abundance of actionable analytics such as representative selection, feature selection, dimensionality reduction, neighbourhood, segmental similarity measure, and above all subspace clustering within DBMS. DBMSs equipped with these capabilities serve to augment DBMS’s machine learning capability in a seamless manner, obviating the need of separate APIs, external analytic systems or data mining tools.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Vertica-ML</title>
-		<published>2022-02-17T20:17:19+00:00</published>
-		<updated>2022-02-17T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202172017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202172017/</id>
-		<content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Vertica-ML</title>
+        <published>2022-02-17T20:17:19+00:00</published>
+        <updated>2022-02-17T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202172017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202172017/</id>
+        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
 &lt;p&gt;Vertica-ML: Distributed Machine Learning in Vertica Database&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -368,14 +401,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;p&gt;Vertica-ML also provides management functions for the trained models. The user can use get_model_summary and get_model_attribute to obtain the appropriate meta-information about the model. The model is stored as an object in a database table. This allows us to modify a model using the traditional ALTER or DROP statements.&lt;&#x2F;p&gt;
 &lt;p&gt;Since the machine learning algorithms are implemented directly in the analytical database, parallel computing is a must. Because Vertica itself is a distributed multi-node database, each node computes a portion of the data and does aggregation on a single node.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on SQML</title>
-		<published>2022-02-15T20:17:19+00:00</published>
-		<updated>2022-02-15T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202152017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202152017/</id>
-		<content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on SQML</title>
+        <published>2022-02-15T20:17:19+00:00</published>
+        <updated>2022-02-15T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202152017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202152017/</id>
+        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
 &lt;p&gt;SQML: large-scale in-database machine learning with pure SQL&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -393,14 +429,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;p&gt;First, Dremel imposes relatively tight memory limits on each user, and since UDAs must hold the entire model in memory, they had to use model compression techniques that invariably degrade model quality.  SQML does not require model compression, since the models are stored in disk-backed tables. &lt;&#x2F;p&gt;
 &lt;p&gt;Second, on large training sets UDA-based algorithms learn several independent models on disjoint subsets of the training data and then average them together, an approach that slows convergence. SQML always learns a single model on the entire dataset&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on DB4ML</title>
-		<published>2022-02-11T20:17:19+00:00</published>
-		<updated>2022-02-11T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202112017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202112017/</id>
-		<content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on DB4ML</title>
+        <published>2022-02-11T20:17:19+00:00</published>
+        <updated>2022-02-11T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202112017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202112017/</id>
+        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
 &lt;p&gt;DB4ML - An In-Memory Database Kernel with Machine Learning Support&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -419,14 +458,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
 &lt;p&gt;DB4ML offers a new programming model and an execution engine with isolation levels that provide the concurrency schemes required by modern parallel ML algorithms. A central aspect of DB4ML is that the programmer can implement user-defined ML algorithms in DB4ML without having to worry about the low-level details of synchronization. That way, the implementation will automatically benefit from all the parallelization and architectural optimizations which DB4ML contains - as to be expected from a database system. &lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on MLog</title>
-		<published>2022-02-08T20:17:19+00:00</published>
-		<updated>2022-02-08T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202082017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202082017/</id>
-		<content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on MLog</title>
+        <published>2022-02-08T20:17:19+00:00</published>
+        <updated>2022-02-08T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202082017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202082017/</id>
+        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
 &lt;p&gt;MLog: towards declarative in-database machine learning&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -451,14 +493,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
 &lt;p&gt;An MLOG program is very similar to a SQL program but extends relational algebra over relations to linear algebra over tensors. This extension allows MLOG to encode a range of machine learning models that are not supported in current data analytics systems. To optimize the performance of an MLOG program, MLOG contains a databasestyle query optimizer. In many cases, the resulting performance of automatically compiled MLOG programs is comparable with handtuned TensorFlow programs&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on MLearn</title>
-		<published>2022-02-03T20:17:19+00:00</published>
-		<updated>2022-02-03T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202032017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202032017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on MLearn</title>
+        <published>2022-02-03T20:17:19+00:00</published>
+        <updated>2022-02-03T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202032017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202032017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
 &lt;p&gt;MLearn: A Declarative Machine Learning Language for Database Systems&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -476,14 +521,17 @@ moving computations inside the core of database systems. In this paper, the auth
 &lt;p&gt;This paper has shown how the ML2SQL compiler treats preprocessor statements to allow the inclusion of code snippets and libraries.&lt;&#x2F;p&gt;
 &lt;p&gt;They have discovered out that array processing represents the major building block for tasks related to machine learning. These tasks would strongly benefit from SQL especially for data preprocessing. In addition, when integrating the advantages of array database into hybrid OLTP and OLAP database systems, no domain specific systems would be required. We shall therefore work on applying matrix algebra to tables using stored procedures that are written in ArrayQL.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on DB meets DL</title>
-		<published>2022-02-01T20:17:19+00:00</published>
-		<updated>2022-02-01T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202012017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on DB meets DL</title>
+        <published>2022-02-01T20:17:19+00:00</published>
+        <updated>2022-02-01T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202012017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;background&quot;&gt;BACKGROUND&lt;&#x2F;h1&gt;
 &lt;p&gt;Deep learning has excelled on complex problems in a variety of data-driven research areas. The database community has been working on data-driven applications for many years and should have dominated this wave of deep learning, but this has not been the case.&lt;&#x2F;p&gt;
@@ -515,5 +563,5 @@ moving computations inside the core of database systems. In this paper, the auth
 &lt;h2 id=&quot;spatial-and-temporal-data&quot;&gt;Spatial and Temporal Data&lt;&#x2F;h2&gt;
 &lt;p&gt;Spatial and temporal data are common types in database systems and are often used for trend analysis, process modelling and predictive analysis. If blocks in spatial data are understood as pixel points in a picture, spatial relationships can then be extracted using deep learning models such as CNNs. For example, we can learn real-time location data of moving objects (e.g. GPS) into a CNN model to obtain density relationships in neighbourhoods and predict congestion over time. If temporal data can be modelled as a temporal matrix, deep learning (e.g. RNN) can be designed to analyse temporal dependencies and predict whether something is sent at a future point in time. For example, a temporal model based on the spread of a disease could help doctors predict the severity of a particular disease.&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

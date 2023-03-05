@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Data Science</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/data-science/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2021-03-01T16:42:14+00:00</updated>
-	<id>https://ffangli.github.io/categories/data-science/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Logistic regression algorithm</title>
-		<published>2021-03-01T16:42:14+00:00</published>
-		<updated>2021-03-01T16:42:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202103011642/" type="text/html"/>
-		<id>https://ffangli.github.io/202103011642/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - Data Science</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/data-science/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-03-01T16:42:14+00:00</updated>
+    <id>https://ffangli.github.io/categories/data-science/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Logistic regression algorithm</title>
+        <published>2021-03-01T16:42:14+00:00</published>
+        <updated>2021-03-01T16:42:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202103011642/" type="text/html"/>
+        <id>https://ffangli.github.io/202103011642/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
 &lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
 &lt;p&gt;​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success&#x2F;yes) or 0 (stands for failure&#x2F;no).&lt;&#x2F;p&gt;
@@ -161,5 +164,5 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;经过第四步模型训练后，使用训练好的模型来进行数据测试，第一行代码为数据预测结果，第二行输出预测结果，第三行为评估模型预测的分数，第四输出分数。&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

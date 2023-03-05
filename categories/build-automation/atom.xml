@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Build Automation</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/categories/build-automation/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2020-12-09T12:55:12+00:00</updated>
-	<id>https://ffangli.github.io/categories/build-automation/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>maven报错处理合集</title>
-		<published>2020-12-09T12:55:12+00:00</published>
-		<updated>2020-12-09T12:55:12+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202012091255/" type="text/html"/>
-		<id>https://ffangli.github.io/202012091255/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - Build Automation</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/categories/build-automation/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2020-12-09T12:55:12+00:00</updated>
+    <id>https://ffangli.github.io/categories/build-automation/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>maven报错处理合集</title>
+        <published>2020-12-09T12:55:12+00:00</published>
+        <updated>2020-12-09T12:55:12+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202012091255/" type="text/html"/>
+        <id>https://ffangli.github.io/202012091255/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8&quot;&gt;错误: 找不到或无法加载主类 .encoding=UTF-8&lt;&#x2F;h2&gt;
 &lt;p&gt;事故现场&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;java -Dfile.encoding=UTF-8 -jar xxx.jar
@@ -26,5 +29,5 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;或者用cmd运行&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

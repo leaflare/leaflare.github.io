@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - C&#x2F;C++</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/c-c/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-01-13T21:05:54+00:00</updated>
-	<id>https://ffangli.github.io/tags/c-c/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>C&#x2F;C++_动态内存分配</title>
-		<published>2022-01-13T21:05:54+00:00</published>
-		<updated>2022-01-13T21:05:54+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201132105/" type="text/html"/>
-		<id>https://ffangli.github.io/202201132105/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - C&#x2F;C++</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/c-c/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-01-13T21:05:54+00:00</updated>
+    <id>https://ffangli.github.io/tags/c-c/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>C&#x2F;C++_动态内存分配</title>
+        <published>2022-01-13T21:05:54+00:00</published>
+        <updated>2022-01-13T21:05:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201132105/" type="text/html"/>
+        <id>https://ffangli.github.io/202201132105/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;nei-cun-fen-pei&quot;&gt;内存分配&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;jing-tai-fen-pei&quot;&gt;静态分配&lt;&#x2F;h3&gt;
 &lt;p&gt;编译时分配或内存的静态分配：命名变量的内存由编译器分配。在编译时必须知道确切的大小和存储，对于数组声明，大小必须是恒定的。&lt;&#x2F;p&gt;
@@ -147,14 +150,17 @@
 &lt;&#x2F;span&gt;&lt;span&gt;}
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>C++STL笔记</title>
-		<published>2022-01-11T18:36:14+00:00</published>
-		<updated>2022-01-11T18:36:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201111836/" type="text/html"/>
-		<id>https://ffangli.github.io/202201111836/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>C++STL笔记</title>
+        <published>2022-01-11T18:36:14+00:00</published>
+        <updated>2022-01-11T18:36:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201111836/" type="text/html"/>
+        <id>https://ffangli.github.io/202201111836/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;rong-qi&quot;&gt;容器&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;mapdie-dai-qi&quot;&gt;map迭代器&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;iterator-firsthe-iterator-second&quot;&gt;iterator-&amp;gt;first和iterator-&amp;gt;second&lt;&#x2F;h3&gt;
@@ -341,14 +347,17 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;min(n, int(str.size()));
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>C++_编译报错处理合集</title>
-		<published>2022-01-11T17:36:14+00:00</published>
-		<updated>2022-01-11T17:36:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202201111736/" type="text/html"/>
-		<id>https://ffangli.github.io/202201111736/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>C++_编译报错处理合集</title>
+        <published>2022-01-11T17:36:14+00:00</published>
+        <updated>2022-01-11T17:36:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202201111736/" type="text/html"/>
+        <id>https://ffangli.github.io/202201111736/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bian-yi-bao-cuo&quot;&gt;编译报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;error-system-was-not-declared-in-this-scope&quot;&gt;error: &#x27;system&#x27; was not declared in this scope&lt;&#x2F;h3&gt;
 &lt;p&gt;使用&lt;code&gt;system(&amp;quot;pause&amp;quot;);&lt;&#x2F;code&gt;缺少头文件&lt;&#x2F;p&gt;
@@ -375,5 +384,5 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;cstring&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

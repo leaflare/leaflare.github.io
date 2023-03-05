@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - State-of-the-art DB</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/state-of-the-art-db/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-06-07T20:17:19+00:00</updated>
-	<id>https://ffangli.github.io/tags/state-of-the-art-db/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Reading Notes on FEDB</title>
-		<published>2022-06-07T20:17:19+00:00</published>
-		<updated>2022-06-07T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202206072017/" type="text/html"/>
-		<id>https://ffangli.github.io/202206072017/</id>
-		<content type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
+    <title>Fang Li - State-of-the-art DB</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/state-of-the-art-db/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-06-07T20:17:19+00:00</updated>
+    <id>https://ffangli.github.io/tags/state-of-the-art-db/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Reading Notes on FEDB</title>
+        <published>2022-06-07T20:17:19+00:00</published>
+        <updated>2022-06-07T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202206072017/" type="text/html"/>
+        <id>https://ffangli.github.io/202206072017/</id>
+        <content type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;FEDB is an open source in memory feature database from Fourth Paradigm.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -27,14 +30,17 @@
 &lt;p&gt;https:&#x2F;&#x2F;github.com&#x2F;4paradigm&#x2F;OpenMLDB&lt;&#x2F;p&gt;
 &lt;p&gt;Chen, Cheng, et al. &amp;quot;Optimizing in-memory database engine for AI-powered on-line decision augmentation using persistent memory.&amp;quot; &lt;em&gt;Proceedings of the VLDB Endowment&lt;&#x2F;em&gt; 14.5 (2021): 799-812.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Data Blocks</title>
-		<published>2022-05-22T20:17:19+00:00</published>
-		<updated>2022-05-22T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202205222017/" type="text/html"/>
-		<id>https://ffangli.github.io/202205222017/</id>
-		<content type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Data Blocks</title>
+        <published>2022-05-22T20:17:19+00:00</published>
+        <updated>2022-05-22T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202205222017/" type="text/html"/>
+        <id>https://ffangli.github.io/202205222017/</id>
+        <content type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Data Blocks is a storage layer technology developed by the TUM database group to reduce the memory footprint of HyPer (OLTP + OLAP hybrid main memory database) without sacrificing existing performance.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -86,14 +92,17 @@ then the index value &lt;&#x2F;p&gt;
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;Harald Lang, Tobias Mühlbauer, Florian Funke, Peter A. Boncz, Thomas Neumann, and Alfons Kemper. 2016. Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation. In Proceedings of the 2016 International Conference on Management of Data (SIGMOD &#x27;16). Association for Computing Machinery, New York, NY, USA, 311–326. https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;2882903.2882925&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Anti-Caching</title>
-		<published>2022-04-02T20:17:19+00:00</published>
-		<updated>2022-04-02T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202204022017/" type="text/html"/>
-		<id>https://ffangli.github.io/202204022017/</id>
-		<content type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Anti-Caching</title>
+        <published>2022-04-02T20:17:19+00:00</published>
+        <updated>2022-04-02T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202204022017/" type="text/html"/>
+        <id>https://ffangli.github.io/202204022017/</id>
+        <content type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Anti-Caching is a data management mechanism designed by the H-Store project team for all-memory databases and is expected to solve the problem of physical memory limitations.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -116,14 +125,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;Justin DeBrabant, Andrew Pavlo, Stephen Tu, Michael Stonebraker, and Stan Zdonik. 2013. Anti-caching: a new approach to database management system architecture. Proc. VLDB Endow. 6, 14 (September 2013), 1942–1953. https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;2556549.2556575&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on LeanStore</title>
-		<published>2022-03-13T20:17:19+00:00</published>
-		<updated>2022-03-13T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203132017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203132017/</id>
-		<content type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on LeanStore</title>
+        <published>2022-03-13T20:17:19+00:00</published>
+        <updated>2022-03-13T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203132017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203132017/</id>
+        <content type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;LeanStore is a database designed by the TUM database group after HyPer&#x27;s pure in-memory database, which favours large in-memory scenarios but provides better management of ultra-physical in-memory data volumes than a pure in-memory database.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
@@ -144,14 +156,17 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;V. Leis, M. Haubenschild, A. Kemper and T. Neumann, &amp;quot;LeanStore: In-Memory Data Management beyond Main Memory,&amp;quot; 2018 IEEE 34th International Conference on Data Engineering (ICDE), 2018, pp. 185-196, doi: 10.1109&#x2F;ICDE.2018.00026.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on umbra</title>
-		<published>2022-03-09T20:17:19+00:00</published>
-		<updated>2022-03-09T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202203092017/" type="text/html"/>
-		<id>https://ffangli.github.io/202203092017/</id>
-		<content type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on umbra</title>
+        <published>2022-03-09T20:17:19+00:00</published>
+        <updated>2022-03-09T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202203092017/" type="text/html"/>
+        <id>https://ffangli.github.io/202203092017/</id>
+        <content type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
 &lt;p&gt;Umbra: A Disk-Based System with In-Memory Performance (CIDR 2020, TUM)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;basic-info&quot;&gt;Basic Info&lt;&#x2F;h2&gt;
@@ -165,5 +180,5 @@ My understanding is that if only evicted tables were used, then each tuple would
 &lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;umbra-db.com&#x2F;&quot;&gt;Umbra&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

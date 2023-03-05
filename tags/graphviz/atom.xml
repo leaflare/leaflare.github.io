@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Graphviz</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/graphviz/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-02-05T15:16:18+00:00</updated>
-	<id>https://ffangli.github.io/tags/graphviz/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Graphviz使用记录</title>
-		<published>2022-02-05T15:16:18+00:00</published>
-		<updated>2022-02-05T15:16:18+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
-		<id>https://ffangli.github.io/202202051516/</id>
-		<content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+    <title>Fang Li - Graphviz</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/graphviz/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-02-05T15:16:18+00:00</updated>
+    <id>https://ffangli.github.io/tags/graphviz/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Graphviz使用记录</title>
+        <published>2022-02-05T15:16:18+00:00</published>
+        <updated>2022-02-05T15:16:18+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
+        <id>https://ffangli.github.io/202202051516/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
 &lt;p&gt;官网&lt;a href=&quot;http:&#x2F;&#x2F;www.graphviz.org&#x2F;&quot;&gt;Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
@@ -99,5 +102,5 @@
 &lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
 &lt;img src=&quot;.\img\1.png&quot; style=&quot;zoom:60%;&quot; &#x2F;&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

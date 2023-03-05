@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - ML4DB</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/ml4db/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-02-25T20:17:19+00:00</updated>
-	<id>https://ffangli.github.io/tags/ml4db/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>Reading Notes on Gorgon</title>
-		<published>2022-02-25T20:17:19+00:00</published>
-		<updated>2022-02-25T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202252017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
+    <title>Fang Li - ML4DB</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/ml4db/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-02-25T20:17:19+00:00</updated>
+    <id>https://ffangli.github.io/tags/ml4db/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>Reading Notes on Gorgon</title>
+        <published>2022-02-25T20:17:19+00:00</published>
+        <updated>2022-02-25T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202252017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
@@ -34,14 +37,17 @@
 &lt;p&gt;A unified, performant, and flexible accelerator--the ideal, combining the advantages of fixed-function accelerators and FPGAS--would simplify data center management by keeping compute resources homogeneous. Furthermore, accelerator unification enables new, cross-domain applications like DB+ML. Gorgon demonstrates the potential for reuse between accelerators by embedding database inspired paralled patterns in a general-purpose fabric originally designed for ML; it is also the first system to fuse and accelerate DB+ML processing on a single chip, accelerating full data-processing pipelines. &lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon is better-suited to data center integration than a sea of heterogeneous accelerators and faster. Furthermore, a unified platform shares expensive resources and large dice in advanced nodes. By adding database support to an ML-focused accelerator, Gorgon enables more powerful ML pipelines than existing accelerators.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on XuanYuan</title>
-		<published>2022-02-21T20:17:19+00:00</published>
-		<updated>2022-02-21T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202212017/</id>
-		<content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on XuanYuan</title>
+        <published>2022-02-21T20:17:19+00:00</published>
+        <updated>2022-02-21T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202212017/</id>
+        <content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
 &lt;p&gt;On one hand they integrate AI techniques into databases to provide self-configuring, self-optimizing, self-monitoring, self-diagnosis, self-healing, self-assembling, and self-security capabilities. On the other hand, they enable databases to provide AI capabilities using declarative languages in order to lower the barrier of using AI.&lt;&#x2F;p&gt;
@@ -74,14 +80,17 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;edge-computing-database&quot;&gt;Edge Computing Database&lt;&#x2F;h2&gt;
 &lt;p&gt;Most databases are designed to be deployed on servers. With the development of 5G and IOT devices, it calls for a tiny database embedded in small devices. There are several challenges in designing such a tiny database. The first is database security to protect the data. The second is real-time data processing. The small device has low computing power, and it is rather challenging to provide high performance on such small devices. The third is data migration among different devices. Some devices have small storage and it is challenging to migrate the data across different devices.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="zh">
-		<title>Reading Notes on DB meets DL</title>
-		<published>2022-02-01T20:17:19+00:00</published>
-		<updated>2022-02-01T20:17:19+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
-		<id>https://ffangli.github.io/202202012017/</id>
-		<content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
+    </entry>
+    <entry xml:lang="zh">
+        <title>Reading Notes on DB meets DL</title>
+        <published>2022-02-01T20:17:19+00:00</published>
+        <updated>2022-02-01T20:17:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
+        <id>https://ffangli.github.io/202202012017/</id>
+        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;background&quot;&gt;BACKGROUND&lt;&#x2F;h1&gt;
 &lt;p&gt;Deep learning has excelled on complex problems in a variety of data-driven research areas. The database community has been working on data-driven applications for many years and should have dominated this wave of deep learning, but this has not been the case.&lt;&#x2F;p&gt;
@@ -113,5 +122,5 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
 &lt;h2 id=&quot;spatial-and-temporal-data&quot;&gt;Spatial and Temporal Data&lt;&#x2F;h2&gt;
 &lt;p&gt;Spatial and temporal data are common types in database systems and are often used for trend analysis, process modelling and predictive analysis. If blocks in spatial data are understood as pixel points in a picture, spatial relationships can then be extracted using deep learning models such as CNNs. For example, we can learn real-time location data of moving objects (e.g. GPS) into a CNN model to obtain density relationships in neighbourhoods and predict congestion over time. If temporal data can be modelled as a temporal matrix, deep learning (e.g. RNN) can be designed to analyse temporal dependencies and predict whether something is sent at a future point in time. For example, a temporal model based on the spread of a disease could help doctors predict the severity of a particular disease.&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

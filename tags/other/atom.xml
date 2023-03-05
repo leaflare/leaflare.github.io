@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-	<title>Fang Li - Other</title>
-	<subtitle>Fang Li&#x27;s Blog</subtitle>
-	<link href="https://ffangli.github.io/tags/other/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://ffangli.github.io"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2021-10-17T14:43:14+00:00</updated>
-	<id>https://ffangli.github.io/tags/other/atom.xml</id>
-	<entry xml:lang="zh">
-		<title>PC使用记录</title>
-		<published>2021-10-17T14:43:14+00:00</published>
-		<updated>2021-10-17T14:43:14+00:00</updated>
-		<link rel="alternate" href="https://ffangli.github.io/202110171443/" type="text/html"/>
-		<id>https://ffangli.github.io/202110171443/</id>
-		<content type="html">&lt;p&gt;ROG幻16使用踩坑(X)&lt;&#x2F;p&gt;
+    <title>Fang Li - Other</title>
+    <subtitle>Fang Li&#x27;s Blog</subtitle>
+    <link href="https://ffangli.github.io/tags/other/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangli.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-10-17T14:43:14+00:00</updated>
+    <id>https://ffangli.github.io/tags/other/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>PC使用记录</title>
+        <published>2021-10-17T14:43:14+00:00</published>
+        <updated>2021-10-17T14:43:14+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202110171443/" type="text/html"/>
+        <id>https://ffangli.github.io/202110171443/</id>
+        <content type="html">&lt;p&gt;ROG幻16使用踩坑(X)&lt;&#x2F;p&gt;
 &lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;cai-keng-yi&quot;&gt;踩坑一&lt;&#x2F;h2&gt;
 &lt;p&gt;事故现场：&lt;&#x2F;p&gt;
@@ -23,5 +26,5 @@
 &lt;p&gt;即使只是压到边缘的一小块也会出现这种情况——突然黑屏&lt;&#x2F;p&gt;
 &lt;p&gt;( ・_ゝ・)&lt;&#x2F;p&gt;
 </content>
-	</entry>
+    </entry>
 </feed>

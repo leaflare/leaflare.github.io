@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - vjvm note 01： ClassLoader</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302132047/#classloader" class="toc-link">ClassLoader</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302132047/#shuang-qin-wei-tuo-jia-zai-ji-zhi-parent-first" class="toc-link">双亲委托加载机制（Parent-First）</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302132047/#dai-ma" class="toc-link">代码</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202302132047&#x2F;">vjvm note 01： ClassLoader</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2023-02-13</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span><h2 id="classloader">ClassLoader</h2>
+<p>作为Java运行时环境的一部分，Java ClassLoader动态地将Java类加载到Java虚拟机中。通过在Java中使用类加载器，它不需要Java运行时系统了解文件和文件系统的情况。Java类在应用程序需要时被加载，而不是一次性加载到内存中。Java中的ClassLoader是由JRE调用的。这些ClassLoaders动态地将类加载到内存中。</p>
+<p>在java中，有以下3种默认的类加载器:</p>
+<ul>
+<li><strong>Bootstrap ClassLoader:</strong> Loads class from JRE/lib/rt.jar</li>
+<li><strong>Extension ClassLoader:</strong> Loads class from JRE/lib/ext</li>
+<li><strong>Application ClassLoader:</strong> Loads class from CLASSPATH environment variable</li>
+</ul>
+<h2 id="shuang-qin-wei-tuo-jia-zai-ji-zhi-parent-first">双亲委托加载机制（Parent-First）</h2>
+<p>ClassLoader委托层次模型的运作顺序是:</p>
+<p>Application ClassLoader -&gt; Extension ClassLoader -&gt; Bootstrap ClassLoader</p>
+<p>Java 默认使用了名为 parent-first 的策略：每个 loader（除 Bootstrap Loader 外）均有一个<strong>亲代加载器 （parent）</strong>，在搜索 class 时首先委托亲代进行搜索，找不到时才搜索自己的加载路径。 于是，各个 ClassLoader 之间就形成了如下的委托关系：</p>
+<img src="C:\Users\prts\Desktop\vjvm_note_ClassLoader\img\loader-hierarchy.png" style="zoom:80%;" />
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>if 需要加载的 class 已被保存在 definedClass 中：
+</span><span>    返回已加载的 class
+</span><span>else if parent 不为 null：
+</span><span>    使用 parent 加载 class
+</span><span>
+</span><span>if parent 未找到相应的 class：
+</span><span>    for searchPaths 中的每一项：
+</span><span>        尝试使用它来加载类，并调用 JClass 构造函数构造类
+</span><span>
+</span><span>if 所有的 searchPath 都没有找到需要加载的类：
+</span><span>    返回 null
+</span></code></pre>
+<p>在查找 class 文件时，一个 loader 可能会搜索以下两种路径：</p>
+<ol>
+<li>
+<p>搜索单个目录</p>
+<p>在指定 <code>/foo</code> 为加载路径时，如果加载 <code>bar.A</code> 类，你应该查找 <code>/foo/bar/A.class</code> 文件。</p>
+</li>
+<li>
+<p>单个 Jar 文件</p>
+<p>Jar 文件事实上是一个 zip 压缩包，将多个 class 文件打包在一起。在从 <code>/foo/bar.jar</code> 中加载 <code>baz.B</code> 时，你应该读取该文件并搜索其中的 <code>baz/B.class</code>路径。JDK 中提供了 <code>JarFile</code> 类来读取 jar 文件。（可以使用 <code>jar -tf &lt;jarfile&gt;</code> 查看 Jar 文件的内容）</p>
+</li>
+</ol>
+<h2 id="dai-ma">代码</h2>
+<p><a href="https://github.com/ffangli/toyjvm">ffangli/toyjvm (github.com)</a></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ tree src/main/java/vjvm/classloader
+</span><span>src/main/java/vjvm
+</span><span>├── searchpath
+</span><span>│   └── ClassSearchPath.java
+</span><span>        DirSearchPath.java
+</span><span>        JarSearchPath.java
+</span><span>        ModuleSearchPath.java
+</span><span>└──JClassLoader.java
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/vjvm/">#vjvm</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>
