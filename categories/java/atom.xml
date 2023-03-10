@@ -5,8 +5,97 @@
     <link href="https://ffangli.github.io/categories/java/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://ffangli.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-02-13T20:47:19+00:00</updated>
+    <updated>2023-02-15T22:47:19+00:00</updated>
     <id>https://ffangli.github.io/categories/java/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>vjvm note 02： Parser</title>
+        <published>2023-02-15T22:47:19+00:00</published>
+        <updated>2023-02-15T22:47:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangli.github.io/202302152247/" type="text/html"/>
+        <id>https://ffangli.github.io/202302152247/</id>
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;class-wen-jian-jie-gou&quot;&gt;class 文件结构&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;ClassFile {
+&lt;&#x2F;span&gt;&lt;span&gt;  u4              magic;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              minor_version;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              major_version;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              constant_pool_count;
+&lt;&#x2F;span&gt;&lt;span&gt;  cp_info         constant_pool[constant_pool_count - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;]; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 常量池
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              access_flags;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              this_class;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              super_class;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              interfaces_count;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              interfaces[interfaces_count]; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 类实现的接口
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              fields_count;
+&lt;&#x2F;span&gt;&lt;span&gt;  field_info      fields[fields_count]; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 类的成员变量
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              methods_count;
+&lt;&#x2F;span&gt;&lt;span&gt;  method_info     methods[methods_count]; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 类的方法
+&lt;&#x2F;span&gt;&lt;span&gt;  u2              attributes_count;
+&lt;&#x2F;span&gt;&lt;span&gt;  attribute_info  attributes[attributes_count];
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;每一行的前一列是类型，后一列是名称。例如，&lt;code&gt;u4 magic&lt;&#x2F;code&gt; 代表 &lt;code&gt;magic&lt;&#x2F;code&gt; 为 32 位无符号整形。在一个 class 文件中，最重要的四个结构是常量池（Constant Pool）、 成员变量（Field）、方法（Method）和属性（Attribute）。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;常量池（Constant Pool）这里的 &lt;code&gt;info&lt;&#x2F;code&gt; 成员的长度是可变的。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;cp_info {
+&lt;&#x2F;span&gt;&lt;span&gt;  u1  tag; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 常量类型
+&lt;&#x2F;span&gt;&lt;span&gt;  u1  info[]; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 常量数据
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;比如，对于 &lt;code&gt;CONSTANT_Class_info&lt;&#x2F;code&gt;：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;struct CONSTANT_Class_info {
+&lt;&#x2F;span&gt;&lt;span&gt;  u1  tag;
+&lt;&#x2F;span&gt;&lt;span&gt;  u2  name_index;
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;这里的 &lt;code&gt;info&lt;&#x2F;code&gt; 就被替换成了两个字节的索引，指向常量池中代表这个类名称的项。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;成员变量（Field） 其中的 &lt;code&gt;name_index&lt;&#x2F;code&gt; 和 &lt;code&gt;descriptor_index&lt;&#x2F;code&gt; 都指向常量池的内容。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;field_info {
+&lt;&#x2F;span&gt;&lt;span&gt; u2 access_flags;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 name_index;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 descriptor_index;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 attributes_count;
+&lt;&#x2F;span&gt;&lt;span&gt; attribute_info attributes[attributes_count];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;方法（Method）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;method_info {
+&lt;&#x2F;span&gt;&lt;span&gt; u2 access_flags;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 name_index;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 descriptor_index;
+&lt;&#x2F;span&gt;&lt;span&gt; u2 attributes_count;
+&lt;&#x2F;span&gt;&lt;span&gt; attribute_info attributes[attributes_count];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;属性（Attribute）属性在类、成员变量和方法的结构中出现，一个属性的通用结构如下：&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;attribute_info {
+&lt;&#x2F;span&gt;&lt;span&gt; u2 attribute_name_index;
+&lt;&#x2F;span&gt;&lt;span&gt; u4 attribute_length;
+&lt;&#x2F;span&gt;&lt;span&gt; u1 info[attribute_length];
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;属性中保存了许多内容，如 &lt;code&gt;static final&lt;&#x2F;code&gt; 变量的值、方法的代码、异常处理所需的信息等。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;duo-xing-qiu-zhi-he-ji-zao-qiu-zhi&quot;&gt;惰性求值和及早求值&lt;&#x2F;h2&gt;
+&lt;p&gt;惰性求值（Lazy Evaluation）在需要时才进行计算&lt;&#x2F;p&gt;
+&lt;p&gt;及早求值  (Eager Evaluation) 在构造时就把全部值计算出来&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;classfiledefs
+&lt;&#x2F;span&gt;&lt;span&gt;$ tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;runtime&#x2F;classdata
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;can-kao-wen-xian&quot;&gt;参考文献&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;specs&#x2F;jvms&#x2F;se8&#x2F;jvms8.pdf&quot;&gt;The Java® Virtual Machine Specification (oracle.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+    </entry>
     <entry xml:lang="zh">
         <title>vjvm note 01： ClassLoader</title>
         <published>2023-02-13T20:47:19+00:00</published>
@@ -28,7 +117,7 @@
 &lt;p&gt;ClassLoader委托层次模型的运作顺序是:&lt;&#x2F;p&gt;
 &lt;p&gt;Application ClassLoader -&amp;gt; Extension ClassLoader -&amp;gt; Bootstrap ClassLoader&lt;&#x2F;p&gt;
 &lt;p&gt;Java 默认使用了名为 parent-first 的策略：每个 loader（除 Bootstrap Loader 外）均有一个&lt;strong&gt;亲代加载器 （parent）&lt;&#x2F;strong&gt;，在搜索 class 时首先委托亲代进行搜索，找不到时才搜索自己的加载路径。 于是，各个 ClassLoader 之间就形成了如下的委托关系：&lt;&#x2F;p&gt;
-&lt;img src=&quot;C:\Users\prts\Desktop\vjvm_note_ClassLoader\img\loader-hierarchy.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
+&lt;img src=&quot;.\img\loader-hierarchy.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;if 需要加载的 class 已被保存在 definedClass 中：
 &lt;&#x2F;span&gt;&lt;span&gt;    返回已加载的 class
 &lt;&#x2F;span&gt;&lt;span&gt;else if parent 不为 null：
@@ -55,7 +144,7 @@
 &lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;classloader
-&lt;&#x2F;span&gt;&lt;span&gt;src&#x2F;main&#x2F;java&#x2F;vjvm
+&lt;&#x2F;span&gt;&lt;span&gt;src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;classloader
 &lt;&#x2F;span&gt;&lt;span&gt;├── searchpath
 &lt;&#x2F;span&gt;&lt;span&gt;│   └── ClassSearchPath.java
 &lt;&#x2F;span&gt;&lt;span&gt;        DirSearchPath.java

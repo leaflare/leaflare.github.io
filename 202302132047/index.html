@@ -159,7 +159,7 @@
 <p>ClassLoader委托层次模型的运作顺序是:</p>
 <p>Application ClassLoader -&gt; Extension ClassLoader -&gt; Bootstrap ClassLoader</p>
 <p>Java 默认使用了名为 parent-first 的策略：每个 loader（除 Bootstrap Loader 外）均有一个<strong>亲代加载器 （parent）</strong>，在搜索 class 时首先委托亲代进行搜索，找不到时才搜索自己的加载路径。 于是，各个 ClassLoader 之间就形成了如下的委托关系：</p>
-<img src="C:\Users\prts\Desktop\vjvm_note_ClassLoader\img\loader-hierarchy.png" style="zoom:80%;" />
+<img src=".\img\loader-hierarchy.png" style="zoom:80%;" />
 <pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>if 需要加载的 class 已被保存在 definedClass 中：
 </span><span>    返回已加载的 class
 </span><span>else if parent 不为 null：
@@ -186,7 +186,7 @@
 <h2 id="dai-ma">代码</h2>
 <p><a href="https://github.com/ffangli/toyjvm">ffangli/toyjvm (github.com)</a></p>
 <pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ tree src/main/java/vjvm/classloader
-</span><span>src/main/java/vjvm
+</span><span>src/main/java/vjvm/classloader
 </span><span>├── searchpath
 </span><span>│   └── ClassSearchPath.java
 </span><span>        DirSearchPath.java
