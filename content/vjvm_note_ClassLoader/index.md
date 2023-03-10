@@ -31,7 +31,7 @@ Application ClassLoader -> Extension ClassLoader -> Bootstrap ClassLoader
 
 Java 默认使用了名为 parent-first 的策略：每个 loader（除 Bootstrap Loader 外）均有一个**亲代加载器 （parent）**，在搜索 class 时首先委托亲代进行搜索，找不到时才搜索自己的加载路径。 于是，各个 ClassLoader 之间就形成了如下的委托关系：
 
-<img src="C:\Users\prts\Desktop\vjvm_note_ClassLoader\img\loader-hierarchy.png" style="zoom:80%;" />
+<img src=".\img\loader-hierarchy.png" style="zoom:80%;" />
 
 ```
 if 需要加载的 class 已被保存在 definedClass 中：
@@ -63,7 +63,7 @@ if 所有的 searchPath 都没有找到需要加载的类：
 
 ```
 $ tree src/main/java/vjvm/classloader
-src/main/java/vjvm
+src/main/java/vjvm/classloader
 ├── searchpath
 │   └── ClassSearchPath.java
         DirSearchPath.java
