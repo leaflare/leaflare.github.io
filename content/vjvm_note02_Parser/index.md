@@ -102,7 +102,7 @@ attribute_info {
 
 [ffangli/toyjvm (github.com)](https://github.com/ffangli/toyjvm)
 
-```
+```bash
 $ tree src/main/java/vjvm/classfiledefs
 $ tree src/main/java/vjvm/runtime/classdata
 ```
