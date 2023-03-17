@@ -31,7 +31,7 @@ JVM 在操作数栈和局部变量表中并不会保存 char、byte、short 和 
 
 ## JThread 与 JFrame
 
-框架代码中使用 `JThread` 代表一个线程，`JFrame` 代表一个线程的单个栈帧。
+使用 `JThread` 代表一个线程，`JFrame` 代表一个线程的单个栈帧。
 
 `VMContext` 中使用 `ArrayList` 保存 `JThread`。
 
@@ -58,6 +58,6 @@ VJVM 运行一个 Java 程序的流程：运行程序的命令通过 `vm.Run` �
 [ffangli/toyjvm (github.com)](https://github.com/ffangli/toyjvm)
 
 ```bash
-$ tree src/main/java/vjvm/runtime/frame
+$ tree src/main/java/vjvm/runtime
 ```
 
