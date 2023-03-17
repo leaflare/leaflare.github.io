@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - vjvm note 04： Instruction</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangli.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang Li</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangli.github.io">Fang Li</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangli">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302241747/#instruction" class="toc-link">Instruction</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302241747/#invokestaticzhi-ling" class="toc-link">invokestatic指令</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangli.github.io/202302241747/#dai-ma" class="toc-link">代码</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangli.github.io&#x2F;202302241747&#x2F;">vjvm note 04： Instruction</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2023-02-24</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span><h2 id="instruction">Instruction</h2>
+<p>从实现上来说，所有的指令都是对操作数栈、局部变量表等数据结构里面的某处数据进行了修改。</p>
+<p>每条指令的执行都分为解码与运行两个阶段。解码由指令的构造方法实现（如 <code>invokestatic</code>），而运行则由 <code>run</code> 方法实现。</p>
+<p>除此之外，每条指令有一个 <code>toString</code> 方法，被调试器使用。</p>
+<p>指令执行时， 首先会读取每条指令的第一个字节，然后查询<code>Decoder.decodeTable</code>进行解码。<code>Decoder.decodeTable</code>是一个从 opcode 到对应指令解码方法的映射。</p>
+<p>解码方法使用了统一的接口：<code>Instruction (ProgramCounter, MethodInfo)</code>。第一个参数为指向当前指令的程序计数器，第二个是当前指令所在的类。</p>
+<h2 id="invokestaticzhi-ling">invokestatic指令</h2>
+<p>实现了两个功能：</p>
+<ul>
+<li>
+<p>解析：</p>
+<p>invokestatic编码了一个 unsigned short 指向当前类常量池中一个 CONSTANT_Methodref_info 常量，首先加载该方法所在类，然后从加载的类中找到与 <code>Methodref</code> 相符的 <code>MethodInfo</code> 并保存至指令中。</p>
+</li>
+<li>
+<p>运行：</p>
+<p>首先从当前方法的操作数栈顶弹出 <code>argc</code> 个 slots，即弹出方法调用的参数。然后通过 <code>Interpreter.invoke</code> 调用方法。 <code>MethodDescriptors.argc</code> 用于计算参数占用的 slots 数量。</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>argc(descriptor /* 方法描述符，如 (I[JLjava/lang/String;)V */):
+</span><span>  argc = 0
+</span><span>  n = 0
+</span><span>  while 该方法有第 n 个参数:
+</span><span>    desc = 第 n 个参数的描述符，在以上例子中分别为 I、[J 与 Ljava/lang/String;
+</span><span>    size = desc 对应类型所占的槽位数。Long 和 Double 为 2，其它为 1
+</span><span>    argc += size
+</span><span>    n += 1
+</span><span>  return argc
+</span><span>
+</span><span>INVOKESTATIC(pc /* 当前 PC */, method /* 当前指令所在方法 */):
+</span><span>  cp = 当前类的常量池
+</span><span>  methodRef = cp[从 PC 读取下标]
+</span><span>  thisClass = method 所在的类
+</span><span>  jClass = 使用 thisClass 中的 classLoader 加载 methodRef 指向的类
+</span><span>  this.method = 使用 findMethod 在 jClass 中查找与 methodRef 匹配的方法
+</span><span>
+</span><span>run(thread /* 执行时的线程 */):
+</span><span>  stack = 线程当前栈帧的操作数栈
+</span><span>  argc = 使用 MethodDescriptors.argc 计算方法参数占用的 slots 数量
+</span><span>  interpreter = 解释器
+</span><span>  args = 从 stack 顶部弹出 argc 个 slots
+</span><span>  使用 interpreter.invoke 调用方法
+</span></code></pre>
+</li>
+</ul>
+<h2 id="dai-ma">代码</h2>
+<p><a href="https://github.com/ffangli/toyjvm">ffangli/toyjvm (github.com)</a></p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> tree src/main/java/vjvm/interpreter
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangli.github.io/tags/vjvm/">#vjvm</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangli.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

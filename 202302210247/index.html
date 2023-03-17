@@ -172,7 +172,7 @@
 <p>为了执行字节码，需要首先将它保存在对应的方法中。Class 文件的字节码在方法的 <code>Code</code> 属性里，见<em>src/main/java/vjvm/runtime/classdata/attribute/Code.java</em>，在<code>MethodInfo</code> 中调用它解析 <code>Code</code> 属性。</p>
 <p>在 VJVM 中，每个栈帧都有自己独立的 PC，指向所执行方法的字节码，而整个线程使用最顶部栈帧的 PC。<code>ProgramCounter</code> 使用一个 <code>ByteBuffer</code> 来包装原始字节码，并提供了 <code>byte_</code>、<code>ubyte</code> 等方法读取数据同时向前移动。这样，在我们读取完一条指令并解码后，PC 自然就指向了下一条指令。</p>
 <h2 id="jthread-yu-jframe">JThread 与 JFrame</h2>
-<p>框架代码中使用 <code>JThread</code> 代表一个线程，<code>JFrame</code> 代表一个线程的单个栈帧。</p>
+<p>使用 <code>JThread</code> 代表一个线程，<code>JFrame</code> 代表一个线程的单个栈帧。</p>
 <p><code>VMContext</code> 中使用 <code>ArrayList</code> 保存 <code>JThread</code>。</p>
 <h2 id="instruction-yu-jinterpreter">Instruction 与 JInterpreter</h2>
 <p>VJVM 运行一个 Java 程序的流程：运行程序的命令通过 <code>vm.Run</code> 类实现，其中会首先初始化运行时环境，然后调用 <code>VMContext.run</code> 执行程序。在<code>VMContext</code> 中，会首先加载用户指定的主类并寻找其中的 <code>main</code> 方法。在找到之后将它交给解释器 <code>JInterpreter</code> 执行（在这里额外传入了一个 <code>Slots</code>，代表 <code>main</code> 函数的参数）。</p>
@@ -185,7 +185,7 @@
 <p>事实上，标准的 JVM 中输入输出也是通过类似方式实现的。JVM 本身只能进行计算，并不能读取或写入数据。为了完成 IO 任务，JVM 将 native 方法绑定到对应的 C 函数上，并通过 C 函数与操作系统交互。</p>
 <h2 id="dai-ma">代码</h2>
 <p><a href="https://github.com/ffangli/toyjvm">ffangli/toyjvm (github.com)</a></p>
-<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> tree src/main/java/vjvm/runtime/frame
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> tree src/main/java/vjvm/runtime
 </span></code></pre>
 
     </div>
