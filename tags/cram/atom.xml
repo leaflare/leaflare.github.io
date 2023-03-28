@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202104201721/" type="text/html"/>
         <id>https://ffangli.github.io/202104201721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;bian-jie-qing-kuang-chu-li&quot;&gt;边界情况处理&lt;&#x2F;h1&gt;
 &lt;h3 id=&quot;shao-bing&quot;&gt;哨兵&lt;&#x2F;h3&gt;
@@ -99,6 +100,7 @@
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Dp template</title>
@@ -109,149 +111,10 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202104111721/" type="text/html"/>
         <id>https://ffangli.github.io/202104111721/</id>
-        <content type="html">&lt;p&gt;动态规划&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;动态规划问题的一般形式是穷举求最值，比如最长递增子序列，最小距离。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;存在「重叠子问题」&lt;&#x2F;strong&gt;：如果暴力穷举效率会极其低下，所以需要「备忘录」或者「DP table」来优化穷举过程，避&lt;strong&gt;存在「最优子结构」&lt;&#x2F;strong&gt;：才能通过子问题的最值得到原问题的最值。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;找到「状态」 -&amp;gt; 定义 dp 数组&#x2F;函数 -&amp;gt; 明确「选择」-&amp;gt; 明确 base case。&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;fei-bo-na-qi-shu-lie&quot;&gt;斐波那契数列&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;bao-li-di-gui&quot;&gt;暴力递归&lt;&#x2F;h3&gt;
-&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;N&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(N == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;|| N == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(N - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(N - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;);
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;时间复杂度： O(2^n)&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;dai-bei-wang-lu-de-di-gui-jie-fa&quot;&gt;带备忘录的递归解法&lt;&#x2F;h3&gt;
-&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;N&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(N &amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 备忘录全初始化为 0
-&lt;&#x2F;span&gt;&lt;span&gt;    vector&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;memo&lt;&#x2F;span&gt;&lt;span&gt;(N + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 初始化最简情况
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helper&lt;&#x2F;span&gt;&lt;span&gt;(memo, N);
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;helper&lt;&#x2F;span&gt;&lt;span&gt;(vector&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;memo&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; base case 
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;|| n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 已经计算过
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(memo[n] != &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; memo[n];
-&lt;&#x2F;span&gt;&lt;span&gt;    memo[n] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helper&lt;&#x2F;span&gt;&lt;span&gt;(memo, n - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) + 
-&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helper&lt;&#x2F;span&gt;&lt;span&gt;(memo, n - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;);
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; memo[n];
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;时间复杂度： O(n)&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;dp-shu-zu-de-die-dai-jie-fa&quot;&gt;dp 数组的迭代解法&lt;&#x2F;h3&gt;
-&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;N&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    vector&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(N + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; base case
-&lt;&#x2F;span&gt;&lt;span&gt;    dp[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;] = dp[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;; i &amp;lt;= N; i++)
-&lt;&#x2F;span&gt;&lt;span&gt;        dp[i] = dp[i - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;] + dp[i - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;];
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; dp[N];
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;时间复杂度： O(n)&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;kong-jian-fu-za-du-jiang-wei-o-1&quot;&gt;空间复杂度降为 O(1)&lt;&#x2F;h3&gt;
-&lt;p&gt;根据斐波那契数列的状态转移方程，当前状态只和之前的两个状态有关，只要存储之前的两个状态就可以了。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fib&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2 &lt;&#x2F;span&gt;&lt;span&gt;|| n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) 
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; prev = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, curr = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;; i &amp;lt;= n; i++) {
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; sum = prev + curr;
-&lt;&#x2F;span&gt;&lt;span&gt;        prev = curr;
-&lt;&#x2F;span&gt;&lt;span&gt;        curr = sum;
-&lt;&#x2F;span&gt;&lt;span&gt;    }
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; curr;
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h2 id=&quot;cou-ling-qian-wen-ti&quot;&gt;凑零钱问题&lt;&#x2F;h2&gt;
-&lt;h4 id=&quot;ti-mu&quot;&gt;题目&lt;&#x2F;h4&gt;
-&lt;p&gt;&lt;code&gt;k&lt;&#x2F;code&gt;种面值的硬币，面值分别为&lt;code&gt;c1, c2 ... ck&lt;&#x2F;code&gt;，每种硬币的数量无限，再给一个总金额&lt;code&gt;amount&lt;&#x2F;code&gt;，问最少需要几枚硬币凑出这个金额，如果不可能凑出，算法返回 -1 。&lt;&#x2F;p&gt;
-&lt;h4 id=&quot;si-lu&quot;&gt;思路&lt;&#x2F;h4&gt;
-&lt;p&gt;&lt;strong&gt;「状态」&lt;&#x2F;strong&gt;：目标金额&lt;code&gt;amount&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;dp&lt;&#x2F;code&gt;函数的定义&lt;&#x2F;strong&gt;：函数 dp(n)表示，当前的目标金额是&lt;code&gt;n&lt;&#x2F;code&gt;，至少需要&lt;code&gt;dp(n)&lt;&#x2F;code&gt;个硬币凑出该金额。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;「选择」并择优&lt;&#x2F;strong&gt;，也就是对于每个状态，可以做出什么选择改变当前状态。具体到这个问题，无论当的目标金额是多少，选择就是从面额列表&lt;code&gt;coins&lt;&#x2F;code&gt;中选择一个硬币，然后目标金额就会减少&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;base case&lt;&#x2F;strong&gt;，目标金额为 0 时，所需硬币数量为 0；当目标金额小于 0 时，无解，返回 -1&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;bao-li-jie-fa&quot;&gt;暴力解法&lt;&#x2F;h3&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 伪码框架
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;coinChange&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;coins&lt;&#x2F;span&gt;&lt;span&gt;: List[int], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;amount&lt;&#x2F;span&gt;&lt;span&gt;: int):
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 定义：要凑出金额 n，至少要 dp(n) 个硬币
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span&gt;):
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 做选择，需要硬币最少的那个结果就是答案
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;coin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;coins:
-&lt;&#x2F;span&gt;&lt;span&gt;            res = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;min&lt;&#x2F;span&gt;&lt;span&gt;(res, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;+ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(n - coin))
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;res
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 我们要求目标金额是 amount
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(amount)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;coinChange&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;coins&lt;&#x2F;span&gt;&lt;span&gt;: List[int], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;amount&lt;&#x2F;span&gt;&lt;span&gt;: int):
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span&gt;):
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# base case
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;n &amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 求最小值，所以初始化为正无穷
-&lt;&#x2F;span&gt;&lt;span&gt;        res = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;float&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;INF&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;coin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;coins:
-&lt;&#x2F;span&gt;&lt;span&gt;            subproblem = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(n - coin)
-&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 子问题无解，跳过
-&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;subproblem == -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;continue
-&lt;&#x2F;span&gt;&lt;span&gt;            res = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;min&lt;&#x2F;span&gt;&lt;span&gt;(res, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;+ subproblem)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;res &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;res != &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;float&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;INF&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(amount)
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;&lt;strong&gt;时间复杂度：子问题总数 x 解决每个子问题的时间&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
-&lt;p&gt;子问题总数为递归树节点个数，是 O(n^k)。每个子问题中含有一个 for 循环，复杂度为 O(k)。所以总时间复杂度为 O(k * n^k)，指数级别。&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;dai-bei-wang-lu-de-di-gui&quot;&gt;带备忘录的递归&lt;&#x2F;h3&gt;
-&lt;p&gt;通过备忘录消除子问题&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;coinChange&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;coins&lt;&#x2F;span&gt;&lt;span&gt;: List[int], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;amount&lt;&#x2F;span&gt;&lt;span&gt;: int):
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 备忘录
-&lt;&#x2F;span&gt;&lt;span&gt;    memo = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dict&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span&gt;):
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 查备忘录，避免重复计算
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;n in memo: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;memo[n]
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;n == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;n &amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
-&lt;&#x2F;span&gt;&lt;span&gt;        res = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;float&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;INF&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;coin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;coins:
-&lt;&#x2F;span&gt;&lt;span&gt;            subproblem = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(n - coin)
-&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;subproblem == -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;continue
-&lt;&#x2F;span&gt;&lt;span&gt;            res = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;min&lt;&#x2F;span&gt;&lt;span&gt;(res, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;+ subproblem)
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 记入备忘录
-&lt;&#x2F;span&gt;&lt;span&gt;        memo[n] = res &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;res != &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;float&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;INF&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;memo[n]
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(amount)
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;子问题总数不会超过金额数 n，即子问题数目为 O(n)。处理一个子问题的时间不变，仍是 O(k)，所以总的时间复杂度是 O(kn)。&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;dp-shu-zu-de-die-dai-jie-fa-1&quot;&gt;dp 数组的迭代解法&lt;&#x2F;h3&gt;
-&lt;p&gt;&lt;code&gt;dp[i] = x&lt;&#x2F;code&gt;表示，当目标金额为&lt;code&gt;i&lt;&#x2F;code&gt;时，至少需要&lt;code&gt;x&lt;&#x2F;code&gt;枚硬币。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;coinChange&lt;&#x2F;span&gt;&lt;span&gt;(vector&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;coins&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;amount&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 数组大小为 amount + 1，初始值也为 amount + 1
-&lt;&#x2F;span&gt;&lt;span&gt;    vector&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dp&lt;&#x2F;span&gt;&lt;span&gt;(amount + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, amount + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;);
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; base case
-&lt;&#x2F;span&gt;&lt;span&gt;    dp[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;; i &amp;lt; dp.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;size&lt;&#x2F;span&gt;&lt;span&gt;(); i++) {
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 内层 for 在求所有子问题 + 1 的最小值
-&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; coin : coins) {
-&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 子问题无解，跳过
-&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(i - coin &amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;continue&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;            dp[i] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;min&lt;&#x2F;span&gt;&lt;span&gt;(dp[i], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;+ dp[i - coin]);
-&lt;&#x2F;span&gt;&lt;span&gt;        }
-&lt;&#x2F;span&gt;&lt;span&gt;    }
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;(dp[amount] == amount + &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) ? -&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span&gt;: dp[amount];
-&lt;&#x2F;span&gt;&lt;span&gt;}
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;&lt;code&gt;dp&lt;&#x2F;code&gt;数组初始化为&lt;code&gt;amount + 1&lt;&#x2F;code&gt;，是因为凑成&lt;code&gt;amount&lt;&#x2F;code&gt;金额的硬币数最多只可能等于&lt;code&gt;amount&lt;&#x2F;code&gt;（全用 1 元面值的硬币），所以初始化为&lt;code&gt;amount + 1&lt;&#x2F;code&gt;就相当于初始化为正无穷，便于后续取最小值。&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;动态规划&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Data structure template</title>
@@ -262,6 +125,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202104101721/" type="text/html"/>
         <id>https://ffangli.github.io/202104101721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;bing-cha-ji&quot;&gt;并查集&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;lu-jing-ya-suo-chang-yong&quot;&gt;路径压缩（常用）&lt;&#x2F;h2&gt;
@@ -889,6 +753,7 @@
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Basic template</title>
@@ -899,6 +764,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202102201721/" type="text/html"/>
         <id>https://ffangli.github.io/202102201721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;suan-fa&quot;&gt;算法&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;er-fen&quot;&gt;二分&lt;&#x2F;h2&gt;
@@ -1285,6 +1151,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;    count[i] = count[i] + count[i-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;];
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Java记录</title>
@@ -1295,6 +1162,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202102101721/" type="text/html"/>
         <id>https://ffangli.github.io/202102101721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-zu-xiang-guan&quot;&gt;数组相关&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;arrays-sortzi-ding-yi-bi-jiao-qi&quot;&gt;Arrays.sort自定义比较器&lt;&#x2F;h3&gt;
@@ -1321,6 +1189,7 @@
 &lt;p&gt;对于compare或者compareTo函数返回值，1表示两个比较的数字位置互换，0和-1则是位置不发生变化。&lt;&#x2F;p&gt;
 &lt;p&gt;public int compare(Integer a,Integer b){ return a-b；｝如果a大于b，返回正数，表示要将a和b的位置互换，因此小数在前，大数在后，这就成了升序排列，a小于b也是同理&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>coding通用记录</title>
@@ -1331,6 +1200,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/201906101721/" type="text/html"/>
         <id>https://ffangli.github.io/201906101721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;cao-zuo-fu-xiang-guan&quot;&gt;操作符相关&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;he-qu-bie&quot;&gt;&amp;amp;&amp;amp;和&amp;amp;区别&lt;&#x2F;h2&gt;
@@ -1343,6 +1213,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;System.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;out&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;println&lt;&#x2F;span&gt;&lt;span&gt;(j);&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;j打印出来为1
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>C++记录</title>
@@ -1353,6 +1224,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/201901101721/" type="text/html"/>
         <id>https://ffangli.github.io/201901101721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;vectorxiang-guan&quot;&gt;vector相关&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;vectorchuan-can&quot;&gt;vector传参&lt;&#x2F;h3&gt;
@@ -1670,5 +1542,6 @@ int占用4个字节，也就是32位，除了第一位代表符号，剩下的31
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;while(!(cin&amp;gt;&amp;gt;a).eof())
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
 </feed>

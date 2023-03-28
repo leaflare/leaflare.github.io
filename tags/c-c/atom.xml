@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201132105/" type="text/html"/>
         <id>https://ffangli.github.io/202201132105/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;nei-cun-fen-pei&quot;&gt;内存分配&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;jing-tai-fen-pei&quot;&gt;静态分配&lt;&#x2F;h3&gt;
@@ -150,6 +151,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;}
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>C++STL笔记</title>
@@ -160,6 +162,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201111836/" type="text/html"/>
         <id>https://ffangli.github.io/202201111836/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;rong-qi&quot;&gt;容器&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;mapdie-dai-qi&quot;&gt;map迭代器&lt;&#x2F;h2&gt;
@@ -347,6 +350,7 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;min(n, int(str.size()));
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>C++_编译报错处理合集</title>
@@ -357,6 +361,7 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201111736/" type="text/html"/>
         <id>https://ffangli.github.io/202201111736/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bian-yi-bao-cuo&quot;&gt;编译报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;error-system-was-not-declared-in-this-scope&quot;&gt;error: &#x27;system&#x27; was not declared in this scope&lt;&#x2F;h3&gt;
@@ -384,5 +389,6 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#include &amp;lt;cstring&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
 </feed>

@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201151642/" type="text/html"/>
         <id>https://ffangli.github.io/202201151642/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;tusharehuo-qu-xing-qing-shu-ju&quot;&gt;tushare获取行情数据&lt;&#x2F;h3&gt;
@@ -288,6 +289,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Quantative Trading相关环境配置</title>
@@ -298,6 +300,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201091721/" type="text/html"/>
         <id>https://ffangli.github.io/202201091721/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
 &lt;p&gt;如果conda已经没救了，尝试&lt;&#x2F;p&gt;
@@ -360,5 +363,6 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;配置全部完成后，可以在PyCharm主界面，依次点击 Tools - External Tools 启动QtDisigner、PyUIC和PyRCC&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
         <id>https://ffangli.github.io/202202051516/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
@@ -102,5 +103,6 @@
 &lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
 &lt;img src=&quot;.\img\1.png&quot; style=&quot;zoom:60%;&quot; &#x2F;&gt;
 </content>
+        
     </entry>
 </feed>

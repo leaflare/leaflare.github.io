@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201142017/" type="text/html"/>
         <id>https://ffangli.github.io/202201142017/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;zai-pom-xmljia-ru-jdbc-driver-mysql-connector-java&quot;&gt;在pom.xml加入JDBC driver mysql-connector-java&lt;&#x2F;h3&gt;
@@ -86,6 +87,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;}
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Spring Boot连接MySQL报错处理合集</title>
@@ -96,6 +98,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201121933/" type="text/html"/>
         <id>https://ffangli.github.io/202201121933/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;hikaripool-1-exception-during-pool-initialization&quot;&gt;HikariPool-1 - Exception during pool initialization.&lt;&#x2F;h3&gt;
@@ -122,6 +125,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;    time-zone: GMT+8
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Spring Boot下的VO, PO, DO, DTO, BO, DAO, POJO</title>
@@ -132,6 +136,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201121053/" type="text/html"/>
         <id>https://ffangli.github.io/202201121053/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;gai-nian&quot;&gt;概念&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.codetd.com&#x2F;en&#x2F;article&#x2F;12351967&quot;&gt;VO, PO, DO, DTO, BO, QO, DAO, POJO concept - Code World (codetd.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
@@ -160,5 +165,6 @@
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 </content>
+        
     </entry>
 </feed>

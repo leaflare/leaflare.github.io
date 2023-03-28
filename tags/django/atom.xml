@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202111251255/" type="text/html"/>
         <id>https://ffangli.github.io/202111251255/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;djangoshi-yong-db-sqlite3&quot;&gt;Django使用db.sqlite3&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;chuang-jian-yi-ge-xiang-mu-bing-qi-dong&quot;&gt;创建一个项目并启动&lt;&#x2F;h3&gt;
@@ -41,5 +42,6 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;&quot;&gt;&lt;&#x2F;h3&gt;
 </content>
+        
     </entry>
 </feed>

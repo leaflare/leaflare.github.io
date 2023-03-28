@@ -16,20 +16,10 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202206072017/" type="text/html"/>
         <id>https://ffangli.github.io/202206072017/</id>
-        <content type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;FEDB is an open source in memory feature database from Fourth Paradigm.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
-&lt;p&gt;Why do we need a special feature database?&lt;&#x2F;p&gt;
-&lt;p&gt;The main reason mentioned in the paper is to solve the problem of slow online feature extraction (more on that below). This allows the feature designer to focus on the product level requirements (e.g. low latency, high concurrency, disaster recovery, high availability, scalability, smooth upgrades, monitorability, etc.) and use SQL for operations. This allows feature designers to focus on design and not be distracted by engineering efficiency.&lt;&#x2F;p&gt;
-&lt;p&gt;The first thing we need to understand is what online feature extraction is, using the fraud detection example they gave: every time a credit card is swiped, it has to be determined within 10ms whether it is fraud or not. There are a few basic features (a few hundred), but there are many more real-time features (a few thousand) that can only be retrieved by querying the top three shops visited in the period before the card is swiped, and the most frequent purchases, etc. This &amp;quot;time before&amp;quot; is called a time window, and we can set the width of the window to a few minutes, hours, days, etc. The more time windows we have, the more features we can get, and the more accurate the fraud detection will be. The more time windows we have, the more features we get and the more accurate the fraud detection will be. As you can see, the acquisition of these features is indeed time consuming, and if the online application is time sensitive, the feature extraction time may be unacceptable. And this OLDA model of multiple summary queries after a single insert does not fit well with the typical workload of OLTP, OLAP, and time series databases.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;&#x2F;h2&gt;
-&lt;p&gt;They have designed a SQL-like language called FEQL (Feature Extraction Query Language) specifically for feature extraction, which allows the user to define multiple time windows at once without having to execute them multiple times. This EFQL is compiled using llvm for parsing optimisation. The lower storage engine tier is a typical high availability architecture.&lt;&#x2F;p&gt;
-&lt;p&gt;As an optimization, FEDB can also use PMEM (persistent memory) to implement a double-tier jump table. For the first problem, the authors use PMDK and libpmemobj-cpp provided by Intel to request&#x2F;reclaim physical memory and maintain a pool of requested memory to build the jump table so that performance is not affected. For the second problem, EFDB uses the last 4 empty bits of the pointer to mark if it is dirty&#x2F;delete, and if it is dirty and you want to read it, you have to flush it first.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
-&lt;p&gt;https:&#x2F;&#x2F;github.com&#x2F;4paradigm&#x2F;OpenMLDB&lt;&#x2F;p&gt;
-&lt;p&gt;Chen, Cheng, et al. &amp;quot;Optimizing in-memory database engine for AI-powered on-line decision augmentation using persistent memory.&amp;quot; &lt;em&gt;Proceedings of the VLDB Endowment&lt;&#x2F;em&gt; 14.5 (2021): 799-812.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on Data Blocks</title>
@@ -40,58 +30,10 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202205222017/" type="text/html"/>
         <id>https://ffangli.github.io/202205222017/</id>
-        <content type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;Data Blocks is a storage layer technology developed by the TUM database group to reduce the memory footprint of HyPer (OLTP + OLAP hybrid main memory database) without sacrificing existing performance.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
-&lt;p&gt;To reduce the memory footprint, the data is divided into cold and hot parts, with the cold data being compressed to reduce memory pressure (and evicted out of memory) and the hot data not compressed. However, unlike some typical OLAP systems, HyPer does not use very high compression ratios, but rather restraint in the use of lightweight compression (byte-addressable compression formats), mainly for the sake of OLTP workoad performance (efficient point accesses). The SARGable scan restrictions (i.e., =, is, &amp;lt;, ≤, &amp;gt;, ≥, between) can be compared directly on this lightly compressed data. Query acceleration techniques such as vectorized execution for highly compressed columnar data are not suitable for OLTP, which generally does not require access to large amounts of data, but rather to locate data quickly.&lt;&#x2F;p&gt;
-&lt;p&gt;As a remark, identifying hot and cold data is not the focus of this article; there are many off-the-shelf algorithms that solve this problem (e.g., Anti-Caching).&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
-&lt;p&gt;This paper contributes to three main areas, the second of which is likely to be more widely understood.&lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;Design of Data Blocks &#x2F;&#x2F; designed for cold data, Chunk compressed into Data Blocks&lt;&#x2F;li&gt;
-&lt;li&gt;Lightweight indexing (PSMA) &#x2F;&#x2F; designed for Data Blocks&lt;&#x2F;li&gt;
-&lt;li&gt;SIMD algorithm for accelerated predicate evaluation &#x2F;&#x2F; done on Data Block&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;h2 id=&quot;design-of-data-blocks&quot;&gt;Design of Data Blocks&lt;&#x2F;h2&gt;
-&lt;p&gt;When a chunk is considered cold, it is compressed into a read-optimized immutable Data Block (not writable). If the data on the cold Data Block is to be updated, the data on the Data Block is first deleted (marked with a flag) and a new one is inserted on top of the hot data. This ensures that OLTP performance is maintained.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;lightweight-indexing-designed-for-data-blocks&quot;&gt;Lightweight indexing designed for Data Blocks&lt;&#x2F;h2&gt;
-&lt;p&gt;The Data Block layout is not much more than meta data + compressed data. What is special about the layout is that a lightweight index, PSMA (Positional SMAs), is stored for each column. Compared to traditional SMAs that only store an interval mix max, PSMAs further reduce the possible query intervals. That is, if a point look up falls within an SMA in this interval, the PSMA narrows down the data to be scanned instead of scanning the entire Data Block (for that query condition column) directly.&lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;The PSMA query process is as follows.&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;First a number v is subtracted from the SMA min in the data block interval of the column to obtain a delta value &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;The highest non-zero byte value of this delta value is , and the remaining number of bytes is r
-then the index value &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;Query the look up table of the PSMA with i as the key, and get a range, which is the interval where the final result exists&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;Understanding the query principle, it is easy to construct a PSMA by scanning through the data and continuously updating each range.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
-&lt;p&gt;Question: Can PSMA only be used to speed up point queries? If it is an OLAP range query, PSMA has to do multiple look up + union operations for each range, which is not necessarily cost effective.&lt;&#x2F;p&gt;
-&lt;p&gt;Then there is the compression of Data Blocks. One of the main features is that each Data Block may have a different compression algorithm for each column, and they will choose the one that is best for their data (the one that minimises memory usage). As for specific compression algorithms, Data Blocks consider three algorithms that they believe balance compression ratio and query performance.&lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;single value compression &#x2F;&#x2F; if all values of an attribute in a block are equa, e.g., null&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;ordered dictionary compression &#x2F;&#x2F; the relative order of keys before compression is the same as after compression&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;truncation &#x2F;&#x2F; value - min, does not apply to double and string, string will always be compressed to integer&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;p&gt;When a query comes in, first see if you can exclude the Data Block with SMA and PSMA or narrow the query, then use vectorized execution to compare directly on the compressed data.&lt;&#x2F;p&gt;
-&lt;p&gt;However, the fact that each chunk is compressed differently poses a design challenge for the JIT tuple-at-a-time engine (just-in-time compilation of SQL queries directly into executable code). If the layout of each Data Block is different, the number of code paths to be generated by scan grows exponentially. To solve this problem, the authors took advantage of the vectorized scan remain interpreted and can be pre-compiled capability and combined it with JIT.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
-&lt;p&gt;Harald Lang, Tobias Mühlbauer, Florian Funke, Peter A. Boncz, Thomas Neumann, and Alfons Kemper. 2016. Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation. In Proceedings of the 2016 International Conference on Management of Data (SIGMOD &#x27;16). Association for Computing Machinery, New York, NY, USA, 311–326. https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;2882903.2882925&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on Anti-Caching</title>
@@ -102,29 +44,10 @@ then the index value &lt;&#x2F;p&gt;
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202204022017/" type="text/html"/>
         <id>https://ffangli.github.io/202204022017/</id>
-        <content type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;Anti-Caching is a data management mechanism designed by the H-Store project team for all-memory databases and is expected to solve the problem of physical memory limitations.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
-&lt;p&gt;The reason for the redesign is that the previous disk-based BufferManager had an excessive overhead in full memory scenarios (if the page is already in main memory, finding the corresponding memory pointer based on the page identifier is completely useless, according to a According to a SIGMOD 2018 paper, 1&#x2F;3 of CPU cycles are wasted here). For this reason, many pure memory databases have abandoned BufferManager (e.g. H-Store, VoltDB [the commercial version of H-Store], MemSQL, and RAMCloud). The problem was that when the amount of physical memory was exceeded, pure in-memory databases started to experience page faults, which suddenly and severely slowed down the system. So at the time, pure memory databases were advising users not to manage more data than was available in physical memory. To solve this problem, the H-Store project team designed Anti-Caching.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;design-goals&quot;&gt;Design goals&lt;&#x2F;h2&gt;
-&lt;p&gt;When physical memory is about to be exhausted, the database collects cold data and writes it to disk in a cost effective manner.&lt;&#x2F;p&gt;
-&lt;p&gt;Unlike previous cache mechanisms, data does not exist in both hard disk and memory, but only in one of these places. Because memory is the primary carrier of data, the typical scenario is that data starts in memory and then cold data is expelled to the hard disk (rather than data starting on the hard disk and hot data being cached to memory). This approach is actually somewhat similar to virtual memory, except that memory is now managed by the database rather than the operating system, which provides more precise control (e.g., tuple level eviction).&lt;&#x2F;p&gt;
-&lt;p&gt;To understand the design of Anti-Caching it may be useful to review the key features of the H-Stored pure memory database: the H-Store is single-transaction (multiple physical nodes, multiple partitions per node, one thread per partition responsible for executing queries involving that partition), so it is lock-free. This is fine when the query mostly involves only one partition), so there is no locking. In terms of persistence, snapshots are flushed periodically, and command logs are also flushed (irregularly, or less than a max period, I guess) (after the group, to reduce the number of I&#x2F;Os), and only after the command log has been dropped does the commit return successful.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;&#x2F;h2&gt;
-&lt;p&gt;The core operation for implementing Anti-Caching is a two-step process.&lt;&#x2F;p&gt;
-&lt;p&gt;Aggregate the tuple of cold data to be expelled from memory (according to the LRU) into a block.
-Update an in-memory table (evicted table) to keep track of which tuples have been written to disk.
-And, because H-Stroe is single-transaction, maintaining these data structures does not require chaining.&lt;&#x2F;p&gt;
-&lt;p&gt;All that remains to be solved is some auxiliary data structures and how to do this elegantly. For example, in addition to the evicted table, there will be a block table to maintain all blocks. To facilitate access to cold data, a LRU Chain is maintained (for each table), so that when a tuple is accessed, it is retrieved directly from its original location and placed at the end of the chain. When implemented, the pointer to this bi-linked table is placed directly in the tuple header to reduce memory usage. To reduce CPU pressure, only some transactions are selected to update the LRU information (sampling). In addition to the data itself, the block table and evicted table are also written to disk during persistence.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
-&lt;p&gt;Question: Why do we need block tables?
-My understanding is that if only evicted tables were used, then each tuple would have to hold specific block location information, which would undoubtedly increase the memory footprint and undermine the design goal of expelling tuples to reduce memory pressure. Using additional block tables in a dictionary-like fashion can further compress memory usage.&lt;&#x2F;p&gt;
-&lt;p&gt;Another trade-off is that the tuple from the block has to be merged back into the in-memory table structure, but should it be just this data? Or should the whole block be merged? If the former, the blocks on disk will need to be tidied up regularly, otherwise there will be more and more holes. If the latter, it may increase the memory load and the number of evicts.&lt;&#x2F;p&gt;
-&lt;p&gt;The experiments were compared with MySQL, MySQL + Memcached, using the YCSB (Yahoo Cloud Serving Benchmark) and TPC-C (OLTP) datasets. The basic conclusion is that the more skewed the query the more pronounced the Anti-Caching effect. After all, most of the hot pages used can be kept in memory at this point.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
-&lt;p&gt;Justin DeBrabant, Andrew Pavlo, Stephen Tu, Michael Stonebraker, and Stan Zdonik. 2013. Anti-caching: a new approach to database management system architecture. Proc. VLDB Endow. 6, 14 (September 2013), 1942–1953. https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;2556549.2556575&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on LeanStore</title>
@@ -135,27 +58,10 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202203132017/" type="text/html"/>
         <id>https://ffangli.github.io/202203132017/</id>
-        <content type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;LeanStore is a database designed by the TUM database group after HyPer&#x27;s pure in-memory database, which favours large in-memory scenarios but provides better management of ultra-physical in-memory data volumes than a pure in-memory database.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;questions&quot;&gt;Questions&lt;&#x2F;h2&gt;
-&lt;p&gt;Why go &amp;quot;backwards&amp;quot; from the memory-only databases of the last few years to databases using hard disks? It&#x27;s really a question of price&#x2F;performance, 20 years ago when memory-only databases were being talked about, memory capacity was soaring and prices were plummeting, but that trend, like CPUs, has almost stalled in the last 10 years. Memory prices today are only half as cheap as they were a decade ago, but hard drives or SSDs are dropping&#x2F;increasing in price at a rate that is visible to the naked eye. Mainstream SSDs can now achieve a bandwidth gap that is only an order of magnitude behind memory (a few GB&#x2F;s vs. tens of GB&#x2F;s). Also databases actually have a lot of cold data in them, which would be really wasteful to keep in memory as well. But previous in-memory-only databases have always had limitations or severe performance degradation when it comes to external storage, or mechanisms that were too complex to move from the lab to production systems (such as the Anti-Caching design of H-Store, whose indexes contain hot and cold data and the indexes themselves have to be in memory, and given that index sizes often take up half the H-Store often encounters significant memory pressure). For this reason, TUM has designed LeanStore to solve these problems.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;design-goals&quot;&gt;Design goals&lt;&#x2F;h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Performs as well as an in-memory-only database when the amount of data is less than physical memory&lt;&#x2F;li&gt;
-&lt;li&gt;Better than in-memory databases when the amount of data is greater than physical memory&lt;&#x2F;li&gt;
-&lt;li&gt;Better than traditional databases in any scenario (using a typical BufferManager, such as BerkeleyDB)&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;In order to achieve these benefits, LeanStore has adopted the following design：&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;&#x2F;h2&gt;
-&lt;ol&gt;
-&lt;li&gt;In a pure memory scenario, using a traditional BufferManager would often result in severe overhead and critical path bottlenecks (e.g. querying the hash table to find the in memory pointer corresponding to the page identifier, which is is an overhead because what&#x27;s the point of mapping when it&#x27;s pure memory). As a result, almost all in-memory databases (e.g., HyPer, HANA, H-Store, Hekaton, and Silo) have abandoned BufferManager. However, BufferManager still has many benefits for traditional hard disk databases, such as the ease of managing the amount of data that exceeds memory and the reduction of disk I&#x2F;O, etc. To facilitate the management of out-of-memory data, LeanStore still uses BufferManager, but with a number of optimisations to reduce the overhead in purely in-memory scenarios.&lt;&#x2F;li&gt;
-&lt;li&gt;A more lightweight page replacement mechanism has been designed to get cold data out of memory when necessary. Traditional disk-based database page replacement policies (such as LRU and Clock) need to keep track of the number of accesses to each page, etc., which can sometimes become a bottleneck when updating access data for some frequently accessed pages. If you still use these disk-based db policies, you will inevitably be slower than a memory-only database in a memory-only scenario.&lt;&#x2F;li&gt;
-&lt;li&gt;In terms of concurrency control, a similar approach to optimistic locking is used, an example of which is the Optimistic Lock Coupling on the Adaptive Radix Tree mentioned in the article.&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
-&lt;p&gt;V. Leis, M. Haubenschild, A. Kemper and T. Neumann, &amp;quot;LeanStore: In-Memory Data Management beyond Main Memory,&amp;quot; 2018 IEEE 34th International Conference on Data Engineering (ICDE), 2018, pp. 185-196, doi: 10.1109&#x2F;ICDE.2018.00026.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on umbra</title>
@@ -166,20 +72,11 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202203092017/" type="text/html"/>
         <id>https://ffangli.github.io/202203092017/</id>
-        <content type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
 &lt;p&gt;Umbra: A Disk-Based System with In-Memory Performance (CIDR 2020, TUM)&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;basic-info&quot;&gt;Basic Info&lt;&#x2F;h2&gt;
-&lt;p&gt;Umbra is a database designed by the TUM database group after the HyPer in-memory-only database, which is biased towards large memory scenarios but offers better management of supra-physical memory data volumes than the in-memory-only database. Umbra&#x27;s positioning overlaps with LeanStore and continues many of the LeanStore&#x27;s designs (e.g. pointer swizzling, page replacement strategy, optimistic latching...) It also continues much of the design of the LeanStore (e.g. pointer swizzling, page replacement strategy, optimistic latching...) but adds variable-size pages to the LeanStore to better support arbitrary data sizes (especially large data objects) without compromising performance. TUM therefore considers Umbra to be the true successor of Hyper (Umbra is the spiritual successor of our pure in-memory system HyPer).&lt;&#x2F;p&gt;
-&lt;p&gt;Here are some details on the design of the variable-size page.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;variable-size-page&quot;&gt;Variable-size Page&lt;&#x2F;h2&gt;
-&lt;p&gt;Umbra&#x27;s page starts at 64KB and is divided into multiple size classes. Theoretically, the page size can be up to the size of the entire buffer pool. Unlike previous variable size page buffer pool designs, Umbra does not need to set the size of the buffer pool memory available for each size class, so it can be used (api) much differently than a normal buffer manager.&lt;&#x2F;p&gt;
-&lt;p&gt;However, supporting multiple page sizes can easily lead to fragmentation, and Umbra solves this problem by using a mapping between virtual address and physical memory (although a continuous virtual address may be discrete on physical memory). ). Each virtual memory region is sliced into chunks of the size of that size class, so that at least one of the virtual memory chunks is not allocated. Each virtual memory region is sliced into chunks of that size class, so there is no fragmentation, at least on the virtual memory. When a page is read, a physical memory mapping is created with pread. When a page is evict, a pwrite is written back and the MADV_DONTNEED flag is passed to the madvise system call to immediately release the physical The&lt;&#x2F;p&gt;
-&lt;p&gt;Umbra&#x27;s relation is organised in a B+ tree (using synthetic key), all internal nodes are 64KB pages, and the leaf node can be a variable size page. DataBlock.&lt;&#x2F;p&gt;
-&lt;p&gt;In addition to the variable size page, Umbra has made some additional minor optimisations compared to LeanStore, such as shared latching (to reduce the validation failure of optimistic latching in the case of read heavy workload + few writes) failure). Compared to HyPer, changes have been made to string handling (below), statistics collection (online reservoir sampling variant + HyperLogLog variant), and query compilation (pipelines are further disassembled into steps, abandoned the more generic llvm, wrote a more customised lightweight IR of its own, and adapted it for implementation (ICDE2018)).&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;resource&quot;&gt;Resource&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;umbra-db.com&#x2F;&quot;&gt;Umbra&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on Ease.ml</title>
@@ -190,20 +87,14 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202203052017/" type="text/html"/>
         <id>https://ffangli.github.io/202203052017/</id>
-        <content type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml: towards multi-tenant resource sharing for machine learning workloads&lt;&#x2F;p&gt;
 &lt;p&gt;https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3177732.3177737&lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml&#x2F;ci and Ease.ml&#x2F;meter in action: towards data management for statistical generalization&lt;&#x2F;p&gt;
 &lt;p&gt;https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3352063.3352110&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;question&quot;&gt;Question&lt;&#x2F;h2&gt;
-&lt;p&gt;As a &amp;quot;service provider&amp;quot; that manages a shared cluster of machines running machine learning workloads, what is the resource sharing strategy that maximizes the global satisfaction of all users? Resource sharing is a critical yet subtle issue in this multi-tenant scenario, as we have to balance between efficiency and fairness. Also, as of today, the counterpart of &amp;quot;software engineering for ML&amp;quot; is largely missing --- developers of ML applications are left with powerful tools (e.g., TensorFlow and PyTorch) but little guidance regarding the development lifecycle itself.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;ease-ml&quot;&gt;Ease.ml&lt;&#x2F;h2&gt;
-&lt;p&gt;Ease.ml, a declarative machine learning service platform. With ease.ml, a user defines the high-level schema of an ML application and submits the task via a Web interface. The system then deals with the rest, such as model selection and data movement. They first formalize the problem that we call multi-tenant model selection, aiming for minimizing the total regret of all users running automatic model selection tasks. Then  they develop a novel algorithm that combines multi-armed bandits with Bayesian optimization and prove a regret bound under the multi-tenant setting. Finally, they report the evaluation of ease.ml on synthetic data and on two services we are providing to our users, namely, image classification with deep neural networks and binary classification with Azure ML Studio.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;ease-ml-ci-and-ease-ml-meter&quot;&gt;Ease.ml&#x2F;ci and Ease.ml&#x2F;meter&lt;&#x2F;h2&gt;
-&lt;p&gt;Developing machine learning (ML) applications is similar to developing traditional software --- it is often an iterative process in which developers navigate within a rich space of requirements, design decisions, implementations, empirical quality, and performance. In traditional software development, software engineering is the field of study which provides principled guidelines for this iterative process.&lt;&#x2F;p&gt;
-&lt;p&gt;The authors look at the management of the ML development lifecycle from a data management perspective. They show two closely related systems, easy.ml&#x2F;ci and easy.ml&#x2F;meter, which provide some &#x27;principled guidance&#x27; for ML application development: ci is a continuous integration engine for ML models, and meter is a &#x27;profiler&#x27; for controlling overfitting of ML models. Both systems focus on managing the &#x27;statistical generalisation capabilities&#x27; of the datasets used to assess the quality of ML applications, i.e. the validation set and the test set.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on IDEL</title>
@@ -214,25 +105,11 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202203012017/" type="text/html"/>
         <id>https://ffangli.github.io/202203012017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
 &lt;p&gt;IDEL: In-Database Entity Linking with Neural Embeddings&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;In-Database Entity Linking (IDEL), abstracts core tasks of most neural entity linking systems for MonetDB, leverages the ability of MonetDB to support in-database-analytics with user defined functions (UDFs) implemented in Python. These functions call machine learning libraries for neural text mining, such as TensorFlow. The system achieves zero cost for data shipping and transformation by utilizing Monet DB&#x27;s ability to embed Python processes in the database kernel and exchange data in NumPy arrays. IDEL represents text and relational data in a joint vector space with neural embeddings and can compensate errors with ambiguous entity representations. For detecting matching entities, the authors propose a novel similarity function based on joint neural embeddings which are learned via minimizing pairwise contrastive ranking loss. This function utilizes a high dimensional index structures for fast retrieval of matching entities. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;Entity linking between text and tables&lt;&#x2F;p&gt;
-&lt;p&gt;The need for Neural Entity Linking in RDBMSs&lt;&#x2F;p&gt;
-&lt;p&gt;the following characteristics are realized in the IDEL architecture:&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;Best of two worlds&lt;&#x2F;strong&gt; Users can seamlessly switch between SQL and Python, so that they can choose the best execution environment for each part of their data analytics. &lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;Flexible and extensible&lt;&#x2F;strong&gt; IDEL provides a set of pre-trained neural network models. In addition, it permits users to plugin their own models or third-party models for entity linking. &lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;Simple SQL-based user interface&lt;&#x2F;strong&gt; IDEL provides an SQL-based user interface to all parts of the system. The whole workflow of entity linking can be executed by several calls to the implemented SQL UDFs. All intermediate and final results can be stored in the underlying database for further analysis. &lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;Robust to language errors&lt;&#x2F;strong&gt; IDEL adopts state-of-the-art neural embeddings for entity linking, which can achieve much higher precision under the four typical error sources (i.e. homonyms, hyponyms, synonyms and misspellings). In addition, the system leverages extra information from the relational data, such as attribute values, and integrity constraints on data type and range. &lt;&#x2F;p&gt;
-&lt;p&gt;&lt;strong&gt;No manual feature engineering&lt;&#x2F;strong&gt; IDEL does not require manual feature engineering;instead the system observes data distributions in the text database to represent best entities in relational and text data.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;related-work&quot;&gt;RELATED WORK&lt;&#x2F;h2&gt;
-&lt;p&gt;Text Databases &lt;&#x2F;p&gt;
-&lt;p&gt;Embeddings in Databases&lt;&#x2F;p&gt;
-&lt;p&gt;Entity Linking and knowledge base completion&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on Gorgon</title>
@@ -243,27 +120,11 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
         <id>https://ffangli.github.io/202202252017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;One emerging application is in-database machine learning: a high-performance, low-friction interface for analytics on large databases. They co-locate database and machine learning processing in a unified reconfigurable data analytics accelerator, Gorgon, which flexibly shares resources between db and ml without compromising performance or incurring excessive overheads in either domain. They distill and integrate database parallel patterns into an existing ML-focused cgra, increasing area by less than 4% while outperforming a multicore software baseline by 1500X. They also explore the performance impact of unifying db and ml in a single accelerator, showing up to 4x speedup over split accelerators.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;Gorgon is a unified data analytics CGRA for in-database machine learning (DB+ML) with ML-focused parallel patterns (map, reduce, etc.) and DB-focused parallel patterns (sort, join, group-by, etc.). Gorgon thus accelerates full data-processing pipelines and is more reconfigurable than previous CGRAS.&lt;&#x2F;p&gt;
-&lt;p&gt;Industrial BD+ML systems, like Google&#x27;s BigQuery ML and Apaches&#x27; MADlib, add ML inference and training to the relational model as new SQL operators. DB and ML have been accelerated individually, but no single hardware platform accelerates both.&lt;&#x2F;p&gt;
-&lt;p&gt;The key contribution of this paper:&lt;&#x2F;p&gt;
-&lt;p&gt;Detailed microarchitectual and system=level design of low-overhead database primitives embedded in a general-purpose reconfigurable accelerator.&lt;&#x2F;p&gt;
-&lt;p&gt;An evaluation of end-to-end system performance, including comparisons to software and independent DB and ML accelerators.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;related-work&quot;&gt;RELATED WORK&lt;&#x2F;h2&gt;
-&lt;p&gt;database acceleration ASICs,Q100&lt;&#x2F;p&gt;
-&lt;p&gt;FPGA database accelerators&lt;&#x2F;p&gt;
-&lt;p&gt;Domain-agnostic dataflow accelerators NoC&lt;&#x2F;p&gt;
-&lt;p&gt;In-database Machine Learning DAnA&lt;&#x2F;p&gt;
-&lt;p&gt;A variety of software solutions integrate ML with database operations, including Apache&#x27;s Spark and MADlib. Greenplum Database and Google&#x27;s BigQuery ML. Spark is an open-source distributed data-processing engine for various workloads, including SQL, machine learning, and graph processing.BigQuery ML can run ML models in its cloud data warehouse. MADlib is an open-source project that provides SQL-based ML algorithms that run in a database.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
-&lt;p&gt;A unified, performant, and flexible accelerator--the ideal, combining the advantages of fixed-function accelerators and FPGAS--would simplify data center management by keeping compute resources homogeneous. Furthermore, accelerator unification enables new, cross-domain applications like DB+ML. Gorgon demonstrates the potential for reuse between accelerators by embedding database inspired paralled patterns in a general-purpose fabric originally designed for ML; it is also the first system to fuse and accelerate DB+ML processing on a single chip, accelerating full data-processing pipelines. &lt;&#x2F;p&gt;
-&lt;p&gt;Gorgon is better-suited to data center integration than a sea of heterogeneous accelerators and faster. Furthermore, a unified platform shares expensive resources and large dice in advanced nodes. By adding database support to an ML-focused accelerator, Gorgon enables more powerful ML pipelines than existing accelerators.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on XuanYuan</title>
@@ -274,39 +135,10 @@ My understanding is that if only evicted tables were used, then each tuple would
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
         <id>https://ffangli.github.io/202202212017/</id>
-        <content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;On one hand they integrate AI techniques into databases to provide self-configuring, self-optimizing, self-monitoring, self-diagnosis, self-healing, self-assembling, and self-security capabilities. On the other hand, they enable databases to provide AI capabilities using declarative languages in order to lower the barrier of using AI.&lt;&#x2F;p&gt;
-&lt;p&gt;In this paper, they also introduce five levels of AI-native databases and provide several open challenges of designing an AI-native database. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;The five layers of AI native databases.&lt;&#x2F;p&gt;
-&lt;p&gt;Databases play a very important role in many applications and are widely deployed in many domains. Over the last fifty years, databases have undergone three major revolutions.&lt;&#x2F;p&gt;
-&lt;p&gt;The first generation was the standalone database, which solved the problems of data storage, data management and query processing. Representative systems include PostgreSQL and MySQL.&lt;&#x2F;p&gt;
-&lt;p&gt;The second generation is the clustered database, which aims to provide high availability and reliability for business-critical applications. Representative systems include Oracle RAC, DB2 and SQL server.&lt;&#x2F;p&gt;
-&lt;p&gt;The third generation is distributed databases (and cloud-native databases), which aim to solve the problems of elastic computing and dynamic data migration in the era of big data. Representative systems include Aurora and GaussDB.&lt;&#x2F;p&gt;
-&lt;p&gt;However, in the era of Big Data, traditional databases still have some limitations due to the large scale of data, the variety of applications&#x2F;users and the diverse computing power.&lt;&#x2F;p&gt;
-&lt;p&gt;Traditional database design is still based on empirical methods and specifications, and requires significant human involvement (e.g. DBAs) to tune and maintain the database.&lt;&#x2F;p&gt;
-&lt;p&gt;Traditional databases focus on the relational model and provide relational data management and analysis capabilities.&lt;&#x2F;p&gt;
-&lt;p&gt;Transitional databases only consider generic hardware such as CPU, RAM and disk, but do not take full advantage of new hardware such as ARM, AI chips, GPUs, FPGAs, NVM, RDMA.&lt;&#x2F;p&gt;
-&lt;p&gt;Regulus integrates AI technology into the database to make it more intelligent and also provides AI capabilities within the database. On the one hand, Regulus integrates AI technology into the database to provide self-configuration, self-optimisation, self-monitoring, self-diagnosis, self-healing, self-security and self-assembly capabilities, which can improve the availability, performance and stability of the database and reduce the burden of intensive human involvement. On the other hand, &amp;quot;Regulus&amp;quot; enables databases to provide AI capabilities using declarative languages to lower the threshold for using AI. In addition, &amp;quot;Regulus&amp;quot; leverages diverse computing power to support data analysis and machine learning.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202212017&#x2F;.%5Cimg%5C1.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;ai4db&quot;&gt;AI4DB&lt;&#x2F;h2&gt;
-&lt;p&gt;There are several challenges to embedding AI capabilities in a database.
-Training samples. Most AI models require large-scale, high-quality, diverse training data to achieve good performance. However, it is quite difficult to obtain training data in databases because they are either safety-critical or dependent on DBAs. for example, in database button tuning, the training samples should be based on the experience of DBAs. Therefore, it is difficult to obtain a large number of training samples. In addition, the training data should cover different scenarios, different hardware environments, and different workloads.
-Model selection. There are many machine learning algorithms and it is difficult to automatically select one for different scenarios. In addition, model selection is influenced by many factors, such as
-quality, training time, adaptability, and generalisation. For example, deep learning may be a better choice for cost estimation, while reinforcement learning may be a better choice for estimation, while reinforcement learning may be a better choice for connection order selection. Training time may also be important, as some applications have high performance requirements and cannot tolerate long training periods.
-Model convergence. It is very important that the model converges. If the model does not converge, we need to provide alternative methods to avoid making the wrong decision. For example, in knob tuning, if the model does not converge, we cannot use the model to make knob suggestions.
-Adaptability. The model should be adaptable to different scenarios. For example, if the hardware environment changes, the model can be adapted to the new hardware.
-Generalisability. The model should be adaptable to different database settings. For example, if the workload is changed, the model should support the new workload. If data is updated, the model should be generalised to support the new data.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;db4ai&quot;&gt;DB4AI&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;strong&gt;Accelerate AI algorithms using indexing techniques.&lt;&#x2F;strong&gt; Most of studies focus on the effectiveness of AI algorithms but do not pay much attention to the efficiency, which is also very important. It calls for utilizing database
-techniques to improve the performance of AI algorithms. For example, self-driving vehicles require a large number of examples for training, which is rather time consuming. Actually, it only requires some important
-examples, e.g., the training cases in the night or rainy day, but not many redundant examples. Thus we can index the samples and features for effective training.
-&lt;strong&gt;Discover AI Models.&lt;&#x2F;strong&gt; Ordinary users may only know their requirements, e.g., using a classification algorithm to address a problem, but do not know which AI algorithms should be used. Thus it is important to automatically discover AI algorithms. Moreover, it is also challenging to reuse the well-trained AI models by different users.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;edge-computing-database&quot;&gt;Edge Computing Database&lt;&#x2F;h2&gt;
-&lt;p&gt;Most databases are designed to be deployed on servers. With the development of 5G and IOT devices, it calls for a tiny database embedded in small devices. There are several challenges in designing such a tiny database. The first is database security to protect the data. The second is real-time data processing. The small device has low computing power, and it is rather challenging to provide high performance on such small devices. The third is data migration among different devices. Some devices have small storage and it is challenging to migrate the data across different devices.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on SubspaceDB</title>
@@ -317,61 +149,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202182017/" type="text/html"/>
         <id>https://ffangli.github.io/202202182017/</id>
-        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
 &lt;p&gt;SubspaceDB : In-database subspace clustering for analytical query processing&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;High dimensional data analysis within relational database management systems (RDBMS) is challenging because of inadequate support from SQL. Currently, subspace clustering of high dimensional data is implemented either outside DBMS using wrapper code or inside DBMS using SQL User Defined Functions&#x2F;Aggregates(UDFs&#x2F;UDAs). However, both these approaches have potential disadvantages from performance, resource usage, and security perspective for voluminous and frequently updated data.&lt;&#x2F;p&gt;
-&lt;p&gt;SubspaceDB implements subspace clustering directly within an RDBMS. SubspaceDB can be over 10 times faster as compared to a conventional wrapper-based or SQL UDF approach. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;Despite the fact that RDBMS still remain the premium type of data management technology in most of the domains, subspace clustering algorithms do not lend themselves to SQL queries.&lt;&#x2F;p&gt;
-&lt;p&gt;Four important queries that help in the formation of subspace clusters for in-DBMS analytics: &lt;&#x2F;p&gt;
-&lt;p&gt;(a) Medoid queries, (b) Neighbourhood queries, (c) Partial similarity queries, and (d) Prominence queries. &lt;&#x2F;p&gt;
-&lt;p&gt;The major contributions of this paper are &lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Formulation of following relational algebraic operators with optimization objectives &lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Computation of partial similarity between two tables. &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;Finding representative tuples from a table. &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;Finding relevant attributes in a table. &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;Characterizing neighbourhood of a given tuple from a table &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;SubspaceDB : A Querying system that facilitates data summarization, dimensionality reduction and subspace clustering of high dimensional data stored within RDBMS, using the proposed operators. &lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;A framework for querying data via SubspaceDB.&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;Most of the research work on integrating machine learning with DBMS propose to export data to external tools. But moving large volumes of data is inefficient due to I&#x2F;O overhead, change of file format and network speed. So, large-scale parallel and distributed file systems like Hadoop and Spark are also used extensively for big data analytics. In spite of these successive tools in front of scalable data analytics, this direction presents significant challenges for high dimensional data analysis, real time data access, space management, security, and concurrency control. In order to address the aforementioned issues, authors propose a new strategy for subspace clustering within DBMS. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;proposed-analytical-query-model&quot;&gt;Proposed analytical query model&lt;&#x2F;h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Dataset is structured and stored in RDBMS. &lt;&#x2F;li&gt;
-&lt;li&gt;Though the dimensions of data is quite high, the intrinsic dimensions are less. &lt;&#x2F;li&gt;
-&lt;li&gt;The frequency of increase in the number of tuples is higher than that of the attributes.&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;These operators are devised by an optimal integration of selection, generalized projection, rename, union and aggregate operators. &lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;Computation of partial similarity between two tables. &lt;&#x2F;li&gt;
-&lt;li&gt;Finding representative tuples from a table. &lt;&#x2F;li&gt;
-&lt;li&gt;Finding relevant attributes in a table. &lt;&#x2F;li&gt;
-&lt;li&gt;Characterizing neighbourhood of a given tuple from a table&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;h2 id=&quot;realization-of-subspace-clustering-within-dbms&quot;&gt;Realization of subspace clustering within DBMS&lt;&#x2F;h2&gt;
-&lt;p&gt;Authors present a top down approach for subspace clustering, called projected clustering, which can be applied on a table within RDBMS by integration of the proposed operators in appropriate manner. The advantage is interactive analysis, reduced data movement, efficient query processing due to reduced search space, and above all retrieval of hidden clusters in different subsets of attributes. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
-&lt;p&gt;SubspaceDB is comprised of algebraic relational operators that facilitate abundance of actionable analytics such as representative selection, feature selection, dimensionality reduction, neighbourhood, segmental similarity measure, and above all subspace clustering within DBMS. DBMSs equipped with these capabilities serve to augment DBMS’s machine learning capability in a seamless manner, obviating the need of separate APIs, external analytic systems or data mining tools.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on Vertica-ML</title>
@@ -382,25 +164,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202172017/" type="text/html"/>
         <id>https://ffangli.github.io/202202172017/</id>
-        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
 &lt;p&gt;Vertica-ML: Distributed Machine Learning in Vertica Database&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;An in-database machine learning system can provide many advantages in this scenario, e.g., eliminating the overhead of data transfer, avoiding the maintenance costs of a separate analytical system, and addressing data security and provenance concerns. This subsystem, Vertica-ML, includes machine learning functionalities with SQL API which cover a complete data science workflow as well as model management.  Machine learning models in Vertica are treated as first-class database objects like tables and views; therefore, they enjoy a similar mechanism for archiving and managing.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;ul&gt;
-&lt;li&gt;An intuitive SQL interface for machine learning It treats models as first-class database objects, and allows business analysts and other SQL users to do more advanced data analysis using the same language they are comfortable with. &lt;&#x2F;li&gt;
-&lt;li&gt;A variety of ML algorithms and tools In addition to distributed algorithms for training predictive models, the set of SQL functions introduced by Vertica-ML covers different stages of a data scientist’s typical workflow. &lt;&#x2F;li&gt;
-&lt;li&gt;A special model object and model management In contrast to previous in-database ML systems which have been oblivious of model management, Vertica-ML provides capabilities to facilitate it. &lt;&#x2F;li&gt;
-&lt;li&gt;Distributed in-memory storage It is integrated into the distributed architecture of Vertica DBMS with the ability to spill to disk when needed&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;vertica-ecosystem&quot;&gt;VERTICA ECOSYSTEM&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202172017&#x2F;.%5Cimg%5C1.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;Firstly, the authors describe the main structure of Vertica. They emphasise that Vertica supports UDF (User Defined Function) and Metafunction, which is currently the more popular implementation in the industry and is the general idea in Presto ML.&lt;&#x2F;p&gt;
-&lt;p&gt;Metafunction is a Vertica-specific function that differs from UDF in that UDF can be used as part of a SQL statement, whereas Metafunction can only be used after a SELECT keyword or even in a FROM clause. Metafunction can only be used after a SELECT keyword, not even in a FROM clause. In fact, the main purpose of Metafunction in Vertica-ML is to pass parameters to machine learning algorithms.&lt;&#x2F;p&gt;
-&lt;p&gt;Vertica-ML also provides management functions for the trained models. The user can use get_model_summary and get_model_attribute to obtain the appropriate meta-information about the model. The model is stored as an object in a database table. This allows us to modify a model using the traditional ALTER or DROP statements.&lt;&#x2F;p&gt;
-&lt;p&gt;Since the machine learning algorithms are implemented directly in the analytical database, parallel computing is a must. Because Vertica itself is a distributed multi-node database, each node computes a portion of the data and does aggregation on a single node.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on SQML</title>
@@ -411,24 +179,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202152017/" type="text/html"/>
         <id>https://ffangli.github.io/202202152017/</id>
-        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
 &lt;p&gt;SQML: large-scale in-database machine learning with pure SQL&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;Many enterprises have migrated their data from an on-site database to a cloud-based database-as-a-service that handles all database-related administrative tasks while providing a simple SQL interface to the end user. Given these converging trends, there is a pressing need for database-as-a-service providers to add support for sophisticated machine learning algorithms to the core functionality of their products.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;SQML has several advantages over existing in-database machine learning methods, especially for a database-as-a-service:&lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;SQML does not require user-dened aggregates (UDAs). &lt;&#x2F;li&gt;
-&lt;li&gt;Even when UDAs are available, UDA-based approaches assume that the learned model can ?t in memory on a single machine. SQML represents models as disk-backed tables that are partitioned across many machines, so it can scale to arbitrary model sizes.&lt;&#x2F;li&gt;
-&lt;li&gt;SQML estimates generalized linear models, a large class of models for supervised machine learning that includes linear regression, logistic regression, and support vector machines as special cases. &lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
-&lt;p&gt;The SQML learning algorithm is based on preconditioned proximal gradient descent, a state-of-the-art method for convex optimization.&lt;&#x2F;p&gt;
-&lt;p&gt;The results of the experiment are shown SQML outperformed the UDA-based algorithm.&lt;&#x2F;p&gt;
-&lt;p&gt;First, Dremel imposes relatively tight memory limits on each user, and since UDAs must hold the entire model in memory, they had to use model compression techniques that invariably degrade model quality.  SQML does not require model compression, since the models are stored in disk-backed tables. &lt;&#x2F;p&gt;
-&lt;p&gt;Second, on large training sets UDA-based algorithms learn several independent models on disjoint subsets of the training data and then average them together, an approach that slows convergence. SQML always learns a single model on the entire dataset&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on DB4ML</title>
@@ -439,25 +194,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202112017/" type="text/html"/>
         <id>https://ffangli.github.io/202202112017/</id>
-        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
 &lt;p&gt;DB4ML - An In-Memory Database Kernel with Machine Learning Support&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;Authors revisit the question of how  ML algorithms can be best integrated into existing DBMSs to not only avoid expensive data copies to external ML tools but also to comply with regulatory reasons. The key observation is that database transactions already provide an execution model that allows DBMSs to efficiently mimic the execution model of modern parallel ML algorithms. This paper presents DB4ML, an in-memory database kernel that allows applications to implement user-defined ML algorithms and efficiently run them inside a DBMS. Thereby, the ML algorithms are implemented using a programming model based on the idea of so called iterative transactions.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;The standard approach for applying machine learning (ML) algorithms on relational data is to first select the relevant entries with an SQL query and export them from the database into an external ML tool. Then the ML algorithm is run over the extracted data — outside the DBMS — using statistical software packages or ML libraries. However, this approach can impose a high overhead due to expensive data transfers which can significantly slow down the overall learning procedure especially if the datasets are large. Integrating ML algorithms into DBMSs is thus an ongoing effort in both academia and industry. But performance is not the only reason why vendors integrate ML into a DBMS. Another major reason is compliance  that often discourage applications to export any data out of a DBMS since DBMSs already provide rich security frameworks to protect the data from unauthorized access.&lt;&#x2F;p&gt;
-&lt;p&gt;Their approach is based on the key observation that modern in-memory database systems already support fine-grained concurrency control in the form of transactions. Yet, traditional transaction execution schemes are often too heavyweight. Consequently, we show how it is possible to efficiently leverage transaction semantics also for ML algorithms. As a main contribution, we present a new in-memory database kernel called DB4ML that is based on transactions but adds extensions to enable ML algorithms on top of classical transaction processing.&lt;&#x2F;p&gt;
-&lt;p&gt;They propose the concept of iterative transactions. With iterative transactions the very same transaction can be re-executed multiple times until convergence without the need to be actively re-scheduled for every iteration by a driver program (i.e., a client) as done in existing approaches. Furthermore, as a second extension, they add new isolation levels for machine-learning into DB4ML.&lt;&#x2F;p&gt;
-&lt;p&gt;To summarize, the contributions of this paper are:&lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;They define a programming model for user-defined iterative transactions that supports a wide class of ML algorithms and allows developers to easily integrate new ML algorithms into a DBMS. &lt;&#x2F;li&gt;
-&lt;li&gt;They discuss the implementation of our transactional database kernel called DB4ML including a storage manager and execution engine that can efficiently run parallel ML algorithms. &lt;&#x2F;li&gt;
-&lt;li&gt;They showcase through two use cases (PageRank as well as Stochastic Gradient Descent) how ML algorithms could be implemented inside DB4ML. &lt;&#x2F;li&gt;
-&lt;li&gt;Their experimental evaluation shows for the aforementioned use cases that DB4ML can support ML algorithms with the efficiency of modern specialized ML engines without the need to transfer data out of the DBMS.&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
-&lt;p&gt;DB4ML offers a new programming model and an execution engine with isolation levels that provide the concurrency schemes required by modern parallel ML algorithms. A central aspect of DB4ML is that the programmer can implement user-defined ML algorithms in DB4ML without having to worry about the low-level details of synchronization. That way, the implementation will automatically benefit from all the parallelization and architectural optimizations which DB4ML contains - as to be expected from a database system. &lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on MLog</title>
@@ -468,31 +209,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202082017/" type="text/html"/>
         <id>https://ffangli.github.io/202202082017/</id>
-        <content type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
 &lt;p&gt;MLog: towards declarative in-database machine learning&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;MLOG is a high-level language that integrates machine learning into data management systems. MLog is declarative, in the sense that the system manages all data movement, data persistency, and machine-learning related optimizations (such as data batching) automatically. With MLog, users can succinctly specify not only simple models such as SVM (in just two lines), but also sophisticated deep learning models that are not supported by existing in-database analytics systems (e.g., MADlib, PAL, and SciDB), as a series of cascaded TViews.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;In this paper, authors demonstrate MLOG, a system that aims for marrying Keras-like declarative machine learning to SciDB-like declarative data management. In MLOG, they build upon a standard data model similar to SciDB, to avoid neglecting and reinventing decades of study of data management. Their approach is to extend the query language over the SciDB data model to allow users to specify machine learning models in a way similar to traditional relational views and relational queries. Specifically, they demonstrate the following three main respects of MLOG:&lt;&#x2F;p&gt;
-&lt;p&gt;Declarative Query Language: It allows users to specify a range of machine learning models, including deep neural networks, very succinctly&lt;&#x2F;p&gt;
-&lt;p&gt;Automated Query Optimization: Authors demonstrate how to automatically compile MLOG programs into native TensorFlow programs using textbook static analysis techniques.&lt;&#x2F;p&gt;
-&lt;p&gt;Performance: The performance of automatically generated TensorFlow programs on a range of machine learning tasks.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;the-mlog-language&quot;&gt;THE MLOG LANGUAGE&lt;&#x2F;h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Algebra over Tensors.  The data model of MLOG is based on tensors–all data in MLOG are tensors and all operations are a subset of linear algebra over tensors. In MLOG, the tensors are closely related to the relational model; in fact, logically, a tensor is defined as a special type of relation. &lt;&#x2F;li&gt;
-&lt;li&gt;TRules.  An MLOG program Π consists of a set of TRules(tensoral rules). &lt;&#x2F;li&gt;
-&lt;li&gt;Semantics.   Similar to Datalog programs, we can define fixed point semantics for MLOG programs.&lt;&#x2F;li&gt;
-&lt;li&gt;Query.  There are two ways to query the system. The forward query and backward query.&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;user-interaction-model&quot;&gt;USER INTERACTION MODEL&lt;&#x2F;h2&gt;
-&lt;p&gt;Like most SQL databases, users interact with our system by executing a sequence of MLOG statements in a REPL or a script. Each MLOG statement can be either a standard SQL statement, a TView, an MLOG query, or an MLOG tensor construction statement. &lt;&#x2F;p&gt;
-&lt;p&gt;Query optimization is undertaken by first translating an MLOG program into a Datalog program, a process that we call “Datalogify.” Given the Datalog program, the optimizer uses a standard static analysis technique to reason about the property of the program and generate a TensorFlow program as the physical plan.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;related-work&quot;&gt;RELATED WORK&lt;&#x2F;h2&gt;
-&lt;p&gt;Modern data systems often support libraries for analytics and machine learning. Examples include MADlib for Greenplum and PostgreSQL, SAP PAL for SAP HANA, ORE for Oracle databases. These libraries tightly integrate with the host data system and support traditional machine learning algorithms such as SVM or K-means. Authors advocates a more flexible higher-level language that supports more sophisticated machine learning models, such as deep neural networks, inside existing data systems. SciDB is a recent effort to extend relational database with data representations and operations for linear algebra. However, there is no machine learning library existing for SciDB and MLOG could fill that vacancy. There have been efforts to train linear models over joins. Compared with these efforts, MLOG advocates a more unified data model based on tensors instead of relations and also provides a more expressive way to encode correlations among tensors. As a result, MLOG is able to encode sophisticated machine learning models beyond linear models.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
-&lt;p&gt;An MLOG program is very similar to a SQL program but extends relational algebra over relations to linear algebra over tensors. This extension allows MLOG to encode a range of machine learning models that are not supported in current data analytics systems. To optimize the performance of an MLOG program, MLOG contains a databasestyle query optimizer. In many cases, the resulting performance of automatically compiled MLOG programs is comparable with handtuned TensorFlow programs&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on MLearn</title>
@@ -503,24 +224,11 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202032017/" type="text/html"/>
         <id>https://ffangli.github.io/202202032017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
 &lt;p&gt;MLearn: A Declarative Machine Learning Language for Database Systems&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;The language was designed to cover an end-to-end machine learning process, including initial data curation, with the focus on
-moving computations inside the core of database systems. In this paper, the authors explained the architecture of a compiler that translates into target specific user-defined-functions for the PostgreSQL and HyPer database systems. They gave an example on an accompanying example of linear regression. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;From a systems developer&#x27;s point of view, database systems form the native way of efficiently storing data in index structures. Inside database systems, SQL, as the declarative language, simplifies data curation because it allows feature extraction as projections and selections of the only relevant tuples by design. Many studies have presented architectures for building end-to-end machine learning systems. Therefore, different systems tackle the challenges of representing arrays natively in database systems. &lt;&#x2F;p&gt;
-&lt;p&gt;The paper’s main contributions are the description of the architecture behind MLearn with an accompanying example, an extension of PostgreSQL by linear algebra and gradient descent on array datatypes, as well as a look on integrating array query languages.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;the-mlearn-language&quot;&gt;THE MLEARN LANGUAGE&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202032017&#x2F;.%5Cimg%5C1.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;Compiling the MLearn language with the ML2SQL compiler (dark blue): it first preprocesses import and include statements, then it compiles to SQL or Python code.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;technical-background&quot;&gt;TECHNICAL BACKGROUND&lt;&#x2F;h2&gt;
-&lt;p&gt;In order to allow machine-learning-related computations within database systems, they have to provide tensors and functionalities for training a model. HyPer has already extended its array datatype to serve as tensors by allowing algebra on those types. To reach a broader audience for our declarative machine learning language, they also provide some matrix algebra functionalities for PostgreSQL online. In addition to matrix operations, a gradient descent optimiser is essential for training models inside database systems.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusion-and-ongoing-work&quot;&gt;CONCLUSION AND ONGOING WORK&lt;&#x2F;h2&gt;
-&lt;p&gt;This paper has shown how the ML2SQL compiler treats preprocessor statements to allow the inclusion of code snippets and libraries.&lt;&#x2F;p&gt;
-&lt;p&gt;They have discovered out that array processing represents the major building block for tasks related to machine learning. These tasks would strongly benefit from SQL especially for data preprocessing. In addition, when integrating the advantages of array database into hybrid OLTP and OLAP database systems, no domain specific systems would be required. We shall therefore work on applying matrix algebra to tables using stored procedures that are written in ArrayQL.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on DB meets DL</title>
@@ -531,37 +239,9 @@ moving computations inside the core of database systems. In this paper, the auth
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
         <id>https://ffangli.github.io/202202012017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h1 id=&quot;background&quot;&gt;BACKGROUND&lt;&#x2F;h1&gt;
-&lt;p&gt;Deep learning has excelled on complex problems in a variety of data-driven research areas. The database community has been working on data-driven applications for many years and should have dominated this wave of deep learning, but this has not been the case.&lt;&#x2F;p&gt;
-&lt;p&gt;This paper discusses several issues in the database domain and the deep learning domain, finds that there are many common problems in the two domains, and discusses several research points where the two domains can potentially contribute to each other.&lt;&#x2F;p&gt;
-&lt;h1 id=&quot;databases-to-deep-learning&quot;&gt;DATABASES TO DEEP LEARNING&lt;&#x2F;h1&gt;
-&lt;p&gt;In addition to high-performance computing equipment, operation scheduling and memory management are also important factors affecting the speed of deep learning training.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;stand-alone-training&quot;&gt;Stand-alone Training&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;operation-scheduling&quot;&gt;Operation Scheduling&lt;&#x2F;h3&gt;
-&lt;p&gt;The training algorithm for deep learning uses mainly linear algebraic related operations. Operation scheduling will first detect the dependencies of data operations and then assign independent operations to different executors. This step will be based on a data flow diagram or dynamic analysis of the sequence of read and write operations. The same type of problem exists when optimizing transaction execution and query plans in databases, and their solutions can be considered for deep learning. In the case of query plans, for example, the database uses a cost model to estimate the query plan. Accordingly, given the computational resources (executor and memory), deep learning can be considered to create a cost model to find a more optimal solution for the subsequent operation scheduling policy.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;memory-management&quot;&gt;Memory Management&lt;&#x2F;h3&gt;
-&lt;p&gt;Deep learning models are becoming larger and larger, for example VGG models are limited by memory size and cannot be trained on a normal stand-alone machine. This can now be solved using techniques such as model compression and memory swapping between video memory and memory. Memory management is a popular research topic in the database field, involving memory locality, sharding and cache optimisation. The idea of database fault recovery is similar to the discard and recalculate approach, using the technique of logging all database operations, which allows real-time analysis to be done without the need for static data graphs. Other techniques, such as rubbish collection and memory pooling, will also provide some help with memory management for GPUs.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;distributed-training&quot;&gt;Distributed Training&lt;&#x2F;h2&gt;
-&lt;p&gt;Distributed computing is the conventional method for speeding up the training of deep models. A parameter server is used to accept the parameter gradient values calculated by the working nodes and update the corresponding parameters. Currently there are two main types of methods: data parallelism and model parallelism. Data parallelism consists of data sharding and model backup; model parallelism consists of complete data sets and model sharding. The database field has a long history of research into distributed environments, including parallel databases, P2P systems, and cloud computing.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;communication&quot;&gt;Communication&lt;&#x2F;h3&gt;
-&lt;p&gt;It is assumed that the deep model contains a large number of parameters and that communication between nodes becomes a performance bottleneck in the model training system. Furthermore, for larger computing clusters, message synchronisation between nodes becomes very important. Accordingly, efficient communication protocols are important for either single point multi-GPU training or cluster training. Possible research directions: a) Compression of parameters and gradient values for transmission; b) Rational organisation of server structures to reduce the communication burden between nodes, e.g. tree structures; c) Use of more efficient network devices, e.g. RDMA.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;concurrency-and-consistency&quot;&gt;Concurrency and Consistency&lt;&#x2F;h3&gt;
-&lt;p&gt;Most deep learning systems use threads and locks directly to control concurrency and guarantee consistency requirements, and no other concurrent implementations, such as actor and concurrent threads, are used for the time being. Sequence consistency and event consistency are both used in deep learning systems. Both approaches face the same scaling problem.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;fault-tolerance&quot;&gt;Fault Tolerance&lt;&#x2F;h3&gt;
-&lt;p&gt;The database system uses logging and checkpointing to achieve a high fault tolerance mechanism. Current deep learning systems rely heavily on checkpoint files for training site recovery. And frequent logging of checkpoints introduces a large overhead. Compared to the strong consistency requirements of database systems, SGD (stochastic gradient descent) allows for a certain degree of inconsistency, so full logging is not necessary. It is an interesting research question how to combine the features of SGD and the system architecture to achieve efficient fault tolerance.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;optimization-techniques-in-existing-systems&quot;&gt;Optimization Techniques in Existing Systems&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202012017&#x2F;.%5Cimg%5Csystem.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;h1 id=&quot;deep-learning-to-databases&quot;&gt;DEEP LEARNING TO DATABASES&lt;&#x2F;h1&gt;
-&lt;h2 id=&quot;query-interface&quot;&gt;Query Interface&lt;&#x2F;h2&gt;
-&lt;p&gt;In recent years, deep learning has yielded the best results in NLP (natural language processing) and RNN models have been shown to learn structured data. Can RNN models be used to parse natural language to generate the corresponding SQL and to optimise the SQL using existing database methods? Heuristic rules can be used to detect syntax errors in the generated SQL. The challenge with this problem is the lack of a large training dataset.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;query-plans&quot;&gt;Query Plans&lt;&#x2F;h2&gt;
-&lt;p&gt;Query plan optimization is a classic problem in the database field. Most database systems use complex heuristics and cost models to generate query plans. As long as the parameters in the SQL are in a certain interval, its execution plan does not change. That is, query plans are sensitive to a small range of parameters. Therefore, a query plan model can be trained to learn a set of SQL queries with their corresponding query plans, which can be used to generate query plans for new SQL. More specifically, RNN models can be used to learn SQL query text and metadata to generate tree-structured query plans. Augmented learning may be used for online training, using execution time and memory traces as feedback signals.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;crowdsourcing-and-knowledge-bases&quot;&gt;Crowdsourcing and Knowledge Bases&lt;&#x2F;h2&gt;
-&lt;p&gt;Many crowdsourcing and knowledge-base related applications introduce problems of entity extraction, disambiguation and integration, where these instances may be a row of records in a database, a node in a graph. Based on the success of deep learning in the field of NLP, such problems could be considered for solution using deep learning. For example, we might learn representations of entities and then use the direct similarity calculations of these representations to reason about the relationships between entities.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;spatial-and-temporal-data&quot;&gt;Spatial and Temporal Data&lt;&#x2F;h2&gt;
-&lt;p&gt;Spatial and temporal data are common types in database systems and are often used for trend analysis, process modelling and predictive analysis. If blocks in spatial data are understood as pixel points in a picture, spatial relationships can then be extracted using deep learning models such as CNNs. For example, we can learn real-time location data of moving objects (e.g. GPS) into a CNN model to obtain density relationships in neighbourhoods and predict congestion over time. If temporal data can be modelled as a temporal matrix, deep learning (e.g. RNN) can be designed to analyse temporal dependencies and predict whether something is sent at a future point in time. For example, a temporal model based on the spread of a disease could help doctors predict the severity of a particular disease.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
 </feed>

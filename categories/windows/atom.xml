@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202109102136/" type="text/html"/>
         <id>https://ffangli.github.io/202109102136/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;nei-zhi-gong-ju&quot;&gt;内置工具&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;lu-ping&quot;&gt;录屏&lt;&#x2F;h2&gt;
@@ -24,5 +25,6 @@
 &lt;p&gt;再按[Win] + [Alt] + [R]停止录制&lt;&#x2F;p&gt;
 &lt;p&gt;录好的视频保存在&lt;code&gt;C:\Users\XXX\Videos\Captures&lt;&#x2F;code&gt;目录下&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

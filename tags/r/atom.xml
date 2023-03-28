@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202103011642/" type="text/html"/>
         <id>https://ffangli.github.io/202103011642/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
 &lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
@@ -164,5 +165,6 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;经过第四步模型训练后，使用训练好的模型来进行数据测试，第一行代码为数据预测结果，第二行输出预测结果，第三行为评估模型预测的分数，第四输出分数。&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

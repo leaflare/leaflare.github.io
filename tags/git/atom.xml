@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201082008/" type="text/html"/>
         <id>https://ffangli.github.io/202201082008/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;scoopan-zhuang&quot;&gt;Scoop安装&lt;&#x2F;h3&gt;
@@ -121,6 +122,7 @@
 &lt;p&gt;图片在本地zola serve能显示，到GitHub显示不了，&lt;&#x2F;p&gt;
 &lt;p&gt;但是设置例如&lt;code&gt;&amp;lt;img src=&amp;quot;.\img\0.png&amp;quot; style=&amp;quot;zoom:80%;&amp;quot;&#x2F;&amp;gt;&lt;&#x2F;code&gt; 的图片尺寸后又可以正常显示了&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>git submodule 踩坑记录</title>
@@ -131,6 +133,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201081241/" type="text/html"/>
         <id>https://ffangli.github.io/202201081241/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;以https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git为例&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;tian-jia-zi-mo-kuai&quot;&gt;添加子模块&lt;&#x2F;h3&gt;
@@ -173,6 +176,7 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ rm -rf .git&#x2F;modules&#x2F;GWToolkit
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>git报错处理合集</title>
@@ -183,6 +187,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201071745/" type="text/html"/>
         <id>https://ffangli.github.io/202201071745/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;大部分都是网络问题报错&lt;&#x2F;p&gt;
 &lt;p&gt;又是饱受gfw折磨的一天 テ_デ&lt;&#x2F;p&gt;
@@ -290,6 +295,7 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;git remote set-url origin https:&#x2F;&#x2F;[githubtoken]@github.com&#x2F;[username]&#x2F;[repositoryname].git
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>git总结</title>
@@ -300,6 +306,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202110071745/" type="text/html"/>
         <id>https://ffangli.github.io/202110071745/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;
 &lt;h4 id=&quot;gitignore&quot;&gt;.gitignore&lt;&#x2F;h4&gt;
@@ -353,5 +360,6 @@
 &lt;p&gt;commit message信息修改&lt;&#x2F;p&gt;
 &lt;p&gt;执行&lt;code&gt;git commit --amend&lt;&#x2F;code&gt;出现编辑界面（vim），编辑方法同Linux下的vim，编辑后保存并退出&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

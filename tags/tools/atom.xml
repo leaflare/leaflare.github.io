@@ -16,11 +16,13 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202006262205/" type="text/html"/>
         <id>https://ffangli.github.io/202006262205/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;su-yuan-tu-pu&quot;&gt;溯源图谱&lt;&#x2F;h2&gt;
 &lt;p&gt;https:&#x2F;&#x2F;www.connectedpapers.com&#x2F;&lt;&#x2F;p&gt;
 &lt;p&gt;好用，且免费&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>文件转换相关工具记录</title>
@@ -31,6 +33,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202004262205/" type="text/html"/>
         <id>https://ffangli.github.io/202004262205/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;ocrgong-ju&quot;&gt;OCR工具&lt;&#x2F;h2&gt;
 &lt;p&gt;http:&#x2F;&#x2F;ocr.space&#x2F;&lt;&#x2F;p&gt;
@@ -40,5 +43,6 @@
 &lt;p&gt;https:&#x2F;&#x2F;www.camscanner.com&#x2F;&lt;&#x2F;p&gt;
 &lt;p&gt;扫文件，提取电子签名&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

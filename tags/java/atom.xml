@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202111121613/" type="text/html"/>
         <id>https://ffangli.github.io/202111121613/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bu-yi-zhi-bao-cuo&quot;&gt;不一致报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;a-jni-error-has-occurred-please-check-your-installation-and-try-again&quot;&gt;A JNI error has occurred, please check your installation and try again&lt;&#x2F;h3&gt;
@@ -27,5 +28,6 @@
 &lt;p&gt;在环境变量Path变量中将需要使用的路径上移，例如将&lt;code&gt;%JAVA_HOME%\bin&lt;&#x2F;code&gt;路径移至&lt;code&gt;C:\Program Files (x86)\Common Files\Oracle\Java\javapath&lt;&#x2F;code&gt;之上&lt;&#x2F;p&gt;
 &lt;p&gt;这个时候在idea运行之前的项目还是会有报错，需要手动换SDK&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
 </feed>

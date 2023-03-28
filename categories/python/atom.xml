@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202051516/" type="text/html"/>
         <id>https://ffangli.github.io/202202051516/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
@@ -102,6 +103,7 @@
 &lt;img src=&quot;.\img\0.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
 &lt;img src=&quot;.\img\1.png&quot; style=&quot;zoom:60%;&quot; &#x2F;&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>python经验总结</title>
@@ -112,6 +114,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201151443/" type="text/html"/>
         <id>https://ffangli.github.io/202201151443/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;cha-zhao-an-zhuang-di-zhi&quot;&gt;查找安装地址&lt;&#x2F;h1&gt;
 &lt;p&gt;控制台&lt;&#x2F;p&gt;
@@ -207,6 +210,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>conda报错处理合集</title>
@@ -217,6 +221,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201102136/" type="text/html"/>
         <id>https://ffangli.github.io/202201102136/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;condageng-xin-bao-cuo&quot;&gt;conda更新报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;condavalueerror-malformed-version-string-invalid-character-s&quot;&gt;CondaValueError: Malformed version string &#x27;~&#x27;: invalid character(s).&lt;&#x2F;h3&gt;
@@ -243,6 +248,7 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ echo %PYTHONIOENCODING%
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>pandas经验总结</title>
@@ -253,6 +259,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202201051443/" type="text/html"/>
         <id>https://ffangli.github.io/202201051443/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;pandasxian-shi-she-zhi&quot;&gt;pandas显示设置&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;kong-zhi-tai-da-yin-wan-zheng-shu-ju&quot;&gt;控制台打印完整数据&lt;&#x2F;h2&gt;
@@ -333,6 +340,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;df.loc[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(df)] = add
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>pip报错处理合集</title>
@@ -343,6 +351,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202112121613/" type="text/html"/>
         <id>https://ffangli.github.io/202112121613/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;piphe-pip3de-qu-bie&quot;&gt;pip和pip3的区别&lt;&#x2F;h2&gt;
 &lt;p&gt;当一台电脑同时有多个版本的Python的时候，用pip3就可以自动区分用Python3来安装库，为了避免和Python2发生冲突的。如果电脑只安装了Python3，那么不管用pip还是pip3都一样的。
@@ -353,6 +362,7 @@
 新安装的库会放在这个目录下面：python3.7&#x2F;site-packages
 （3）如果使用python3执行程序，那么就不能importpython2.7&#x2F;site-packages中的库。&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Django经验总结</title>
@@ -363,6 +373,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202111251255/" type="text/html"/>
         <id>https://ffangli.github.io/202111251255/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;djangoshi-yong-db-sqlite3&quot;&gt;Django使用db.sqlite3&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;chuang-jian-yi-ge-xiang-mu-bing-qi-dong&quot;&gt;创建一个项目并启动&lt;&#x2F;h3&gt;
@@ -388,6 +399,7 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;&quot;&gt;&lt;&#x2F;h3&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>python数据处理经验总结</title>
@@ -398,6 +410,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202111151443/" type="text/html"/>
         <id>https://ffangli.github.io/202111151443/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-lei-xing-chu-li&quot;&gt;数据类型处理&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;cha-kan-shu-ju-lei-xing&quot;&gt;查看数据类型&lt;&#x2F;h3&gt;
@@ -431,6 +444,7 @@
 &lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>python数据可视化</title>
@@ -441,134 +455,10 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202108151443/" type="text/html"/>
         <id>https://ffangli.github.io/202108151443/</id>
-        <content type="html">&lt;p&gt;常用可视化图表速查&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;ji-chu-tu-xing&quot;&gt;基础图形&lt;&#x2F;h2&gt;
-&lt;p&gt;https:&#x2F;&#x2F;seaborn.pydata.org&#x2F;&lt;&#x2F;p&gt;
-&lt;p&gt;seaborn中提供了与matplotlib类似的接口，其他高级作图函数都以这些底层作图函数为基础，进行封装，通常作为kind参数。各种基本图形既可以直接传入数组形式的变量数据，也可以传入DataFrame列名并传入data参数。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;seaborn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;sns
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 折线图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lineplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 条形图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;barplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 计数条形图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;countplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 散点图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;scatterplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 分类散点图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stripplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 分簇散点图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;swarmplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 与stipplot()的区别就是点不重叠
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 箱型图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boxplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 增强箱型图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;boxenplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 适合大数据集，显示更多分位数
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 小提琴图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;violinplot&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 点图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pointplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 纵轴是均值，置信区间用标准差表示
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 核密度估计图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kdeplot&lt;&#x2F;span&gt;&lt;span&gt;(x,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bw&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2.0&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;shade&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#bw为带宽
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 地毯图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rugplot&lt;&#x2F;span&gt;&lt;span&gt;(x) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 直接将数据标记在坐标轴上
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 回归线图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;regplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 散点图附加回归线
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 热图
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;heatmap&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annot&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;True&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# annot表示显示数值
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 另外补充几种常用图
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 饼图
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#设置字体样式
-&lt;&#x2F;span&gt;&lt;span&gt;mpl.rcParams[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;font.family&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sans-serif&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
-&lt;&#x2F;span&gt;&lt;span&gt;mpl.rcParams[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;font.sans-serif&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]=[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;SimHei&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]
-&lt;&#x2F;span&gt;&lt;span&gt;title = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;饼图&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
-&lt;&#x2F;span&gt;&lt;span&gt;fig = plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figure&lt;&#x2F;span&gt;&lt;span&gt;(title, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;figsize&lt;&#x2F;span&gt;&lt;span&gt;=(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;))
-&lt;&#x2F;span&gt;&lt;span&gt;fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tight_layout&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span&gt;ax = fig.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add_subplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;111&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span&gt;data = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;]
-&lt;&#x2F;span&gt;&lt;span&gt;labels = [&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;c&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;d&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]
-&lt;&#x2F;span&gt;&lt;span&gt;explodes =[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;data]
-&lt;&#x2F;span&gt;&lt;span&gt;explodes[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;] =&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.015
-&lt;&#x2F;span&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pie&lt;&#x2F;span&gt;&lt;span&gt;(data, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;labels&lt;&#x2F;span&gt;&lt;span&gt;= labels, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;radius&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.8&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#data 是数据，labels 是标签，radius 是饼图半径
-&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;explode&lt;&#x2F;span&gt;&lt;span&gt;=explodes, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#explodes 为0 代表不偏离圆心， 不为零则代表偏离圆心的距离
-&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;autopct&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%1.1f%%&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示所占比例，百分数
-&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pctdistance &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;,
-&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;labeldistance&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.7&lt;&#x2F;span&gt;&lt;span&gt;,  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# a,b,c,d 到圆心的距离
-&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;textprops&lt;&#x2F;span&gt;&lt;span&gt;={&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;black&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;}) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 标签和比例的格式
-&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;axis&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;equal&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 正圆
-&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;legend&lt;&#x2F;span&gt;&lt;span&gt;( &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;loc &lt;&#x2F;span&gt;&lt;span&gt;= &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;upper right&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bbox_to_anchor&lt;&#x2F;span&gt;&lt;span&gt;=(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.1&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.05&lt;&#x2F;span&gt;&lt;span&gt;), &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;14&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;borderaxespad&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.3&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# loc =  &amp;#39;upper right&amp;#39; 位于右上角
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# bbox_to_anchor=[0.5, 0.5] # 外边距 上边 右边
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# ncol=2 分两列
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# borderaxespad = 0.3图例的内边距
-&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;suptitle&lt;&#x2F;span&gt;&lt;span&gt;(title+&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;pie&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fontsize&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span&gt;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#plt.savefig(filepath+&amp;#39;\name.png&amp;#39;,dpi=120,bbox_inches=&amp;#39;tight&amp;#39;) #可通过这个方法保存可视化的图片
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# plt.show()
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# plt.close()
-&lt;&#x2F;span&gt;&lt;span&gt;plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;savefig&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bingtu.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dpi&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;120&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bbox_inches&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tight&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 极坐标图
-&lt;&#x2F;span&gt;&lt;span&gt;ax = plt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;subplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;111&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;projection&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;polar&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# projection指投影到极坐标
-&lt;&#x2F;span&gt;&lt;span&gt;ax.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot&lt;&#x2F;span&gt;&lt;span&gt;(x,y) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# x为角度(弧度制),y为径长
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 平行坐标图
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;pandas.plotting &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;parallel_coordinates
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;parallel_coordinates&lt;&#x2F;span&gt;&lt;span&gt;(data, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;key&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h2 id=&quot;gao-ji-han-shu&quot;&gt;高级函数&lt;&#x2F;h2&gt;
-&lt;p&gt;针对数据可视化的不同目的，seaborn提供了relplot()，catplot()，displot()，lmplot()四大主要高级函数。
-seaborn与pandas的DataFrame的结合非常好，因此传参是可以直接传入列名。
-返回的是FacetGrid(平面网格图)对象。
-这些高级函数的主要参数如下：
-x，y：输入变量
-data：输入数据df
-hue：分组变量
-style：如传入，则hue分组后每组数据作图风格可不一致
-col，row：决定平面网格图布局的变量
-kind：底层作图类型名称，如&amp;quot;line&amp;quot;,“bar”,&amp;quot;box&amp;quot;等
-注：由于返回的平面网格图子图间距可能不合理，可调用plt.tight_layout()自动调整。&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;ke-shi-hua-bian-liang-guan-xi-relationship&quot;&gt;可视化变量关系(relationship)&lt;&#x2F;h3&gt;
-&lt;p&gt;relplot()方便观察变量间的关系。&lt;&#x2F;p&gt;
-&lt;p&gt;sns.relplot() # 默认是散点图&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;fen-lei-shu-ju-de-fen-bu-tu-categorical&quot;&gt;分类数据的分布图(categorical)&lt;&#x2F;h3&gt;
-&lt;p&gt;catplot()可以很好观察分类数据的分布情况。&lt;&#x2F;p&gt;
-&lt;p&gt;sns.catplot()&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;shu-ju-ji-fen-bu-tu-distribution&quot;&gt;数据集分布图(distribution)&lt;&#x2F;h3&gt;
-&lt;p&gt;特征工程前，需要对数据集的有一个整体的了解，seabon提供的高级函数displot()可以作各种分布图。&lt;&#x2F;p&gt;
-&lt;h4 id=&quot;dan-bian-liang-fen-bu&quot;&gt;单变量分布&lt;&#x2F;h4&gt;
-&lt;p&gt;displot是hist(&lt;a href=&quot;https:&#x2F;&#x2F;so.csdn.net&#x2F;so&#x2F;search?q=%E7%9B%B4%E6%96%B9%E5%9B%BE&amp;amp;spm=1001.2101.3001.7020&quot;&gt;直方图&lt;&#x2F;a&gt;)、rugplot(地毯图)、kdeplot(核密度估计图)的高级封装。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;scipy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;stats
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;displot&lt;&#x2F;span&gt;&lt;span&gt;(x, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kde&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rug&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;False&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fit&lt;&#x2F;span&gt;&lt;span&gt;=stats.gamma) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 直方图,若传入fit参数，则表示拟合相应的分布
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h4 id=&quot;shuang-bian-liang-fen-bu&quot;&gt;双变量分布&lt;&#x2F;h4&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;jointplot&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kind&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;scatter&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# scatter表示散点图，hex表示HexBin图，kde表示核密度估计图，reg表示添加回归线的散点图，resid表示残差图
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 定制图
-&lt;&#x2F;span&gt;&lt;span&gt;g = sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;JointGrid&lt;&#x2F;span&gt;&lt;span&gt;()
-&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot_joint&lt;&#x2F;span&gt;&lt;span&gt;(plt.scatter)
-&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;plot_marginal&lt;&#x2F;span&gt;&lt;span&gt;(sns.displot)
-&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotate&lt;&#x2F;span&gt;&lt;span&gt;(stats.pearsonr)
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h4 id=&quot;cheng-dui-bian-liang-fen-bu&quot;&gt;成对变量分布&lt;&#x2F;h4&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pairplot&lt;&#x2F;span&gt;&lt;span&gt;(data)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 定制图
-&lt;&#x2F;span&gt;&lt;span&gt;g = sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PairGrid&lt;&#x2F;span&gt;&lt;span&gt;(data)
-&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;map_diag&lt;&#x2F;span&gt;&lt;span&gt;(sns.kdeplot)
-&lt;&#x2F;span&gt;&lt;span&gt;g.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;map_offdiag&lt;&#x2F;span&gt;&lt;span&gt;(sns.kdeplot)
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h3 id=&quot;hui-gui-xian-tu-linear-model&quot;&gt;回归线图(linear model)&lt;&#x2F;h3&gt;
-&lt;p&gt;regplot()以及lmplot()都可以作回归线图，二者的区别是lmplot的参数data是必传的，而regplot不是。因此可以将regplot()视为底层函数。&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lmplot&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;total_bill&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tip&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;=tips)
-&lt;&#x2F;span&gt;&lt;span&gt;sns.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;residplot&lt;&#x2F;span&gt;&lt;span&gt;() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# 残差图
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;quot;&amp;quot;&amp;quot;
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;lmplot重要参数解释：
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;ci:置信度
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;order: 拟合阶数
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;x_jitter: 施加噪声
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;robust: 鲁棒性
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;logistic: 逻辑斯谛回归
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;hue：分组回归
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;scatter_kws={&amp;quot;s&amp;quot;:80}: 散点图参数(例如点的大小)
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&amp;quot;&amp;quot;&amp;quot;
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;常用可视化图表速查&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>paddle踩坑</title>
@@ -579,6 +469,7 @@ kind：底层作图类型名称，如&amp;quot;line&amp;quot;,“bar”,&amp;quo
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202107151443/" type="text/html"/>
         <id>https://ffangli.github.io/202107151443/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;这东西有CPU版本和GPU版本两种，GPU版本的完全依赖CUDA+CUDNN，直接pip install只会报一堆让人摸不着头脑的错（x&lt;&#x2F;p&gt;
 &lt;p&gt;CPU版本直接&lt;code&gt;python -m pip install paddlepaddle==2.3.0 -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
@@ -608,6 +499,7 @@ kind：底层作图类型名称，如&amp;quot;line&amp;quot;,“bar”,&amp;quo
 &lt;p&gt;下载地址：https:&#x2F;&#x2F;www.dll-files.com&#x2F;search&lt;&#x2F;p&gt;
 &lt;p&gt;我就是为了记录这个网址专门水了一篇（x&lt;&#x2F;p&gt;
 </content>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Solving stupid problems——装不上某个python包</title>
@@ -618,25 +510,9 @@ kind：底层作图类型名称，如&amp;quot;line&amp;quot;,“bar”,&amp;quo
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202009131443/" type="text/html"/>
         <id>https://ffangli.github.io/202009131443/</id>
-        <content type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;shi-gu-xian-chang&quot;&gt;事故现场&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202009131443&#x2F;.%5Cimg%5C1.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;pip装不上，去&lt;a href=&quot;https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;stable-baselines3&#x2F;#files&quot;&gt;stable-baselines3 · PyPI&lt;&#x2F;a&gt;上下的whl也装不上&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;wen-ti-jie-jue&quot;&gt;问题解决&lt;&#x2F;h2&gt;
-&lt;p&gt;python 中的egg文件；类似于Java 中的jar 包，把一系列的python源码文件、元数据文件、其他资源文件 zip 压缩，重新命名为.egg 文件，目的是作为一个整体进行发布。&lt;&#x2F;p&gt;
-&lt;p&gt;关于egg-info是什么：&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.python101.pythonlibrary.org&#x2F;chapter38_eggs.html&quot;&gt;Chapter 38 - The Python egg — Python 101 1.0 documentation (pythonlibrary.org)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;Built Distribution 和 Source Distribution&lt;&#x2F;p&gt;
-&lt;ul&gt;
-&lt;li&gt;不同操作系统安装 Python 包的要求不完全相同，Built Distribution 是按照某类操作系统（例如 Linux）安装要求所打成的包，这样安装的时候只需要将包解压，文件放到适当的位置即可，效率比较高。但一个 Built Distribution 只适用于一类操作系统，例如 Linux 上的 Built Distribution 包无法在 Windows 上安装。而 Source Distribution 包便解决了这个问题，它是对源代码进行打包，将源代码打包成利于打成 Built Distribution 包的形式。这样，我们便可以通过 Source Distribution 包生成适用于特定类型操作系统的 Built Distribution 包，再进行安装。&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;p&gt;xxx.whl是Built Distribution &lt;&#x2F;p&gt;
-&lt;p&gt;xxx.tar.gz是 Source Distribution&lt;&#x2F;p&gt;
-&lt;p&gt;xxx.whl扔进&lt;code&gt;C:\Users\username\Anaconda3\Scripts&lt;&#x2F;code&gt;用pip安装，如上图所示&lt;&#x2F;p&gt;
-&lt;p&gt;xxx.tar.gz解压后包含xxx和xxx.egg-info两个文件夹，需要一起扔进&lt;code&gt;C:\Users\usern\Anaconda3\Lib\site-packages&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;直接把解压后的包扔进去或者没有egg-info都不能被python环境识别，在这里踩了坑orz&lt;&#x2F;p&gt;
-&lt;p&gt;类似egg-info这种伴生关系的还有dist-info&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
 </feed>

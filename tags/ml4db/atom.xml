@@ -16,27 +16,11 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
         <id>https://ffangli.github.io/202202252017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;One emerging application is in-database machine learning: a high-performance, low-friction interface for analytics on large databases. They co-locate database and machine learning processing in a unified reconfigurable data analytics accelerator, Gorgon, which flexibly shares resources between db and ml without compromising performance or incurring excessive overheads in either domain. They distill and integrate database parallel patterns into an existing ML-focused cgra, increasing area by less than 4% while outperforming a multicore software baseline by 1500X. They also explore the performance impact of unifying db and ml in a single accelerator, showing up to 4x speedup over split accelerators.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;Gorgon is a unified data analytics CGRA for in-database machine learning (DB+ML) with ML-focused parallel patterns (map, reduce, etc.) and DB-focused parallel patterns (sort, join, group-by, etc.). Gorgon thus accelerates full data-processing pipelines and is more reconfigurable than previous CGRAS.&lt;&#x2F;p&gt;
-&lt;p&gt;Industrial BD+ML systems, like Google&#x27;s BigQuery ML and Apaches&#x27; MADlib, add ML inference and training to the relational model as new SQL operators. DB and ML have been accelerated individually, but no single hardware platform accelerates both.&lt;&#x2F;p&gt;
-&lt;p&gt;The key contribution of this paper:&lt;&#x2F;p&gt;
-&lt;p&gt;Detailed microarchitectual and system=level design of low-overhead database primitives embedded in a general-purpose reconfigurable accelerator.&lt;&#x2F;p&gt;
-&lt;p&gt;An evaluation of end-to-end system performance, including comparisons to software and independent DB and ML accelerators.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;related-work&quot;&gt;RELATED WORK&lt;&#x2F;h2&gt;
-&lt;p&gt;database acceleration ASICs,Q100&lt;&#x2F;p&gt;
-&lt;p&gt;FPGA database accelerators&lt;&#x2F;p&gt;
-&lt;p&gt;Domain-agnostic dataflow accelerators NoC&lt;&#x2F;p&gt;
-&lt;p&gt;In-database Machine Learning DAnA&lt;&#x2F;p&gt;
-&lt;p&gt;A variety of software solutions integrate ML with database operations, including Apache&#x27;s Spark and MADlib. Greenplum Database and Google&#x27;s BigQuery ML. Spark is an open-source distributed data-processing engine for various workloads, including SQL, machine learning, and graph processing.BigQuery ML can run ML models in its cloud data warehouse. MADlib is an open-source project that provides SQL-based ML algorithms that run in a database.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;CONCLUSION&lt;&#x2F;h2&gt;
-&lt;p&gt;A unified, performant, and flexible accelerator--the ideal, combining the advantages of fixed-function accelerators and FPGAS--would simplify data center management by keeping compute resources homogeneous. Furthermore, accelerator unification enables new, cross-domain applications like DB+ML. Gorgon demonstrates the potential for reuse between accelerators by embedding database inspired paralled patterns in a general-purpose fabric originally designed for ML; it is also the first system to fuse and accelerate DB+ML processing on a single chip, accelerating full data-processing pipelines. &lt;&#x2F;p&gt;
-&lt;p&gt;Gorgon is better-suited to data center integration than a sea of heterogeneous accelerators and faster. Furthermore, a unified platform shares expensive resources and large dice in advanced nodes. By adding database support to an ML-focused accelerator, Gorgon enables more powerful ML pipelines than existing accelerators.&lt;&#x2F;p&gt;
-</content>
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on XuanYuan</title>
@@ -47,39 +31,10 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
         <id>https://ffangli.github.io/202202212017/</id>
-        <content type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h2 id=&quot;abstract&quot;&gt;ABSTRACT&lt;&#x2F;h2&gt;
-&lt;p&gt;On one hand they integrate AI techniques into databases to provide self-configuring, self-optimizing, self-monitoring, self-diagnosis, self-healing, self-assembling, and self-security capabilities. On the other hand, they enable databases to provide AI capabilities using declarative languages in order to lower the barrier of using AI.&lt;&#x2F;p&gt;
-&lt;p&gt;In this paper, they also introduce five levels of AI-native databases and provide several open challenges of designing an AI-native database. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;INTRODUCTION&lt;&#x2F;h2&gt;
-&lt;p&gt;The five layers of AI native databases.&lt;&#x2F;p&gt;
-&lt;p&gt;Databases play a very important role in many applications and are widely deployed in many domains. Over the last fifty years, databases have undergone three major revolutions.&lt;&#x2F;p&gt;
-&lt;p&gt;The first generation was the standalone database, which solved the problems of data storage, data management and query processing. Representative systems include PostgreSQL and MySQL.&lt;&#x2F;p&gt;
-&lt;p&gt;The second generation is the clustered database, which aims to provide high availability and reliability for business-critical applications. Representative systems include Oracle RAC, DB2 and SQL server.&lt;&#x2F;p&gt;
-&lt;p&gt;The third generation is distributed databases (and cloud-native databases), which aim to solve the problems of elastic computing and dynamic data migration in the era of big data. Representative systems include Aurora and GaussDB.&lt;&#x2F;p&gt;
-&lt;p&gt;However, in the era of Big Data, traditional databases still have some limitations due to the large scale of data, the variety of applications&#x2F;users and the diverse computing power.&lt;&#x2F;p&gt;
-&lt;p&gt;Traditional database design is still based on empirical methods and specifications, and requires significant human involvement (e.g. DBAs) to tune and maintain the database.&lt;&#x2F;p&gt;
-&lt;p&gt;Traditional databases focus on the relational model and provide relational data management and analysis capabilities.&lt;&#x2F;p&gt;
-&lt;p&gt;Transitional databases only consider generic hardware such as CPU, RAM and disk, but do not take full advantage of new hardware such as ARM, AI chips, GPUs, FPGAs, NVM, RDMA.&lt;&#x2F;p&gt;
-&lt;p&gt;Regulus integrates AI technology into the database to make it more intelligent and also provides AI capabilities within the database. On the one hand, Regulus integrates AI technology into the database to provide self-configuration, self-optimisation, self-monitoring, self-diagnosis, self-healing, self-security and self-assembly capabilities, which can improve the availability, performance and stability of the database and reduce the burden of intensive human involvement. On the other hand, &amp;quot;Regulus&amp;quot; enables databases to provide AI capabilities using declarative languages to lower the threshold for using AI. In addition, &amp;quot;Regulus&amp;quot; leverages diverse computing power to support data analysis and machine learning.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202212017&#x2F;.%5Cimg%5C1.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;ai4db&quot;&gt;AI4DB&lt;&#x2F;h2&gt;
-&lt;p&gt;There are several challenges to embedding AI capabilities in a database.
-Training samples. Most AI models require large-scale, high-quality, diverse training data to achieve good performance. However, it is quite difficult to obtain training data in databases because they are either safety-critical or dependent on DBAs. for example, in database button tuning, the training samples should be based on the experience of DBAs. Therefore, it is difficult to obtain a large number of training samples. In addition, the training data should cover different scenarios, different hardware environments, and different workloads.
-Model selection. There are many machine learning algorithms and it is difficult to automatically select one for different scenarios. In addition, model selection is influenced by many factors, such as
-quality, training time, adaptability, and generalisation. For example, deep learning may be a better choice for cost estimation, while reinforcement learning may be a better choice for estimation, while reinforcement learning may be a better choice for connection order selection. Training time may also be important, as some applications have high performance requirements and cannot tolerate long training periods.
-Model convergence. It is very important that the model converges. If the model does not converge, we need to provide alternative methods to avoid making the wrong decision. For example, in knob tuning, if the model does not converge, we cannot use the model to make knob suggestions.
-Adaptability. The model should be adaptable to different scenarios. For example, if the hardware environment changes, the model can be adapted to the new hardware.
-Generalisability. The model should be adaptable to different database settings. For example, if the workload is changed, the model should support the new workload. If data is updated, the model should be generalised to support the new data.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;db4ai&quot;&gt;DB4AI&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;strong&gt;Accelerate AI algorithms using indexing techniques.&lt;&#x2F;strong&gt; Most of studies focus on the effectiveness of AI algorithms but do not pay much attention to the efficiency, which is also very important. It calls for utilizing database
-techniques to improve the performance of AI algorithms. For example, self-driving vehicles require a large number of examples for training, which is rather time consuming. Actually, it only requires some important
-examples, e.g., the training cases in the night or rainy day, but not many redundant examples. Thus we can index the samples and features for effective training.
-&lt;strong&gt;Discover AI Models.&lt;&#x2F;strong&gt; Ordinary users may only know their requirements, e.g., using a classification algorithm to address a problem, but do not know which AI algorithms should be used. Thus it is important to automatically discover AI algorithms. Moreover, it is also challenging to reuse the well-trained AI models by different users.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;edge-computing-database&quot;&gt;Edge Computing Database&lt;&#x2F;h2&gt;
-&lt;p&gt;Most databases are designed to be deployed on servers. With the development of 5G and IOT devices, it calls for a tiny database embedded in small devices. There are several challenges in designing such a tiny database. The first is database security to protect the data. The second is real-time data processing. The small device has low computing power, and it is rather challenging to provide high performance on such small devices. The third is data migration among different devices. Some devices have small storage and it is challenging to migrate the data across different devices.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
     <entry xml:lang="zh">
         <title>Reading Notes on DB meets DL</title>
@@ -90,37 +45,9 @@ examples, e.g., the training cases in the night or rainy day, but not many redun
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
         <id>https://ffangli.github.io/202202012017/</id>
-        <content type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
-&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;h1 id=&quot;background&quot;&gt;BACKGROUND&lt;&#x2F;h1&gt;
-&lt;p&gt;Deep learning has excelled on complex problems in a variety of data-driven research areas. The database community has been working on data-driven applications for many years and should have dominated this wave of deep learning, but this has not been the case.&lt;&#x2F;p&gt;
-&lt;p&gt;This paper discusses several issues in the database domain and the deep learning domain, finds that there are many common problems in the two domains, and discusses several research points where the two domains can potentially contribute to each other.&lt;&#x2F;p&gt;
-&lt;h1 id=&quot;databases-to-deep-learning&quot;&gt;DATABASES TO DEEP LEARNING&lt;&#x2F;h1&gt;
-&lt;p&gt;In addition to high-performance computing equipment, operation scheduling and memory management are also important factors affecting the speed of deep learning training.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;stand-alone-training&quot;&gt;Stand-alone Training&lt;&#x2F;h2&gt;
-&lt;h3 id=&quot;operation-scheduling&quot;&gt;Operation Scheduling&lt;&#x2F;h3&gt;
-&lt;p&gt;The training algorithm for deep learning uses mainly linear algebraic related operations. Operation scheduling will first detect the dependencies of data operations and then assign independent operations to different executors. This step will be based on a data flow diagram or dynamic analysis of the sequence of read and write operations. The same type of problem exists when optimizing transaction execution and query plans in databases, and their solutions can be considered for deep learning. In the case of query plans, for example, the database uses a cost model to estimate the query plan. Accordingly, given the computational resources (executor and memory), deep learning can be considered to create a cost model to find a more optimal solution for the subsequent operation scheduling policy.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;memory-management&quot;&gt;Memory Management&lt;&#x2F;h3&gt;
-&lt;p&gt;Deep learning models are becoming larger and larger, for example VGG models are limited by memory size and cannot be trained on a normal stand-alone machine. This can now be solved using techniques such as model compression and memory swapping between video memory and memory. Memory management is a popular research topic in the database field, involving memory locality, sharding and cache optimisation. The idea of database fault recovery is similar to the discard and recalculate approach, using the technique of logging all database operations, which allows real-time analysis to be done without the need for static data graphs. Other techniques, such as rubbish collection and memory pooling, will also provide some help with memory management for GPUs.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;distributed-training&quot;&gt;Distributed Training&lt;&#x2F;h2&gt;
-&lt;p&gt;Distributed computing is the conventional method for speeding up the training of deep models. A parameter server is used to accept the parameter gradient values calculated by the working nodes and update the corresponding parameters. Currently there are two main types of methods: data parallelism and model parallelism. Data parallelism consists of data sharding and model backup; model parallelism consists of complete data sets and model sharding. The database field has a long history of research into distributed environments, including parallel databases, P2P systems, and cloud computing.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;communication&quot;&gt;Communication&lt;&#x2F;h3&gt;
-&lt;p&gt;It is assumed that the deep model contains a large number of parameters and that communication between nodes becomes a performance bottleneck in the model training system. Furthermore, for larger computing clusters, message synchronisation between nodes becomes very important. Accordingly, efficient communication protocols are important for either single point multi-GPU training or cluster training. Possible research directions: a) Compression of parameters and gradient values for transmission; b) Rational organisation of server structures to reduce the communication burden between nodes, e.g. tree structures; c) Use of more efficient network devices, e.g. RDMA.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;concurrency-and-consistency&quot;&gt;Concurrency and Consistency&lt;&#x2F;h3&gt;
-&lt;p&gt;Most deep learning systems use threads and locks directly to control concurrency and guarantee consistency requirements, and no other concurrent implementations, such as actor and concurrent threads, are used for the time being. Sequence consistency and event consistency are both used in deep learning systems. Both approaches face the same scaling problem.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;fault-tolerance&quot;&gt;Fault Tolerance&lt;&#x2F;h3&gt;
-&lt;p&gt;The database system uses logging and checkpointing to achieve a high fault tolerance mechanism. Current deep learning systems rely heavily on checkpoint files for training site recovery. And frequent logging of checkpoints introduces a large overhead. Compared to the strong consistency requirements of database systems, SGD (stochastic gradient descent) allows for a certain degree of inconsistency, so full logging is not necessary. It is an interesting research question how to combine the features of SGD and the system architecture to achieve efficient fault tolerance.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;optimization-techniques-in-existing-systems&quot;&gt;Optimization Techniques in Existing Systems&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202202012017&#x2F;.%5Cimg%5Csystem.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;h1 id=&quot;deep-learning-to-databases&quot;&gt;DEEP LEARNING TO DATABASES&lt;&#x2F;h1&gt;
-&lt;h2 id=&quot;query-interface&quot;&gt;Query Interface&lt;&#x2F;h2&gt;
-&lt;p&gt;In recent years, deep learning has yielded the best results in NLP (natural language processing) and RNN models have been shown to learn structured data. Can RNN models be used to parse natural language to generate the corresponding SQL and to optimise the SQL using existing database methods? Heuristic rules can be used to detect syntax errors in the generated SQL. The challenge with this problem is the lack of a large training dataset.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;query-plans&quot;&gt;Query Plans&lt;&#x2F;h2&gt;
-&lt;p&gt;Query plan optimization is a classic problem in the database field. Most database systems use complex heuristics and cost models to generate query plans. As long as the parameters in the SQL are in a certain interval, its execution plan does not change. That is, query plans are sensitive to a small range of parameters. Therefore, a query plan model can be trained to learn a set of SQL queries with their corresponding query plans, which can be used to generate query plans for new SQL. More specifically, RNN models can be used to learn SQL query text and metadata to generate tree-structured query plans. Augmented learning may be used for online training, using execution time and memory traces as feedback signals.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;crowdsourcing-and-knowledge-bases&quot;&gt;Crowdsourcing and Knowledge Bases&lt;&#x2F;h2&gt;
-&lt;p&gt;Many crowdsourcing and knowledge-base related applications introduce problems of entity extraction, disambiguation and integration, where these instances may be a row of records in a database, a node in a graph. Based on the success of deep learning in the field of NLP, such problems could be considered for solution using deep learning. For example, we might learn representations of entities and then use the direct similarity calculations of these representations to reason about the relationships between entities.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;spatial-and-temporal-data&quot;&gt;Spatial and Temporal Data&lt;&#x2F;h2&gt;
-&lt;p&gt;Spatial and temporal data are common types in database systems and are often used for trend analysis, process modelling and predictive analysis. If blocks in spatial data are understood as pixel points in a picture, spatial relationships can then be extracted using deep learning models such as CNNs. For example, we can learn real-time location data of moving objects (e.g. GPS) into a CNN model to obtain density relationships in neighbourhoods and predict congestion over time. If temporal data can be modelled as a temporal matrix, deep learning (e.g. RNN) can be designed to analyse temporal dependencies and predict whether something is sent at a future point in time. For example, a temporal model based on the spread of a disease could help doctors predict the severity of a particular disease.&lt;&#x2F;p&gt;
-</content>
+        
+        <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
+</summary>
+        
     </entry>
 </feed>

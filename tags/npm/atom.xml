@@ -16,6 +16,7 @@
         </author>
         <link rel="alternate" href="https://ffangli.github.io/202112151255/" type="text/html"/>
         <id>https://ffangli.github.io/202112151255/</id>
+        
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;npm-warn-deprecated-core-js-2-6-11-core-js-3-is-no-longer-maintained-and-not-recommended-for-usage&quot;&gt;npm WARN deprecated core-js@2.6.11: core-js@&amp;lt;3 is no longer maintained and not recommended for usage&lt;&#x2F;h2&gt;
 &lt;p&gt;解决：&lt;&#x2F;p&gt;
@@ -28,5 +29,6 @@
 &lt;&#x2F;span&gt;&lt;span&gt;npm install
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
+        
     </entry>
 </feed>
