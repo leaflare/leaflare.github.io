@@ -21,6 +21,8 @@
 &lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;wslan-zhuang&quot;&gt;WSL安装&lt;&#x2F;h2&gt;
 &lt;p&gt;微软商店下载需要的Linux发行版&lt;&#x2F;p&gt;
+&lt;p&gt;微软商店下载速度过慢的一种（可能的）解决方法：&lt;&#x2F;p&gt;
+&lt;p&gt;在开始菜单——设置——更新和安全——传递优化 里面，勾选 &lt;em&gt;我本地网络上的电脑和Internet上的电脑&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;dockerpei-zhi-wsl-integration&quot;&gt;Docker配置WSL Integration&lt;&#x2F;h2&gt;
 &lt;p&gt;启动Docker Desktop&lt;&#x2F;p&gt;
 &lt;p&gt;docker settings——&amp;gt;General——&amp;gt;勾选&lt;code&gt;Use the WSL 2 based engine&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
