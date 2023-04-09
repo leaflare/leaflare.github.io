@@ -17,6 +17,10 @@ WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 
 
 微软商店下载需要的Linux发行版
 
+微软商店下载速度过慢的一种（可能的）解决方法：
+
+在开始菜单——设置——更新和安全——传递优化 里面，勾选 *我本地网络上的电脑和Internet上的电脑*
+
 ## Docker配置WSL Integration
 
 启动Docker Desktop
