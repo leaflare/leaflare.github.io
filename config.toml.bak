@@ -38,6 +38,6 @@ even_menu = [
     { url = "$BASE_URL", name = "主页" },
     { url = "$BASE_URL/categories", name = "分类" },
     { url = "$BASE_URL/tags", name = "标签" },
-    { url = "https://github.com/ffangli2000", name = "GitHub" },
+    { url = "https://github.com/ffangl", name = "GitHub" },
 ]
-even_title = "Fang Li"
+even_title = "Fang L"
