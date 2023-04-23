@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Fang Li - C&#x2F;C++</title>
-    <subtitle>Fang Li&#x27;s Blog</subtitle>
-    <link href="https://ffangli.github.io/categories/c-c/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangli.github.io"/>
+    <subtitle>Fang L&#x27;s Blog</subtitle>
+    <link href="https://ffangl.github.io/categories/c-c/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-13T21:05:54+00:00</updated>
-    <id>https://ffangli.github.io/categories/c-c/atom.xml</id>
+    <id>https://ffangl.github.io/categories/c-c/atom.xml</id>
     <entry xml:lang="zh">
         <title>C&#x2F;C++_动态内存分配</title>
         <published>2022-01-13T21:05:54+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201132105/" type="text/html"/>
-        <id>https://ffangli.github.io/202201132105/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201132105/" type="text/html"/>
+        <id>https://ffangl.github.io/202201132105/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;nei-cun-fen-pei&quot;&gt;内存分配&lt;&#x2F;h2&gt;
@@ -160,8 +160,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201111836/" type="text/html"/>
-        <id>https://ffangli.github.io/202201111836/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201111836/" type="text/html"/>
+        <id>https://ffangl.github.io/202201111836/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;rong-qi&quot;&gt;容器&lt;&#x2F;h1&gt;
@@ -359,8 +359,8 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201111736/" type="text/html"/>
-        <id>https://ffangli.github.io/202201111736/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201111736/" type="text/html"/>
+        <id>https://ffangl.github.io/202201111736/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bian-yi-bao-cuo&quot;&gt;编译报错&lt;&#x2F;h2&gt;
@@ -398,8 +398,8 @@ transform(first1,last1,first2,result,binary_op);&#x2F;&#x2F;first1是第一个�
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/201901101721/" type="text/html"/>
-        <id>https://ffangli.github.io/201901101721/</id>
+        <link rel="alternate" href="https://ffangl.github.io/201901101721/" type="text/html"/>
+        <id>https://ffangl.github.io/201901101721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;vectorxiang-guan&quot;&gt;vector相关&lt;&#x2F;h2&gt;

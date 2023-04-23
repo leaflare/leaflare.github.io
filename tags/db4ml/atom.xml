@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Fang Li - DB4ML</title>
-    <subtitle>Fang Li&#x27;s Blog</subtitle>
-    <link href="https://ffangli.github.io/tags/db4ml/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangli.github.io"/>
+    <subtitle>Fang L&#x27;s Blog</subtitle>
+    <link href="https://ffangl.github.io/tags/db4ml/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-03-05T20:17:19+00:00</updated>
-    <id>https://ffangli.github.io/tags/db4ml/atom.xml</id>
+    <id>https://ffangl.github.io/tags/db4ml/atom.xml</id>
     <entry xml:lang="zh">
         <title>Reading Notes on Ease.ml</title>
         <published>2022-03-05T20:17:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202203052017/" type="text/html"/>
-        <id>https://ffangli.github.io/202203052017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202203052017/" type="text/html"/>
+        <id>https://ffangl.github.io/202203052017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml: towards multi-tenant resource sharing for machine learning workloads&lt;&#x2F;p&gt;
@@ -32,8 +32,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202203012017/" type="text/html"/>
-        <id>https://ffangli.github.io/202203012017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202203012017/" type="text/html"/>
+        <id>https://ffangl.github.io/202203012017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
 &lt;p&gt;IDEL: In-Database Entity Linking with Neural Embeddings&lt;&#x2F;p&gt;
@@ -47,8 +47,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202252017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202252017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202252017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202252017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
@@ -62,8 +62,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202212017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202212017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202212017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202212017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
 </summary>
@@ -76,8 +76,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202182017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202182017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202182017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202182017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
 &lt;p&gt;SubspaceDB : In-database subspace clustering for analytical query processing&lt;&#x2F;p&gt;
@@ -91,8 +91,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202172017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202172017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202172017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202172017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
 &lt;p&gt;Vertica-ML: Distributed Machine Learning in Vertica Database&lt;&#x2F;p&gt;
@@ -106,8 +106,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202152017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202152017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202152017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202152017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
 &lt;p&gt;SQML: large-scale in-database machine learning with pure SQL&lt;&#x2F;p&gt;
@@ -121,8 +121,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202112017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202112017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202112017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202112017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
 &lt;p&gt;DB4ML - An In-Memory Database Kernel with Machine Learning Support&lt;&#x2F;p&gt;
@@ -136,8 +136,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202082017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202082017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202082017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202082017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
 &lt;p&gt;MLog: towards declarative in-database machine learning&lt;&#x2F;p&gt;
@@ -151,8 +151,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202032017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202032017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202032017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202032017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
 &lt;p&gt;MLearn: A Declarative Machine Learning Language for Database Systems&lt;&#x2F;p&gt;
@@ -166,8 +166,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202202012017/" type="text/html"/>
-        <id>https://ffangli.github.io/202202012017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202012017/" type="text/html"/>
+        <id>https://ffangl.github.io/202202012017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
 </summary>

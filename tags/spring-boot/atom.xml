@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Fang Li - Spring Boot</title>
-    <subtitle>Fang Li&#x27;s Blog</subtitle>
-    <link href="https://ffangli.github.io/tags/spring-boot/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangli.github.io"/>
+    <subtitle>Fang L&#x27;s Blog</subtitle>
+    <link href="https://ffangl.github.io/tags/spring-boot/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-14T20:17:19+00:00</updated>
-    <id>https://ffangli.github.io/tags/spring-boot/atom.xml</id>
+    <id>https://ffangl.github.io/tags/spring-boot/atom.xml</id>
     <entry xml:lang="zh">
         <title>JDBC for MySQL</title>
         <published>2022-01-14T20:17:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201142017/" type="text/html"/>
-        <id>https://ffangli.github.io/202201142017/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201142017/" type="text/html"/>
+        <id>https://ffangl.github.io/202201142017/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
@@ -96,8 +96,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201121933/" type="text/html"/>
-        <id>https://ffangli.github.io/202201121933/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201121933/" type="text/html"/>
+        <id>https://ffangl.github.io/202201121933/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
@@ -134,8 +134,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202201121053/" type="text/html"/>
-        <id>https://ffangli.github.io/202201121053/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202201121053/" type="text/html"/>
+        <id>https://ffangl.github.io/202201121053/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;gai-nian&quot;&gt;概念&lt;&#x2F;h2&gt;
@@ -148,7 +148,7 @@
 &lt;p&gt;&lt;strong&gt;POJO (Plain Ordinary Java Object)&lt;&#x2F;strong&gt; ：简单和不规则的 java 对象，纯传统 Java 对象。也就是说，在某些对象&#x2F;关系映射工具中，可以维护数据库表记录的持久对象完全是符合Java Bean规范的纯Java对象，无需添加其他属性和方法。我的理解是，最基本的Java Bean只有属性字段和setter和getter方法。&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;DAO (Data Access Object)：&lt;&#x2F;strong&gt; 数据访问对象，是 Sun 的标准 J2EE 设计模式。此模式中的接口之一是 DAO，它对持久性层进行负操作。为业务层提供接口。此对象用于访问数据库。DAO通常与PO结合使用，包含各种数据库操作方法。通过其方法，结合PO对数据库执行相关操作。夹在业务逻辑和数据库资源之间。配合VO，提供数据库CRUD操作.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;mo-xing&quot;&gt;模型&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangli.github.io&#x2F;202201121053&#x2F;.&#x2F;Three-tier_architecture.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;ffangl.github.io&#x2F;202201121053&#x2F;.&#x2F;Three-tier_architecture.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;示例：&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Fang Li - Build Automation</title>
-    <subtitle>Fang Li&#x27;s Blog</subtitle>
-    <link href="https://ffangli.github.io/categories/build-automation/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangli.github.io"/>
+    <subtitle>Fang L&#x27;s Blog</subtitle>
+    <link href="https://ffangl.github.io/categories/build-automation/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2020-12-09T12:55:12+00:00</updated>
-    <id>https://ffangli.github.io/categories/build-automation/atom.xml</id>
+    <id>https://ffangl.github.io/categories/build-automation/atom.xml</id>
     <entry xml:lang="zh">
         <title>maven报错处理合集</title>
         <published>2020-12-09T12:55:12+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangli.github.io/202012091255/" type="text/html"/>
-        <id>https://ffangli.github.io/202012091255/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202012091255/" type="text/html"/>
+        <id>https://ffangl.github.io/202012091255/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8&quot;&gt;错误: 找不到或无法加载主类 .encoding=UTF-8&lt;&#x2F;h2&gt;
