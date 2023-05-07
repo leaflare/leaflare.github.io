@@ -21,6 +21,46 @@ WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 
 
 在开始菜单——设置——更新和安全——传递优化 里面，勾选 *我本地网络上的电脑和Internet上的电脑*
 
+## WSL设置
+
+在宿主机上找到WSL：
+
+WIN+R 或者文件资源管理器 输入`\\wsl$`
+
+`\\wsl$\Ubuntu\etc\apt`sources.list换国内镜像
+
+`~`目录下的文件对应`\\wsl$\Ubuntu\home\unix`目录
+
+## WSL常用命令
+
+查看虚拟机列表
+
+```
+wsl -l
+```
+
+查看虚拟机列表状态
+
+```
+wsl -l -v
+```
+
+切换虚拟机
+
+```
+wsl -d 虚拟机名
+```
+
+挂载新的虚拟机
+
+```
+wsl --import 虚拟机名 目标路径 镜像.tar
+```
+
+（使用~可能会出现Error code: Wsl/ERROR_PATH_NOT_FOUND，使用完整绝对路径可解决）
+
+
+
 ## Docker配置WSL Integration
 
 启动Docker Desktop
@@ -58,16 +98,6 @@ wsl --set-default-version 2
 - 使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：`docker image ls --all`
 - 使用以下命令列出计算机上的容器：`docker container ls --all` 或 `docker ps -a`（如果没有 -a 显示全部标志，则仅显示正在运行的容器）
 - 使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU & 内存）：`docker info`
-
-## WSL设置
-
-在宿主机上找到WSL：
-
-WIN+R 或者文件资源管理器 输入`\\wsl$`
-
-`\\wsl$\Ubuntu\etc\apt`sources.list换国内镜像
-
-`~`目录下的文件对应`\\wsl$\Ubuntu\home\unix`目录
 
 ## VS Code
 
