@@ -236,6 +236,10 @@
         <lastmod>2022-06-07T20:17:19</lastmod>
     </url>
     <url>
+        <loc>https://ffangl.github.io/202210061447/</loc>
+        <lastmod>2022-10-06T14:47:19</lastmod>
+    </url>
+    <url>
         <loc>https://ffangl.github.io/202302112047/</loc>
         <lastmod>2023-02-11T20:47:19</lastmod>
     </url>
@@ -263,6 +267,9 @@
     </url>
     <url>
         <loc>https://ffangl.github.io/categories/c-c/</loc>
+    </url>
+    <url>
+        <loc>https://ffangl.github.io/categories/container/</loc>
     </url>
     <url>
         <loc>https://ffangl.github.io/categories/cram/</loc>
@@ -365,6 +372,9 @@
     </url>
     <url>
         <loc>https://ffangl.github.io/tags/django/</loc>
+    </url>
+    <url>
+        <loc>https://ffangl.github.io/tags/docker/</loc>
     </url>
     <url>
         <loc>https://ffangl.github.io/tags/git/</loc>

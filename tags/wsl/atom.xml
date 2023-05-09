@@ -42,6 +42,9 @@
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --import 虚拟机名 目标路径 镜像.tar
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;（使用~可能会出现Error code: Wsl&#x2F;ERROR_PATH_NOT_FOUND，使用完整绝对路径可解决）&lt;&#x2F;p&gt;
+&lt;p&gt;注销（卸载）虚拟机&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --unregister 虚拟机名
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;dockerpei-zhi-wsl-integration&quot;&gt;Docker配置WSL Integration&lt;&#x2F;h2&gt;
 &lt;p&gt;启动Docker Desktop&lt;&#x2F;p&gt;
 &lt;p&gt;docker settings——&amp;gt;General——&amp;gt;勾选&lt;code&gt;Use the WSL 2 based engine&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
@@ -57,14 +60,6 @@
 &lt;p&gt;将 WSL 2 设置为默认版本：&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --set-default-version 2
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h3 id=&quot;fu-chang-yong-docker-ming-ling&quot;&gt;附常用Docker 命令：&lt;&#x2F;h3&gt;
-&lt;ul&gt;
-&lt;li&gt;通过输入以下命令列出 Docker CLI 中可用的命令：&lt;code&gt;docker&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出特定命令的信息：&lt;code&gt;docker &amp;lt;COMMAND&amp;gt; --help&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：&lt;code&gt;docker image ls --all&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出计算机上的容器：&lt;code&gt;docker container ls --all&lt;&#x2F;code&gt; 或 &lt;code&gt;docker ps -a&lt;&#x2F;code&gt;（如果没有 -a 显示全部标志，则仅显示正在运行的容器）&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU &amp;amp; 内存）：&lt;code&gt;docker info&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;vs-code&quot;&gt;VS Code&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;jin-ru-wslgong-zuo-huan-jing&quot;&gt;进入WSL工作环境&lt;&#x2F;h3&gt;
 &lt;p&gt;VS Code安装Remote - WSL插件&lt;&#x2F;p&gt;
@@ -88,7 +83,7 @@
 &lt;p&gt;按住 Control 键并选择显示的地址，可以在默认 Web 浏览器中打开，并查看在其容器中运行的项目。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;ming-ling-xing-dai-li&quot;&gt;命令行代理&lt;&#x2F;h2&gt;
 &lt;p&gt;使用&lt;code&gt;ipconfig&lt;&#x2F;code&gt;查询宿主机的ip&lt;&#x2F;p&gt;
-&lt;p&gt;在WSL命令行配置，例如export ALL_PROXY=http:192.168.1.105:1081&lt;&#x2F;p&gt;
+&lt;p&gt;在WSL命令行配置&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;export ALL_PROXY=http:&#x2F;&#x2F;宿主机ip:1081
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
