@@ -59,6 +59,12 @@ wsl --import 虚拟机名 目标路径 镜像.tar
 
 （使用~可能会出现Error code: Wsl/ERROR_PATH_NOT_FOUND，使用完整绝对路径可解决）
 
+注销（卸载）虚拟机
+
+```
+wsl --unregister 虚拟机名
+```
+
 
 
 ## Docker配置WSL Integration
@@ -90,14 +96,6 @@ wsl.exe --set-version ubuntu 2
 ```
 wsl --set-default-version 2
 ```
-
-### 附常用Docker 命令：
-
-- 通过输入以下命令列出 Docker CLI 中可用的命令：`docker`
-- 使用以下命令列出特定命令的信息：`docker <COMMAND> --help`
-- 使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：`docker image ls --all`
-- 使用以下命令列出计算机上的容器：`docker container ls --all` 或 `docker ps -a`（如果没有 -a 显示全部标志，则仅显示正在运行的容器）
-- 使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU & 内存）：`docker info`
 
 ## VS Code
 
@@ -147,7 +145,7 @@ code .
 
 使用`ipconfig`查询宿主机的ip
 
-在WSL命令行配置，例如export ALL_PROXY=http:192.168.1.105:1081
+在WSL命令行配置
 
 ```
 export ALL_PROXY=http://宿主机ip:1081
