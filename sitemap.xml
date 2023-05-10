@@ -260,6 +260,10 @@
         <lastmod>2023-02-24T17:47:19</lastmod>
     </url>
     <url>
+        <loc>https://ffangl.github.io/202305061447/</loc>
+        <lastmod>2023-05-06T14:47:19</lastmod>
+    </url>
+    <url>
         <loc>https://ffangl.github.io/categories/</loc>
     </url>
     <url>
@@ -387,6 +391,9 @@
     </url>
     <url>
         <loc>https://ffangl.github.io/tags/java/</loc>
+    </url>
+    <url>
+        <loc>https://ffangl.github.io/tags/kubernetes/</loc>
     </url>
     <url>
         <loc>https://ffangl.github.io/tags/latex/</loc>
