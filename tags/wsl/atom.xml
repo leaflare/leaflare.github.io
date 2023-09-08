@@ -5,8 +5,30 @@
     <link href="https://ffangl.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2022-01-26T22:05:54+00:00</updated>
+    <updated>2023-04-07T20:05:54+00:00</updated>
     <id>https://ffangl.github.io/tags/wsl/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>VSC+WSL切换环境格式问题踩坑小记</title>
+        <published>2023-04-07T20:05:54+00:00</published>
+        <updated>2023-04-07T20:05:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangl.github.io/202304072005/" type="text/html"/>
+        <id>https://ffangl.github.io/202304072005/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;qian-qing-ti-yao&quot;&gt;前情提要&lt;&#x2F;h2&gt;
+&lt;p&gt;准备回顾一下以前的老项目，习惯性启动VSC--&amp;gt;git clone，想起来terminal没切环境，重新开一个WSL terminal，然后cd + .&#x2F;gradlew build 出现报错&lt;code&gt;&amp;quot;&#x2F;usr&#x2F;bin&#x2F;env: ‘sh\r’: No such file or directory&amp;quot;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;原因在于Windows和Linux换行符格式不同，在Windows下被打开过的脚本文件在Linux环境使用就很容易遇到这个问题。因为这种情况一般发生在第一次拉仓库的时候，过往一般都会直接删文件夹重开（划掉），不过这次准备尝试一下别的办法，毕竟总会遇到不能靠重开解决的时候hh&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jie-jue&quot;&gt;解决&lt;&#x2F;h2&gt;
+&lt;p&gt;dos2unix + 文件名&lt;&#x2F;p&gt;
+&lt;p&gt;可以用于执行Windows和Linux换行符格式转换，使用起来非常简单&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo apt-get install dos2unix
+&lt;&#x2F;span&gt;&lt;span&gt;dos2unix gradlew
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>WSL使用记录</title>
         <published>2022-01-26T22:05:54+00:00</published>

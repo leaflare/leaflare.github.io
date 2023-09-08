@@ -7,7 +7,7 @@
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-      <title>Fang Li</title>
+      <title>Fang Li - VSC+WSL切换环境格式问题踩坑小记</title>
 
       
 
@@ -105,24 +105,79 @@
             <main>
                 <div class="content" id="mobile-panel">
                     
-    <div class="taxonomy">
-        <h2>Virtual Machine</h2>
-        
-            <div class="taxonomy__item">
-                <span class="taxonomy__item__time">2023-04-07</span>
-                <span class="taxonomy__item__title">
-                    <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202304072005&#x2F;">VSC+WSL切换环境格式问题踩坑小记</a>
-                </span>
-            </div>
-        
-            <div class="taxonomy__item">
-                <span class="taxonomy__item__time">2022-01-26</span>
-                <span class="taxonomy__item__title">
-                    <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202201262205&#x2F;">WSL使用记录</a>
-                </span>
-            </div>
-        
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202304072005/#qian-qing-ti-yao" class="toc-link">前情提要</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202304072005/#jie-jue" class="toc-link">解决</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
     </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202304072005&#x2F;">VSC+WSL切换环境格式问题踩坑小记</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2023-04-07</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span><h2 id="qian-qing-ti-yao">前情提要</h2>
+<p>准备回顾一下以前的老项目，习惯性启动VSC--&gt;git clone，想起来terminal没切环境，重新开一个WSL terminal，然后cd + ./gradlew build 出现报错<code>&quot;/usr/bin/env: ‘sh\r’: No such file or directory&quot;</code></p>
+<p>原因在于Windows和Linux换行符格式不同，在Windows下被打开过的脚本文件在Linux环境使用就很容易遇到这个问题。因为这种情况一般发生在第一次拉仓库的时候，过往一般都会直接删文件夹重开（划掉），不过这次准备尝试一下别的办法，毕竟总会遇到不能靠重开解决的时候hh</p>
+<h2 id="jie-jue">解决</h2>
+<p>dos2unix + 文件名</p>
+<p>可以用于执行Windows和Linux换行符格式转换，使用起来非常简单</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo apt-get install dos2unix
+</span><span>dos2unix gradlew
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangl.github.io/tags/virtual-machine/">#Virtual Machine</a>
+                    
+                        <a href="https://ffangl.github.io/tags/wsl/">#WSL</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
 
                 </div>
             </main>
