@@ -1,7 +1,7 @@
 +++
 title = "vjvm note 00： Basic Info"
-date = 2023-02-11 20:47:19
-slug = "202302112047"
+date = 2022-02-11 20:47:19
+slug = "202202112047"
 
 [taxonomies]
 tags = ["vjvm"]
