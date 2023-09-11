@@ -266,13 +266,13 @@
     </entry>
     <entry xml:lang="zh">
         <title>vjvm note 00： Basic Info</title>
-        <published>2023-02-11T20:47:19+00:00</published>
-        <updated>2023-02-11T20:47:19+00:00</updated>
+        <published>2022-02-11T20:47:19+00:00</published>
+        <updated>2022-02-11T20:47:19+00:00</updated>
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202302112047/" type="text/html"/>
-        <id>https://ffangl.github.io/202302112047/</id>
+        <link rel="alternate" href="https://ffangl.github.io/202202112047/" type="text/html"/>
+        <id>https://ffangl.github.io/202202112047/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;toy jvm，本系列blog用于记录基本项目结构和重要的实现方法&lt;&#x2F;p&gt;
