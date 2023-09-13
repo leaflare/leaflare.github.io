@@ -5,8 +5,65 @@
     <link href="https://ffangl.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-04-07T20:05:54+00:00</updated>
+    <updated>2023-09-13T10:21:54+00:00</updated>
     <id>https://ffangl.github.io/tags/wsl/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>WSL 升级GCC13</title>
+        <published>2023-09-13T10:21:54+00:00</published>
+        <updated>2023-09-13T10:21:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangl.github.io/202309131021/" type="text/html"/>
+        <id>https://ffangl.github.io/202309131021/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;WSL GCC13 Cookbook&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhi-ling-su-cha&quot;&gt;指令速查&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;apt-cache policy gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;很遗憾，目前没有（23.9.13）&lt;&#x2F;p&gt;
+&lt;p&gt;GNU官网：&lt;a href=&quot;http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;&quot;&gt;Index of &#x2F;gnu&#x2F;gcc&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;目前更新至gcc-13.2.0&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-quan-ke-kao-ban&quot;&gt;安全可靠版&lt;&#x2F;h2&gt;
+&lt;p&gt;官网搜link&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;gcc-13.2.0&#x2F;gcc-13.2.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;tar xf gcc-13.2.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;cd gcc-13.2.0&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;.&#x2F;contrib&#x2F;download_prerequisites
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装略慢，而且组件如果因为网络问题安装失败还要手动删除重新安装&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mkdir build 
+&lt;&#x2F;span&gt;&lt;span&gt;cd build
+&lt;&#x2F;span&gt;&lt;span&gt;..&#x2F;configure -enable-checking=release -enable-languages=c, c++ -disable-multilib
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;太慢了可以开多线程 &lt;code&gt;sudo make -j8&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;lan-ren-sheng-shi-ban&quot;&gt;懒人省事版&lt;&#x2F;h2&gt;
+&lt;p&gt;反正只是WSL这个玩具开发环境下写玩具项目而已（划掉&lt;&#x2F;p&gt;
+&lt;p&gt;用别人的PPA（&amp;quot;Personal Package Archive&amp;quot;）&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo add-apt-repository ppa:PPA_OWNER&#x2F;PPA_NAME
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt install PACKAGE_NAME
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;找的是这个&lt;code&gt;ppa:ubuntu-toolchain-r&#x2F;test&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;之前的alternatives需要清一下&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo add-apt-repository ppa:ubuntu-toolchain-r&#x2F;test
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt install gcc-13 g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;usr&#x2F;bin&#x2F;gcc-13
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;usr&#x2F;bin&#x2F;g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;update-alternatives --display gcc
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;etc&#x2F;alternatives&#x2F;g*
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --remove-all gcc
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --remove-all g++
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --install &#x2F;usr&#x2F;bin&#x2F;gcc gcc &#x2F;usr&#x2F;bin&#x2F;gcc-13 10 --slave &#x2F;usr&#x2F;bin&#x2F;g++ g++ &#x2F;usr&#x2F;bin&#x2F;g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;g++ -v
+&lt;&#x2F;span&gt;&lt;span&gt;gcc -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>VSC+WSL切换环境格式问题踩坑小记</title>
         <published>2023-04-07T20:05:54+00:00</published>
