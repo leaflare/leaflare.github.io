@@ -1,5 +1,5 @@
 +++
-title = "WSL 升级GCC13"
+title = "WSL C++ 23 Cookbook"
 date = 2023-09-13 10:21:54
 slug = "202309131021"
 
@@ -11,7 +11,7 @@ categories = ["WSL"]
 
 <!-- more -->
 
-WSL GCC13 Cookbook
+WSL GCC/CMake Cookbook
 
 ## 指令速查
 
@@ -45,7 +45,15 @@ cd build
 sudo make install
 ```
 
-太慢了可以开多线程 `sudo make -j8`
+太慢了可以开多线程 `make -j$(nproc)`
+
+查看处理器核心数
+
+```
+nproc
+```
+
+
 
 ## 懒人省事版
 
@@ -76,5 +84,30 @@ sudo update-alternatives --remove-all g++
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 10 --slave /usr/bin/g++ g++ /usr/bin/g++-13
 g++ -v
 gcc -v
+```
+
+
+
+## CMake更新最新版本
+
+亲测当前（23.9.13）WSL可直接获取的最高版本cmake3.16.4不能支持CXX 23标准，所有还是只能手动升级
+
+删掉旧版本的办法（不过似乎最好别删原生版本
+
+```
+sudo apt purge cmake
+```
+
+官网查link: [Download | CMake](https://cmake.org/download/)
+
+```
+wget https://github.com/Kitware/CMake/releases/download/v3.27.4/cmake-3.27.4.tar.gz
+tar -xzvf cmake-3.27.4.tar.gz
+cd cmake-3.27.4
+sudo ./bootstrap
+sudo make
+sudo make install
+
+cmake  --version 
 ```
 
