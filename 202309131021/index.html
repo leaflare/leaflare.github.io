@@ -7,7 +7,7 @@
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-      <title>Fang Li - WSL 升级GCC13</title>
+      <title>Fang Li - WSL C++ 23 Cookbook</title>
 
       
 
@@ -128,6 +128,11 @@
                     
                 </li>
                 
+                <li>
+                    <a href="https://ffangl.github.io/202309131021/#cmakegeng-xin-zui-xin-ban-ben" class="toc-link">CMake更新最新版本</a>
+                    
+                </li>
+                
             </ul>
         </nav>
     </div>
@@ -138,7 +143,7 @@
     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202309131021&#x2F;">WSL 升级GCC13</a>
+            <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202309131021&#x2F;">WSL C++ 23 Cookbook</a>
         </h1>
         <div class="post__meta">
             <span class="post__time">2023-09-13</span>
@@ -148,7 +153,7 @@
 
     <div class="post-content">
       <span id="continue-reading"></span>
-<p>WSL GCC13 Cookbook</p>
+<p>WSL GCC/CMake Cookbook</p>
 <h2 id="zhi-ling-su-cha">指令速查</h2>
 <pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>apt-cache policy gcc
 </span></code></pre>
@@ -168,7 +173,10 @@
 </span><span>../configure -enable-checking=release -enable-languages=c, c++ -disable-multilib
 </span><span>sudo make install
 </span></code></pre>
-<p>太慢了可以开多线程 <code>sudo make -j8</code></p>
+<p>太慢了可以开多线程 <code>make -j$(nproc)</code></p>
+<p>查看处理器核心数</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>nproc
+</span></code></pre>
 <h2 id="lan-ren-sheng-shi-ban">懒人省事版</h2>
 <p>反正只是WSL这个玩具开发环境下写玩具项目而已（划掉</p>
 <p>用别人的PPA（&quot;Personal Package Archive&quot;）</p>
@@ -190,6 +198,21 @@
 </span><span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 10 --slave /usr/bin/g++ g++ /usr/bin/g++-13
 </span><span>g++ -v
 </span><span>gcc -v
+</span></code></pre>
+<h2 id="cmakegeng-xin-zui-xin-ban-ben">CMake更新最新版本</h2>
+<p>亲测当前（23.9.13）WSL可直接获取的最高版本cmake3.16.4不能支持CXX 23标准，所有还是只能手动升级</p>
+<p>删掉旧版本的办法（不过似乎最好别删原生版本</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo apt purge cmake
+</span></code></pre>
+<p>官网查link: <a href="https://cmake.org/download/">Download | CMake</a></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wget https://github.com/Kitware/CMake/releases/download/v3.27.4/cmake-3.27.4.tar.gz
+</span><span>tar -xzvf cmake-3.27.4.tar.gz
+</span><span>cd cmake-3.27.4
+</span><span>sudo ./bootstrap
+</span><span>sudo make
+</span><span>sudo make install
+</span><span>
+</span><span>cmake  --version 
 </span></code></pre>
 
     </div>

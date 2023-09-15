@@ -5,10 +5,24 @@
     <link href="https://ffangl.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://ffangl.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-09-13T10:21:54+00:00</updated>
+    <updated>2023-09-14T10:21:54+00:00</updated>
     <id>https://ffangl.github.io/tags/wsl/atom.xml</id>
     <entry xml:lang="zh">
-        <title>WSL 升级GCC13</title>
+        <title>WSL Linux kernel 手动更新</title>
+        <published>2023-09-14T10:21:54+00:00</published>
+        <updated>2023-09-14T10:21:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://ffangl.github.io/202309141021/" type="text/html"/>
+        <id>https://ffangl.github.io/202309141021/</id>
+        
+        <summary type="html">&lt;p&gt;体验WSL环境下手动编译安装Linux kernel，实践&amp;amp;踩坑记录&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>WSL C++ 23 Cookbook</title>
         <published>2023-09-13T10:21:54+00:00</published>
         <updated>2023-09-13T10:21:54+00:00</updated>
         <author>
@@ -18,7 +32,7 @@
         <id>https://ffangl.github.io/202309131021/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
-&lt;p&gt;WSL GCC13 Cookbook&lt;&#x2F;p&gt;
+&lt;p&gt;WSL GCC&#x2F;CMake Cookbook&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;zhi-ling-su-cha&quot;&gt;指令速查&lt;&#x2F;h2&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;apt-cache policy gcc
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
@@ -38,7 +52,10 @@
 &lt;&#x2F;span&gt;&lt;span&gt;..&#x2F;configure -enable-checking=release -enable-languages=c, c++ -disable-multilib
 &lt;&#x2F;span&gt;&lt;span&gt;sudo make install
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;太慢了可以开多线程 &lt;code&gt;sudo make -j8&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;太慢了可以开多线程 &lt;code&gt;make -j$(nproc)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;查看处理器核心数&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;nproc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;lan-ren-sheng-shi-ban&quot;&gt;懒人省事版&lt;&#x2F;h2&gt;
 &lt;p&gt;反正只是WSL这个玩具开发环境下写玩具项目而已（划掉&lt;&#x2F;p&gt;
 &lt;p&gt;用别人的PPA（&amp;quot;Personal Package Archive&amp;quot;）&lt;&#x2F;p&gt;
@@ -60,6 +77,21 @@
 &lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --install &#x2F;usr&#x2F;bin&#x2F;gcc gcc &#x2F;usr&#x2F;bin&#x2F;gcc-13 10 --slave &#x2F;usr&#x2F;bin&#x2F;g++ g++ &#x2F;usr&#x2F;bin&#x2F;g++-13
 &lt;&#x2F;span&gt;&lt;span&gt;g++ -v
 &lt;&#x2F;span&gt;&lt;span&gt;gcc -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;cmakegeng-xin-zui-xin-ban-ben&quot;&gt;CMake更新最新版本&lt;&#x2F;h2&gt;
+&lt;p&gt;亲测当前（23.9.13）WSL可直接获取的最高版本cmake3.16.4不能支持CXX 23标准，所有还是只能手动升级&lt;&#x2F;p&gt;
+&lt;p&gt;删掉旧版本的办法（不过似乎最好别删原生版本&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo apt purge cmake
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;官网查link: &lt;a href=&quot;https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F;&quot;&gt;Download | CMake&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wget https:&#x2F;&#x2F;github.com&#x2F;Kitware&#x2F;CMake&#x2F;releases&#x2F;download&#x2F;v3.27.4&#x2F;cmake-3.27.4.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;tar -xzvf cmake-3.27.4.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;cd cmake-3.27.4
+&lt;&#x2F;span&gt;&lt;span&gt;sudo .&#x2F;bootstrap
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make install
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cmake  --version 
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
         

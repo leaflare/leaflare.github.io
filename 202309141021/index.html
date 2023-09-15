@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Fang Li - WSL Linux kernel 手动更新</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://ffangl.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Fang L</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangl.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangl">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;ffangl.github.io">Fang L</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangl.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;ffangl">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202309141021/#jing-xiang-bei-fen-he-hui-fu" class="toc-link">镜像备份和恢复</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202309141021/#huo-qu-geng-xin" class="toc-link">获取更新</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202309141021/#fang-fa-yi" class="toc-link">方法一</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://ffangl.github.io/202309141021/#fang-fa-er-rong-yi-cai-keng" class="toc-link">方法二（容易踩坑）</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;ffangl.github.io&#x2F;202309141021&#x2F;">WSL Linux kernel 手动更新</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2023-09-14</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <p>体验WSL环境下手动编译安装Linux kernel，实践&amp;踩坑记录</p>
+<span id="continue-reading"></span>
+<p>目前（23.9.13）最新的WSL只提供到5.15.90，更高版本的Linux kernel 需要手动更新。</p>
+<p>wsl内查看当前Linux kernel版本</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>uname -rs
+</span></code></pre>
+<h2 id="jing-xiang-bei-fen-he-hui-fu">镜像备份和恢复</h2>
+<p>预防翻车，先对wsl进行备份：</p>
+<p>cmd查看现有wsl</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl -l -v
+</span></code></pre>
+<p>导出镜像</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl --export wsl_name path\xxx.tar
+</span></code></pre>
+<p>恢复同理</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl --import wsl_name path\xxx.tar
+</span></code></pre>
+<p>但是导入的时候Ubuntu版本必须相同，例如只能在安装了WSL Ubuntu-20.04的主机上导入Ubuntu-20.04版本的镜像</p>
+<h2 id="huo-qu-geng-xin">获取更新</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo apt install git bc build-essential flex bison libssl-dev libelf-dev dwarves
+</span></code></pre>
+<h2 id="fang-fa-yi">方法一</h2>
+<p>从 <a href="https://link.zhihu.com/?target=https%3A//github.com/microsoft/WSL2-Linux-Kernel/releases">WSL2 git</a> 下载微软改好的内核，但是仍需要编译安装</p>
+<p>虽然版本选择上很受限，但优点是不太容易遇到不适配或者编译失败的问题。</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wget https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/linux-msft-wsl-6.1.21.2.tar.gz
+</span><span>tar -xf linux-msft-wsl-6.1.21.2.tar.gz
+</span></code></pre>
+<p>解压后</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>cd WSL2-Linux-Kernel-linux-msft-wsl-6.1.21.2
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>make KCONFIG_CONFIG=Microsoft/config-wsl
+</span></code></pre>
+<p>检查目录.\arch\x86\boot下是否有bzImage文件</p>
+<p>当前根目录下（目录WSL2-Linux-Kernel-linux-msft-wsl-6.1.21.2）继续执行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>powershell.exe /C &#39;Copy-Item .\arch\x86\boot\bzImage $env:USERPROFILE&#39;
+</span><span>powershell.exe /C &#39;Write-Output [wsl2]`nkernel=$env:USERPROFILE\bzImage | % {$_.replace(&quot;\&quot;,&quot;\\&quot;)} | Out-File $env:USERPROFILE\.wslconfig -encoding ASCII&#39;
+</span></code></pre>
+<p>执行顺利的话在<code>$env:USERPROFILE</code>会多出两个文件<code>bzImage</code>和<code>.wslconfig</code>, <code>bzImage</code>就是前面编译的产物, <code>.wslconfig</code>是wsl的配置文件，最大进程数等配置也可以在这里设置。该配置直接作用于当前WSL。</p>
+<p>然后</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>exit
+</span><span>wsl --shutdown
+</span><span>wsl
+</span></code></pre>
+<p>重启后确认当前内核版本</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>uname -rs
+</span><span>Linux 6.1.21.2-microsoft-standard-WSL2
+</span></code></pre>
+<h2 id="fang-fa-er-rong-yi-cai-keng">方法二（容易踩坑）</h2>
+<p>从 <a href="https://link.zhihu.com/?target=http%3A//kernel.org/">kernel.org</a> 下载最新的内核，配合微软的配置，编译安装任意指定版本，但是部分版本可能会遇到未知的坑</p>
+<p>在官网找到想要的版本<a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git">kernel/git/stable/linux.git - Linux kernel stable tree</a></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wget https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/linux-6.5.2.tar.gz
+</span><span>tar -xf v6.5.2.tar.gz
+</span></code></pre>
+<p>WSL GitHub：<a href="https://github.com/microsoft/WSL2-Linux-Kernel">microsoft/WSL2-Linux-Kernel: The source for the Linux kernel used in Windows Subsystem for Linux 2 (WSL2) (github.com)</a>，在仓库的branch中找到对应的支持版</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wget https://github.com/microsoft/WSL2-Linux-Kernel/blob/linux-msft-wsl-6.1.y/Microsoft/config-wsl
+</span></code></pre>
+<p>可以看到<code>Saving to: ‘config-wsl’</code>，对应替换下文的<code>config-wsl</code></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>cp config-wsl linux-6.5.2/arch/x86/configs/wsl_defconfig
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>cd linux-6.5.2
+</span><span>make KCONFIG_CONFIG=arch/x86/configs/wsl_defconfig -j$(nproc)
+</span></code></pre>
+<p>一路回车，反正有备份（划掉</p>
+<p>后面的步骤同上</p>
+<p>编译完不要退出去，检查目录linux-6.5.2/arch/x86/boot下是否有bzImage文件，在<code>linux-6.5.2</code>目录下执行</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>powershell.exe /C &#39;Copy-Item .\arch\x86\boot\bzImage $env:USERPROFILE&#39;
+</span><span>powershell.exe /C &#39;Write-Output [wsl2]`nkernel=$env:USERPROFILE\bzImage | % {$_.replace(&quot;\&quot;,&quot;\\&quot;)} | Out-File $env:USERPROFILE\.wslconfig -encoding ASCII&#39;
+</span></code></pre>
+<p>执行顺利的话在<code>$env:USERPROFILE</code>会多出两个文件<code>bzImage</code>和<code>.wslconfig</code>, <code>bzImage</code>就是前面编译的产物, <code>.wslconfig</code>是wsl的配置文件，最大进程数等配置也可以在这里设置。</p>
+<p>然后</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>exit
+</span><span>wsl --shutdown
+</span><span>wsl
+</span></code></pre>
+<p>重启后确认当前内核版本</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>uname -rs
+</span></code></pre>
+<p>补充：wsl本身的默认路径</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>C:\Users\USER_NAME\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04LTS_79rhkp1fndgsc\LocalState
+</span></code></pre>
+<p>重装的时候可以检查一下是否卸载干净了</p>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://ffangl.github.io/tags/virtual-machine/">#Virtual Machine</a>
+                    
+                        <a href="https://ffangl.github.io/tags/wsl/">#WSL</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://ffangl.github.io/even.js" ></script>
+      
+    </body>
+
+</html>
