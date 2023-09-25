@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - WSL</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/categories/wsl/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/categories/wsl/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-26T22:05:54+00:00</updated>
-    <id>https://leaflare.github.io/categories/wsl/atom.xml</id>
+    <id>https://arceusj2000.github.io/categories/wsl/atom.xml</id>
     <entry xml:lang="zh">
         <title>WSL使用记录</title>
         <published>2022-01-26T22:05:54+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201262205/" type="text/html"/>
-        <id>https://leaflare.github.io/202201262205/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202201262205/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202201262205/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;

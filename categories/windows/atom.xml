@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - Windows</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/categories/windows/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/categories/windows/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-09-10T21:36:14+00:00</updated>
-    <id>https://leaflare.github.io/categories/windows/atom.xml</id>
+    <id>https://arceusj2000.github.io/categories/windows/atom.xml</id>
     <entry xml:lang="zh">
         <title>Win10使用经验总结</title>
         <published>2021-09-10T21:36:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202109102136/" type="text/html"/>
-        <id>https://leaflare.github.io/202109102136/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202109102136/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202109102136/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;nei-zhi-gong-ju&quot;&gt;内置工具&lt;&#x2F;h1&gt;

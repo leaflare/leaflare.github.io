@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - MySQL</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/mysql/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/tags/mysql/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-14T20:17:19+00:00</updated>
-    <id>https://leaflare.github.io/tags/mysql/atom.xml</id>
+    <id>https://arceusj2000.github.io/tags/mysql/atom.xml</id>
     <entry xml:lang="zh">
         <title>JDBC for MySQL</title>
         <published>2022-01-14T20:17:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201142017/" type="text/html"/>
-        <id>https://leaflare.github.io/202201142017/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202201142017/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202201142017/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
@@ -96,8 +96,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201121933/" type="text/html"/>
-        <id>https://leaflare.github.io/202201121933/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202201121933/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202201121933/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
@@ -134,8 +134,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201042037/" type="text/html"/>
-        <id>https://leaflare.github.io/202201042037/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202201042037/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202201042037/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;yu-ju-xiang-guan&quot;&gt;语句相关&lt;&#x2F;h2&gt;
@@ -159,9 +159,9 @@
 &lt;h3 id=&quot;bao-cuo-chu-li-1&quot;&gt;报错处理&lt;&#x2F;h3&gt;
 &lt;h4 id=&quot;jie-kou-xing-shi-bao-cuo&quot;&gt;接口形式报错&lt;&#x2F;h4&gt;
 &lt;p&gt;事故现场：&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymysql_error.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymysql_error.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;解决：&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymsql_solve.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202201042037&#x2F;.%5Cimg%5Cpymsql_solve.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;ubuntuhuan-jing-de-mysql&quot;&gt;ubuntu环境的MySQL&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;xiu-gai-mi-ma&quot;&gt;修改密码&lt;&#x2F;h3&gt;
 &lt;p&gt;查看mysql数据库自动设置的随机账户与密码&lt;&#x2F;p&gt;

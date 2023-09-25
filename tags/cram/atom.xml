@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - Cram</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/cram/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/tags/cram/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-04-20T17:21:06+00:00</updated>
-    <id>https://leaflare.github.io/tags/cram/atom.xml</id>
+    <id>https://arceusj2000.github.io/tags/cram/atom.xml</id>
     <entry xml:lang="zh">
         <title>算法题trick</title>
         <published>2021-04-20T17:21:06+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202104201721/" type="text/html"/>
-        <id>https://leaflare.github.io/202104201721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202104201721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202104201721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;bian-jie-qing-kuang-chu-li&quot;&gt;边界情况处理&lt;&#x2F;h1&gt;
 &lt;h3 id=&quot;shao-bing&quot;&gt;哨兵&lt;&#x2F;h3&gt;
@@ -108,8 +108,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202104111721/" type="text/html"/>
-        <id>https://leaflare.github.io/202104111721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202104111721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202104111721/</id>
         
         <summary type="html">&lt;p&gt;动态规划&lt;&#x2F;p&gt;
 </summary>
@@ -122,8 +122,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202104101721/" type="text/html"/>
-        <id>https://leaflare.github.io/202104101721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202104101721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202104101721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;bing-cha-ji&quot;&gt;并查集&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;lu-jing-ya-suo-chang-yong&quot;&gt;路径压缩（常用）&lt;&#x2F;h2&gt;
@@ -537,9 +537,9 @@
 &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
 &lt;p&gt;注意：「线段树」和「树状数组」不能处理输入数组的长度有增加或者减少的情况。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;ying-yong-chang-jing&quot;&gt;应用场景&lt;&#x2F;h2&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202104101721&#x2F;.%5Cimg%5Cchoice.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202104101721&#x2F;.%5Cimg%5Cchoice.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;h2&gt;
 &lt;h2 id=&quot;jie-gou&quot;&gt;结构&lt;&#x2F;h2&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202104101721&#x2F;.%5Cimg%5Cstructure.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202104101721&#x2F;.%5Cimg%5Cstructure.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;dowalle.gitbook.io&#x2F;algo&#x2F;algorithm&#x2F;1-shu-ju-jie-gou&#x2F;5-shu-zhuang-shu-zu-xian-duan-shu#er-shu-zhuang-shu-zu&quot;&gt;树状数组&amp;amp;线段树&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;shu-zhuang-shu-zu-mo-ban&quot;&gt;树状数组模板&lt;&#x2F;h2&gt;
 &lt;p&gt;n 为原始数组的元素个数&lt;&#x2F;p&gt;
@@ -760,8 +760,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202102201721/" type="text/html"/>
-        <id>https://leaflare.github.io/202102201721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202102201721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202102201721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;suan-fa&quot;&gt;算法&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;er-fen&quot;&gt;二分&lt;&#x2F;h2&gt;
@@ -1157,8 +1157,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202102101721/" type="text/html"/>
-        <id>https://leaflare.github.io/202102101721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202102101721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202102101721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;shu-zu-xiang-guan&quot;&gt;数组相关&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;arrays-sortzi-ding-yi-bi-jiao-qi&quot;&gt;Arrays.sort自定义比较器&lt;&#x2F;h3&gt;
@@ -1194,8 +1194,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/201906101721/" type="text/html"/>
-        <id>https://leaflare.github.io/201906101721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/201906101721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/201906101721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;cao-zuo-fu-xiang-guan&quot;&gt;操作符相关&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;he-qu-bie&quot;&gt;&amp;amp;&amp;amp;和&amp;amp;区别&lt;&#x2F;h2&gt;
@@ -1217,8 +1217,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/201901101721/" type="text/html"/>
-        <id>https://leaflare.github.io/201901101721/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/201901101721/" type="text/html"/>
+        <id>https://arceusj2000.github.io/201901101721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;vectorxiang-guan&quot;&gt;vector相关&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;vectorchuan-can&quot;&gt;vector传参&lt;&#x2F;h3&gt;

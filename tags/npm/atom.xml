@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - Npm</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/npm/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/tags/npm/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-12-15T12:55:12+00:00</updated>
-    <id>https://leaflare.github.io/tags/npm/atom.xml</id>
+    <id>https://arceusj2000.github.io/tags/npm/atom.xml</id>
     <entry xml:lang="zh">
         <title>npm报错处理合集</title>
         <published>2021-12-15T12:55:12+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202112151255/" type="text/html"/>
-        <id>https://leaflare.github.io/202112151255/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202112151255/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202112151255/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;npm-warn-deprecated-core-js-2-6-11-core-js-3-is-no-longer-maintained-and-not-recommended-for-usage&quot;&gt;npm WARN deprecated core-js@2.6.11: core-js@&amp;lt;3 is no longer maintained and not recommended for usage&lt;&#x2F;h2&gt;

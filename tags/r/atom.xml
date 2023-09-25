@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Arceus - R</title>
     <subtitle>Arceus Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/r/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link href="https://arceusj2000.github.io/tags/r/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-03-01T16:42:14+00:00</updated>
-    <id>https://leaflare.github.io/tags/r/atom.xml</id>
+    <id>https://arceusj2000.github.io/tags/r/atom.xml</id>
     <entry xml:lang="zh">
         <title>Logistic regression algorithm</title>
         <published>2021-03-01T16:42:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202103011642/" type="text/html"/>
-        <id>https://leaflare.github.io/202103011642/</id>
+        <link rel="alternate" href="https://arceusj2000.github.io/202103011642/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202103011642/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
@@ -59,7 +59,7 @@
 &lt;p&gt;There are many machine learning algorithm models available in sklearn, and it is very easy to call them in the form above to build a logistic regression model and train it with the training set data. If you want to use other algorithms, just change the algorithm model.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;model-testing&quot;&gt;Model testing&lt;&#x2F;h3&gt;
 &lt;p&gt;After the fourth step of model training, we use the trained model to test the data. The first line of code is the data prediction result, the second line outputs the prediction result, the third line evaluates the scores predicted by the model, and the fourth outputs the scores.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;The accuracy of the model prediction is 94.7% through the above test results, which shows that the logistic regression algorithm achieves better results.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;example-of-logistic-regression-in-r&quot;&gt;Example of Logistic Regression in R&lt;&#x2F;h2&gt;
 &lt;pre data-lang=&quot;R&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-R &quot;&gt;&lt;code class=&quot;language-R&quot; data-lang=&quot;R&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Load data
