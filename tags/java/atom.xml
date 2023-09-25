@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Java</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/tags/java/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/tags/java/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-11-12T16:13:14+00:00</updated>
-    <id>https://arceusj2000.github.io/tags/java/atom.xml</id>
+    <id>https://leaflare.github.io/tags/java/atom.xml</id>
     <entry xml:lang="zh">
         <title>Java版本问题处理合集</title>
         <published>2021-11-12T16:13:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202111121613/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202111121613/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202111121613/" type="text/html"/>
+        <id>https://leaflare.github.io/202111121613/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bu-yi-zhi-bao-cuo&quot;&gt;不一致报错&lt;&#x2F;h2&gt;

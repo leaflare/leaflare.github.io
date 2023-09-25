@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Python</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-02-05T15:16:18+00:00</updated>
-    <id>https://arceusj2000.github.io/tags/python/atom.xml</id>
+    <id>https://leaflare.github.io/tags/python/atom.xml</id>
     <entry xml:lang="zh">
         <title>Graphviz使用记录</title>
         <published>2022-02-05T15:16:18+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202051516/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202051516/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202051516/" type="text/html"/>
+        <id>https://leaflare.github.io/202202051516/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
@@ -37,9 +37,9 @@
 &lt;p&gt;Python 安装路径下，找到文件 &lt;strong&gt;subprocess.py&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;如果是Anaconda，文件所在的地址是C:\Users\xxx\Anaconda3\Lib&lt;&#x2F;p&gt;
 &lt;p&gt;找到 &lt;strong&gt;Popen(object)&lt;&#x2F;strong&gt; 类&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;找到这个类的 &lt;strong&gt;init()&lt;strong&gt;方法，把 640行的&lt;&#x2F;strong&gt;shell=False&lt;&#x2F;strong&gt; 修改为 &lt;strong&gt;shell=True&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;记得重启IDE！&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;ce-shi-dai-ma&quot;&gt;测试代码&lt;&#x2F;h3&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;graphviz &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;Digraph
@@ -112,8 +112,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201151642/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201151642/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201151642/" type="text/html"/>
+        <id>https://leaflare.github.io/202201151642/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
@@ -396,8 +396,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201151443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201151443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201151443/" type="text/html"/>
+        <id>https://leaflare.github.io/202201151443/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;cha-zhao-an-zhuang-di-zhi&quot;&gt;查找安装地址&lt;&#x2F;h1&gt;
@@ -503,8 +503,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201102136/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201102136/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201102136/" type="text/html"/>
+        <id>https://leaflare.github.io/202201102136/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;condageng-xin-bao-cuo&quot;&gt;conda更新报错&lt;&#x2F;h2&gt;
@@ -541,8 +541,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201091721/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201091721/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201091721/" type="text/html"/>
+        <id>https://leaflare.github.io/202201091721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
@@ -615,8 +615,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201051443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201051443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201051443/" type="text/html"/>
+        <id>https://leaflare.github.io/202201051443/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;pandasxian-shi-she-zhi&quot;&gt;pandas显示设置&lt;&#x2F;h1&gt;
@@ -707,8 +707,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202112121613/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202112121613/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202112121613/" type="text/html"/>
+        <id>https://leaflare.github.io/202112121613/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;piphe-pip3de-qu-bie&quot;&gt;pip和pip3的区别&lt;&#x2F;h2&gt;
@@ -729,8 +729,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202111151443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202111151443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202111151443/" type="text/html"/>
+        <id>https://leaflare.github.io/202111151443/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-lei-xing-chu-li&quot;&gt;数据类型处理&lt;&#x2F;h2&gt;
@@ -774,8 +774,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202108151443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202108151443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202108151443/" type="text/html"/>
+        <id>https://leaflare.github.io/202108151443/</id>
         
         <summary type="html">&lt;p&gt;常用可视化图表速查&lt;&#x2F;p&gt;
 </summary>
@@ -788,8 +788,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202107151443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202107151443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202107151443/" type="text/html"/>
+        <id>https://leaflare.github.io/202107151443/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;这东西有CPU版本和GPU版本两种，GPU版本的完全依赖CUDA+CUDNN，直接pip install只会报一堆让人摸不着头脑的错（x&lt;&#x2F;p&gt;
@@ -829,8 +829,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202103011642/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202103011642/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202103011642/" type="text/html"/>
+        <id>https://leaflare.github.io/202103011642/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
@@ -874,7 +874,7 @@
 &lt;p&gt;There are many machine learning algorithm models available in sklearn, and it is very easy to call them in the form above to build a logistic regression model and train it with the training set data. If you want to use other algorithms, just change the algorithm model.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;model-testing&quot;&gt;Model testing&lt;&#x2F;h3&gt;
 &lt;p&gt;After the fourth step of model training, we use the trained model to test the data. The first line of code is the data prediction result, the second line outputs the prediction result, the third line evaluates the scores predicted by the model, and the fourth outputs the scores.&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202103011642&#x2F;.%5Cimg%5Cpython_result.PNG&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;The accuracy of the model prediction is 94.7% through the above test results, which shows that the logistic regression algorithm achieves better results.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;example-of-logistic-regression-in-r&quot;&gt;Example of Logistic Regression in R&lt;&#x2F;h2&gt;
 &lt;pre data-lang=&quot;R&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-R &quot;&gt;&lt;code class=&quot;language-R&quot; data-lang=&quot;R&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Load data
@@ -989,8 +989,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202009131443/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202009131443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202009131443/" type="text/html"/>
+        <id>https://leaflare.github.io/202009131443/</id>
         
         <summary type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
 </summary>

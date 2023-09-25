@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Visuization</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/tags/visuization/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/tags/visuization/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-02-05T15:16:18+00:00</updated>
-    <id>https://arceusj2000.github.io/tags/visuization/atom.xml</id>
+    <id>https://leaflare.github.io/tags/visuization/atom.xml</id>
     <entry xml:lang="zh">
         <title>Graphviz使用记录</title>
         <published>2022-02-05T15:16:18+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202051516/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202051516/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202051516/" type="text/html"/>
+        <id>https://leaflare.github.io/202202051516/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
@@ -37,9 +37,9 @@
 &lt;p&gt;Python 安装路径下，找到文件 &lt;strong&gt;subprocess.py&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;如果是Anaconda，文件所在的地址是C:\Users\xxx\Anaconda3\Lib&lt;&#x2F;p&gt;
 &lt;p&gt;找到 &lt;strong&gt;Popen(object)&lt;&#x2F;strong&gt; 类&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cpopen.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;找到这个类的 &lt;strong&gt;init()&lt;strong&gt;方法，把 640行的&lt;&#x2F;strong&gt;shell=False&lt;&#x2F;strong&gt; 修改为 &lt;strong&gt;shell=True&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;arceusj2000.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;leaflare.github.io&#x2F;202202051516&#x2F;.%5Cimg%5Cinit.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;记得重启IDE！&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;ce-shi-dai-ma&quot;&gt;测试代码&lt;&#x2F;h3&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;graphviz &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;Digraph

@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Quant</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/categories/quant/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/categories/quant/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-15T16:42:14+00:00</updated>
-    <id>https://arceusj2000.github.io/categories/quant/atom.xml</id>
+    <id>https://leaflare.github.io/categories/quant/atom.xml</id>
     <entry xml:lang="zh">
         <title>python绘制candlestick</title>
         <published>2022-01-15T16:42:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201151642/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201151642/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201151642/" type="text/html"/>
+        <id>https://leaflare.github.io/202201151642/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
@@ -298,8 +298,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201091721/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201091721/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201091721/" type="text/html"/>
+        <id>https://leaflare.github.io/202201091721/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;

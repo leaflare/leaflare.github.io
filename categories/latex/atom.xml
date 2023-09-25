@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - LaTex</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/categories/latex/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/categories/latex/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-29T15:36:14+00:00</updated>
-    <id>https://arceusj2000.github.io/categories/latex/atom.xml</id>
+    <id>https://leaflare.github.io/categories/latex/atom.xml</id>
     <entry xml:lang="zh">
         <title>LaTex使用总结</title>
         <published>2022-01-29T15:36:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202201291536/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202201291536/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201291536/" type="text/html"/>
+        <id>https://leaflare.github.io/202201291536/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;xue-xi-bi-ji&quot;&gt;学习笔记&lt;&#x2F;h1&gt;

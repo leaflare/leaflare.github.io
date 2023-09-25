@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Reading Notes</title>
     <subtitle>Blog</subtitle>
-    <link href="https://arceusj2000.github.io/categories/reading-notes/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://arceusj2000.github.io"/>
+    <link href="https://leaflare.github.io/categories/reading-notes/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-06-07T20:17:19+00:00</updated>
-    <id>https://arceusj2000.github.io/categories/reading-notes/atom.xml</id>
+    <id>https://leaflare.github.io/categories/reading-notes/atom.xml</id>
     <entry xml:lang="zh">
         <title>Reading Notes on FEDB</title>
         <published>2022-06-07T20:17:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202206072017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202206072017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202206072017/" type="text/html"/>
+        <id>https://leaflare.github.io/202206072017/</id>
         
         <summary type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
 </summary>
@@ -28,8 +28,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202205222017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202205222017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202205222017/" type="text/html"/>
+        <id>https://leaflare.github.io/202205222017/</id>
         
         <summary type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
 </summary>
@@ -42,8 +42,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202204022017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202204022017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202204022017/" type="text/html"/>
+        <id>https://leaflare.github.io/202204022017/</id>
         
         <summary type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
 </summary>
@@ -56,8 +56,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202203132017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202203132017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203132017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203132017/</id>
         
         <summary type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
 </summary>
@@ -70,8 +70,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202203092017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202203092017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203092017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203092017/</id>
         
         <summary type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
 &lt;p&gt;Umbra: A Disk-Based System with In-Memory Performance (CIDR 2020, TUM)&lt;&#x2F;p&gt;
@@ -85,8 +85,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202203052017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202203052017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203052017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203052017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on &lt;&#x2F;p&gt;
 &lt;p&gt;Ease.ml: towards multi-tenant resource sharing for machine learning workloads&lt;&#x2F;p&gt;
@@ -103,8 +103,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202203012017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202203012017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203012017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203012017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.48550&#x2F;arXiv.1803.04884&lt;&#x2F;p&gt;
 &lt;p&gt;IDEL: In-Database Entity Linking with Neural Embeddings&lt;&#x2F;p&gt;
@@ -118,8 +118,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202252017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202252017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202252017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202252017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ISCA45697.2020.00035&lt;&#x2F;p&gt;
 &lt;p&gt;Gorgon: Accelerating Machine Learning from Relational Data&lt;&#x2F;p&gt;
@@ -133,8 +133,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202212017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202212017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202212017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202212017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on Li G, Zhou X, Li S. XuanYuan: An AI-Native Database[J]. IEEE Data Eng. Bull., 2019, 42(2): 70-81.&lt;&#x2F;p&gt;
 </summary>
@@ -147,8 +147,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202182017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202182017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202182017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202182017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.datak.2019.05.003&lt;&#x2F;p&gt;
 &lt;p&gt;SubspaceDB : In-database subspace clustering for analytical query processing&lt;&#x2F;p&gt;
@@ -162,8 +162,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202172017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202172017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202172017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202172017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3386137&lt;&#x2F;p&gt;
 &lt;p&gt;Vertica-ML: Distributed Machine Learning in Vertica Database&lt;&#x2F;p&gt;
@@ -177,8 +177,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202152017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202152017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202152017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202152017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3127479.3132746&lt;&#x2F;p&gt;
 &lt;p&gt;SQML: large-scale in-database machine learning with pure SQL&lt;&#x2F;p&gt;
@@ -192,8 +192,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202112017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202112017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202112017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202112017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3318464.3380575&lt;&#x2F;p&gt;
 &lt;p&gt;DB4ML - An In-Memory Database Kernel with Machine Learning Support&lt;&#x2F;p&gt;
@@ -207,8 +207,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202082017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202082017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202082017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202082017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on  https:&#x2F;&#x2F;doi.org&#x2F;10.14778&#x2F;3137765.3137812&lt;&#x2F;p&gt;
 &lt;p&gt;MLog: towards declarative in-database machine learning&lt;&#x2F;p&gt;
@@ -222,8 +222,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202032017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202032017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202032017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202032017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3329486.3329494&lt;&#x2F;p&gt;
 &lt;p&gt;MLearn: A Declarative Machine Learning Language for Database Systems&lt;&#x2F;p&gt;
@@ -237,8 +237,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://arceusj2000.github.io/202202012017/" type="text/html"/>
-        <id>https://arceusj2000.github.io/202202012017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202202012017/" type="text/html"/>
+        <id>https://leaflare.github.io/202202012017/</id>
         
         <summary type="html">&lt;p&gt;Reading notes on https:&#x2F;&#x2F;doi.org&#x2F;10.1145&#x2F;3003665.3003669&lt;&#x2F;p&gt;
 </summary>
