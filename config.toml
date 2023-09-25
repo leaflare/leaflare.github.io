@@ -32,6 +32,8 @@ build_search_index = false
 highlight_code = true
 
 [extra]
+katex_enable = true
+katex_auto_render = true
 # Put all your custom variables here
 author = "Leaflare"
 even_menu = [
