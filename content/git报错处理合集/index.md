@@ -198,6 +198,21 @@ Mac OS采用回车CR表示下一行（CR：CarriageReturn，回车）。
 
 可以通过 `git config core.autocrlf` 命令来显示当前Git 中对待换行符的方式
 
+## The file will have its original line endings in your working directory
+
+解决
+
+```
+git rm -r --cached .
+git config core.autocrlf false
+git add .
+git commit -m ''
+ 
+git push
+```
+
+
+
 # 个人访问令牌
 
 github21年8月13后不再支持用户名密码的方式验证

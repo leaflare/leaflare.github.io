@@ -71,4 +71,3 @@ $ git rebase -i [startpoint] [endpoint]
 commit message信息修改
 
 执行`git commit --amend`出现编辑界面（vim），编辑方法同Linux下的vim，编辑后保存并退出
-
