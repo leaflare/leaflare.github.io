@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>Arceus - vjvm</title>
+    <subtitle>Arceus Blog</subtitle>
+    <link href="https://arceusj2000.github.io/tags/vjvm/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://arceusj2000.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-02-13T20:47:19+00:00</updated>
+    <id>https://arceusj2000.github.io/tags/vjvm/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>vjvm note 01： ClassLoader</title>
+        <published>2023-02-13T20:47:19+00:00</published>
+        <updated>2023-02-13T20:47:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://arceusj2000.github.io/202302132047/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202302132047/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;classloader&quot;&gt;ClassLoader&lt;&#x2F;h2&gt;
+&lt;p&gt;作为Java运行时环境的一部分，Java ClassLoader动态地将Java类加载到Java虚拟机中。通过在Java中使用类加载器，它不需要Java运行时系统了解文件和文件系统的情况。Java类在应用程序需要时被加载，而不是一次性加载到内存中。Java中的ClassLoader是由JRE调用的。这些ClassLoaders动态地将类加载到内存中。&lt;&#x2F;p&gt;
+&lt;p&gt;在java中，有以下3种默认的类加载器:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bootstrap ClassLoader:&lt;&#x2F;strong&gt; Loads class from JRE&#x2F;lib&#x2F;rt.jar&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Extension ClassLoader:&lt;&#x2F;strong&gt; Loads class from JRE&#x2F;lib&#x2F;ext&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Application ClassLoader:&lt;&#x2F;strong&gt; Loads class from CLASSPATH environment variable&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;shuang-qin-wei-tuo-jia-zai-ji-zhi-parent-first&quot;&gt;双亲委托加载机制（Parent-First）&lt;&#x2F;h2&gt;
+&lt;p&gt;ClassLoader委托层次模型的运作顺序是:&lt;&#x2F;p&gt;
+&lt;p&gt;Application ClassLoader -&amp;gt; Extension ClassLoader -&amp;gt; Bootstrap ClassLoader&lt;&#x2F;p&gt;
+&lt;p&gt;Java 默认使用了名为 parent-first 的策略：每个 loader（除 Bootstrap Loader 外）均有一个&lt;strong&gt;亲代加载器 （parent）&lt;&#x2F;strong&gt;，在搜索 class 时首先委托亲代进行搜索，找不到时才搜索自己的加载路径。 于是，各个 ClassLoader 之间就形成了如下的委托关系：&lt;&#x2F;p&gt;
+&lt;img src=&quot;.\img\loader-hierarchy.png&quot; style=&quot;zoom:80%;&quot; &#x2F;&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;if 需要加载的 class 已被保存在 definedClass 中：
+&lt;&#x2F;span&gt;&lt;span&gt;    返回已加载的 class
+&lt;&#x2F;span&gt;&lt;span&gt;else if parent 不为 null：
+&lt;&#x2F;span&gt;&lt;span&gt;    使用 parent 加载 class
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;if parent 未找到相应的 class：
+&lt;&#x2F;span&gt;&lt;span&gt;    for searchPaths 中的每一项：
+&lt;&#x2F;span&gt;&lt;span&gt;        尝试使用它来加载类，并调用 JClass 构造函数构造类
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;if 所有的 searchPath 都没有找到需要加载的类：
+&lt;&#x2F;span&gt;&lt;span&gt;    返回 null
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在查找 class 文件时，一个 loader 可能会搜索以下两种路径：&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;搜索单个目录&lt;&#x2F;p&gt;
+&lt;p&gt;在指定 &lt;code&gt;&#x2F;foo&lt;&#x2F;code&gt; 为加载路径时，如果加载 &lt;code&gt;bar.A&lt;&#x2F;code&gt; 类，你应该查找 &lt;code&gt;&#x2F;foo&#x2F;bar&#x2F;A.class&lt;&#x2F;code&gt; 文件。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;单个 Jar 文件&lt;&#x2F;p&gt;
+&lt;p&gt;Jar 文件事实上是一个 zip 压缩包，将多个 class 文件打包在一起。在从 &lt;code&gt;&#x2F;foo&#x2F;bar.jar&lt;&#x2F;code&gt; 中加载 &lt;code&gt;baz.B&lt;&#x2F;code&gt; 时，你应该读取该文件并搜索其中的 &lt;code&gt;baz&#x2F;B.class&lt;&#x2F;code&gt;路径。JDK 中提供了 &lt;code&gt;JarFile&lt;&#x2F;code&gt; 类来读取 jar 文件。（可以使用 &lt;code&gt;jar -tf &amp;lt;jarfile&amp;gt;&lt;&#x2F;code&gt; 查看 Jar 文件的内容）&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;jclassloader&quot;&gt;JClassLoader&lt;&#x2F;h2&gt;
+&lt;p&gt;负责实现上述功能。&lt;&#x2F;p&gt;
+&lt;p&gt;JClassLoader首先检查所请求的类是否已经被定义，如果是就返回它。如果父类加载器不是空的，它将尝试使用父类加载器来加载该类。如果失败了，它就依次尝试使用每个类的搜索路径来加载该类。&lt;&#x2F;p&gt;
+&lt;p&gt;当成功找到一个类时，代码会使用DataInputStream构造一个JClass对象并缓存结果。close()方法也被实现，以便在不再需要类加载器时关闭每个类的搜索路径。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;classsearchpath&quot;&gt;ClassSearchPath&lt;&#x2F;h2&gt;
+&lt;p&gt;一个抽象类，为不同类型的搜索路径提供了一个通用接口，包括类文件或 JAR 文件。&lt;&#x2F;p&gt;
+&lt;p&gt;该类有一个静态方法 constructSearchPath，它接收一个代表搜索类文件的路径的字符串。这个字符串使用系统的路径分隔符被分割成不同的路径，并且为每个路径创建一个 ClassSearchPath 对象。如果路径以 .jar 结尾，那么就会创建一个 JarFileSearchPath 对象，否则就会创建一个 ClassFileSearchPath 对象。&lt;&#x2F;p&gt;
+&lt;p&gt;findClass 方法接收一个代表要查找的类的名称的字符串，如果找到了，则返回一个包含该类的二进制数据的 InputStream，如果没有找到，则返回 null。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;classloader
+&lt;&#x2F;span&gt;&lt;span&gt;src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;classloader
+&lt;&#x2F;span&gt;&lt;span&gt;	searchpath
+&lt;&#x2F;span&gt;&lt;span&gt;		ClassSearchPath.java
+&lt;&#x2F;span&gt;&lt;span&gt;        DirSearchPath.java
+&lt;&#x2F;span&gt;&lt;span&gt;        JarSearchPath.java
+&lt;&#x2F;span&gt;&lt;span&gt;        ModuleSearchPath.java
+&lt;&#x2F;span&gt;&lt;span&gt;	JClassLoader.java
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

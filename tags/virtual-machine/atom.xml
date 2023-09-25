@@ -5,8 +5,119 @@
     <link href="https://arceusj2000.github.io/tags/virtual-machine/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2022-01-26T22:05:54+00:00</updated>
+    <updated>2023-09-14T10:21:54+00:00</updated>
     <id>https://arceusj2000.github.io/tags/virtual-machine/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>WSL Linux kernel 手动更新</title>
+        <published>2023-09-14T10:21:54+00:00</published>
+        <updated>2023-09-14T10:21:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://arceusj2000.github.io/202309141021/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202309141021/</id>
+        
+        <summary type="html">&lt;p&gt;体验WSL环境下手动编译安装Linux kernel，实践&amp;amp;踩坑记录&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>WSL C++ 23 Cookbook</title>
+        <published>2023-09-13T10:21:54+00:00</published>
+        <updated>2023-09-13T10:21:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://arceusj2000.github.io/202309131021/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202309131021/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;WSL GCC&#x2F;CMake Cookbook&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zhi-ling-su-cha&quot;&gt;指令速查&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;apt-cache policy gcc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;很遗憾，目前没有（23.9.13）&lt;&#x2F;p&gt;
+&lt;p&gt;GNU官网：&lt;a href=&quot;http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;&quot;&gt;Index of &#x2F;gnu&#x2F;gcc&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;目前更新至gcc-13.2.0&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-quan-ke-kao-ban&quot;&gt;安全可靠版&lt;&#x2F;h2&gt;
+&lt;p&gt;官网搜link&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wget http:&#x2F;&#x2F;ftp.gnu.org&#x2F;gnu&#x2F;gcc&#x2F;gcc-13.2.0&#x2F;gcc-13.2.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;tar xf gcc-13.2.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;cd gcc-13.2.0&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;.&#x2F;contrib&#x2F;download_prerequisites
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;安装略慢，而且组件如果因为网络问题安装失败还要手动删除重新安装&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mkdir build 
+&lt;&#x2F;span&gt;&lt;span&gt;cd build
+&lt;&#x2F;span&gt;&lt;span&gt;..&#x2F;configure -enable-checking=release -enable-languages=c, c++ -disable-multilib
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;太慢了可以开多线程 &lt;code&gt;make -j$(nproc)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;查看处理器核心数&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;nproc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;lan-ren-sheng-shi-ban&quot;&gt;懒人省事版&lt;&#x2F;h2&gt;
+&lt;p&gt;反正只是WSL这个玩具开发环境下写玩具项目而已（划掉&lt;&#x2F;p&gt;
+&lt;p&gt;用别人的PPA（&amp;quot;Personal Package Archive&amp;quot;）&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo add-apt-repository ppa:PPA_OWNER&#x2F;PPA_NAME
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt install PACKAGE_NAME
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;找的是这个&lt;code&gt;ppa:ubuntu-toolchain-r&#x2F;test&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;之前的alternatives需要清一下&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo add-apt-repository ppa:ubuntu-toolchain-r&#x2F;test
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt install gcc-13 g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;usr&#x2F;bin&#x2F;gcc-13
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;usr&#x2F;bin&#x2F;g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;update-alternatives --display gcc
+&lt;&#x2F;span&gt;&lt;span&gt;ll &#x2F;etc&#x2F;alternatives&#x2F;g*
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --remove-all gcc
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --remove-all g++
+&lt;&#x2F;span&gt;&lt;span&gt;sudo update-alternatives --install &#x2F;usr&#x2F;bin&#x2F;gcc gcc &#x2F;usr&#x2F;bin&#x2F;gcc-13 10 --slave &#x2F;usr&#x2F;bin&#x2F;g++ g++ &#x2F;usr&#x2F;bin&#x2F;g++-13
+&lt;&#x2F;span&gt;&lt;span&gt;g++ -v
+&lt;&#x2F;span&gt;&lt;span&gt;gcc -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;cmakegeng-xin-zui-xin-ban-ben&quot;&gt;CMake更新最新版本&lt;&#x2F;h2&gt;
+&lt;p&gt;亲测当前（23.9.13）WSL可直接获取的最高版本cmake3.16.4不能支持CXX 23标准，所有还是只能手动升级&lt;&#x2F;p&gt;
+&lt;p&gt;删掉旧版本的办法（不过似乎最好别删原生版本&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo apt purge cmake
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;官网查link: &lt;a href=&quot;https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F;&quot;&gt;Download | CMake&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wget https:&#x2F;&#x2F;github.com&#x2F;Kitware&#x2F;CMake&#x2F;releases&#x2F;download&#x2F;v3.27.4&#x2F;cmake-3.27.4.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;tar -xzvf cmake-3.27.4.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;cd cmake-3.27.4
+&lt;&#x2F;span&gt;&lt;span&gt;sudo .&#x2F;bootstrap
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make
+&lt;&#x2F;span&gt;&lt;span&gt;sudo make install
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cmake  --version 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
+        <title>VSC+WSL切换环境格式问题踩坑小记</title>
+        <published>2023-04-07T20:05:54+00:00</published>
+        <updated>2023-04-07T20:05:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://arceusj2000.github.io/202304072005/" type="text/html"/>
+        <id>https://arceusj2000.github.io/202304072005/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;qian-qing-ti-yao&quot;&gt;前情提要&lt;&#x2F;h2&gt;
+&lt;p&gt;准备回顾一下以前的老项目，习惯性启动VSC--&amp;gt;git clone，想起来terminal没切环境，重新开一个WSL terminal，然后cd + .&#x2F;gradlew build 出现报错&lt;code&gt;&amp;quot;&#x2F;usr&#x2F;bin&#x2F;env: ‘sh\r’: No such file or directory&amp;quot;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;原因在于Windows和Linux换行符格式不同，在Windows下被打开过的脚本文件在Linux环境使用就很容易遇到这个问题。因为这种情况一般发生在第一次拉仓库的时候，过往一般都会直接删文件夹重开（划掉），不过这次准备尝试一下别的办法，毕竟总会遇到不能靠重开解决的时候hh&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jie-jue&quot;&gt;解决&lt;&#x2F;h2&gt;
+&lt;p&gt;dos2unix + 文件名&lt;&#x2F;p&gt;
+&lt;p&gt;可以用于执行Windows和Linux换行符格式转换，使用起来非常简单&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo apt-get install dos2unix
+&lt;&#x2F;span&gt;&lt;span&gt;dos2unix gradlew
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>WSL使用记录</title>
         <published>2022-01-26T22:05:54+00:00</published>
@@ -21,6 +132,30 @@
 &lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;wslan-zhuang&quot;&gt;WSL安装&lt;&#x2F;h2&gt;
 &lt;p&gt;微软商店下载需要的Linux发行版&lt;&#x2F;p&gt;
+&lt;p&gt;微软商店下载速度过慢的一种（可能的）解决方法：&lt;&#x2F;p&gt;
+&lt;p&gt;在开始菜单——设置——更新和安全——传递优化 里面，勾选 &lt;em&gt;我本地网络上的电脑和Internet上的电脑&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wslshe-zhi&quot;&gt;WSL设置&lt;&#x2F;h2&gt;
+&lt;p&gt;在宿主机上找到WSL：&lt;&#x2F;p&gt;
+&lt;p&gt;WIN+R 或者文件资源管理器 输入&lt;code&gt;\\wsl$&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;\\wsl$\Ubuntu\etc\apt&lt;&#x2F;code&gt;sources.list换国内镜像&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;~&lt;&#x2F;code&gt;目录下的文件对应&lt;code&gt;\\wsl$\Ubuntu\home\unix&lt;&#x2F;code&gt;目录&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;wslchang-yong-ming-ling&quot;&gt;WSL常用命令&lt;&#x2F;h2&gt;
+&lt;p&gt;查看虚拟机列表&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl -l
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;查看虚拟机列表状态&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl -l -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;切换虚拟机&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl -d 虚拟机名
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;挂载新的虚拟机&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --import 虚拟机名 目标路径 镜像.tar
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;（使用~可能会出现Error code: Wsl&#x2F;ERROR_PATH_NOT_FOUND，使用完整绝对路径可解决）&lt;&#x2F;p&gt;
+&lt;p&gt;注销（卸载）虚拟机&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --unregister 虚拟机名
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h2 id=&quot;dockerpei-zhi-wsl-integration&quot;&gt;Docker配置WSL Integration&lt;&#x2F;h2&gt;
 &lt;p&gt;启动Docker Desktop&lt;&#x2F;p&gt;
 &lt;p&gt;docker settings——&amp;gt;General——&amp;gt;勾选&lt;code&gt;Use the WSL 2 based engine&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
@@ -36,19 +171,6 @@
 &lt;p&gt;将 WSL 2 设置为默认版本：&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;wsl --set-default-version 2
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h3 id=&quot;fu-chang-yong-docker-ming-ling&quot;&gt;附常用Docker 命令：&lt;&#x2F;h3&gt;
-&lt;ul&gt;
-&lt;li&gt;通过输入以下命令列出 Docker CLI 中可用的命令：&lt;code&gt;docker&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出特定命令的信息：&lt;code&gt;docker &amp;lt;COMMAND&amp;gt; --help&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：&lt;code&gt;docker image ls --all&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出计算机上的容器：&lt;code&gt;docker container ls --all&lt;&#x2F;code&gt; 或 &lt;code&gt;docker ps -a&lt;&#x2F;code&gt;（如果没有 -a 显示全部标志，则仅显示正在运行的容器）&lt;&#x2F;li&gt;
-&lt;li&gt;使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU &amp;amp; 内存）：&lt;code&gt;docker info&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;wslshe-zhi&quot;&gt;WSL设置&lt;&#x2F;h2&gt;
-&lt;p&gt;在宿主机上找到WSL：&lt;&#x2F;p&gt;
-&lt;p&gt;WIN+R 或者文件资源管理器 输入&lt;code&gt;\\wsl$&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;code&gt;\\wsl$\Ubuntu\etc\apt&lt;&#x2F;code&gt;sources.list换国内镜像&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;code&gt;~&lt;&#x2F;code&gt;目录下的文件对应&lt;code&gt;\\wsl$\Ubuntu\home\unix&lt;&#x2F;code&gt;目录&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;vs-code&quot;&gt;VS Code&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;jin-ru-wslgong-zuo-huan-jing&quot;&gt;进入WSL工作环境&lt;&#x2F;h3&gt;
 &lt;p&gt;VS Code安装Remote - WSL插件&lt;&#x2F;p&gt;
@@ -72,7 +194,7 @@
 &lt;p&gt;按住 Control 键并选择显示的地址，可以在默认 Web 浏览器中打开，并查看在其容器中运行的项目。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;ming-ling-xing-dai-li&quot;&gt;命令行代理&lt;&#x2F;h2&gt;
 &lt;p&gt;使用&lt;code&gt;ipconfig&lt;&#x2F;code&gt;查询宿主机的ip&lt;&#x2F;p&gt;
-&lt;p&gt;在WSL命令行配置，例如export ALL_PROXY=http:192.168.1.105:1081&lt;&#x2F;p&gt;
+&lt;p&gt;在WSL命令行配置&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;export ALL_PROXY=http:&#x2F;&#x2F;宿主机ip:1081
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 </content>
