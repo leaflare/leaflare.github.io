@@ -80,11 +80,11 @@ findClass 方法接收一个代表要查找的类的名称的字符串，如果�
 ```
 $ tree src/main/java/vjvm/classloader
 src/main/java/vjvm/classloader
-├── searchpath
-│   └── ClassSearchPath.java
+	searchpath
+		ClassSearchPath.java
         DirSearchPath.java
         JarSearchPath.java
         ModuleSearchPath.java
-└──JClassLoader.java
+	JClassLoader.java
 ```
 
