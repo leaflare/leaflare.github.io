@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Arceus - Django</title>
-    <subtitle>Arceus Blog</subtitle>
+    <title>Leaflare - Django</title>
+    <subtitle>Blog</subtitle>
     <link href="https://arceusj2000.github.io/tags/django/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>

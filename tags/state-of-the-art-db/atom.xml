@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Arceus - State-of-the-art DB</title>
-    <subtitle>Arceus Blog</subtitle>
+    <title>Leaflare - State-of-the-art DB</title>
+    <subtitle>Blog</subtitle>
     <link href="https://arceusj2000.github.io/tags/state-of-the-art-db/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://arceusj2000.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
