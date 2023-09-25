@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Fang Li - State-of-the-art DB</title>
-    <subtitle>Fang L&#x27;s Blog</subtitle>
-    <link href="https://ffangl.github.io/tags/state-of-the-art-db/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangl.github.io"/>
+    <title>Leaflare - State-of-the-art DB</title>
+    <subtitle>Fang&#x27;s Blog</subtitle>
+    <link href="https://leaflare.github.io/tags/state-of-the-art-db/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-06-07T20:17:19+00:00</updated>
-    <id>https://ffangl.github.io/tags/state-of-the-art-db/atom.xml</id>
+    <id>https://leaflare.github.io/tags/state-of-the-art-db/atom.xml</id>
     <entry xml:lang="zh">
         <title>Reading Notes on FEDB</title>
         <published>2022-06-07T20:17:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202206072017/" type="text/html"/>
-        <id>https://ffangl.github.io/202206072017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202206072017/" type="text/html"/>
+        <id>https://leaflare.github.io/202206072017/</id>
         
         <summary type="html">&lt;p&gt;Optimizing In-memory Database Engine for AI-powered On-line Decision Augmentation Using Persistent Memory (VLDB 2021, 4paradigm, NUS, Intel)&lt;&#x2F;p&gt;
 </summary>
@@ -28,8 +28,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202205222017/" type="text/html"/>
-        <id>https://ffangl.github.io/202205222017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202205222017/" type="text/html"/>
+        <id>https://leaflare.github.io/202205222017/</id>
         
         <summary type="html">&lt;p&gt;Data Blocks: Hybrid OLTP and OLAP on Compressed Storage using both Vectorization and Compilation (SIGMOD 2016, TUM)&lt;&#x2F;p&gt;
 </summary>
@@ -42,8 +42,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202204022017/" type="text/html"/>
-        <id>https://ffangl.github.io/202204022017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202204022017/" type="text/html"/>
+        <id>https://leaflare.github.io/202204022017/</id>
         
         <summary type="html">&lt;p&gt;Anti-Caching: A New Approach to Database Management System Architecture (VLDB 2013, Brown + MIT)&lt;&#x2F;p&gt;
 </summary>
@@ -56,8 +56,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202203132017/" type="text/html"/>
-        <id>https://ffangl.github.io/202203132017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203132017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203132017/</id>
         
         <summary type="html">&lt;p&gt;LeanStore: In-Memory Data Management Beyond Main Memory (ICDE 2018, TUM)&lt;&#x2F;p&gt;
 </summary>
@@ -70,8 +70,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202203092017/" type="text/html"/>
-        <id>https://ffangl.github.io/202203092017/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202203092017/" type="text/html"/>
+        <id>https://leaflare.github.io/202203092017/</id>
         
         <summary type="html">&lt;p&gt;Umbra DB&lt;&#x2F;p&gt;
 &lt;p&gt;Umbra: A Disk-Based System with In-Memory Performance (CIDR 2020, TUM)&lt;&#x2F;p&gt;

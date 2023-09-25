@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Fang Li - Git</title>
-    <subtitle>Fang L&#x27;s Blog</subtitle>
-    <link href="https://ffangl.github.io/categories/git/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangl.github.io"/>
+    <title>Leaflare - Git</title>
+    <subtitle>Fang&#x27;s Blog</subtitle>
+    <link href="https://leaflare.github.io/categories/git/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-08T20:08:34+00:00</updated>
-    <id>https://ffangl.github.io/categories/git/atom.xml</id>
+    <id>https://leaflare.github.io/categories/git/atom.xml</id>
     <entry xml:lang="zh">
         <title>github pages搭建个人博客</title>
         <published>2022-01-08T20:08:34+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202201082008/" type="text/html"/>
-        <id>https://ffangl.github.io/202201082008/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201082008/" type="text/html"/>
+        <id>https://leaflare.github.io/202201082008/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
@@ -131,8 +131,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202201081241/" type="text/html"/>
-        <id>https://ffangl.github.io/202201081241/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201081241/" type="text/html"/>
+        <id>https://leaflare.github.io/202201081241/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;以https:&#x2F;&#x2F;github.com&#x2F;iphysresearch&#x2F;GWToolkit.git为例&lt;&#x2F;p&gt;
@@ -185,8 +185,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202201071745/" type="text/html"/>
-        <id>https://ffangl.github.io/202201071745/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202201071745/" type="text/html"/>
+        <id>https://leaflare.github.io/202201071745/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;大部分都是网络问题报错&lt;&#x2F;p&gt;
@@ -304,8 +304,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202110071745/" type="text/html"/>
-        <id>https://ffangl.github.io/202110071745/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202110071745/" type="text/html"/>
+        <id>https://leaflare.github.io/202110071745/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi&quot;&gt;配置&lt;&#x2F;h2&gt;

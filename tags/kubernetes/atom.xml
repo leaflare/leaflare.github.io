@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Fang Li - Kubernetes</title>
-    <subtitle>Fang L&#x27;s Blog</subtitle>
-    <link href="https://ffangl.github.io/tags/kubernetes/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangl.github.io"/>
+    <title>Leaflare - Kubernetes</title>
+    <subtitle>Fang&#x27;s Blog</subtitle>
+    <link href="https://leaflare.github.io/tags/kubernetes/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-05-06T14:47:19+00:00</updated>
-    <id>https://ffangl.github.io/tags/kubernetes/atom.xml</id>
+    <id>https://leaflare.github.io/tags/kubernetes/atom.xml</id>
     <entry xml:lang="zh">
         <title>Kubernetes 实践记录</title>
         <published>2023-05-06T14:47:19+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202305061447/" type="text/html"/>
-        <id>https://ffangl.github.io/202305061447/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202305061447/" type="text/html"/>
+        <id>https://leaflare.github.io/202305061447/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;xiang-guan-gai-nian&quot;&gt;相关概念&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;servicehe-podde-guan-xi&quot;&gt;service和pod的关系&lt;&#x2F;h3&gt;

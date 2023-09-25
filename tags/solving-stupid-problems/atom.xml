@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Fang Li - Solving stupid problems</title>
-    <subtitle>Fang L&#x27;s Blog</subtitle>
-    <link href="https://ffangl.github.io/tags/solving-stupid-problems/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangl.github.io"/>
+    <title>Leaflare - Solving stupid problems</title>
+    <subtitle>Fang&#x27;s Blog</subtitle>
+    <link href="https://leaflare.github.io/tags/solving-stupid-problems/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2020-09-13T14:43:14+00:00</updated>
-    <id>https://ffangl.github.io/tags/solving-stupid-problems/atom.xml</id>
+    <id>https://leaflare.github.io/tags/solving-stupid-problems/atom.xml</id>
     <entry xml:lang="zh">
         <title>Solving stupid problems——装不上某个python包</title>
         <published>2020-09-13T14:43:14+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202009131443/" type="text/html"/>
-        <id>https://ffangl.github.io/202009131443/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202009131443/" type="text/html"/>
+        <id>https://leaflare.github.io/202009131443/</id>
         
         <summary type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;
 </summary>

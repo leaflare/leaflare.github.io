@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
-    <title>Fang Li - Tools</title>
-    <subtitle>Fang L&#x27;s Blog</subtitle>
-    <link href="https://ffangl.github.io/tags/tools/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://ffangl.github.io"/>
+    <title>Leaflare - Tools</title>
+    <subtitle>Fang&#x27;s Blog</subtitle>
+    <link href="https://leaflare.github.io/tags/tools/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2020-06-26T22:05:54+00:00</updated>
-    <id>https://ffangl.github.io/tags/tools/atom.xml</id>
+    <id>https://leaflare.github.io/tags/tools/atom.xml</id>
     <entry xml:lang="zh">
         <title>guanshui工具记录</title>
         <published>2020-06-26T22:05:54+00:00</published>
@@ -14,8 +14,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202006262205/" type="text/html"/>
-        <id>https://ffangl.github.io/202006262205/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202006262205/" type="text/html"/>
+        <id>https://leaflare.github.io/202006262205/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;su-yuan-tu-pu&quot;&gt;溯源图谱&lt;&#x2F;h2&gt;
@@ -31,8 +31,8 @@
         <author>
           <name>Unknown</name>
         </author>
-        <link rel="alternate" href="https://ffangl.github.io/202004262205/" type="text/html"/>
-        <id>https://ffangl.github.io/202004262205/</id>
+        <link rel="alternate" href="https://leaflare.github.io/202004262205/" type="text/html"/>
+        <id>https://leaflare.github.io/202004262205/</id>
         
         <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;ocrgong-ju&quot;&gt;OCR工具&lt;&#x2F;h2&gt;
