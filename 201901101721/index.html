@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Leaflare - C++记录</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+              
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+                  onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+      
+          <link rel="stylesheet" href="https://leaflare.github.io/site.css">
+          
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Leaflare</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;leaflare">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;leaflare.github.io">Leaflare</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;leaflare">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://leaflare.github.io/201901101721/#vectorxiang-guan" class="toc-link">vector相关</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#vectorchuan-can" class="toc-link">vector传参</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#vectorchu-shi-hua" class="toc-link">vector初始化</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#vectorqing-kong" class="toc-link">vector清空</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/201901101721/#shu-zu-xiang-guan" class="toc-link">数组相关</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#shu-zu-chu-shi-hua" class="toc-link">数组初始化</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/201901101721/#shu-zhi-xiang-guan" class="toc-link">数值相关</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#chu-shi-hua-ji-da-zhi" class="toc-link">初始化极大值</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#zheng-wu-qiong-yu-fu-wu-qiong" class="toc-link">正无穷与负无穷</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/201901101721/#shu-ru-shu-chu-chu-li-xiang-guan" class="toc-link">输入输出处理相关</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#eoftiao-jian-pan-duan-while-scanf-d-d-n-m-eof-gong-neng-deng-xiao-yu-while-scanf-d-d-n-m" class="toc-link">EOF条件判断：while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF) 功能等效于 while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#jie-guo-shu-chu-ji-de-huan-xing-fu" class="toc-link">结果输出记得换行符</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/201901101721/#c-c-deng-xiao-yu-ju" class="toc-link">C&#x2F;C++等效语句</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/201901101721/#while-scanf-d-a-eof-gong-neng-deng-xiao-yu-while-cin-a-eof" class="toc-link">while(scanf(&quot;%d&quot;,&amp;a)!=EOF) 功能等效于 while(!(cin&gt;&gt;a).eof())</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;201901101721&#x2F;">C++记录</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2019-01-10</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span><h2 id="vectorxiang-guan">vector相关</h2>
+<h3 id="vectorchuan-can">vector传参</h3>
+<p>c++中常用的vector容器作为参数时，有三种传参方式，分别如下（为说明问题，用二维vector）：</p>
+<ul>
+<li>function1(std::vector&lt;std::vector<int> &gt; vec)，传值</li>
+<li>function2(std::vector&lt;std::vector<int> &gt;&amp; vec)，传引用</li>
+<li>function3(std::vector&lt;std::vector<int> &gt;* vec)，传指针</li>
+</ul>
+<p>三种方式的效果分别为：</p>
+<ul>
+<li>会发生拷贝构造</li>
+<li>不会发生拷贝构造</li>
+<li>不会发生拷贝构造</li>
+</ul>
+<p>验证程序</p>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">function1</span><span>(std::vector&lt;std::vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; &gt; </span><span style="color:#bf616a;">vec</span><span>)
+</span><span>{
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">-----------------------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function1.&amp;vec:</span><span>&quot;&lt;&lt;&amp;vec&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec[i]的地址（即第一层vector的地址）
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function1.&amp;vec[i]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>        cout&lt;&lt;&amp;vec[i]&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function1.&amp;vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;&amp;vec[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">---------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素值
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function1.vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;vec[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>}
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">function2</span><span>(std::vector&lt;std::vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; &gt;&amp; </span><span style="color:#bf616a;">vec</span><span>)
+</span><span>{
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">-----------------------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function2.&amp;vec:</span><span>&quot;&lt;&lt;&amp;vec&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec[i]的地址（即第一层vector的地址）
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function2.&amp;vec[i]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>        cout&lt;&lt;&amp;vec[i]&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function2.&amp;vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;&amp;vec[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">---------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素值
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function2.vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;vec[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>
+</span><span>}
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">function3</span><span>(std::vector&lt;std::vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; &gt; *</span><span style="color:#bf616a;">vec</span><span>)
+</span><span>{
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">-----------------------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function3.&amp;vec:</span><span>&quot;&lt;&lt;vec&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec[i]的地址（即第一层vector的地址）
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function3.&amp;vec[i]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>        cout&lt;&lt;&amp;(*vec)[i]&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function3.&amp;vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;&amp;(*vec)[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">---------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印vec的各元素值
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">function3.vec[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;(*vec)[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#65737e;">//创建2*3的vector容器v,初始值均初始化为0 1 2 1 2 3
+</span><span>    std::vector&lt;std::vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; &gt; </span><span style="color:#bf616a;">v</span><span>(</span><span style="color:#d08770;">2</span><span>,std::</span><span style="color:#bf616a;">vector</span><span>&lt;</span><span style="color:#b48ead;">int</span><span>&gt;(</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">0</span><span>));
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            v[i][j]=i+j;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//打印v的地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">&amp;v:</span><span>&quot;&lt;&lt;&amp;v&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印v[i]的地址（即第一层vector的地址）
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">&amp;v[i]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>        cout&lt;&lt;&amp;v[i]&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印v的各元素地址
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">&amp;v[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;&amp;v[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">---------------------------</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#65737e;">//打印v的各元素值
+</span><span>    cout&lt;&lt;&quot;</span><span style="color:#a3be8c;">v[i][j]:</span><span>&quot;&lt;&lt;endl;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> i=</span><span style="color:#d08770;">0</span><span>;i&lt;</span><span style="color:#d08770;">2</span><span>;i++)
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> j=</span><span style="color:#d08770;">0</span><span>;j&lt;</span><span style="color:#d08770;">3</span><span>;j++)
+</span><span>            cout&lt;&lt;v[i][j]&lt;&lt;&quot; &quot;;
+</span><span>        cout&lt;&lt;endl;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">function1</span><span>(v);
+</span><span>    </span><span style="color:#bf616a;">function2</span><span>(v);
+</span><span>    </span><span style="color:#bf616a;">function3</span><span>(&amp;v);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h3 id="vectorchu-shi-hua">vector初始化</h3>
+<h4 id="yi-wei-shu-zu">一维数组</h4>
+<p>vector &lt; int &gt; v(n,m);//n个m</p>
+<p>或</p>
+<p>vector &lt; int &gt; v;此时size=0</p>
+<p>v.resize(n, m) ;</p>
+<p>或</p>
+<p>vector &lt; int &gt; v(v0); //使用另外一个数组来初始化v，这里的v0也必须是vector</p>
+<p>或</p>
+<p>vector &lt; int &gt; v(*p, *q); //使用另外一个数组的指针来初始化v，这里即可以使用vector的指针，也可以使用普通数组的指针。</p>
+<p>例如：</p>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>	</span><span style="color:#b48ead;">int</span><span> a[</span><span style="color:#d08770;">3</span><span>] = { </span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3 </span><span>};
+</span><span>	vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; v = {</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">4</span><span>};
+</span><span>	
+</span><span>	vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; </span><span style="color:#8fa1b3;">v2</span><span>(</span><span style="color:#bf616a;">a</span><span>, a+</span><span style="color:#d08770;">2</span><span>);
+</span><span>	</span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; v2.</span><span style="color:#bf616a;">size</span><span>(); i++)
+</span><span>		cout &lt;&lt; v2[i] &lt;&lt; &quot; &quot;;          </span><span style="color:#65737e;">//输出为1 2
+</span><span>	cout &lt;&lt; endl;
+</span><span>	
+</span><span>	vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; </span><span style="color:#8fa1b3;">v3</span><span>(v.</span><span style="color:#bf616a;">begin</span><span>()+</span><span style="color:#d08770;">1</span><span>, v.</span><span style="color:#bf616a;">end</span><span>() - </span><span style="color:#d08770;">1</span><span>);
+</span><span>	</span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; v3.</span><span style="color:#bf616a;">size</span><span>(); i++)
+</span><span>		cout &lt;&lt; v3[i] &lt;&lt; &quot; &quot;;   		</span><span style="color:#65737e;">//输出为2 3
+</span><span>
+</span></code></pre>
+<h4 id="er-wei-shu-zu">二维数组</h4>
+<p>vector &lt; vector &lt; int &gt; &gt; v;//和一维数组一样，这里的v的size是0。
+可以先v.resize(n)来初始化一个长度为n的二维数组，然后使用一个for循环</p>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>		</span><span style="color:#b48ead;">for </span><span>(</span><span style="color:#b48ead;">int</span><span> i = </span><span style="color:#d08770;">0</span><span>; i &lt; v.</span><span style="color:#bf616a;">size</span><span>(); i++)
+</span><span>			v[i].</span><span style="color:#bf616a;">resize</span><span>(n);
+</span><span>
+</span></code></pre>
+<p>这样v的大小就是n*n。
+也可以v.resize(n, v0),使用n个一维数组来初始化一个二维数组。
+这里v0可以直接使用vector(n,m)来表示，比如</p>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>vector&lt;vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; </span><span style="color:#8fa1b3;">v</span><span>(</span><span style="color:#d08770;">3</span><span>, vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;(</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">1</span><span>));
+</span><span>
+</span></code></pre>
+<p>3*4大小的二维数组，值全为1。</p>
+<p>vector &lt; vector &lt; int &gt; &gt; v(n, v0);//这个和resize的用法一样。</p>
+<p>使用指针初始化：</p>
+<p>和一维数组类似，可以使用vector指针</p>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>		vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; v0 = { </span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">4 </span><span>};
+</span><span>		vector&lt;vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; </span><span style="color:#8fa1b3;">v1</span><span>(</span><span style="color:#d08770;">4</span><span>, </span><span style="color:#bf616a;">v0</span><span>);
+</span><span>		vector&lt;vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt;&gt; </span><span style="color:#8fa1b3;">v</span><span>(v1.</span><span style="color:#bf616a;">begin</span><span>()+</span><span style="color:#d08770;">1</span><span>, v1.</span><span style="color:#bf616a;">end</span><span>()-</span><span style="color:#d08770;">1</span><span>); </span><span style="color:#65737e;">//此时的v是 {{1,2,3,4},{1,2,3,4}}
+</span><span>
+</span></code></pre>
+<h3 id="vectorqing-kong">vector清空</h3>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">iostream</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">vector</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">using namespace</span><span> std;
+</span><span>
+</span><span style="color:#65737e;">//STL vector的几种清空容器（删除）办法
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">test</span><span>()
+</span><span>{
+</span><span>    vector&lt;</span><span style="color:#b48ead;">int</span><span>&gt; vecnum;
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">1</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">2</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">3</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">4</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">5</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">6</span><span>);
+</span><span>    vecnum.</span><span style="color:#bf616a;">push_back</span><span>(</span><span style="color:#d08770;">7</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//打印vector的大小和容量
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">old: size = </span><span>&quot; &lt;&lt; vecnum.</span><span style="color:#bf616a;">size</span><span>() &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ; capacity = </span><span>&quot; &lt;&lt; vecnum.</span><span style="color:#bf616a;">capacity</span><span>() &lt;&lt; endl;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//1. clear()，清空元素，但不回收空间
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//vecnum.clear();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//2. 使用 erase循环删除，结果同上
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//vector&lt;int&gt;::iterator it;
+</span><span>    </span><span style="color:#65737e;">//for (it = vecnum.begin(); it != vecnum.end(); )
+</span><span>    </span><span style="color:#65737e;">//{
+</span><span>    </span><span style="color:#65737e;">//    //注意使用erase()方法时，迭代不要随意的++
+</span><span>    </span><span style="color:#65737e;">//    it = vecnum.erase(it);
+</span><span>    </span><span style="color:#65737e;">//}
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//结论：erase在每次操作时，迭代器指针会整体前移1，就是每次都会移动全部数据，所以vector不适合做频繁删除的容器
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//3. 最简单的使用swap,清除元素并回收内存
+</span><span>    </span><span style="color:#65737e;">//3.1 写法一
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//vector&lt;int&gt;().swap(vecnum);
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//3.2 写法二
+</span><span>    vecnum.</span><span style="color:#bf616a;">swap</span><span>(</span><span style="color:#bf616a;">vector</span><span>&lt;</span><span style="color:#b48ead;">int</span><span>&gt;());
+</span><span>
+</span><span>    </span><span style="color:#65737e;">//打印vector的大小和容量
+</span><span>    cout &lt;&lt; &quot;</span><span style="color:#a3be8c;">last: size = </span><span>&quot; &lt;&lt; vecnum.</span><span style="color:#bf616a;">size</span><span>() &lt;&lt; &quot;</span><span style="color:#a3be8c;"> ; capacity = </span><span>&quot; &lt;&lt; vecnum.</span><span style="color:#bf616a;">capacity</span><span>() &lt;&lt; endl;
+</span><span>
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>()
+</span><span>{
+</span><span>    </span><span style="color:#bf616a;">test</span><span>();
+</span><span>    </span><span style="color:#96b5b4;">getchar</span><span>();
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<h2 id="shu-zu-xiang-guan">数组相关</h2>
+<h3 id="shu-zu-chu-shi-hua">数组初始化</h3>
+<ol>
+<li>数组初始化有memset与fill两个函数，前者较快。</li>
+<li>memset(数组名,初始值,初始字节长度)</li>
+<li>memset需要引入string库  memset按照字节赋值，所以一般用于初始化为-1,或0；它们补码中每个字节都一样</li>
+<li>函数内部定义数组容量不要大于10^6,否则会报错。因为函数内部申请的局部变量来自系统栈，允许申请的容量较小。在外部申请的全局变量来自静态存储区，允许申请的空间较大。</li>
+</ol>
+<pre data-lang="c" style="background-color:#2b303b;color:#c0c5ce;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#65737e;">//memset 初始化是将一个一个字节填充的
+</span><span style="color:#65737e;">//数在内存中是以补码形式存放，正数的原码，反码，补码都一样。负数的补码为原码取反+1。 
+</span><span style="color:#b48ead;">int</span><span> a[</span><span style="color:#d08770;">2</span><span>];
+</span><span style="color:#bf616a;">memset</span><span>(a,</span><span style="color:#d08770;">0</span><span>,sizeof(a));
+</span><span style="color:#65737e;">//0的补码为：00000000
+</span><span style="color:#65737e;">//此时,这一片内存存储结果为(4字节a[0]+4字节a[1])：00000000|00000000|00000000|00000000|00000000|00000000|00000000|00000000 补码形式
+</span><span style="color:#65737e;">//所以a[0] = a[1] = 0(补码：00000000|00000000|00000000|00000000)
+</span><span style="color:#bf616a;">memset</span><span>(a,</span><span style="color:#d08770;">1</span><span>,sizeof(a));
+</span><span style="color:#65737e;">//1的补码为：00000001
+</span><span style="color:#65737e;">//此时,这一片内存存储结果为(4字节a[0]+4字节a[1])：00000001|00000001|00000001|00000001|00000001|00000001|00000001|00000001 补码形式
+</span><span style="color:#65737e;">//所以此时a[0]=a[1]=16843009(补码:00000001|00000001|00000001|00000001)
+</span><span style="color:#bf616a;">memset</span><span>(a,</span><span style="color:#d08770;">1</span><span>,sizeof(a));
+</span><span style="color:#65737e;">//1的补码为：11111111
+</span><span style="color:#65737e;">//此时,这一片内存存储结果为(4字节a[0]+4字节a[1])：11111111|11111111|11111111|11111111|11111111|11111111|11111111|11111111 补码形式
+</span><span style="color:#65737e;">//a[0] = a[1] = -1(补码：11111111|11111111|11111111|11111111)
+</span></code></pre>
+<h2 id="shu-zhi-xiang-guan">数值相关</h2>
+<h4 id="chu-shi-hua-ji-da-zhi">初始化极大值</h4>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span style="color:#b48ead;">int</span><span> num1 = </span><span style="color:#d08770;">1e9</span><span>;
+</span><span style="color:#b48ead;">int</span><span> num1 = </span><span style="color:#d08770;">1e10</span><span>;
+</span><span>输出的结果为：
+</span><span>num1 = </span><span style="color:#d08770;">1 000 000 000</span><span>；
+</span><span>num2 = </span><span style="color:#d08770;">1 410 065 408</span><span>；
+</span></code></pre>
+<p>为什么num2 不等于 10000000000 ？
+C/C++中int类型是32位的，范围是-2147483648 到 2147483647。
+int占用4个字节，也就是32位，除了第一位代表符号，剩下的31位可用。
+十进制的 1e10时，转换为二进制：
+10 0101 0100 0000 1011 1110 0100 0000 0000前两位出现数据溢出问题。
+而0101 0100 0000 1011 1110 0100 0000 0000 转换成十进制就是 1 410 065 408</p>
+<h4 id="zheng-wu-qiong-yu-fu-wu-qiong">正无穷与负无穷</h4>
+<pre data-lang="c++" style="background-color:#2b303b;color:#c0c5ce;" class="language-c++ "><code class="language-c++" data-lang="c++"><span>    </span><span style="color:#b48ead;">int</span><span> a=</span><span style="color:#d08770;">0x3f3f3f3f</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> b=</span><span style="color:#d08770;">0xc0c0c0c0</span><span>;
+</span><span>    输出：
+</span><span>    a=</span><span style="color:#d08770;">1061109567
+</span><span>    b=-</span><span style="color:#d08770;">1061109568
+</span><span>
+</span></code></pre>
+<h2 id="shu-ru-shu-chu-chu-li-xiang-guan">输入输出处理相关</h2>
+<h3 id="eoftiao-jian-pan-duan-while-scanf-d-d-n-m-eof-gong-neng-deng-xiao-yu-while-scanf-d-d-n-m">EOF条件判断：while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF) 功能等效于 while (~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))</h3>
+<p>EOF的值为0，测试：</p>
+<pre data-lang="c" style="background-color:#2b303b;color:#c0c5ce;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">bits/stdc++.h</span><span>&gt;
+</span><span>using namespace std;
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">main</span><span>() {
+</span><span>    </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#d08770;">%d</span><span>&quot;,EOF);   </span><span style="color:#65737e;">//output -1
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<p>● 函数 scanf() 的返回值是输入值的个数，如果没有输入值就是返回-1；</p>
+<p>● 符号 ~ 表示按位取反操作，-1按位取反操作的结果是0。</p>
+<h3 id="jie-guo-shu-chu-ji-de-huan-xing-fu">结果输出记得换行符</h3>
+<h2 id="c-c-deng-xiao-yu-ju">C/C++等效语句</h2>
+<h3 id="while-scanf-d-a-eof-gong-neng-deng-xiao-yu-while-cin-a-eof">while(scanf(&quot;%d&quot;,&amp;a)!=EOF) 功能等效于 while(!(cin&gt;&gt;a).eof())</h3>
+<p>C语句</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>while(scanf(&quot;%d&quot;,&amp;a)!=EOF)
+</span></code></pre>
+<p>C++语句</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>while(!(cin&gt;&gt;a).eof())
+</span></code></pre>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://leaflare.github.io/tags/cram/">#Cram</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://leaflare.github.io/even.js" ></script>
+      
+    </body>
+
+</html>

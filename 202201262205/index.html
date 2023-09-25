@@ -130,17 +130,20 @@
                 </li>
                 
                 <li>
-                    <a href="https://leaflare.github.io/202201262205/#wslshe-zhi" class="toc-link">WSL设置</a>
-                    
-                </li>
-                
-                <li>
-                    <a href="https://leaflare.github.io/202201262205/#wslchang-yong-ming-ling" class="toc-link">WSL常用命令</a>
-                    
-                </li>
-                
-                <li>
                     <a href="https://leaflare.github.io/202201262205/#dockerpei-zhi-wsl-integration" class="toc-link">Docker配置WSL Integration</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/202201262205/#fu-chang-yong-docker-ming-ling" class="toc-link">附常用Docker 命令：</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/202201262205/#wslshe-zhi" class="toc-link">WSL设置</a>
                     
                 </li>
                 
@@ -193,30 +196,6 @@
 <p>WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU/Linux 环境。</p>
 <h2 id="wslan-zhuang">WSL安装</h2>
 <p>微软商店下载需要的Linux发行版</p>
-<p>微软商店下载速度过慢的一种（可能的）解决方法：</p>
-<p>在开始菜单——设置——更新和安全——传递优化 里面，勾选 <em>我本地网络上的电脑和Internet上的电脑</em></p>
-<h2 id="wslshe-zhi">WSL设置</h2>
-<p>在宿主机上找到WSL：</p>
-<p>WIN+R 或者文件资源管理器 输入<code>\\wsl$</code></p>
-<p><code>\\wsl$\Ubuntu\etc\apt</code>sources.list换国内镜像</p>
-<p><code>~</code>目录下的文件对应<code>\\wsl$\Ubuntu\home\unix</code>目录</p>
-<h2 id="wslchang-yong-ming-ling">WSL常用命令</h2>
-<p>查看虚拟机列表</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl -l
-</span></code></pre>
-<p>查看虚拟机列表状态</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl -l -v
-</span></code></pre>
-<p>切换虚拟机</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl -d 虚拟机名
-</span></code></pre>
-<p>挂载新的虚拟机</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl --import 虚拟机名 目标路径 镜像.tar
-</span></code></pre>
-<p>（使用~可能会出现Error code: Wsl/ERROR_PATH_NOT_FOUND，使用完整绝对路径可解决）</p>
-<p>注销（卸载）虚拟机</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl --unregister 虚拟机名
-</span></code></pre>
 <h2 id="dockerpei-zhi-wsl-integration">Docker配置WSL Integration</h2>
 <p>启动Docker Desktop</p>
 <p>docker settings——&gt;General——&gt;勾选<code>Use the WSL 2 based engine</code> </p>
@@ -232,6 +211,19 @@
 <p>将 WSL 2 设置为默认版本：</p>
 <pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>wsl --set-default-version 2
 </span></code></pre>
+<h3 id="fu-chang-yong-docker-ming-ling">附常用Docker 命令：</h3>
+<ul>
+<li>通过输入以下命令列出 Docker CLI 中可用的命令：<code>docker</code></li>
+<li>使用以下命令列出特定命令的信息：<code>docker &lt;COMMAND&gt; --help</code></li>
+<li>使用以下命令列出计算机上的 docker 映像（此时仅为 hello-world 映像）：<code>docker image ls --all</code></li>
+<li>使用以下命令列出计算机上的容器：<code>docker container ls --all</code> 或 <code>docker ps -a</code>（如果没有 -a 显示全部标志，则仅显示正在运行的容器）</li>
+<li>使用以下命令列出有关 Docker 安装的系统范围的信息，包括 WSL 2 上下文中你可使用的统计信息和资源（CPU &amp; 内存）：<code>docker info</code></li>
+</ul>
+<h2 id="wslshe-zhi">WSL设置</h2>
+<p>在宿主机上找到WSL：</p>
+<p>WIN+R 或者文件资源管理器 输入<code>\\wsl$</code></p>
+<p><code>\\wsl$\Ubuntu\etc\apt</code>sources.list换国内镜像</p>
+<p><code>~</code>目录下的文件对应<code>\\wsl$\Ubuntu\home\unix</code>目录</p>
 <h2 id="vs-code">VS Code</h2>
 <h3 id="jin-ru-wslgong-zuo-huan-jing">进入WSL工作环境</h3>
 <p>VS Code安装Remote - WSL插件</p>
@@ -255,7 +247,7 @@
 <p>按住 Control 键并选择显示的地址，可以在默认 Web 浏览器中打开，并查看在其容器中运行的项目。</p>
 <h2 id="ming-ling-xing-dai-li">命令行代理</h2>
 <p>使用<code>ipconfig</code>查询宿主机的ip</p>
-<p>在WSL命令行配置</p>
+<p>在WSL命令行配置，例如export ALL_PROXY=http:192.168.1.105:1081</p>
 <pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>export ALL_PROXY=http://宿主机ip:1081
 </span></code></pre>
 

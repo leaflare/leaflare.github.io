@@ -171,6 +171,10 @@
                             <a href="https://leaflare.github.io/202201071745/#warning-lf-will-be-replaced-by-crlf" class="toc-link">warning: LF will be replaced by CRLF</a>
                         </li>
                         
+                        <li>
+                            <a href="https://leaflare.github.io/202201071745/#the-file-will-have-its-original-line-endings-in-your-working-directory" class="toc-link">The file will have its original line endings in your working directory</a>
+                        </li>
+                        
                     </ul>
                     
                 </li>
@@ -299,6 +303,15 @@
 </ul>
 <p>​		add 时Git会把CRLF转换为LF，而check时仍旧为LF，所以Windows 操作系统不建议设置此值。</p>
 <p>可以通过 <code>git config core.autocrlf</code> 命令来显示当前Git 中对待换行符的方式</p>
+<h2 id="the-file-will-have-its-original-line-endings-in-your-working-directory">The file will have its original line endings in your working directory</h2>
+<p>解决</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>git rm -r --cached .
+</span><span>git config core.autocrlf false
+</span><span>git add .
+</span><span>git commit -m &#39;&#39;
+</span><span> 
+</span><span>git push
+</span></code></pre>
 <h1 id="ge-ren-fang-wen-ling-pai">个人访问令牌</h1>
 <p>github21年8月13后不再支持用户名密码的方式验证</p>
 <p>不小心用了<code>git config --global --unset credential.helper</code> </p>

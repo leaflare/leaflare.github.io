@@ -288,6 +288,15 @@
 &lt;&#x2F;ul&gt;
 &lt;p&gt;​		add 时Git会把CRLF转换为LF，而check时仍旧为LF，所以Windows 操作系统不建议设置此值。&lt;&#x2F;p&gt;
 &lt;p&gt;可以通过 &lt;code&gt;git config core.autocrlf&lt;&#x2F;code&gt; 命令来显示当前Git 中对待换行符的方式&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-file-will-have-its-original-line-endings-in-your-working-directory&quot;&gt;The file will have its original line endings in your working directory&lt;&#x2F;h2&gt;
+&lt;p&gt;解决&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;git rm -r --cached .
+&lt;&#x2F;span&gt;&lt;span&gt;git config core.autocrlf false
+&lt;&#x2F;span&gt;&lt;span&gt;git add .
+&lt;&#x2F;span&gt;&lt;span&gt;git commit -m &amp;#39;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt;git push
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h1 id=&quot;ge-ren-fang-wen-ling-pai&quot;&gt;个人访问令牌&lt;&#x2F;h1&gt;
 &lt;p&gt;github21年8月13后不再支持用户名密码的方式验证&lt;&#x2F;p&gt;
 &lt;p&gt;不小心用了&lt;code&gt;git config --global --unset credential.helper&lt;&#x2F;code&gt; &lt;&#x2F;p&gt;
