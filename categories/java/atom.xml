@@ -76,6 +76,40 @@
         
     </entry>
     <entry xml:lang="zh">
+        <title>vjvm note 00： Basic Info</title>
+        <published>2022-02-11T20:47:19+00:00</published>
+        <updated>2022-02-11T20:47:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://leaflare.github.io/202202112047/" type="text/html"/>
+        <id>https://leaflare.github.io/202202112047/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;toy jvm，本系列blog用于记录基本项目结构和重要的实现方法&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;main&quot;&gt;Main&lt;&#x2F;h2&gt;
+&lt;p&gt;定义了一个实现了Callable&lt;Integer&gt;接口的Main类。Main方法创建了一个Main类的新实例，并通过将命令行参数传递给CommandLine类的execute方法来执行。&lt;&#x2F;p&gt;
+&lt;p&gt;Main类使用PicoCLI库的注释定义了几个字段和选项。userClassPath字段是一个选项，指定了搜索类文件的类路径。entryClass参数指定要运行的类，args参数指定传递给Java程序的参数。dump选项指定是否要转储classfile的内容。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;call&lt;&#x2F;code&gt;方法是该程序的主要逻辑入口。使用指定的userClassPath创建一个新的VMContext类的实例。如果转储（dump ）选项被启用，它使用VMContext类的userLoader方法加载指定的类，并使用转储方法转储其内容。否则，将使用VMContext类的run方法运行指定的类。&lt;&#x2F;p&gt;
+&lt;p&gt;dump方法接收一个JClass对象作为输入，并使用Logger类转储其内容。该方法打印出类的名称、次要和主要版本、访问标志、本类、超类、常量池、接口、字段和方法。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;vmcontext&quot;&gt;VMContext&lt;&#x2F;h2&gt;
+&lt;p&gt;VMContext负责为运行Java字节码设置上下文。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;bootstrapLoader：JClassLoader的一个实例，用于从Java Runtime Environment的bootstrap classpath加载类。&lt;&#x2F;li&gt;
+&lt;li&gt;userLoader：JClassLoader的一个实例，用于从用户指定的classpath中加载类。&lt;&#x2F;li&gt;
+&lt;li&gt;interpreter：JInterpreter的一个实例，用于解释Java字节码指令。&lt;&#x2F;li&gt;
+&lt;li&gt;threads：JThread实例的列表，代表JVM中的线程。&lt;&#x2F;li&gt;
+&lt;li&gt;heap：JHeap的一个实例，用于管理JVM中的内存。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;构造函数需要一个userClassPath参数，该参数用于初始化userLoader。构造函数还初始化了bootstrapLoader和解释器，并设置了堆。&lt;&#x2F;p&gt;
+&lt;p&gt;run()方法需要一个 entryClass 参数，它是包含要执行的主方法的类的名称。它创建一个新的JThread实例，将其添加到线程列表中，用userLoader加载 entryClass，并找到main方法。然后，它使用解释器调用主方法。&lt;&#x2F;p&gt;
+&lt;p&gt;getSystemSearchPaths() 方法返回一个代表系统 classpath 的 ClassSearchPath 实例数组，返回 ModuleSearchPath 的实例。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="zh">
         <title>Java版本问题处理合集</title>
         <published>2021-11-12T16:13:14+00:00</published>
         <updated>2021-11-12T16:13:14+00:00</updated>
