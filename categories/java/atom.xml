@@ -5,8 +5,46 @@
     <link href="https://leaflare.github.io/categories/java/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-02-13T20:47:19+00:00</updated>
+    <updated>2023-02-21T02:47:19+00:00</updated>
     <id>https://leaflare.github.io/categories/java/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>vjvm note 03： Runtime</title>
+        <published>2023-02-21T02:47:19+00:00</published>
+        <updated>2023-02-21T02:47:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://leaflare.github.io/202302210247/" type="text/html"/>
+        <id>https://leaflare.github.io/202302210247/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;slotsyu-operandstack&quot;&gt;Slots与OperandStack&lt;&#x2F;h2&gt;
+&lt;p&gt;Slots代表规范中定义的JVM插槽数组。它支持获取和放置原始数据类型，包括地址。使用对象数组Object[]实现。&lt;&#x2F;p&gt;
+&lt;p&gt;在局部变量表和操作数栈中，每个位置都是 4 字节，且 &lt;code&gt;long&lt;&#x2F;code&gt; 与 &lt;code&gt;double&lt;&#x2F;code&gt; 占用连续两个位置。&lt;&#x2F;p&gt;
+&lt;p&gt;规定每个 &lt;code&gt;int&lt;&#x2F;code&gt; 所占空间为一个槽位（slot），&lt;code&gt;long&lt;&#x2F;code&gt; 与 &lt;code&gt;double&lt;&#x2F;code&gt; 占用两个槽位， 且使用第一个的下标访问。Slots 的下标从 0 开始。在初始化时，能够确定最多使用的 slots 数量 &lt;code&gt;slotSize&lt;&#x2F;code&gt;，它可能来自 &lt;code&gt;Code&lt;&#x2F;code&gt; 属性中的 &lt;code&gt;max_stack&lt;&#x2F;code&gt; 或 &lt;code&gt;max_locals&lt;&#x2F;code&gt;。 对于每一种基本数据类型，都提供了对应的 getter 与 setter 方法（无 get 与 set 前缀），其中 &lt;code&gt;byte&lt;&#x2F;code&gt;、&lt;code&gt;char&lt;&#x2F;code&gt; 与 &lt;code&gt;short&lt;&#x2F;code&gt; 类型应转换成 &lt;code&gt;int&lt;&#x2F;code&gt; 存储。Slots 的大小可通过 &lt;code&gt;size&lt;&#x2F;code&gt; 方法获得。在进行函数调用时，参数首先从操作数栈的栈顶弹出，然后被复制进被调用方法栈帧的局部变量表中。通过 &lt;code&gt;copyTo&lt;&#x2F;code&gt; 与&lt;code&gt;popSlots&lt;&#x2F;code&gt; 支持这种操作。&lt;&#x2F;p&gt;
+&lt;p&gt;JVM 在操作数栈和局部变量表中并不会保存 char、byte、short 和 bool 类型的值，而是把它们转换成 int。在使用具体类型的 get 与 set 方法时，每个位置 set 的类型必须和 get 的类型相同。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;OperandStack&lt;&#x2F;code&gt; 负责维护Slots，只需额外维护栈顶的位置，在压栈或出栈时自动更新。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;code-yu-programcounter&quot;&gt;Code 与 ProgramCounter&lt;&#x2F;h2&gt;
+&lt;p&gt;为了执行字节码，需要首先将它保存在对应的方法中。Class 文件的字节码在方法的 &lt;code&gt;Code&lt;&#x2F;code&gt; 属性里，见&lt;em&gt;src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;runtime&#x2F;classdata&#x2F;attribute&#x2F;Code.java&lt;&#x2F;em&gt;，在&lt;code&gt;MethodInfo&lt;&#x2F;code&gt; 中调用它解析 &lt;code&gt;Code&lt;&#x2F;code&gt; 属性。&lt;&#x2F;p&gt;
+&lt;p&gt;在 VJVM 中，每个栈帧都有自己独立的 PC，指向所执行方法的字节码，而整个线程使用最顶部栈帧的 PC。&lt;code&gt;ProgramCounter&lt;&#x2F;code&gt; 使用一个 &lt;code&gt;ByteBuffer&lt;&#x2F;code&gt; 来包装原始字节码，并提供了 &lt;code&gt;byte_&lt;&#x2F;code&gt;、&lt;code&gt;ubyte&lt;&#x2F;code&gt; 等方法读取数据同时向前移动。这样，在我们读取完一条指令并解码后，PC 自然就指向了下一条指令。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jthread-yu-jframe&quot;&gt;JThread 与 JFrame&lt;&#x2F;h2&gt;
+&lt;p&gt;使用 &lt;code&gt;JThread&lt;&#x2F;code&gt; 代表一个线程，&lt;code&gt;JFrame&lt;&#x2F;code&gt; 代表一个线程的单个栈帧。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;VMContext&lt;&#x2F;code&gt; 中使用 &lt;code&gt;ArrayList&lt;&#x2F;code&gt; 保存 &lt;code&gt;JThread&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;instruction-yu-jinterpreter&quot;&gt;Instruction 与 JInterpreter&lt;&#x2F;h2&gt;
+&lt;p&gt;VJVM 运行一个 Java 程序的流程：运行程序的命令通过 &lt;code&gt;vm.Run&lt;&#x2F;code&gt; 类实现，其中会首先初始化运行时环境，然后调用 &lt;code&gt;VMContext.run&lt;&#x2F;code&gt; 执行程序。在&lt;code&gt;VMContext&lt;&#x2F;code&gt; 中，会首先加载用户指定的主类并寻找其中的 &lt;code&gt;main&lt;&#x2F;code&gt; 方法。在找到之后将它交给解释器 &lt;code&gt;JInterpreter&lt;&#x2F;code&gt; 执行（在这里额外传入了一个 &lt;code&gt;Slots&lt;&#x2F;code&gt;，代表 &lt;code&gt;main&lt;&#x2F;code&gt; 函数的参数）。&lt;&#x2F;p&gt;
+&lt;p&gt;解释器首先利用方法和参数构造一个栈帧，在 &lt;code&gt;JFrame&lt;&#x2F;code&gt; 构造方法中将参数压栈，然后进入程序主循环 &lt;code&gt;run&lt;&#x2F;code&gt; 方法解释执行指令。&lt;&#x2F;p&gt;
+&lt;p&gt;在 VJVM 中，把执行一条指令分为解码与执行两部分。每个指令通过公共的 &lt;code&gt;Instruction.run&lt;&#x2F;code&gt; 接口执行，而解码则由 &lt;code&gt;Decoder.decode&lt;&#x2F;code&gt; 完成。&lt;&#x2F;p&gt;
+&lt;p&gt;使用了一个巨大的表来解码指令。&lt;code&gt;Decoder.decodeTable&lt;&#x2F;code&gt; 有 256 个表项，其中的每一项对应指令第一个字节 &lt;code&gt;opcode&lt;&#x2F;code&gt;。解码时，首先读取 &lt;code&gt;opcode&lt;&#x2F;code&gt;，然后查表调用相应函数来解码指令。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;fang-fa-diao-yong&quot;&gt;方法调用&lt;&#x2F;h2&gt;
+&lt;p&gt;通过 &lt;code&gt;JInterpreter.invoke&lt;&#x2F;code&gt; 进行调用。该方法接受三个参数：需调用的方法、当前线程与参数。它会创建一个新的栈帧，将参数复制到新栈帧的局部变量表中，并将栈帧压到当前线程的栈顶。在完成准备之后，解释器会进入 &lt;code&gt;run&lt;&#x2F;code&gt; 执行该方法的代码。虚拟机启动时，会在 &lt;code&gt;VMContext.run&lt;&#x2F;code&gt; 中调用 &lt;code&gt;main&lt;&#x2F;code&gt; 函数。&lt;&#x2F;p&gt;
+&lt;p&gt;框架代码使用 native 方法实现了输入输出功能。在 &lt;code&gt;testdata&lt;&#x2F;code&gt; 中的 &lt;code&gt;IOUtil&lt;&#x2F;code&gt; 类，提供了打印数据到标准输出和从标准输入读取数据的方法。相应地，解释器中对于这几个方法作了特殊处理：当其中一个方法被调用时，不会解释执行 Java 代码（几个方法也根本没有 &lt;code&gt;Code&lt;&#x2F;code&gt; 属性），而是直接在 VM 中实现了输入和输出的功能。native 方法的执行通过 &lt;code&gt;runNativeMethod&lt;&#x2F;code&gt; 实现。&lt;&#x2F;p&gt;
+&lt;p&gt;事实上，标准的 JVM 中输入输出也是通过类似方式实现的。JVM 本身只能进行计算，并不能读取或写入数据。为了完成 IO 任务，JVM 将 native 方法绑定到对应的 C 函数上，并通过 C 函数与操作系统交互。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;runtime
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>vjvm note 01： ClassLoader</title>
         <published>2023-02-13T20:47:19+00:00</published>
