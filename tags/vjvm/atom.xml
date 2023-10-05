@@ -5,8 +5,67 @@
     <link href="https://leaflare.github.io/tags/vjvm/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-02-21T02:47:19+00:00</updated>
+    <updated>2023-02-24T17:47:19+00:00</updated>
     <id>https://leaflare.github.io/tags/vjvm/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>vjvm note 04： Instruction</title>
+        <published>2023-02-24T17:47:19+00:00</published>
+        <updated>2023-02-24T17:47:19+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://leaflare.github.io/202302241747/" type="text/html"/>
+        <id>https://leaflare.github.io/202302241747/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;instruction&quot;&gt;Instruction&lt;&#x2F;h2&gt;
+&lt;p&gt;从实现上来说，所有的指令都是对操作数栈、局部变量表等数据结构里面的某处数据进行了修改。&lt;&#x2F;p&gt;
+&lt;p&gt;每条指令的执行都分为解码与运行两个阶段。解码由指令的构造方法实现（如 &lt;code&gt;invokestatic&lt;&#x2F;code&gt;），而运行则由 &lt;code&gt;run&lt;&#x2F;code&gt; 方法实现。&lt;&#x2F;p&gt;
+&lt;p&gt;除此之外，每条指令有一个 &lt;code&gt;toString&lt;&#x2F;code&gt; 方法，被调试器使用。&lt;&#x2F;p&gt;
+&lt;p&gt;指令执行时， 首先会读取每条指令的第一个字节，然后查询&lt;code&gt;Decoder.decodeTable&lt;&#x2F;code&gt;进行解码。&lt;code&gt;Decoder.decodeTable&lt;&#x2F;code&gt;是一个从 opcode 到对应指令解码方法的映射。&lt;&#x2F;p&gt;
+&lt;p&gt;解码方法使用了统一的接口：&lt;code&gt;Instruction (ProgramCounter, MethodInfo)&lt;&#x2F;code&gt;。第一个参数为指向当前指令的程序计数器，第二个是当前指令所在的类。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;invokestaticzhi-ling&quot;&gt;invokestatic指令&lt;&#x2F;h2&gt;
+&lt;p&gt;实现了两个功能：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;解析：&lt;&#x2F;p&gt;
+&lt;p&gt;invokestatic编码了一个 unsigned short 指向当前类常量池中一个 CONSTANT_Methodref_info 常量，首先加载该方法所在类，然后从加载的类中找到与 &lt;code&gt;Methodref&lt;&#x2F;code&gt; 相符的 &lt;code&gt;MethodInfo&lt;&#x2F;code&gt; 并保存至指令中。&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;运行：&lt;&#x2F;p&gt;
+&lt;p&gt;首先从当前方法的操作数栈顶弹出 &lt;code&gt;argc&lt;&#x2F;code&gt; 个 slots，即弹出方法调用的参数。然后通过 &lt;code&gt;Interpreter.invoke&lt;&#x2F;code&gt; 调用方法。 &lt;code&gt;MethodDescriptors.argc&lt;&#x2F;code&gt; 用于计算参数占用的 slots 数量。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;argc(descriptor &#x2F;* 方法描述符，如 (I[JLjava&#x2F;lang&#x2F;String;)V *&#x2F;):
+&lt;&#x2F;span&gt;&lt;span&gt;  argc = 0
+&lt;&#x2F;span&gt;&lt;span&gt;  n = 0
+&lt;&#x2F;span&gt;&lt;span&gt;  while 该方法有第 n 个参数:
+&lt;&#x2F;span&gt;&lt;span&gt;    desc = 第 n 个参数的描述符，在以上例子中分别为 I、[J 与 Ljava&#x2F;lang&#x2F;String;
+&lt;&#x2F;span&gt;&lt;span&gt;    size = desc 对应类型所占的槽位数。Long 和 Double 为 2，其它为 1
+&lt;&#x2F;span&gt;&lt;span&gt;    argc += size
+&lt;&#x2F;span&gt;&lt;span&gt;    n += 1
+&lt;&#x2F;span&gt;&lt;span&gt;  return argc
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;INVOKESTATIC(pc &#x2F;* 当前 PC *&#x2F;, method &#x2F;* 当前指令所在方法 *&#x2F;):
+&lt;&#x2F;span&gt;&lt;span&gt;  cp = 当前类的常量池
+&lt;&#x2F;span&gt;&lt;span&gt;  methodRef = cp[从 PC 读取下标]
+&lt;&#x2F;span&gt;&lt;span&gt;  thisClass = method 所在的类
+&lt;&#x2F;span&gt;&lt;span&gt;  jClass = 使用 thisClass 中的 classLoader 加载 methodRef 指向的类
+&lt;&#x2F;span&gt;&lt;span&gt;  this.method = 使用 findMethod 在 jClass 中查找与 methodRef 匹配的方法
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;run(thread &#x2F;* 执行时的线程 *&#x2F;):
+&lt;&#x2F;span&gt;&lt;span&gt;  stack = 线程当前栈帧的操作数栈
+&lt;&#x2F;span&gt;&lt;span&gt;  argc = 使用 MethodDescriptors.argc 计算方法参数占用的 slots 数量
+&lt;&#x2F;span&gt;&lt;span&gt;  interpreter = 解释器
+&lt;&#x2F;span&gt;&lt;span&gt;  args = 从 stack 顶部弹出 argc 个 slots
+&lt;&#x2F;span&gt;&lt;span&gt;  使用 interpreter.invoke 调用方法
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;dai-ma&quot;&gt;代码&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ffangli&#x2F;toyjvm&quot;&gt;ffangli&#x2F;toyjvm (github.com)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; tree src&#x2F;main&#x2F;java&#x2F;vjvm&#x2F;interpreter
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>vjvm note 03： Runtime</title>
         <published>2023-02-21T02:47:19+00:00</published>
