@@ -200,4 +200,46 @@
 </content>
         
     </entry>
+    <entry xml:lang="zh">
+        <title>Virtualbox 踩坑记录</title>
+        <published>2021-10-20T12:41:34+00:00</published>
+        <updated>2021-10-20T12:41:34+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://leaflare.github.io/202110201241/" type="text/html"/>
+        <id>https://leaflare.github.io/202110201241/</id>
+        
+        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;Oracle VM Virtualbox &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
+&lt;p&gt;官网：&lt;a href=&quot;https:&#x2F;&#x2F;www.virtualbox.org&#x2F;wiki&#x2F;Downloads&quot;&gt;Downloads – Oracle VM VirtualBox&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Oracle VM VirtualBox Extension Pack也可在同页面下载&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cai-keng&quot;&gt;踩坑&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;gua-zai-kuo-zhan-bao&quot;&gt;挂载扩展包&lt;&#x2F;h3&gt;
+&lt;p&gt;Extension Pack可在&lt;code&gt;Tools&lt;&#x2F;code&gt;下导入，但用于实现虚拟机与宿主机共享剪切板的扩展包需要单独下载&lt;&#x2F;p&gt;
+&lt;p&gt;以版本号7.0.12为例：&lt;a href=&quot;http:&#x2F;&#x2F;download.virtualbox.org&#x2F;virtualbox&#x2F;7.0.12&#x2F;&quot;&gt;Index of http:&#x2F;&#x2F;download.virtualbox.org&#x2F;virtualbox&#x2F;7.0.12&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;要下载的是VBoxGuestAdditions_7.0.12.iso&lt;&#x2F;p&gt;
+&lt;p&gt;在工具栏&lt;code&gt;Devices&lt;&#x2F;code&gt;-&amp;gt;&lt;code&gt;Optional Drives&lt;&#x2F;code&gt;导入遇到了挂载失败的问题&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Unable to insert the virtual optical disk 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;解决办法：&lt;&#x2F;p&gt;
+&lt;p&gt;关闭虚拟机，&lt;code&gt;Settings-&amp;gt;Storage-&amp;gt;Controller: IDE&lt;&#x2F;code&gt;下添加&lt;&#x2F;p&gt;
+&lt;p&gt;然后启动虚拟机，执行：&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo mkdir &#x2F;mnt&#x2F;cdrom
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;sudo mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cd &#x2F;mnt&#x2F;cdrom
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;.&#x2F;VBoxLinuxAdditions.run
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;重启虚拟机&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;qi-dong-hei-ping&quot;&gt;启动黑屏&lt;&#x2F;h3&gt;
+&lt;p&gt;安装扩展后启动虚拟机出现黑屏&lt;&#x2F;p&gt;
+&lt;p&gt;解决办法：&lt;&#x2F;p&gt;
+&lt;p&gt;调大显存：&lt;code&gt;Settings-&amp;gt;Display-&amp;gt;Video Memory&lt;&#x2F;code&gt;，直接拉满&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
 </feed>
