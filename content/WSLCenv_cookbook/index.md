@@ -1,7 +1,7 @@
 +++
 title = "WSL C++ 23 Cookbook"
-date = 2023-09-13 10:21:54
-slug = "202309131021"
+date = 2023-03-23 10:21:54
+slug = "202303231021"
 
 [taxonomies]
 tags = ["Virtual Machine", "WSL" ]
