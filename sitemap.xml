@@ -224,6 +224,10 @@
         <lastmod>2023-02-24T17:47:19</lastmod>
     </url>
     <url>
+        <loc>https://leaflare.github.io/202303231021/</loc>
+        <lastmod>2023-03-23T10:21:54</lastmod>
+    </url>
+    <url>
         <loc>https://leaflare.github.io/202304072005/</loc>
         <lastmod>2023-04-07T20:05:54</lastmod>
     </url>
@@ -236,12 +240,12 @@
         <lastmod>2023-08-22T14:47:19</lastmod>
     </url>
     <url>
-        <loc>https://leaflare.github.io/202309131021/</loc>
-        <lastmod>2023-09-13T10:21:54</lastmod>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/202309141021/</loc>
         <lastmod>2023-09-14T10:21:54</lastmod>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/202310271613/</loc>
+        <lastmod>2023-10-27T16:13:14</lastmod>
     </url>
     <url>
         <loc>https://leaflare.github.io/categories/</loc>
@@ -275,6 +279,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/categories/llm/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/categories/mininet/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/categories/mysql/</loc>
@@ -317,6 +324,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/page/12/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/page/13/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/page/2/</loc>
@@ -428,6 +438,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/vjvm/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/tags/web/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/windows/</loc>
