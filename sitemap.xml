@@ -132,76 +132,12 @@
         <lastmod>2022-01-29T15:36:14</lastmod>
     </url>
     <url>
-        <loc>https://leaflare.github.io/202202012017/</loc>
-        <lastmod>2022-02-01T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202032017/</loc>
-        <lastmod>2022-02-03T20:17:19</lastmod>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/202202051516/</loc>
         <lastmod>2022-02-05T15:16:18</lastmod>
     </url>
     <url>
-        <loc>https://leaflare.github.io/202202082017/</loc>
-        <lastmod>2022-02-08T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202112017/</loc>
-        <lastmod>2022-02-11T20:17:19</lastmod>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/202202112047/</loc>
         <lastmod>2022-02-11T20:47:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202152017/</loc>
-        <lastmod>2022-02-15T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202172017/</loc>
-        <lastmod>2022-02-17T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202182017/</loc>
-        <lastmod>2022-02-18T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202212017/</loc>
-        <lastmod>2022-02-21T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202202252017/</loc>
-        <lastmod>2022-02-25T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202203012017/</loc>
-        <lastmod>2022-03-01T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202203052017/</loc>
-        <lastmod>2022-03-05T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202203092017/</loc>
-        <lastmod>2022-03-09T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202203132017/</loc>
-        <lastmod>2022-03-13T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202204022017/</loc>
-        <lastmod>2022-04-02T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202205222017/</loc>
-        <lastmod>2022-05-22T20:17:19</lastmod>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/202206072017/</loc>
-        <lastmod>2022-06-07T20:17:19</lastmod>
     </url>
     <url>
         <loc>https://leaflare.github.io/202210061447/</loc>
@@ -263,9 +199,6 @@
         <loc>https://leaflare.github.io/categories/data-science/</loc>
     </url>
     <url>
-        <loc>https://leaflare.github.io/categories/eng/</loc>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/categories/git/</loc>
     </url>
     <url>
@@ -296,9 +229,6 @@
         <loc>https://leaflare.github.io/categories/quant/</loc>
     </url>
     <url>
-        <loc>https://leaflare.github.io/categories/reading-notes/</loc>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/categories/spring/</loc>
     </url>
     <url>
@@ -315,18 +245,6 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/page/1/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/page/10/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/page/11/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/page/12/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/page/13/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/page/2/</loc>
@@ -357,9 +275,6 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/c-c/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/tags/db4ml/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/django/</loc>
@@ -395,9 +310,6 @@
         <loc>https://leaflare.github.io/tags/maven/</loc>
     </url>
     <url>
-        <loc>https://leaflare.github.io/tags/ml4db/</loc>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/tags/mysql/</loc>
     </url>
     <url>
@@ -426,9 +338,6 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/spring-boot/</loc>
-    </url>
-    <url>
-        <loc>https://leaflare.github.io/tags/state-of-the-art-db/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/virtual-machine/</loc>
