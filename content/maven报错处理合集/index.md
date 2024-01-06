@@ -11,7 +11,19 @@ categories = ["Build Automation"]
 
 <!-- more -->
 
-## 错误: 找不到或无法加载主类 .encoding=UTF-8
+## 命令速查
+
+#### 删除本地仓库中的相关依赖项
+
+```
+mvn dependency:purge-local-repository
+```
+
+
+
+## 报错处理
+
+### 错误: 找不到或无法加载主类 .encoding=UTF-8
 
 事故现场
 
