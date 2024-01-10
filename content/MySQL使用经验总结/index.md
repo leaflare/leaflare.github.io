@@ -5,7 +5,7 @@ slug = "202201042037"
 
 [taxonomies]
 tags = ["MySQL" ]
-categories = ["MySQL"]
+categories = ["SQL"]
 
 +++
 
