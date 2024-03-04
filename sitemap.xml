@@ -144,6 +144,14 @@
         <lastmod>2022-10-06T14:47:19</lastmod>
     </url>
     <url>
+        <loc>https://leaflare.github.io/202211051843/</loc>
+        <lastmod>2022-11-05T18:43:14</lastmod>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/202301042037/</loc>
+        <lastmod>2023-01-04T20:37:19</lastmod>
+    </url>
+    <url>
         <loc>https://leaflare.github.io/202302132047/</loc>
         <lastmod>2023-02-13T20:47:19</lastmod>
     </url>
@@ -217,9 +225,6 @@
         <loc>https://leaflare.github.io/categories/mininet/</loc>
     </url>
     <url>
-        <loc>https://leaflare.github.io/categories/mysql/</loc>
-    </url>
-    <url>
         <loc>https://leaflare.github.io/categories/other/</loc>
     </url>
     <url>
@@ -230,6 +235,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/categories/spring/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/categories/sql/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/categories/virtual-machine/</loc>
@@ -245,6 +253,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/page/10/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/page/2/</loc>
@@ -287,6 +298,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/graphviz/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/tags/hive/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/ide/</loc>
@@ -338,6 +352,9 @@
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/spring-boot/</loc>
+    </url>
+    <url>
+        <loc>https://leaflare.github.io/tags/sql/</loc>
     </url>
     <url>
         <loc>https://leaflare.github.io/tags/virtual-machine/</loc>

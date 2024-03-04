@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Spring</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/categories/spring/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/categories/spring/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-14T20:17:19+00:00</updated>
     <id>https://leaflare.github.io/categories/spring/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>JDBC for MySQL</title>
         <published>2022-01-14T20:17:19+00:00</published>
         <updated>2022-01-14T20:17:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201142017/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201142017/"/>
         <id>https://leaflare.github.io/202201142017/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201142017/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;pei-zhi-liu-cheng&quot;&gt;配置流程&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;zai-pom-xmljia-ru-jdbc-driver-mysql-connector-java&quot;&gt;在pom.xml加入JDBC driver mysql-connector-java&lt;&#x2F;h3&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;dependency&amp;gt;
@@ -93,13 +99,19 @@
         <title>Spring Boot连接MySQL报错处理合集</title>
         <published>2022-01-12T19:33:41+00:00</published>
         <updated>2022-01-12T19:33:41+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201121933/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201121933/"/>
         <id>https://leaflare.github.io/202201121933/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201121933/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-ku-pei-zhi-bao-cuo&quot;&gt;数据库配置报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;hikaripool-1-exception-during-pool-initialization&quot;&gt;HikariPool-1 - Exception during pool initialization.&lt;&#x2F;h3&gt;
 &lt;p&gt;HikariPool是SpringBoot默认数据库连接池，该报错说明数据库配置有问题&lt;&#x2F;p&gt;

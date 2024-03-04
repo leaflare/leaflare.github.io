@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - WSL</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/wsl/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/wsl/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-09-14T10:21:54+00:00</updated>
     <id>https://leaflare.github.io/tags/wsl/atom.xml</id>
@@ -11,10 +11,16 @@
         <title>WSL Linux kernel 手动更新</title>
         <published>2023-09-14T10:21:54+00:00</published>
         <updated>2023-09-14T10:21:54+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202309141021/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202309141021/"/>
         <id>https://leaflare.github.io/202309141021/</id>
         
         <summary type="html">&lt;p&gt;体验WSL环境下手动编译安装Linux kernel，实践&amp;amp;踩坑记录&lt;&#x2F;p&gt;
@@ -25,13 +31,19 @@
         <title>VSC+WSL切换环境格式问题踩坑小记</title>
         <published>2023-04-07T20:05:54+00:00</published>
         <updated>2023-04-07T20:05:54+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202304072005/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202304072005/"/>
         <id>https://leaflare.github.io/202304072005/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;qian-qing-ti-yao&quot;&gt;前情提要&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202304072005/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;qian-qing-ti-yao&quot;&gt;前情提要&lt;&#x2F;h2&gt;
 &lt;p&gt;准备回顾一下以前的老项目，习惯性启动VSC--&amp;gt;git clone，想起来terminal没切环境，重新开一个WSL terminal，然后cd + .&#x2F;gradlew build 出现报错&lt;code&gt;&amp;quot;&#x2F;usr&#x2F;bin&#x2F;env: ‘sh\r’: No such file or directory&amp;quot;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;原因在于Windows和Linux换行符格式不同，在Windows下被打开过的脚本文件在Linux环境使用就很容易遇到这个问题。因为这种情况一般发生在第一次拉仓库的时候，过往一般都会直接删文件夹重开（划掉），不过这次准备尝试一下别的办法，毕竟总会遇到不能靠重开解决的时候hh&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;jie-jue&quot;&gt;解决&lt;&#x2F;h2&gt;
@@ -47,13 +59,19 @@
         <title>WSL C++ 23 Cookbook</title>
         <published>2023-03-23T10:21:54+00:00</published>
         <updated>2023-03-23T10:21:54+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202303231021/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202303231021/"/>
         <id>https://leaflare.github.io/202303231021/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202303231021/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;WSL GCC&#x2F;CMake Cookbook&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;zhi-ling-su-cha&quot;&gt;指令速查&lt;&#x2F;h2&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;apt-cache policy gcc
@@ -122,13 +140,19 @@
         <title>WSL使用记录</title>
         <published>2022-01-26T22:05:54+00:00</published>
         <updated>2022-01-26T22:05:54+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201262205/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201262205/"/>
         <id>https://leaflare.github.io/202201262205/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201262205/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;WSL是适用于 Linux 的 Windows 子系统，可以直接在 Windows 上运行 GNU&#x2F;Linux 环境。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;wslan-zhuang&quot;&gt;WSL安装&lt;&#x2F;h2&gt;
 &lt;p&gt;微软商店下载需要的Linux发行版&lt;&#x2F;p&gt;

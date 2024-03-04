@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Quant</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/quant/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/quant/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-15T16:42:14+00:00</updated>
     <id>https://leaflare.github.io/tags/quant/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>python绘制candlestick</title>
         <published>2022-01-15T16:42:14+00:00</published>
         <updated>2022-01-15T16:42:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201151642/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201151642/"/>
         <id>https://leaflare.github.io/202201151642/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201151642/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;tusharehuo-qu-xing-qing-shu-ju&quot;&gt;tushare获取行情数据&lt;&#x2F;h3&gt;
 &lt;p&gt;tushare获取历史行情数据的函数主要有三个：&lt;&#x2F;p&gt;
@@ -295,13 +301,19 @@
         <title>Quantative Trading相关环境配置</title>
         <published>2022-01-09T17:21:14+00:00</published>
         <updated>2022-01-09T17:21:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201091721/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201091721/"/>
         <id>https://leaflare.github.io/202201091721/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201091721/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
 &lt;p&gt;如果conda已经没救了，尝试&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda clean --packages &amp;amp;&amp;amp; conda clean --all &amp;amp;&amp;amp; conda update --all

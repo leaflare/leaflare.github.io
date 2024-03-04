@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - R</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/r/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/r/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-03-01T16:42:14+00:00</updated>
     <id>https://leaflare.github.io/tags/r/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>Logistic regression algorithm</title>
         <published>2021-03-01T16:42:14+00:00</published>
         <updated>2021-03-01T16:42:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202103011642/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202103011642/"/>
         <id>https://leaflare.github.io/202103011642/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202103011642/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
 &lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
 &lt;p&gt;​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success&#x2F;yes) or 0 (stands for failure&#x2F;no).&lt;&#x2F;p&gt;

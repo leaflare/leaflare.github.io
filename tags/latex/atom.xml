@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - LaTex</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/latex/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/latex/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-01-29T15:36:14+00:00</updated>
     <id>https://leaflare.github.io/tags/latex/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>LaTex使用总结</title>
         <published>2022-01-29T15:36:14+00:00</published>
         <updated>2022-01-29T15:36:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201291536/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201291536/"/>
         <id>https://leaflare.github.io/202201291536/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201291536/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;xue-xi-bi-ji&quot;&gt;学习笔记&lt;&#x2F;h1&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_39876450&#x2F;article&#x2F;details&#x2F;112287980&quot;&gt;Overleaf速查表&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;zhang-jie-he-fen-ji-biao-ti&quot;&gt;章节和分级标题&lt;&#x2F;h2&gt;

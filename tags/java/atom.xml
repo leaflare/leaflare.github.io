@@ -2,22 +2,130 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Java</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/java/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/java/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2021-11-12T16:13:14+00:00</updated>
+    <updated>2022-11-05T18:43:14+00:00</updated>
     <id>https://leaflare.github.io/tags/java/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>List&lt;? extends Object&gt;和List&lt;? super Object&gt;区别</title>
+        <published>2022-11-05T18:43:14+00:00</published>
+        <updated>2022-11-05T18:43:14+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202211051843/"/>
+        <id>https://leaflare.github.io/202211051843/</id>
+        
+        <content type="html" xml:base="https://leaflare.github.io/202211051843/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;guan-jian-zi&quot;&gt;关键字&lt;&#x2F;h2&gt;
+&lt;p&gt;搜了一下关键字的介绍是：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;? 通配符类型&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;? extends T&gt; 表示类型的上界，表示参数化类型的可能是T 或是 T的子类，extends 可用于返回类型限定，不能用于参数类型限定，带有extends子类型限定的通配符可以向泛型对象读取。
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;? super T&gt; 表示类型下界（Java Core中叫超类型限定），表示参数化类型是此类型的超类型（或者叫父类型），直至Object，super 可用于参数类型限定，不能用于返回类型限定，带有super超类型限定的通配符可以向泛型对易用写入。
+
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;看完还是很迷茫，去搜了几个例子&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;shi-li&quot;&gt;示例&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;list-extends-object&quot;&gt;&lt;strong&gt;List&amp;lt;? extends Object&amp;gt;：&lt;&#x2F;strong&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;列表元素的类型是&lt;code&gt;Object&lt;&#x2F;code&gt;或者&lt;code&gt;Object&lt;&#x2F;code&gt;的子类型。&lt;&#x2F;li&gt;
+&lt;li&gt;可以从中读取元素，但是由于类型的不确定性，不能往里面写入任何东西。因为无法确定列表中实际存储的是哪种类型，写操作可能导致类型不匹配的错误。也就是由于具体的类型是不确定的，因此可以使用 &lt;code&gt;get()&lt;&#x2F;code&gt; 方法进行读取操作，但是不能使用 &lt;code&gt;add()&lt;&#x2F;code&gt; 方法添加元素，除非是 &lt;code&gt;null&lt;&#x2F;code&gt; 值。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;例子：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;List&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; list1 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ArrayList&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;String&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 允许存储String或String的子类型 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt; obj = list1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 读取是安全的 
+&lt;&#x2F;span&gt;&lt;span&gt;list1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 编译错误，不允许写入具体的类型
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;list-super-object&quot;&gt;&lt;strong&gt;List&amp;lt;? super Object&amp;gt;：&lt;&#x2F;strong&gt;&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;列表元素的类型是&lt;code&gt;Object&lt;&#x2F;code&gt;或者&lt;code&gt;Object&lt;&#x2F;code&gt;的父类型。&lt;&#x2F;li&gt;
+&lt;li&gt;可以往里面写入&lt;code&gt;Object&lt;&#x2F;code&gt;类型或者&lt;code&gt;Object&lt;&#x2F;code&gt;的任何子类型，但是由于读取时无法确定实际存储的是什么类型，读取时只能将元素视为&lt;code&gt;Object&lt;&#x2F;code&gt;。可以使用 &lt;code&gt;add()&lt;&#x2F;code&gt; 方法添加 &lt;code&gt;Object&lt;&#x2F;code&gt; 或者 &lt;code&gt;Obeject&lt;&#x2F;code&gt; 的子类型的元素。然而，由于无法确定列表中实际存储的是哪种类型，因此在使用 &lt;code&gt;get()&lt;&#x2F;code&gt; 方法时得到的类型是不确定的，所以不能直接进行读取操作。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;例子：&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;java&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-java &quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;List&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;super &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; list2 = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;ArrayList&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 允许存储Object或Object的父类型
+&lt;&#x2F;span&gt;&lt;span&gt;list2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Hello&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 允许添加String类型
+&lt;&#x2F;span&gt;&lt;span&gt;list2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;42&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 允许添加Integer类型
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span&gt; obj2 = list2.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; 读取时只能将元素视为Object
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;wan-zheng-shi-li&quot;&gt;完整示例&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;extends-shi-li&quot;&gt;extends 示例&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;scala&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-scala &quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span&gt;static &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt; Food&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{}
+&lt;&#x2F;span&gt;&lt;span&gt;static &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt; Fruit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Food&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{}
+&lt;&#x2F;span&gt;&lt;span&gt;static &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt; Apple &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Fruit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{}
+&lt;&#x2F;span&gt;&lt;span&gt;static &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt; RedApple &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Apple&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;{}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;List&amp;lt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extends&lt;&#x2F;span&gt;&lt;span&gt; Fruit&amp;gt; flist = new ArrayList&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Apple&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; complie error:
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; flist.add(new Apple());
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; flist.add(new Fruit());
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; flist.add(new Object());
+&lt;&#x2F;span&gt;&lt;span&gt;flist.add(null); &#x2F;&#x2F; only work for null 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;List&amp;lt;? extends Fruit&amp;gt; 表示 “具有任何从Fruit继承类型的列表”，编译器无法确定List所持有的类型，所以无法安全的向其中添加对象。可以添加null,因为null 可以表示任何类型。所以List 的add 方法不能添加任何有意义的元素，但是可以接受现有的子类型List&lt;Apple&gt; 赋值。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;csharp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-csharp &quot;&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span&gt;Fruit fruit = flist.get(0);
+&lt;&#x2F;span&gt;&lt;span&gt;Apple apple = (Apple)flist.get(0);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;由于，其中放置是从Fruit中继承的类型，所以可以安全地取出Fruit类型。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cpp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cpp &quot;&gt;&lt;code class=&quot;language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span&gt;flist.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;contains&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Fruit&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;flist.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;contains&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Apple&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;在使用Collection中的contains 方法时，接受Object 参数类型，可以不涉及任何通配符，编译器也允许这么调用。&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;super-shi-li&quot;&gt;super 示例&lt;&#x2F;h4&gt;
+&lt;pre data-lang=&quot;csharp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-csharp &quot;&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span&gt;List&amp;lt;? super Fruit&amp;gt; flist = new ArrayList&amp;lt;Fruit&amp;gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;flist.add(new Fruit());
+&lt;&#x2F;span&gt;&lt;span&gt;flist.add(new Apple());
+&lt;&#x2F;span&gt;&lt;span&gt;flist.add(new RedApple());
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;&#x2F; compile error:
+&lt;&#x2F;span&gt;&lt;span&gt;List&amp;lt;? super Fruit&amp;gt; flist = new ArrayList&amp;lt;Apple&amp;gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;List&amp;lt;? super Fruit&amp;gt; 表示“具有任何Fruit超类型的列表”，列表的类型至少是一个 Fruit 类型，因此可以安全的向其中添加Fruit 及其子类型。由于List&amp;lt;? super Fruit&amp;gt;中的类型可能是任何Fruit 的超类型，无法赋值为Fruit的子类型Apple的List&lt;Apple&gt;。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;csharp&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-csharp &quot;&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span&gt;&#x2F;&#x2F; compile error:
+&lt;&#x2F;span&gt;&lt;span&gt;Fruit item = flist.get(0);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;因为，List&amp;lt;? super Fruit&amp;gt;中的类型可能是任何Fruit 的超类型，所以编译器无法确定get返回的对象类型是Fruit,还是Fruit的父类Food 或 Object。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zong-jie&quot;&gt;总结&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;PECS原则&lt;code&gt;List&amp;lt;? extends Object&amp;gt;&lt;&#x2F;code&gt;通常用于表示“只读”的情况（T{T类型或者T的子类型}类型不确定，写入的时候编译器不知道具体的类型所以会报编译器错误）{上届}，而&lt;code&gt;List&amp;lt;? super Object&amp;gt;&lt;&#x2F;code&gt;用于表示“可写”的情况（T{T父类型直至Object}，读出来的是Object）{下届}。&lt;&#x2F;li&gt;
+&lt;li&gt;extends限定类型安全时返回值用， super限定类型安全时方法参数用。&lt;&#x2F;li&gt;
+&lt;li&gt;如果要从集合中读取类型T的数据，并且不能写入，可以使用 ? extends 通配符；(Producer Extends)
+如果要从集合中写入类型T的数据，并且不需要读取，可以使用 ? super 通配符；(Consumer Super)
+如果既要存又要取，那么就不要使用任何通配符。&lt;&#x2F;li&gt;
+&lt;li&gt;泛型是为了类型安全。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="zh">
         <title>Java版本问题处理合集</title>
         <published>2021-11-12T16:13:14+00:00</published>
         <updated>2021-11-12T16:13:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202111121613/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202111121613/"/>
         <id>https://leaflare.github.io/202111121613/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202111121613/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;bu-yi-zhi-bao-cuo&quot;&gt;不一致报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;a-jni-error-has-occurred-please-check-your-installation-and-try-again&quot;&gt;A JNI error has occurred, please check your installation and try again&lt;&#x2F;h3&gt;
 &lt;p&gt;javac与java版本不同所致&lt;&#x2F;p&gt;

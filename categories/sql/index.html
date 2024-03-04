@@ -7,7 +7,7 @@
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-      <title>Leaflare - maven报错处理合集</title>
+      <title>Leaflare</title>
 
       
 
@@ -105,101 +105,24 @@
             <main>
                 <div class="content" id="mobile-panel">
                     
-
-
-<div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content always-active">
-        <nav id="TableOfContents">
-            <ul>
-                
-                <li>
-                    <a href="https://leaflare.github.io/202012091255/#ming-ling-su-cha" class="toc-link">命令速查</a>
-                    
-                    <ul>
-                        
-                        <li>
-                            <a href="https://leaflare.github.io/202012091255/#shan-chu-ben-di-cang-ku-zhong-de-xiang-guan-yi-lai-xiang" class="toc-link">删除本地仓库中的相关依赖项</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-                
-                <li>
-                    <a href="https://leaflare.github.io/202012091255/#bao-cuo-chu-li" class="toc-link">报错处理</a>
-                    
-                    <ul>
-                        
-                        <li>
-                            <a href="https://leaflare.github.io/202012091255/#cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8" class="toc-link">错误: 找不到或无法加载主类 .encoding=UTF-8</a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-                
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-<article class="post">
-    
-    <header class="post__header">
-        <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202012091255&#x2F;">maven报错处理合集</a>
-        </h1>
-        <div class="post__meta">
-            <span class="post__time">2020-12-09</span>
-            
-        </div>
-    </header>
-
-    <div class="post-content">
-      <span id="continue-reading"></span>
-<h2 id="ming-ling-su-cha">命令速查</h2>
-<h4 id="shan-chu-ben-di-cang-ku-zhong-de-xiang-guan-yi-lai-xiang">删除本地仓库中的相关依赖项</h4>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mvn dependency:purge-local-repository
-</span></code></pre>
-<h2 id="bao-cuo-chu-li">报错处理</h2>
-<h3 id="cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8">错误: 找不到或无法加载主类 .encoding=UTF-8</h3>
-<p>事故现场</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>java -Dfile.encoding=UTF-8 -jar xxx.jar
-</span></code></pre>
-<p>原因：</p>
-<p>idea内置的terminal类似 PowerShell，而上述命令适用于cmd</p>
-<p>解决方法：</p>
-<p>在 PowerShell 中运行时需要加引号使用：</p>
-<pre data-lang="powershell" style="background-color:#2b303b;color:#c0c5ce;" class="language-powershell "><code class="language-powershell" data-lang="powershell"><span>java &#39;</span><span style="color:#a3be8c;">-Dfile.encoding=utf-8</span><span>&#39; -jar xxx.jar
-</span></code></pre>
-<p>或者用cmd运行</p>
-
-    </div>
-
-    
-    
-
-    <div class="post-footer">
+    <div class="taxonomy">
+        <h2>SQL</h2>
         
-            
-                <div class="post-tags">
-                    
-                        <a href="https://leaflare.github.io/tags/maven/">#Maven</a>
-                    
-                </div>
-            
-            
-
+            <div class="taxonomy__item">
+                <span class="taxonomy__item__time">2023-01-04</span>
+                <span class="taxonomy__item__title">
+                    <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202301042037&#x2F;">复杂查询小记</a>
+                </span>
+            </div>
         
-
+            <div class="taxonomy__item">
+                <span class="taxonomy__item__time">2022-01-04</span>
+                <span class="taxonomy__item__title">
+                    <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202201042037&#x2F;">MySQL使用经验总结</a>
+                </span>
+            </div>
+        
     </div>
-
-    
-    
-</article>
-
 
                 </div>
             </main>

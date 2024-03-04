@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Virtual Machine</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/categories/virtual-machine/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/categories/virtual-machine/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2021-10-20T12:41:34+00:00</updated>
     <id>https://leaflare.github.io/categories/virtual-machine/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>Virtualbox 踩坑记录</title>
         <published>2021-10-20T12:41:34+00:00</published>
         <updated>2021-10-20T12:41:34+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202110201241/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202110201241/"/>
         <id>https://leaflare.github.io/202110201241/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202110201241/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Oracle VM Virtualbox &lt;&#x2F;p&gt;
 &lt;h2 id=&quot;an-zhuang&quot;&gt;安装&lt;&#x2F;h2&gt;
 &lt;p&gt;官网：&lt;a href=&quot;https:&#x2F;&#x2F;www.virtualbox.org&#x2F;wiki&#x2F;Downloads&quot;&gt;Downloads – Oracle VM VirtualBox&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;

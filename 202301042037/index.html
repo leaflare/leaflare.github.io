@@ -7,7 +7,7 @@
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-      <title>Leaflare - maven报错处理合集</title>
+      <title>Leaflare - 复杂查询小记</title>
 
       
 
@@ -114,28 +114,12 @@
             <ul>
                 
                 <li>
-                    <a href="https://leaflare.github.io/202012091255/#ming-ling-su-cha" class="toc-link">命令速查</a>
-                    
-                    <ul>
-                        
-                        <li>
-                            <a href="https://leaflare.github.io/202012091255/#shan-chu-ben-di-cang-ku-zhong-de-xiang-guan-yi-lai-xiang" class="toc-link">删除本地仓库中的相关依赖项</a>
-                        </li>
-                        
-                    </ul>
+                    <a href="https://leaflare.github.io/202301042037/#lei-mu-da-san" class="toc-link">类目打散</a>
                     
                 </li>
                 
                 <li>
-                    <a href="https://leaflare.github.io/202012091255/#bao-cuo-chu-li" class="toc-link">报错处理</a>
-                    
-                    <ul>
-                        
-                        <li>
-                            <a href="https://leaflare.github.io/202012091255/#cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8" class="toc-link">错误: 找不到或无法加载主类 .encoding=UTF-8</a>
-                        </li>
-                        
-                    </ul>
+                    <a href="https://leaflare.github.io/202301042037/#to-json" class="toc-link">to_json</a>
                     
                 </li>
                 
@@ -149,32 +133,45 @@
     
     <header class="post__header">
         <h1 class="post__title">
-            <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202012091255&#x2F;">maven报错处理合集</a>
+            <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202301042037&#x2F;">复杂查询小记</a>
         </h1>
         <div class="post__meta">
-            <span class="post__time">2020-12-09</span>
+            <span class="post__time">2023-01-04</span>
             
         </div>
     </header>
 
     <div class="post-content">
       <span id="continue-reading"></span>
-<h2 id="ming-ling-su-cha">命令速查</h2>
-<h4 id="shan-chu-ben-di-cang-ku-zhong-de-xiang-guan-yi-lai-xiang">删除本地仓库中的相关依赖项</h4>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mvn dependency:purge-local-repository
+<p>虽然不鼓励使用复杂查询，但是总有迫(bei)不(yao)得(qiu)已的时候</p>
+<p>常年不写容易业务生疏，记录一下，语法基于Hive SQL</p>
+<h3 id="lei-mu-da-san">类目打散</h3>
+<p>业务背景：需要给数据行重新生成一个字段，按新字段排序时，相同类别的数据行分散出现（尽可能不连续出现）</p>
+<pre data-lang="sql" style="background-color:#2b303b;color:#c0c5ce;" class="language-sql "><code class="language-sql" data-lang="sql"><span style="color:#b48ead;">SELECT
+</span><span>    id,
+</span><span>    category_id,
+</span><span>    ROW_NUMBER() OVER (
+</span><span>        </span><span style="color:#b48ead;">ORDER BY 
+</span><span>        	order_id, 
+</span><span>        	reverse(category_id) 
+</span><span>        ) AS shuffled_id
+</span><span style="color:#b48ead;">FROM
+</span><span>(
+</span><span>    </span><span style="color:#b48ead;">SELECT
+</span><span>        id,
+</span><span>        category_id,
+</span><span>        ROW_NUMBER() OVER (
+</span><span>            PARTITION BY 
+</span><span>            	category_id 
+</span><span>            </span><span style="color:#b48ead;">ORDER BY 
+</span><span>            	id
+</span><span>        	) AS order_id
+</span><span>    </span><span style="color:#b48ead;">FROM
+</span><span>        original_table
+</span><span>) AS subquery;
+</span><span>	
 </span></code></pre>
-<h2 id="bao-cuo-chu-li">报错处理</h2>
-<h3 id="cuo-wu-zhao-bu-dao-huo-wu-fa-jia-zai-zhu-lei-encoding-utf-8">错误: 找不到或无法加载主类 .encoding=UTF-8</h3>
-<p>事故现场</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>java -Dfile.encoding=UTF-8 -jar xxx.jar
-</span></code></pre>
-<p>原因：</p>
-<p>idea内置的terminal类似 PowerShell，而上述命令适用于cmd</p>
-<p>解决方法：</p>
-<p>在 PowerShell 中运行时需要加引号使用：</p>
-<pre data-lang="powershell" style="background-color:#2b303b;color:#c0c5ce;" class="language-powershell "><code class="language-powershell" data-lang="powershell"><span>java &#39;</span><span style="color:#a3be8c;">-Dfile.encoding=utf-8</span><span>&#39; -jar xxx.jar
-</span></code></pre>
-<p>或者用cmd运行</p>
+<h2 id="to-json">to_json</h2>
 
     </div>
 
@@ -186,7 +183,9 @@
             
                 <div class="post-tags">
                     
-                        <a href="https://leaflare.github.io/tags/maven/">#Maven</a>
+                        <a href="https://leaflare.github.io/tags/sql/">#SQL</a>
+                    
+                        <a href="https://leaflare.github.io/tags/hive/">#Hive</a>
                     
                 </div>
             

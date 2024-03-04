@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - Python</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/python/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/python/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2022-02-05T15:16:18+00:00</updated>
     <id>https://leaflare.github.io/tags/python/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>Graphviz使用记录</title>
         <published>2022-02-05T15:16:18+00:00</published>
         <updated>2022-02-05T15:16:18+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202202051516/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202202051516/"/>
         <id>https://leaflare.github.io/202202051516/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202202051516/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;Graphviz 是一个开源的可视化图形工具，用于绘制结构化的图形网络，通过对输入脚本的解析，分析出其中的点、边及子图，然后根据属性进行绘制。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;an-zhuang-pei-zhi&quot;&gt;安装配置&lt;&#x2F;h2&gt;
 &lt;p&gt;官网&lt;a href=&quot;http:&#x2F;&#x2F;www.graphviz.org&#x2F;&quot;&gt;Graphviz&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
@@ -109,13 +115,19 @@
         <title>python绘制candlestick</title>
         <published>2022-01-15T16:42:14+00:00</published>
         <updated>2022-01-15T16:42:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201151642/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201151642/"/>
         <id>https://leaflare.github.io/202201151642/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201151642/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-huo-qu&quot;&gt;数据获取&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;tusharehuo-qu-xing-qing-shu-ju&quot;&gt;tushare获取行情数据&lt;&#x2F;h3&gt;
 &lt;p&gt;tushare获取历史行情数据的函数主要有三个：&lt;&#x2F;p&gt;
@@ -393,13 +405,19 @@
         <title>python经验总结</title>
         <published>2022-01-15T14:43:14+00:00</published>
         <updated>2022-01-15T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201151443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201151443/"/>
         <id>https://leaflare.github.io/202201151443/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201151443/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;cha-zhao-an-zhuang-di-zhi&quot;&gt;查找安装地址&lt;&#x2F;h1&gt;
 &lt;p&gt;控制台&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;where python
@@ -500,13 +518,19 @@
         <title>conda报错处理合集</title>
         <published>2022-01-10T21:36:14+00:00</published>
         <updated>2022-01-10T21:36:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201102136/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201102136/"/>
         <id>https://leaflare.github.io/202201102136/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201102136/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;condageng-xin-bao-cuo&quot;&gt;conda更新报错&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;condavalueerror-malformed-version-string-invalid-character-s&quot;&gt;CondaValueError: Malformed version string &#x27;~&#x27;: invalid character(s).&lt;&#x2F;h3&gt;
 &lt;p&gt;尝试&lt;&#x2F;p&gt;
@@ -538,13 +562,19 @@
         <title>Quantative Trading相关环境配置</title>
         <published>2022-01-09T17:21:14+00:00</published>
         <updated>2022-01-09T17:21:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201091721/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201091721/"/>
         <id>https://leaflare.github.io/202201091721/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201091721/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;anacondazhong-zhuang&quot;&gt;Anaconda重装&lt;&#x2F;h2&gt;
 &lt;p&gt;如果conda已经没救了，尝试&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ conda clean --packages &amp;amp;&amp;amp; conda clean --all &amp;amp;&amp;amp; conda update --all
@@ -612,13 +642,19 @@
         <title>pandas经验总结</title>
         <published>2022-01-05T14:43:14+00:00</published>
         <updated>2022-01-05T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202201051443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202201051443/"/>
         <id>https://leaflare.github.io/202201051443/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202201051443/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;pandasxian-shi-she-zhi&quot;&gt;pandas显示设置&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;kong-zhi-tai-da-yin-wan-zheng-shu-ju&quot;&gt;控制台打印完整数据&lt;&#x2F;h2&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#显示更多行
@@ -704,13 +740,19 @@
         <title>pip报错处理合集</title>
         <published>2021-12-12T16:13:14+00:00</published>
         <updated>2021-12-12T16:13:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202112121613/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202112121613/"/>
         <id>https://leaflare.github.io/202112121613/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202112121613/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;piphe-pip3de-qu-bie&quot;&gt;pip和pip3的区别&lt;&#x2F;h2&gt;
 &lt;p&gt;当一台电脑同时有多个版本的Python的时候，用pip3就可以自动区分用Python3来安装库，为了避免和Python2发生冲突的。如果电脑只安装了Python3，那么不管用pip还是pip3都一样的。
 安装了python3之后，会有pip3
@@ -726,13 +768,19 @@
         <title>python数据处理经验总结</title>
         <published>2021-11-15T14:43:14+00:00</published>
         <updated>2021-11-15T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202111151443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202111151443/"/>
         <id>https://leaflare.github.io/202111151443/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202111151443/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h2 id=&quot;shu-ju-lei-xing-chu-li&quot;&gt;数据类型处理&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;cha-kan-shu-ju-lei-xing&quot;&gt;查看数据类型&lt;&#x2F;h3&gt;
 &lt;h4 id=&quot;type-he-isinstance&quot;&gt;type()和isinstance()&lt;&#x2F;h4&gt;
@@ -771,10 +819,16 @@
         <title>python数据可视化</title>
         <published>2021-08-15T14:43:14+00:00</published>
         <updated>2021-08-15T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202108151443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202108151443/"/>
         <id>https://leaflare.github.io/202108151443/</id>
         
         <summary type="html">&lt;p&gt;常用可视化图表速查&lt;&#x2F;p&gt;
@@ -785,13 +839,19 @@
         <title>paddle踩坑</title>
         <published>2021-07-15T14:43:14+00:00</published>
         <updated>2021-07-15T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202107151443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202107151443/"/>
         <id>https://leaflare.github.io/202107151443/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202107151443/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;这东西有CPU版本和GPU版本两种，GPU版本的完全依赖CUDA+CUDNN，直接pip install只会报一堆让人摸不着头脑的错（x&lt;&#x2F;p&gt;
 &lt;p&gt;CPU版本直接&lt;code&gt;python -m pip install paddlepaddle==2.3.0 -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;下面是GPU版本的踩坑记录&lt;&#x2F;p&gt;
@@ -826,13 +886,19 @@
         <title>Logistic regression algorithm</title>
         <published>2021-03-01T16:42:14+00:00</published>
         <updated>2021-03-01T16:42:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202103011642/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202103011642/"/>
         <id>https://leaflare.github.io/202103011642/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202103011642/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;h1 id=&quot;logistic-regression-algorithm&quot;&gt;Logistic regression algorithm&lt;&#x2F;h1&gt;
 &lt;p&gt;​	Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of target or dependent variable is dichotomous, which means there would be only two possible classes.&lt;&#x2F;p&gt;
 &lt;p&gt;​	In simple words, the dependent variable is binary in nature having data coded as either 1 (stands for success&#x2F;yes) or 0 (stands for failure&#x2F;no).&lt;&#x2F;p&gt;
@@ -986,10 +1052,16 @@
         <title>Solving stupid problems——装不上某个python包</title>
         <published>2020-09-13T14:43:14+00:00</published>
         <updated>2020-09-13T14:43:14+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202009131443/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202009131443/"/>
         <id>https://leaflare.github.io/202009131443/</id>
         
         <summary type="html">&lt;p&gt;记录一次用pip安装python包失败的解决过程&lt;&#x2F;p&gt;

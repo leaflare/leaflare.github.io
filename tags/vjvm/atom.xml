@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - vjvm</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/tags/vjvm/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/vjvm/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-02-24T17:47:19+00:00</updated>
     <id>https://leaflare.github.io/tags/vjvm/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>vjvm note 04： Instruction</title>
         <published>2023-02-24T17:47:19+00:00</published>
         <updated>2023-02-24T17:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202302241747/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202302241747/"/>
         <id>https://leaflare.github.io/202302241747/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;instruction&quot;&gt;Instruction&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202302241747/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;instruction&quot;&gt;Instruction&lt;&#x2F;h2&gt;
 &lt;p&gt;从实现上来说，所有的指令都是对操作数栈、局部变量表等数据结构里面的某处数据进行了修改。&lt;&#x2F;p&gt;
 &lt;p&gt;每条指令的执行都分为解码与运行两个阶段。解码由指令的构造方法实现（如 &lt;code&gt;invokestatic&lt;&#x2F;code&gt;），而运行则由 &lt;code&gt;run&lt;&#x2F;code&gt; 方法实现。&lt;&#x2F;p&gt;
 &lt;p&gt;除此之外，每条指令有一个 &lt;code&gt;toString&lt;&#x2F;code&gt; 方法，被调试器使用。&lt;&#x2F;p&gt;
@@ -70,13 +76,19 @@
         <title>vjvm note 03： Runtime</title>
         <published>2023-02-21T02:47:19+00:00</published>
         <updated>2023-02-21T02:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202302210247/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202302210247/"/>
         <id>https://leaflare.github.io/202302210247/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;slotsyu-operandstack&quot;&gt;Slots与OperandStack&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202302210247/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;slotsyu-operandstack&quot;&gt;Slots与OperandStack&lt;&#x2F;h2&gt;
 &lt;p&gt;Slots代表规范中定义的JVM插槽数组。它支持获取和放置原始数据类型，包括地址。使用对象数组Object[]实现。&lt;&#x2F;p&gt;
 &lt;p&gt;在局部变量表和操作数栈中，每个位置都是 4 字节，且 &lt;code&gt;long&lt;&#x2F;code&gt; 与 &lt;code&gt;double&lt;&#x2F;code&gt; 占用连续两个位置。&lt;&#x2F;p&gt;
 &lt;p&gt;规定每个 &lt;code&gt;int&lt;&#x2F;code&gt; 所占空间为一个槽位（slot），&lt;code&gt;long&lt;&#x2F;code&gt; 与 &lt;code&gt;double&lt;&#x2F;code&gt; 占用两个槽位， 且使用第一个的下标访问。Slots 的下标从 0 开始。在初始化时，能够确定最多使用的 slots 数量 &lt;code&gt;slotSize&lt;&#x2F;code&gt;，它可能来自 &lt;code&gt;Code&lt;&#x2F;code&gt; 属性中的 &lt;code&gt;max_stack&lt;&#x2F;code&gt; 或 &lt;code&gt;max_locals&lt;&#x2F;code&gt;。 对于每一种基本数据类型，都提供了对应的 getter 与 setter 方法（无 get 与 set 前缀），其中 &lt;code&gt;byte&lt;&#x2F;code&gt;、&lt;code&gt;char&lt;&#x2F;code&gt; 与 &lt;code&gt;short&lt;&#x2F;code&gt; 类型应转换成 &lt;code&gt;int&lt;&#x2F;code&gt; 存储。Slots 的大小可通过 &lt;code&gt;size&lt;&#x2F;code&gt; 方法获得。在进行函数调用时，参数首先从操作数栈的栈顶弹出，然后被复制进被调用方法栈帧的局部变量表中。通过 &lt;code&gt;copyTo&lt;&#x2F;code&gt; 与&lt;code&gt;popSlots&lt;&#x2F;code&gt; 支持这种操作。&lt;&#x2F;p&gt;
@@ -108,13 +120,19 @@
         <title>vjvm note 02： Parser</title>
         <published>2023-02-15T22:47:19+00:00</published>
         <updated>2023-02-15T22:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202302152247/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202302152247/"/>
         <id>https://leaflare.github.io/202302152247/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;class-wen-jian-jie-gou&quot;&gt;class 文件结构&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202302152247/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;class-wen-jian-jie-gou&quot;&gt;class 文件结构&lt;&#x2F;h2&gt;
 &lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;ClassFile {
 &lt;&#x2F;span&gt;&lt;span&gt;  u4              magic;
 &lt;&#x2F;span&gt;&lt;span&gt;  u2              minor_version;
@@ -199,13 +217,19 @@
         <title>vjvm note 01： ClassLoader</title>
         <published>2023-02-13T20:47:19+00:00</published>
         <updated>2023-02-13T20:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202302132047/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202302132047/"/>
         <id>https://leaflare.github.io/202302132047/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;classloader&quot;&gt;ClassLoader&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202302132047/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h2 id=&quot;classloader&quot;&gt;ClassLoader&lt;&#x2F;h2&gt;
 &lt;p&gt;作为Java运行时环境的一部分，Java ClassLoader动态地将Java类加载到Java虚拟机中。通过在Java中使用类加载器，它不需要Java运行时系统了解文件和文件系统的情况。Java类在应用程序需要时被加载，而不是一次性加载到内存中。Java中的ClassLoader是由JRE调用的。这些ClassLoaders动态地将类加载到内存中。&lt;&#x2F;p&gt;
 &lt;p&gt;在java中，有以下3种默认的类加载器:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -267,13 +291,19 @@
         <title>vjvm note 00： Basic Info</title>
         <published>2022-02-11T20:47:19+00:00</published>
         <updated>2022-02-11T20:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202202112047/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202202112047/"/>
         <id>https://leaflare.github.io/202202112047/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202202112047/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;toy jvm，本系列blog用于记录基本项目结构和重要的实现方法&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;main&quot;&gt;Main&lt;&#x2F;h2&gt;
 &lt;p&gt;定义了一个实现了Callable&lt;Integer&gt;接口的Main类。Main方法创建了一个Main类的新实例，并通过将命令行参数传递给CommandLine类的execute方法来执行。&lt;&#x2F;p&gt;

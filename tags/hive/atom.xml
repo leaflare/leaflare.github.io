@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>Leaflare - Hive</title>
+    <subtitle>Blog</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/tags/hive/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-01-04T20:37:19+00:00</updated>
+    <id>https://leaflare.github.io/tags/hive/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>复杂查询小记</title>
+        <published>2023-01-04T20:37:19+00:00</published>
+        <updated>2023-01-04T20:37:19+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202301042037/"/>
+        <id>https://leaflare.github.io/202301042037/</id>
+        
+        <content type="html" xml:base="https://leaflare.github.io/202301042037/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;虽然不鼓励使用复杂查询，但是总有迫(bei)不(yao)得(qiu)已的时候&lt;&#x2F;p&gt;
+&lt;p&gt;常年不写容易业务生疏，记录一下，语法基于Hive SQL&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;lei-mu-da-san&quot;&gt;类目打散&lt;&#x2F;h3&gt;
+&lt;p&gt;业务背景：需要给数据行重新生成一个字段，按新字段排序时，相同类别的数据行分散出现（尽可能不连续出现）&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sql&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-sql &quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;SELECT
+&lt;&#x2F;span&gt;&lt;span&gt;    id,
+&lt;&#x2F;span&gt;&lt;span&gt;    category_id,
+&lt;&#x2F;span&gt;&lt;span&gt;    ROW_NUMBER() OVER (
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ORDER BY 
+&lt;&#x2F;span&gt;&lt;span&gt;        	order_id, 
+&lt;&#x2F;span&gt;&lt;span&gt;        	reverse(category_id) 
+&lt;&#x2F;span&gt;&lt;span&gt;        ) AS shuffled_id
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;FROM
+&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;SELECT
+&lt;&#x2F;span&gt;&lt;span&gt;        id,
+&lt;&#x2F;span&gt;&lt;span&gt;        category_id,
+&lt;&#x2F;span&gt;&lt;span&gt;        ROW_NUMBER() OVER (
+&lt;&#x2F;span&gt;&lt;span&gt;            PARTITION BY 
+&lt;&#x2F;span&gt;&lt;span&gt;            	category_id 
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ORDER BY 
+&lt;&#x2F;span&gt;&lt;span&gt;            	id
+&lt;&#x2F;span&gt;&lt;span&gt;        	) AS order_id
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;FROM
+&lt;&#x2F;span&gt;&lt;span&gt;        original_table
+&lt;&#x2F;span&gt;&lt;span&gt;) AS subquery;
+&lt;&#x2F;span&gt;&lt;span&gt;	
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;to-json&quot;&gt;to_json&lt;&#x2F;h2&gt;
+</content>
+        
+    </entry>
+</feed>

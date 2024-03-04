@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title>Leaflare - LLM</title>
     <subtitle>Blog</subtitle>
-    <link href="https://leaflare.github.io/categories/llm/atom.xml" rel="self" type="application/atom+xml"/>
-    <link href="https://leaflare.github.io"/>
+    <link rel="self" type="application/atom+xml" href="https://leaflare.github.io/categories/llm/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://leaflare.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2023-08-22T14:47:19+00:00</updated>
     <id>https://leaflare.github.io/categories/llm/atom.xml</id>
@@ -11,13 +11,19 @@
         <title>Open AI 使用记录</title>
         <published>2023-08-22T14:47:19+00:00</published>
         <updated>2023-08-22T14:47:19+00:00</updated>
+        
         <author>
-          <name>Unknown</name>
+          <name>
+            
+              Unknown
+            
+          </name>
         </author>
-        <link rel="alternate" href="https://leaflare.github.io/202308221447/" type="text/html"/>
+        
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202308221447/"/>
         <id>https://leaflare.github.io/202308221447/</id>
         
-        <content type="html">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202308221447/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;终于收到境外信用卡了，开始尝试使用Open AI的API&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;she-zhi-huan-jing-bian-liang&quot;&gt;设置环境变量&lt;&#x2F;h2&gt;
 &lt;p&gt;OPENAI_API_KEY&lt;&#x2F;p&gt;

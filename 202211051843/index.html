@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title>Leaflare - List&lt;? extends Object&gt;和List&lt;? super Object&gt;区别</title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+      
+
+      
+          <link rel="stylesheet" href="https://leaflare.github.io/site.css">
+          
+      
+
+      
+      
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="mobile-navbar" class="mobile-navbar">
+              <div class="mobile-header-logo">
+                <a href="/" class="logo">Leaflare</a>
+              </div>
+              <div class="mobile-navbar-icon icon-out">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <nav id="mobile-menu" class="mobile-menu slideout-menu slideout-menu-left">
+              <ul class="mobile-menu-list">
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io">
+                            主页
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;categories">
+                            分类
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;tags">
+                            标签
+                        </a>
+                    </li>
+                
+                    <li class="mobile-menu-item">
+                        <a href="https:&#x2F;&#x2F;github.com&#x2F;leaflare">
+                            GitHub
+                        </a>
+                    </li>
+                
+              </ul>
+            </nav>
+
+            <header id="header">
+                <div class="logo"><a href="https:&#x2F;&#x2F;leaflare.github.io">Leaflare</a></div>
+                <nav class="menu">
+                    <ul>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io">
+                                    主页
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;categories">
+                                    分类
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;tags">
+                                    标签
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https:&#x2F;&#x2F;github.com&#x2F;leaflare">
+                                    GitHub
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="content" id="mobile-panel">
+                    
+
+
+<div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content always-active">
+        <nav id="TableOfContents">
+            <ul>
+                
+                <li>
+                    <a href="https://leaflare.github.io/202211051843/#guan-jian-zi" class="toc-link">关键字</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/202211051843/#shi-li" class="toc-link">示例</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/202211051843/#list-extends-object" class="toc-link">List&lt;? extends Object&gt;：</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/202211051843/#list-super-object" class="toc-link">List&lt;? super Object&gt;：</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://leaflare.github.io/202211051843/#wan-zheng-shi-li" class="toc-link">完整示例</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://leaflare.github.io/202211051843/#zong-jie" class="toc-link">总结</a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<article class="post">
+    
+    <header class="post__header">
+        <h1 class="post__title">
+            <a href="https:&#x2F;&#x2F;leaflare.github.io&#x2F;202211051843&#x2F;">List&lt;? extends Object&gt;和List&lt;? super Object&gt;区别</a>
+        </h1>
+        <div class="post__meta">
+            <span class="post__time">2022-11-05</span>
+            
+        </div>
+    </header>
+
+    <div class="post-content">
+      <span id="continue-reading"></span><h2 id="guan-jian-zi">关键字</h2>
+<p>搜了一下关键字的介绍是：</p>
+<ul>
+<li>? 通配符类型</li>
+<li><? extends T> 表示类型的上界，表示参数化类型的可能是T 或是 T的子类，extends 可用于返回类型限定，不能用于参数类型限定，带有extends子类型限定的通配符可以向泛型对象读取。
+</li>
+<li><? super T> 表示类型下界（Java Core中叫超类型限定），表示参数化类型是此类型的超类型（或者叫父类型），直至Object，super 可用于参数类型限定，不能用于返回类型限定，带有super超类型限定的通配符可以向泛型对易用写入。
+
+</li>
+</ul>
+<p>看完还是很迷茫，去搜了几个例子</p>
+<h2 id="shi-li">示例</h2>
+<ol>
+<li><h3 id="list-extends-object"><strong>List&lt;? extends Object&gt;：</strong></h3>
+<ul>
+<li>列表元素的类型是<code>Object</code>或者<code>Object</code>的子类型。</li>
+<li>可以从中读取元素，但是由于类型的不确定性，不能往里面写入任何东西。因为无法确定列表中实际存储的是哪种类型，写操作可能导致类型不匹配的错误。也就是由于具体的类型是不确定的，因此可以使用 <code>get()</code> 方法进行读取操作，但是不能使用 <code>add()</code> 方法添加元素，除非是 <code>null</code> 值。</li>
+</ul>
+<p>例子：</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">List</span><span>&lt;? </span><span style="color:#b48ead;">extends </span><span style="color:#ebcb8b;">Object</span><span>&gt; list1 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ArrayList</span><span>&lt;</span><span style="color:#ebcb8b;">String</span><span>&gt;(); </span><span style="color:#65737e;">// 允许存储String或String的子类型 
+</span><span style="color:#ebcb8b;">Object</span><span> obj = list1.</span><span style="color:#bf616a;">get</span><span>(</span><span style="color:#d08770;">0</span><span>); </span><span style="color:#65737e;">// 读取是安全的 
+</span><span>list1.</span><span style="color:#bf616a;">add</span><span>(&quot;</span><span style="color:#a3be8c;">Hello</span><span>&quot;); </span><span style="color:#65737e;">// 编译错误，不允许写入具体的类型
+</span></code></pre>
+</li>
+<li><h3 id="list-super-object"><strong>List&lt;? super Object&gt;：</strong></h3>
+<ul>
+<li>列表元素的类型是<code>Object</code>或者<code>Object</code>的父类型。</li>
+<li>可以往里面写入<code>Object</code>类型或者<code>Object</code>的任何子类型，但是由于读取时无法确定实际存储的是什么类型，读取时只能将元素视为<code>Object</code>。可以使用 <code>add()</code> 方法添加 <code>Object</code> 或者 <code>Obeject</code> 的子类型的元素。然而，由于无法确定列表中实际存储的是哪种类型，因此在使用 <code>get()</code> 方法时得到的类型是不确定的，所以不能直接进行读取操作。</li>
+</ul>
+<p>例子：</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#c0c5ce;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#ebcb8b;">List</span><span>&lt;? </span><span style="color:#b48ead;">super </span><span style="color:#ebcb8b;">Object</span><span>&gt; list2 = </span><span style="color:#b48ead;">new </span><span style="color:#ebcb8b;">ArrayList</span><span>&lt;</span><span style="color:#ebcb8b;">Object</span><span>&gt;(); </span><span style="color:#65737e;">// 允许存储Object或Object的父类型
+</span><span>list2.</span><span style="color:#bf616a;">add</span><span>(&quot;</span><span style="color:#a3be8c;">Hello</span><span>&quot;); </span><span style="color:#65737e;">// 允许添加String类型
+</span><span>list2.</span><span style="color:#bf616a;">add</span><span>(</span><span style="color:#d08770;">42</span><span>); </span><span style="color:#65737e;">// 允许添加Integer类型
+</span><span style="color:#ebcb8b;">Object</span><span> obj2 = list2.</span><span style="color:#bf616a;">get</span><span>(</span><span style="color:#d08770;">0</span><span>); </span><span style="color:#65737e;">// 读取时只能将元素视为Object
+</span></code></pre>
+</li>
+</ol>
+<h3 id="wan-zheng-shi-li">完整示例</h3>
+<h4 id="extends-shi-li">extends 示例</h4>
+<pre data-lang="scala" style="background-color:#2b303b;color:#c0c5ce;" class="language-scala "><code class="language-scala" data-lang="scala"><span>static </span><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> Food</span><span style="color:#eff1f5;">{}
+</span><span>static </span><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> Fruit </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">Food</span><span style="color:#eff1f5;">{}
+</span><span>static </span><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> Apple </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">Fruit</span><span style="color:#eff1f5;">{}
+</span><span>static </span><span style="color:#b48ead;">class</span><span style="color:#ebcb8b;"> RedApple </span><span style="color:#b48ead;">extends </span><span style="color:#a3be8c;">Apple</span><span style="color:#eff1f5;">{}
+</span><span>
+</span><span>List&lt;? </span><span style="color:#bf616a;">extends</span><span> Fruit&gt; flist = new ArrayList&lt;</span><span style="color:#bf616a;">Apple</span><span>&gt;();
+</span><span>// complie error:
+</span><span>// flist.add(new Apple());
+</span><span>// flist.add(new Fruit());
+</span><span>// flist.add(new Object());
+</span><span>flist.add(null); // only work for null 
+</span></code></pre>
+<p>List&lt;? extends Fruit&gt; 表示 “具有任何从Fruit继承类型的列表”，编译器无法确定List所持有的类型，所以无法安全的向其中添加对象。可以添加null,因为null 可以表示任何类型。所以List 的add 方法不能添加任何有意义的元素，但是可以接受现有的子类型List<Apple> 赋值。</p>
+<pre data-lang="csharp" style="background-color:#2b303b;color:#c0c5ce;" class="language-csharp "><code class="language-csharp" data-lang="csharp"><span>Fruit fruit = flist.get(0);
+</span><span>Apple apple = (Apple)flist.get(0);
+</span></code></pre>
+<p>由于，其中放置是从Fruit中继承的类型，所以可以安全地取出Fruit类型。</p>
+<pre data-lang="cpp" style="background-color:#2b303b;color:#c0c5ce;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span>flist.</span><span style="color:#bf616a;">contains</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">Fruit</span><span>());
+</span><span>flist.</span><span style="color:#bf616a;">contains</span><span>(</span><span style="color:#b48ead;">new </span><span style="color:#bf616a;">Apple</span><span>());
+</span></code></pre>
+<p>在使用Collection中的contains 方法时，接受Object 参数类型，可以不涉及任何通配符，编译器也允许这么调用。</p>
+<h4 id="super-shi-li">super 示例</h4>
+<pre data-lang="csharp" style="background-color:#2b303b;color:#c0c5ce;" class="language-csharp "><code class="language-csharp" data-lang="csharp"><span>List&lt;? super Fruit&gt; flist = new ArrayList&lt;Fruit&gt;();
+</span><span>flist.add(new Fruit());
+</span><span>flist.add(new Apple());
+</span><span>flist.add(new RedApple());
+</span><span>
+</span><span>// compile error:
+</span><span>List&lt;? super Fruit&gt; flist = new ArrayList&lt;Apple&gt;();
+</span></code></pre>
+<p>List&lt;? super Fruit&gt; 表示“具有任何Fruit超类型的列表”，列表的类型至少是一个 Fruit 类型，因此可以安全的向其中添加Fruit 及其子类型。由于List&lt;? super Fruit&gt;中的类型可能是任何Fruit 的超类型，无法赋值为Fruit的子类型Apple的List<Apple>。</p>
+<pre data-lang="csharp" style="background-color:#2b303b;color:#c0c5ce;" class="language-csharp "><code class="language-csharp" data-lang="csharp"><span>// compile error:
+</span><span>Fruit item = flist.get(0);
+</span></code></pre>
+<p>因为，List&lt;? super Fruit&gt;中的类型可能是任何Fruit 的超类型，所以编译器无法确定get返回的对象类型是Fruit,还是Fruit的父类Food 或 Object。</p>
+<h2 id="zong-jie">总结</h2>
+<ol>
+<li>PECS原则<code>List&lt;? extends Object&gt;</code>通常用于表示“只读”的情况（T{T类型或者T的子类型}类型不确定，写入的时候编译器不知道具体的类型所以会报编译器错误）{上届}，而<code>List&lt;? super Object&gt;</code>用于表示“可写”的情况（T{T父类型直至Object}，读出来的是Object）{下届}。</li>
+<li>extends限定类型安全时返回值用， super限定类型安全时方法参数用。</li>
+<li>如果要从集合中读取类型T的数据，并且不能写入，可以使用 ? extends 通配符；(Producer Extends)
+如果要从集合中写入类型T的数据，并且不需要读取，可以使用 ? super 通配符；(Consumer Super)
+如果既要存又要取，那么就不要使用任何通配符。</li>
+<li>泛型是为了类型安全。</li>
+</ol>
+
+    </div>
+
+    
+    
+
+    <div class="post-footer">
+        
+            
+                <div class="post-tags">
+                    
+                        <a href="https://leaflare.github.io/tags/java/">#Java</a>
+                    
+                </div>
+            
+            
+
+        
+
+    </div>
+
+    
+    
+</article>
+
+
+                </div>
+            </main>
+
+            
+            
+        </div>
+
+      
+          <script type="text/javascript" src="https://leaflare.github.io/even.js" ></script>
+      
+    </body>
+
+</html>
