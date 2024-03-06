@@ -289,8 +289,8 @@
     </entry>
     <entry xml:lang="zh">
         <title>vjvm note 00： Basic Info</title>
-        <published>2022-02-11T20:47:19+00:00</published>
-        <updated>2022-02-11T20:47:19+00:00</updated>
+        <published>2023-02-11T20:47:19+00:00</published>
+        <updated>2023-02-11T20:47:19+00:00</updated>
         
         <author>
           <name>
@@ -300,10 +300,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202202112047/"/>
-        <id>https://leaflare.github.io/202202112047/</id>
+        <link rel="alternate" type="text/html" href="https://leaflare.github.io/202302112047/"/>
+        <id>https://leaflare.github.io/202302112047/</id>
         
-        <content type="html" xml:base="https://leaflare.github.io/202202112047/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+        <content type="html" xml:base="https://leaflare.github.io/202302112047/">&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
 &lt;p&gt;toy jvm，本系列blog用于记录基本项目结构和重要的实现方法&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;main&quot;&gt;Main&lt;&#x2F;h2&gt;
 &lt;p&gt;定义了一个实现了Callable&lt;Integer&gt;接口的Main类。Main方法创建了一个Main类的新实例，并通过将命令行参数传递给CommandLine类的execute方法来执行。&lt;&#x2F;p&gt;
